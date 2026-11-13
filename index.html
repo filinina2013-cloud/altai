@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALTAI</title>
+<meta name="description" content="Пять дней на зимнем Алтае: прогулки, тишина и время для себя. Учебный проект-концепт.">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-backpack" viewBox="0 0 24 24"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" />
+  <path d="M8 10h8" />
+  <path d="M8 18h8" />
+  <path d="M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6" />
+  <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-bed-double" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8" />
+  <path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4" />
+  <path d="M12 4v6" />
+  <path d="M2 18h20" /></symbol><symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 5v16" />
+  <path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="i-bus" viewBox="0 0 24 24"><path d="M8 6v6" />
+  <path d="M15 6v6" />
+  <path d="M2 12h19.6" />
+  <path d="M18 18h3s.5-1.7.8-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C20.1 6.8 19.1 6 18 6H4a2 2 0 0 0-2 2v10h3" />
+  <circle cx="7" cy="18" r="2" />
+  <path d="M9 18h5" />
+  <circle cx="16" cy="18" r="2" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol><symbol id="i-chevrons-left" viewBox="0 0 24 24"><path d="m11 17-5-5 5-5" />
+  <path d="m18 17-5-5 5-5" /></symbol><symbol id="i-circle-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <line x1="12" x2="12" y1="8" y2="12" />
+  <line x1="12" x2="12.01" y1="16" y2="16" /></symbol><symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <path d="m16 9-5.5 5.5L8 12" /></symbol><symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <path d="M12 6v6l4 2" /></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 9H8" />
+  <path d="M16 13H8" />
+  <path d="M16 17H8" /></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 3q1 4 4 6.5t3 5.5a1 1 0 0 1-14 0 5 5 0 0 1 1-3 1 1 0 0 0 5 0c0-2-1.5-3-1.5-5q0-2 2.5-4" /></symbol><symbol id="i-footprints" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z" />
+  <path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z" />
+  <path d="M16 17h4" />
+  <path d="M4 13h4" /></symbol><symbol id="i-heart" viewBox="0 0 24 24"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" />
+  <path d="M12 16v-4" />
+  <path d="M12 8h.01" /></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+  <rect x="2" y="4" width="20" height="16" rx="2" /></symbol><symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" /></symbol><symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14" /></symbol><symbol id="i-notebook-pen" viewBox="0 0 24 24"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4" />
+  <path d="M2 6h4" />
+  <path d="M2 10h4" />
+  <path d="M2 14h4" />
+  <path d="M2 18h4" />
+  <path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" /></symbol><symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="3" width="5" height="18" rx="1" />
+  <rect x="5" y="3" width="5" height="18" rx="1" /></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14" />
+  <path d="M12 5v14" /></symbol><symbol id="i-pointer" viewBox="0 0 24 24"><path d="M22 14a8 8 0 0 1-8 8" />
+  <path d="M18 11v-1a2 2 0 0 0-2-2a2 2 0 0 0-2 2" />
+  <path d="M14 10V9a2 2 0 0 0-2-2a2 2 0 0 0-2 2v1" />
+  <path d="M10 9.5V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v10" />
+  <path d="M18 11a2 2 0 1 1 4 0v3a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
+  <path d="m21.854 2.147-10.94 10.939" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
+  <path d="M20 2v4" />
+  <path d="M22 4h-4" />
+  <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+  <path d="M12 9v4" />
+  <path d="M12 17h.01" /></symbol><symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+  <path d="M7 2v20" />
+  <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></symbol><symbol id="i-waves" viewBox="0 0 24 24"><path d="M2 12q2.5 2 5 0t5 0 5 0 5 0" />
+  <path d="M2 19q2.5 2 5 0t5 0 5 0 5 0" />
+  <path d="M2 5q2.5 2 5 0t5 0 5 0 5 0" /></symbol><symbol id="i-wind" viewBox="0 0 24 24"><path d="M12.8 19.6A2 2 0 1 0 14 16H2" />
+  <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2" />
+  <path d="M9.8 4.4A2 2 0 1 1 11 8H2" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" />
+  <path d="m6 6 12 12" /></symbol></svg>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+
+<!-- Шапка -->
+<header class="header" data-header>
+  <a class="header__logo" href="#top" aria-label="ALTAI — на главную">ALTAI</a>
+  <nav class="header__nav" aria-label="Разделы">
+    <a href="#trip">О путешествии</a>
+    <a href="#program">Программа</a>
+    <a href="#stay">Условия</a>
+    <a href="#team">Команда</a>
+    <a href="#faq">FAQ</a>
+    <a href="#participants">Участникам</a>
+  </nav>
+  <button class="btn btn--on-dark header__cta" type="button" data-open-booking>
+    Оставить заявку <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+  </button>
+  <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mnav" data-menu-open>
+    <svg class="icon icon--24" aria-hidden="true"><use href="#i-menu"/></svg>
+  </button>
+</header>
+
+<!-- Мобильное меню -->
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Меню" hidden>
+  <div class="mnav__top">
+    <a class="mnav__logo" href="#top" data-menu-link>ALTAI</a>
+    <button class="mnav__close" type="button" aria-label="Закрыть меню" data-menu-close><svg class="icon icon--24" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <nav class="mnav__list" aria-label="Разделы">
+    <a href="#trip" data-menu-link>О поездке<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#program" data-menu-link>Программа<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#stay" data-menu-link>Локации и проживание<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#team" data-menu-link>Команда<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#faq" data-menu-link>Вопросы и ответы<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#booking" data-menu-link>Бронирование<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+  </nav>
+  <div class="mnav__actions">
+    <button class="btn btn--secondary btn--block" type="button" data-open-day="1" data-open-details data-menu-close>Памятка участника <svg class="icon" aria-hidden="true"><use href="#i-file-text"/></svg></button>
+    <a class="btn btn--primary btn--block" href="#booking" data-menu-link>Оставить заявку <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+  </div>
+  <div class="mnav__contacts">
+    <p class="mnav__contacts-title">Контакты</p>
+    <a href="https://t.me/altai_journey_team" target="_blank" rel="noopener">Telegram @altai_journey_team</a>
+    <a href="tel:+79132845716">+7 (913) 284-57-16</a>
+    <a href="mailto:hello@altai-vnutri.ru">hello@altai-vnutri.ru</a>
+  </div>
+</div>
+
+<!-- Липкая плашка заявки (только на телефоне) -->
+<div class="stickybar" data-stickybar aria-hidden="true">
+  <p class="stickybar__text"><b>от 72 000 ₽</b><span>15–19 января</span></p>
+  <a class="btn btn--primary stickybar__btn" href="#booking" tabindex="-1" data-menu-link>Оставить заявку</a>
+</div>
+
+<main id="main">
+
+<!-- 01 Hero -->
+<section class="hero on-media" id="top" aria-label="Холод снаружи. Тепло внутри">
+  <div class="hero__media">
+    <img class="hero__poster" src="assets/img/hero.jpg" alt="" data-optional>
+    <video class="hero__video" muted loop playsinline autoplay preload="auto" poster="assets/img/hero.jpg" data-hero-video>
+      <source src="assets/video/hero-720.mp4" type="video/mp4" media="(max-width: 1100px)">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__content wrap">
+    <div class="hero__top">
+      <div class="hero__intro">
+        <p class="t-small hero__time">Алтай, сейчас <time data-altai-time>13:38</time></p>
+        <p class="t-body-lg">Пять дней на зимнем Алтае: прогулки, тишина и время для себя</p>
+      </div>
+      <div class="hero__controls">
+        <a class="text-link text-link--on-media text-link--plain hero__program" href="#program">
+          <span class="t-body-strong">ПРОГРАММА ПО ДНЯМ</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-book-open"/></svg>
+        </a>
+        <button class="glass glass-btn" type="button" data-video-toggle aria-pressed="false" hidden>
+          <svg class="icon icon--14" aria-hidden="true"><use href="#i-pause"/></svg>
+          <span data-video-label>Пауза</span>
+        </button>
+      </div>
+    </div>
+    <h1 class="hero__title t-display">
+      <span class="hero__line1">Холод снаружи.</span>
+      <span class="hero__line2 italic">Тепло внутри</span>
+    </h1>
+  </div>
+</section>
+
+<!-- 02 Фильм среди фото: видео из hero «приземляется» между кадрами -->
+<section class="reel on-dark" id="s-reel" aria-label="Кадры с Алтая" data-reel>
+  <div class="reel__stage">
+    <div class="reel__col reel__col--left" data-col="left">
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 205"><img src="assets/img/film-1.jpg" alt="Хребты под облаками" loading="lazy"></figure>
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 484"><img src="assets/img/film-2.jpg" alt="Беседка базы вечером с гирляндой" loading="lazy"></figure>
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 205"><img src="assets/img/film-3.jpg" alt="Кружка чая на подоконнике, за окном ели в снегу" loading="lazy"></figure>
+    </div>
+    <div class="reel__col reel__col--center" data-col="center">
+      <figure class="ph ph--dark reel__tile" data-fade style="aspect-ratio: 545 / 307"><img src="assets/img/film-4.jpg" alt="Долина горной реки зимой" loading="lazy"></figure>
+      <div class="reel__slot ph ph--dark" data-slot>
+        <img src="assets/img/film-video.jpg" alt="" loading="lazy" data-optional>
+      </div>
+      <figure class="ph ph--dark reel__tile" data-fade style="aspect-ratio: 545 / 363"><img src="assets/img/film-7.jpg" alt="Деревянные домики базы в снегопад" loading="lazy"></figure>
+    </div>
+    <div class="reel__col reel__col--right" data-col="right">
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 205"><img src="assets/img/film-8.jpg" alt="Дорога через заснеженный склон, вид сверху" loading="lazy"></figure>
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 546"><img src="assets/img/film-9.jpg" alt="Камин в главном доме базы" loading="lazy"></figure>
+      <figure class="ph ph--dark reel__tile" style="aspect-ratio: 363 / 205"><img src="assets/img/film-10.jpg" alt="Окно со снегом и ели" loading="lazy"></figure>
+    </div>
+    <div class="reel__strip" aria-label="Фото, листаются в сторону">
+      <figure class="ph ph--dark"><img src="assets/img/film-4.jpg" alt="Долина горной реки зимой" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-1.jpg" alt="Хребты под облаками" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-2.jpg" alt="Беседка базы вечером с гирляндой" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-7.jpg" alt="Деревянные домики базы в снегопад" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-8.jpg" alt="Дорога через заснеженный склон, вид сверху" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-9.jpg" alt="Камин в главном доме базы" loading="lazy"></figure>
+      <figure class="ph ph--dark"><img src="assets/img/film-10.jpg" alt="Окно со снегом и ели" loading="lazy"></figure>
+    </div>
+    <p class="reel__caption">Снег снаружи, <span class="italic">огонь внутри</span></p>
+  </div>
+</section>
+
+<!-- 03 О нас -->
+<section class="about on-dark section" id="about" aria-labelledby="about-title">
+  <div class="wrap about__grid">
+    <div class="about__text">
+      <div class="about__heading">
+        <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>О нас</p>
+        <figure class="ph ph--dark about__photo"><img src="assets/img/film-3.jpg" alt="Кружка чая на подоконнике, за окном ели в снегу" loading="lazy"></figure>
+        <div class="about__copy">
+          <h2 class="t-section" id="about-title">Мы сами искали<br><span class="italic">такую поездку</span></h2>
+          <p class="t-body-lg">ALTAI — это трое людей, которые любят зимний Алтай и не любят спешку. Мы не туристическая сеть: собираем один заезд за раз и сами в нём участвуем — встречаем в аэропорту, ведём прогулки, сидим вечером у печки вместе с группой.</p>
+          <p class="t-body about__muted">Зиму выбрали не случайно: снег, тишина и короткий световой день сами замедляют. Не нужно бороться с жарой и толпами — можно просто выйти к Катуни, а потом вернуться в тепло.</p>
+        </div>
+      </div>
+      <blockquote class="quote">
+        <p class="t-lead">«Хотелось отпуска, где не нужно никуда успевать: тёплый дом, снег за окном и время подумать о своём».</p>
+        <footer class="t-small">Анна Морозова, организатор</footer>
+      </blockquote>
+      <div class="about__signature">
+        <p class="t-tagline">Анна, Михаил и Мария</p>
+        <a class="text-link text-link--on-media" href="#team"><span>Познакомиться с командой</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </div>
+    <div class="about__film" data-film-dock>
+      <div class="film ph ph--dark" data-film>
+        <img src="assets/img/film-video.jpg" alt="" data-optional>
+        <video muted loop playsinline preload="none" poster="assets/img/film-video.jpg" aria-label="Фильм о зимнем Алтае" data-film-video>
+          <source src="assets/video/hero-720.mp4" type="video/mp4" media="(max-width: 1100px)">
+      <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="film__shade" aria-hidden="true" data-film-shade></div>
+        <p class="film__caption" aria-hidden="true" data-caption>Снег снаружи, <span class="italic">огонь внутри</span></p>
+        <button class="glass glass-btn film__pause" type="button" data-video-toggle aria-pressed="false" hidden>
+          <svg class="icon icon--14" aria-hidden="true"><use href="#i-pause"/></svg>
+          <span data-video-label>Пауза</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 Команда -->
+<section class="team section" id="team" aria-labelledby="team-title">
+  <div class="wrap">
+    <div class="team__header">
+      <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Команда</p>
+      <div class="intro">
+        <h2 class="t-section" id="team-title">Команда</h2>
+        <div class="intro__aside">
+          <svg class="icon icon--30" aria-hidden="true"><use href="#i-heart"/></svg>
+          <p class="t-lead">Те, кто будет рядом.</p>
+          <p class="t-body-lg intro__text">За каждым путешествием стоят люди. Во время поездки три человека отвечают за организацию, прогулки и занятия, чтобы вам не приходилось думать о деталях.</p>
+        </div>
+      </div>
+    </div>
+    <ul class="team__cards">
+      <li>
+        <article class="team-card" tabindex="0" aria-labelledby="name-anna">
+          <span class="team-card__front" aria-hidden="true">
+            <span class="team-card__photo ph"><img src="assets/img/team-anna.jpg" alt="Анна Морозова на тропе над рекой" loading="lazy"></span>
+            <span class="team-card__shade" aria-hidden="true"></span>
+            <span class="team-card__info">
+              <span class="team-card__name">Анна Морозова</span>
+              <span class="t-small">Организатор путешествий</span>
+              <span class="t-small team-card__duty">В поездке: дорога, проживание и связь с вами до и после</span>
+            </span>
+          </span>
+          <span class="team-card__back" id="bio-anna">
+            <span class="team-card__details">
+              <span class="team-card__region">Горный Алтай, Россия</span>
+              <span class="team-card__title"><span class="team-card__back-name" id="name-anna">Анна Морозова</span><span class="team-card__role">Организатор путешествий</span></span>
+              <span class="team-card__bio">Я создаю путешествия, в которых важно не количество увиденных мест, а то, что остаётся с вами после. Для меня Алтай — это возможность замедлиться, почувствовать природу и найти время для себя. Я продумываю маршрут и каждую деталь поездки, чтобы вам не приходилось беспокоиться об организации. Хочу, чтобы в путешествии оставалось место для спонтанных остановок, тёплых разговоров и моментов, которые хочется запомнить.</span>
+            </span>
+            <span class="team-card__facts">
+              <span class="team-card__row"><span>Опыт в туризме</span><b>9 лет</b></span>
+              <span class="team-card__row"><span>Организовано путешествий</span><b>56</b></span>
+            </span>
+          </span>
+        </article>
+      </li>
+      <li>
+        <article class="team-card" tabindex="0" aria-labelledby="name-mikhail">
+          <span class="team-card__front" aria-hidden="true">
+            <span class="team-card__photo ph"><img src="assets/img/team-mikhail.jpg" alt="Михаил Белов с рюкзаком на горной тропе" loading="lazy"></span>
+            <span class="team-card__shade" aria-hidden="true"></span>
+            <span class="team-card__info">
+              <span class="team-card__name">Михаил Белов</span>
+              <span class="t-small">Местный гид, проводник</span>
+              <span class="t-small team-card__duty">В поездке: ведёт прогулки и решает по погоде, выходить&nbsp;ли</span>
+            </span>
+          </span>
+          <span class="team-card__back" id="bio-mikhail">
+            <span class="team-card__details">
+              <span class="team-card__region">Чемал, Горный Алтай</span>
+              <span class="team-card__title"><span class="team-card__back-name" id="name-mikhail">Михаил Белов</span><span class="team-card__role">Местный гид, проводник</span></span>
+              <span class="team-card__bio">Я вырос среди алтайских гор и знаю, как меняется знакомый маршрут с каждым сезоном. Люблю показывать места, которые легко пропустить, если просто следовать карте. Во время прогулок отвечаю за маршрут и безопасность группы, а если погода портится — спокойно меняю планы, чтобы всем было комфортно.</span>
+            </span>
+            <span class="team-card__facts">
+              <span class="team-card__row"><span>Опыт в туризме</span><b>14 лет</b></span>
+              <span class="team-card__row"><span>Проведено групп</span><b>120+</b></span>
+            </span>
+          </span>
+        </article>
+      </li>
+      <li>
+        <article class="team-card" tabindex="0" aria-labelledby="name-maria">
+          <span class="team-card__front" aria-hidden="true">
+            <span class="team-card__photo ph"><img src="assets/img/team-maria.jpg" alt="Мария Лебедева с кружкой на веранде с видом на горы" loading="lazy"></span>
+            <span class="team-card__shade" aria-hidden="true"></span>
+            <span class="team-card__info">
+              <span class="team-card__name">Мария Лебедева</span>
+              <span class="t-small">Ведущая занятий</span>
+              <span class="t-small team-card__duty">В поездке: занятия по желанию, 30–60 минут вечером</span>
+            </span>
+          </span>
+          <span class="team-card__back" id="bio-maria">
+            <span class="team-card__details">
+              <span class="team-card__region">Новосибирск, Россия</span>
+              <span class="team-card__title"><span class="team-card__back-name" id="name-maria">Мария Лебедева</span><span class="team-card__role">Ведущая занятий</span></span>
+              <span class="team-card__bio">Я верю, что иногда самое важное в путешествии — возможность никуда не спешить. Провожу занятия в комфортном ритме, без сложных упражнений и требований к подготовке: немного движения, письменные практики и время побыть с собой. Это не психотерапия: участие добровольное, можно просто прийти и послушать.</span>
+            </span>
+            <span class="team-card__facts">
+              <span class="team-card__row"><span>Опыт ведения занятий</span><b>6 лет</b></span>
+              <span class="team-card__row"><span>Проведено занятий</span><b>300+</b></span>
+            </span>
+          </span>
+        </article>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 05 О путешествии -->
+<section class="trip section" id="trip" aria-labelledby="trip-title">
+  <div class="wrap">
+    <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>О путешествии</p>
+    <div class="trip__grid">
+      <div class="trip__info">
+        <div class="trip__head">
+          <h2 class="t-section" id="trip-title">Зимний Алтай</h2>
+          <p class="t-body-lg muted">Пять дней, чтобы сменить ритм: побыть на природе и уделить время важному для себя вопросу. Прогулки, короткие занятия и свободные вечера — участие по желанию.</p>
+        </div>
+        <dl class="facts">
+          <div class="fact"><dt class="t-caption">в группе</dt><dd class="t-body-strong">8–10 человек</dd></div>
+          <div class="fact"><dt class="t-caption">длительность</dt><dd class="t-body-strong">5 дней / 4 ночи</dd></div>
+          <div class="fact"><dt class="t-caption">проживание</dt><dd class="t-body-strong">Одна тёплая база, без переездов</dd></div>
+          <div class="fact"><dt class="t-caption">когда едем</dt><dd class="t-h2">15–19 января 2027</dd></div>
+          <div class="fact fact--price"><dt class="t-caption">стоимость</dt><dd class="t-section-sm">от 72 000 ₽</dd></div>
+        </dl>
+        <div class="cta-group">
+          <button class="btn btn--primary btn--block" type="button" data-open-booking>Оставить заявку <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          <p class="t-caption cta-group__note">Оплата не сейчас: пришлём договор, место закрепим после предоплаты 30%.</p>
+          <div class="cta-group__links">
+            <a class="text-link text-link--plain" href="https://t.me/altai_journey_team" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg><span>Задать вопрос координатору</span></a>
+            <a class="text-link text-link--plain" href="#program"><span>Программа по дням</span><svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="photo-toggle" data-photo-toggle>
+        <figure class="ph photo-toggle__img is-active" data-value="outside"><img src="assets/img/trip-outside.jpg" alt="Деревянные домики базы в снегопад" loading="lazy"></figure>
+        <figure class="ph photo-toggle__img" data-value="inside"><img src="assets/img/trip-inside.jpg" alt="Гости отдыхают у камина в главном доме базы" loading="lazy"></figure>
+        <div class="photo-toggle__shade" aria-hidden="true"></div>
+        <span class="badge photo-toggle__badge">5 дней</span>
+        <div class="photo-toggle__bottom on-media">
+          <div class="glass segment" role="group" aria-label="Что показать в кадре">
+            <button class="segment__item" type="button" aria-pressed="true" data-value="outside">Снаружи</button>
+            <button class="segment__item" type="button" aria-pressed="false" data-value="inside">Внутри</button>
+          </div>
+          <p class="t-small photo-toggle__caption" aria-live="polite" data-caption-outside="Прогулки рядом с базой спокойным темпом. В непогоду — встреча с гидом в тепле." data-caption-inside="Одна тёплая база на все пять дней, длинная пауза после обеда и свободные вечера.">Прогулки рядом с базой спокойным темпом. В непогоду — встреча с гидом в тепле.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-section" data-accordion>
+      <div class="accordion-section__head">
+        <div class="accordion-section__text">
+          <h3 class="t-section-sm">Что входит и не входит в стоимость</h3>
+          <p class="t-body muted">Проживание, питание, прогулки и занятия — в цене 72 000 ₽. Трансфер из аэропорта и обратно — отдельно: сбор на машину и топливо. Билеты до Горно-Алтайска и страховка — отдельно. Отказаться можно в любой момент — вернём оплату за вычетом фактически понесённых расходов; условия — в <a href="#legal-offer" data-open-legal="offer">договоре-оферте</a>.</p>
+        </div>
+        <button class="round-toggle" type="button" aria-expanded="false" aria-controls="cost-details" aria-label="Подробнее о стоимости">
+          <svg class="icon icon--24 icon-plus" aria-hidden="true"><use href="#i-plus"/></svg>
+          <svg class="icon icon--24 icon-minus" aria-hidden="true"><use href="#i-minus"/></svg>
+        </button>
+      </div>
+      <div class="collapse" id="cost-details"><div>
+        <div class="cost-grid">
+          <div>
+            <p class="t-label cost-grid__label">Входит в 72 000 ₽</p>
+            <ul class="check-list">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Организация и сопровождение</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Проживание на базе, 4 ночи</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Трёхразовое питание на базе</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Прогулки с гидом и занятия</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Бассейн и один общий сеанс бани</li>
+            </ul>
+          </div>
+          <div>
+            <p class="t-label cost-grid__label">Оплачивается отдельно</p>
+            <ul class="check-list check-list--minus">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg>Авиабилеты до Горно-Алтайска и обратно</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg>Сборы на трансфер и топливо</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg>Страховка</li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg>Сувениры, покупки и доп. услуги базы</li>
+            </ul>
+          </div>
+          <div>
+            <p class="t-label cost-grid__label">Оплата и отмена</p>
+            <ul class="check-list check-list--plain">
+              <li>Предоплата 30% — после договора, остаток — за 14 дней до заезда.</li>
+              <li>Перенос на другой заезд без доплаты — если предупредить за 14 дней.</li>
+              <li>Отказ — в любой момент: вернём оплату за вычетом фактически понесённых расходов.</li>
+            </ul>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 Программа -->
+<section class="program" id="program" aria-labelledby="program-title">
+  <div class="wrap program__intro">
+    <div class="intro">
+      <h2 class="t-section" id="program-title">Пять дней<br><span class="italic">на Алтае</span></h2>
+      <div class="intro__aside">
+        <svg class="icon icon--30" aria-hidden="true"><use href="#i-book-open"/></svg>
+        <p class="t-lead">Каждый день — своя глава.</p>
+        <p class="t-body-lg intro__text">Ритм каждого дня: пешком не больше 90 минут в первой половине дня (дорога на машине — отдельно), занятие 30–60 минут ближе к вечеру по желанию и не меньше двух часов личного времени.</p>
+      </div>
+    </div>
+  </div>
+  <div class="days" data-days></div>
+</section>
+
+<!-- 07 Локации и проживание -->
+<section class="stay section" id="stay" aria-labelledby="stay-title">
+  <div class="wrap">
+    <div class="stay__route">
+      <div class="stay__aside">
+        <div class="stay__heading">
+          <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>О путешествии</p>
+          <h2 class="t-section" id="stay-title">Одна база,<br><span class="italic">пять точек</span></h2>
+          <p class="t-body-lg muted">Живём все пять дней в одном месте — в Чемальском районе, на берегу Катуни. Из аэропорта едем по Чуйскому тракту, на все прогулки — на машине вместе с гидом.</p>
+        </div>
+        <ol class="legend" data-legend></ol>
+      </div>
+      <div class="route-map" data-map>
+        <img class="route-map__base" src="assets/map-base.svg" alt="" aria-hidden="true">
+        <div class="route-map__scale"><span class="route-map__bar"></span><p class="t-caption">≈ 95 км по Р-256 от аэропорта до базы</p></div>
+        <p class="t-caption route-map__note">Схема условная, не в масштабе. Точный адрес базы — в памятке после бронирования.</p>
+        <p class="t-label-strong route-map__north" aria-hidden="true">С ↑</p>
+        <p class="t-caption route-map__label route-map__label--river" aria-hidden="true">р. Катунь</p>
+        <p class="t-caption route-map__label route-map__label--road" aria-hidden="true">Р-256 Чуйский тракт</p>
+        <p class="t-caption route-map__label route-map__label--town" aria-hidden="true">Майма</p>
+        <div class="route-map__points" data-map-points></div>
+        <div class="place-stack" data-place-stack aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="accommodation" id="accommodation">
+      <div class="accommodation__head">
+        <h3 class="t-section">Проживание</h3>
+        <p class="t-body-lg muted">Деревянные домики на берегу Катуни: тёплые номера, а ещё бассейн, баня и ресторан на территории базы. Тип номера выбираете при бронировании.</p>
+      </div>
+      <div class="gallery on-media" data-gallery aria-roledescription="карусель" aria-label="Фото базы">
+        <div class="gallery__slides" data-gallery-slides></div>
+        <div class="gallery__shade" aria-hidden="true"></div>
+        <button class="glass gallery__nav gallery__nav--prev" type="button" data-gallery-prev aria-label="Предыдущее фото"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+        <button class="glass gallery__nav gallery__nav--next" type="button" data-gallery-next aria-label="Следующее фото"><svg class="icon icon--20" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        <div class="glass segment gallery__tabs" role="group" aria-label="Что показать">
+          <button class="segment__item" type="button" aria-pressed="true" data-tab="rooms">Номера</button>
+          <button class="segment__item" type="button" aria-pressed="false" data-tab="banya">Баня</button>
+          <button class="segment__item" type="button" aria-pressed="false" data-tab="restaurant">Ресторан</button>
+        </div>
+        <div class="gallery__info" aria-live="polite">
+          <p class="t-label-strong" data-gallery-counter>01 / 10</p>
+          <p class="t-small gallery__caption" data-gallery-caption>«Белуха» — семейный: двуспальная и две односпальные кровати</p>
+        </div>
+      </div>
+      <ul class="rooms">
+        <li class="room">
+          <div class="room__row" aria-hidden="true"><span><b>В одиночку</b><small>Подселение или свой номер</small></span><b class="room__row-price">0 или +12&nbsp;000&nbsp;₽</b></div>
+          <div class="room__full"><p class="room__title">Если едете в одиночку</p><p class="room__price">без доплаты или +12 000 ₽</p></div>
+          <ul class="room__features">
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Подселение без доплаты: своя кровать, соседа вашего пола назовём заранее</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Отдельный номер — +12 000 ₽ за поездку, таких номеров немного</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Вариант отметьте в заявке</span></li>
+          </ul>
+        </li>
+        <li class="room">
+          <div class="room__row" aria-hidden="true"><span><b>Вдвоём</b><small>Большая кровать или две отдельные</small></span><b class="room__row-price">входит<br>в стоимость</b></div>
+          <div class="room__full"><p class="room__title">Если едете вдвоём</p><p class="room__price">входит в стоимость</p></div>
+          <ul class="room__features">
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Одна большая кровать — номер «Катунь»</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Две отдельные кровати — «Чемал» или «Ая»</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Номер только для вас двоих</span></li>
+          </ul>
+        </li>
+        <li class="room">
+          <div class="room__row" aria-hidden="true"><span><b>Компанией</b><small>Втроём, вчетвером — номер на&nbsp;всех</small></span><b class="room__row-price">входит<br>в стоимость</b></div>
+          <div class="room__full"><p class="room__title">Если едете компанией</p><p class="room__price">входит в стоимость</p></div>
+          <ul class="room__features">
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Втроём — номер «Кедр» или «Тайга»</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Вчетвером — семейный номер «Белуха»</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Больше четырёх — подберём номера, чтобы вы жили рядом</span></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="base-facts">
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-bed-double"/></svg>В номере</p><p class="t-body muted">Отопление, санузел с душем, постельное бельё и полотенца, кресла и столик. Wi-Fi может работать с перебоями.</p></li>
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-waves"/></svg>Бассейн</p><p class="t-body muted">Открытый, с подогревом — пар над водой и снег вокруг. Рядом тёплый домик для переодевания. Входит в стоимость; часы работы — в памятке.</p></li>
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-flame"/></svg>Баня</p><p class="t-body muted">Баня на дровах по записи: один общий сеанс входит в стоимость, дополнительные — по тарифу базы.</p></li>
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-utensils"/></svg>Ресторан</p><p class="t-body muted">В главном доме: завтраки, обеды и ужины входят в стоимость. Про ограничения в еде скажите при бронировании.</p></li>
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-clock"/></svg>Заселение и выезд</p><p class="t-body muted">Заселяемся 15 января сразу по приезде на базу, выезд 19 января после обеда.</p></li>
+        <li class="info-col"><p class="info-col__title"><svg class="icon icon--20" aria-hidden="true"><use href="#i-wind"/></svg>Если непогода</p><p class="t-body muted">Решение о прогулке принимает гид. Альтернатива — встреча с гидом в тепле или баня.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 08 FAQ -->
+<section class="faq section" id="faq" aria-labelledby="faq-title" data-faq>
+  <div class="wrap faq__grid">
+    <div class="faq__aside">
+      <div class="faq__heading">
+        <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>FAQ</p>
+        <h2 class="t-section" id="faq-title">Вопросы<br><span class="italic">и ответы</span></h2>
+        <p class="t-body-lg muted">Собрали то, о чём спрашивают до поездки: формат, нагрузка, быт, деньги и дорога.</p>
+      </div>
+      <div class="help-card">
+        <p class="help-card__title">Не нашли ответ?</p>
+        <p class="t-small muted">Напишите координатору — ответим в течение дня. Telegram, телефон или почта — как вам удобнее.</p>
+        <a class="btn btn--secondary btn--block" href="https://t.me/altai_journey_team" target="_blank" rel="noopener">Написать в Telegram <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></a>
+      </div>
+    </div>
+    <div class="faq__list">
+      <div class="faq__items" data-faq-items></div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 Бронирование -->
+<section class="booking on-media" id="booking" aria-labelledby="booking-title">
+  <div class="booking__bg" aria-hidden="true"><img src="assets/img/booking.jpg" alt="" loading="lazy" data-optional></div>
+  <div class="wrap booking__panels">
+    <div class="glass booking__info">
+      <div>
+        <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Бронирование</p>
+        <h2 class="t-section booking__title" id="booking-title">Оставить<br><span class="italic">заявку</span></h2>
+      </div>
+      <div class="booking__contacts">
+        <div class="contact-group">
+          <p class="t-label contact-group__label">До поездки · координатор</p>
+          <p class="t-question">Анна Морозова</p>
+          <ul class="contact-group__lines">
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-send"/></svg><a href="https://t.me/altai_journey_team" target="_blank" rel="noopener">Telegram @altai_journey_team</a></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+79132845716">+7 (913) 284-57-16</a></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:hello@altai-vnutri.ru">hello@altai-vnutri.ru</a></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"/></svg>Звонки: 9:00–21:00 по местному</li>
+          </ul>
+        </div>
+        <div class="contact-group">
+          <p class="t-label contact-group__label">Во время поездки</p>
+          <p class="t-question">Гид Михаил Белов</p>
+          <ul class="contact-group__lines">
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+79132846342">+7 (913) 284-63-42</a></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-clock"/></svg>На связи 8:00–22:00</li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg>Срочно — звонок, не сообщение</li>
+          </ul>
+        </div>
+      </div>
+      <div class="booking__trip">
+        <div class="contact-group">
+          <p class="t-label contact-group__label">Заезд</p>
+          <p class="t-question">15–19 января</p>
+          <ul class="contact-group__lines"><li>5 дней / 4 ночи</li><li>Горно-Алтайск</li></ul>
+        </div>
+        <div class="contact-group">
+          <p class="t-label contact-group__label">Стоимость</p>
+          <p class="t-question">от 72 000 ₽</p>
+          <ul class="contact-group__lines"><li>одноместное — 84 000 ₽</li><li>без билетов и страховки</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="booking__form" data-form-slot="section"></div>
+    <div class="after-apply">
+      <button class="after-apply__head" type="button" aria-expanded="false" aria-controls="after-apply-body" data-after-apply>
+        <span class="after-apply__label"><svg class="icon icon--20" aria-hidden="true"><use href="#i-info"/></svg>Что будет после заявки</span>
+        <span class="after-apply__toggle"><svg class="icon icon--20" aria-hidden="true"><use href="#i-plus"/></svg></span>
+      </button>
+      <ol class="next-steps after-apply__body" id="after-apply-body" hidden>
+        <li><span class="next-steps__n">1</span><span><b>Координатор свяжется в течение рабочего дня</b> — ответит на вопросы.</span></li>
+        <li><span class="next-steps__n">2</span><span><b>Пришлём договор и ссылку на предоплату 30%</b>.</span></li>
+        <li><span class="next-steps__n">3</span><span><b>Место держим за вами 3 дня</b> — пока ничего не оплачено.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Подвал -->
+<div class="footer-reveal" data-footer-reveal>
+<div class="footer-reveal__mask" data-footer-mask>
+<footer class="footer on-dark" id="participants">
+  <div class="wrap footer__content">
+    <div class="footer__columns">
+      <nav class="footer__col" aria-label="Меню">
+        <p class="t-label footer__label">Меню</p>
+        <a href="#trip">О поездке</a>
+        <a href="#program">Программа</a>
+        <a href="#stay">Локации и проживание</a>
+        <a href="#team">Команда</a>
+        <a href="#faq">Вопросы и ответы</a>
+        <a href="#booking">Бронирование</a>
+      </nav>
+      <nav class="footer__col" aria-label="Участникам">
+        <p class="t-label footer__label">Участникам</p>
+        <a href="#program" data-open-day="1" data-open-details>Памятка: что взять</a>
+        <a href="#faq" data-faq-jump="Дорога">Как добраться</a>
+        <a href="#faq" data-faq-jump="Стоимость и бронирование">Условия отмены</a>
+        <a href="#legal-offer" data-open-legal="offer">Договор-оферта</a>
+      </nav>
+      <div class="footer__col">
+        <p class="t-label footer__label">Связаться</p>
+        <a href="https://t.me/altai_journey_team" target="_blank" rel="noopener"><span class="footer__icon"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></span>@altai_journey_team</a>
+        <a href="tel:+79132845716"><span class="footer__icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>+7 (913) 284-57-16</a>
+        <a href="mailto:hello@altai-vnutri.ru"><span class="footer__icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>hello@altai-vnutri.ru</a>
+        <p><span class="footer__icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>Ответим в течение дня</p>
+      </div>
+      <div class="footer__col">
+        <p class="t-label footer__label">Сейчас на Алтае</p>
+        <p>Чемальский район, Алтай</p>
+        <p data-altai-date>Понедельник, 2 ноября 2026</p>
+        <p><time data-altai-time>13:38</time> · UTC+7</p>
+        <p>−9 °C, снег</p>
+      </div>
+    </div>
+    <div class="footer__bottom t-small">
+      <p>© 2026 ALTAI — A Journey Within · учебный проект</p>
+      <div class="footer__docs">
+        <a href="#legal-privacy" data-open-legal="privacy">Политика обработки данных</a>
+        <a href="#legal-offer" data-open-legal="offer">Договор-оферта</a>
+        <a href="#legal-cookie" data-open-legal="cookie">Cookie</a>
+      </div>
+      <p class="footer__credit">Design by <a href="https://t.me/Kollinzli" target="_blank" rel="noopener">Filinina</a></p>
+    </div>
+    <p class="footer__media t-small">Часть видеоматериалов — автор <a href="https://www.pexels.com/@yaroslav-shuraev/" target="_blank" rel="noopener">Ярослав Шураев</a> (Pexels)</p>
+  </div>
+  <p class="footer__wordmark" aria-hidden="true">ALTAI</p>
+</footer>
+<div class="footer-reveal__shade" aria-hidden="true" data-footer-shade></div>
+</div>
+</div>
+
+<!-- Окно дня -->
+<div class="modal" id="day-modal" role="dialog" aria-modal="true" aria-labelledby="day-modal-title" hidden data-modal="day">
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel day-modal" data-day-modal tabindex="-1"></div>
+</div>
+
+<!-- Окно бронирования -->
+<div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title" hidden data-modal="booking">
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel booking-modal" tabindex="-1">
+    <div class="booking-modal__head">
+      <div>
+        <h2 class="t-section-sm" id="booking-modal-title">Оставить заявку</h2>
+        <p class="t-small muted">15–19 января 2027 · 5 дней / 4 ночи · от 72 000 ₽</p>
+      </div>
+      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="icon icon--24" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+    <div data-form-slot="modal"></div>
+  </div>
+</div>
+
+<!-- Документы -->
+<div class="modal" id="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legal-title" hidden data-modal="legal">
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel legal-modal" tabindex="-1" data-legal></div>
+</div>
+
+<!-- Cookie -->
+<div class="cookie" role="region" aria-label="Cookie" hidden data-cookie>
+  <p class="t-small">Мы используем обязательные cookie, чтобы сайт работал, и — с вашего согласия — аналитические («Яндекс Метрика») для статистики посещений. Подробнее — в <a href="#legal-cookie" data-open-legal="cookie">Политике cookie</a>.</p>
+  <div class="cookie__actions">
+    <button class="btn btn--secondary" type="button" data-cookie-choice="necessary">Только обязательные</button>
+    <button class="btn btn--primary" type="button" data-cookie-choice="all">Принять все</button>
+  </div>
+</div>
+
+<!-- Шаблон формы заявки -->
+<template id="apply-form-tpl">
+  <form class="apply-form" novalidate data-apply-form>
+    <div class="trip-summary">
+      <p class="t-label-sm">Заезд</p>
+      <p class="t-body-strong">15–19 января 2027 · 5 дней / 4 ночи</p>
+      <p class="trip-summary__date" aria-hidden="true">15–19 января 2027</p>
+      <p class="t-caption">Январь не подходит? Отметьте в вопросе — сообщим о следующем заезде</p>
+    </div>
+    <div class="status-banner" role="alert" hidden data-form-error><svg class="icon" aria-hidden="true"><use href="#i-circle-alert"/></svg><span>Проверьте отмеченные поля</span></div>
+    <div class="field" data-field="name">
+      <label class="field__label" for="name-{id}">Имя*</label>
+      <input class="field__input" id="name-{id}" name="name" type="text" autocomplete="given-name" placeholder="Как к вам обращаться" required>
+      <p class="field__error" hidden><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg>Укажите имя</p>
+    </div>
+    <fieldset class="field" data-field="method">
+      <legend class="field__label">Как удобнее связаться*</legend>
+      <div class="radio-cards radio-cards--row">
+        <label class="radio-card"><input type="radio" name="method" value="telegram" checked><span class="radio"></span>Telegram</label>
+        <label class="radio-card"><input type="radio" name="method" value="phone"><span class="radio"></span>Телефон</label>
+        <label class="radio-card"><input type="radio" name="method" value="email"><span class="radio"></span>Email</label>
+      </div>
+    </fieldset>
+    <div class="field" data-field="contact">
+      <label class="field__label" for="contact-{id}" data-contact-label>Ник в Telegram или номер*</label>
+      <input class="field__input" id="contact-{id}" name="contact" type="text" placeholder="@username" required>
+      <p class="field__error" hidden><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg><span data-contact-error>Укажите ник или номер</span></p>
+    </div>
+    <div class="field" data-field="guests">
+      <p class="field__label" id="guests-label-{id}">Сколько вас едет*</p>
+      <div class="stepper" role="group" aria-labelledby="guests-label-{id}">
+        <button class="stepper__btn" type="button" data-guests-step="-1" aria-label="Меньше на одного"><svg class="icon icon--20" aria-hidden="true"><use href="#i-minus"/></svg></button>
+        <output class="stepper__value" data-guests-value aria-live="polite">1 человек</output>
+        <button class="stepper__btn" type="button" data-guests-step="1" aria-label="Больше на одного"><svg class="icon icon--20" aria-hidden="true"><use href="#i-plus"/></svg></button>
+      </div>
+      <input type="hidden" name="guests" value="1">
+    </div>
+    <fieldset class="field" data-field="placement">
+      <legend class="field__label">Как разместиться*</legend>
+      <div class="radio-cards" data-placement-options></div>
+      <p class="t-caption field__hint" data-placement-hint></p>
+    </fieldset>
+    <div class="field" data-field="question">
+      <label class="field__label" for="question-{id}">Вопрос — по желанию</label>
+      <textarea class="field__input field__input--area" id="question-{id}" name="question" rows="3" placeholder="Например, про нагрузку или питание"></textarea>
+    </div>
+    <div class="field" data-field="consent">
+      <label class="checkbox-row"><input type="checkbox" name="consent" required><span class="checkbox"><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg></span><span>Даю <a href="#legal-consent" data-open-legal="consent">согласие на обработку персональных данных</a>*</span></label>
+      <p class="field__error" hidden><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg>Без согласия мы не сможем сохранить контакт</p>
+    </div>
+    <div class="apply-form__submit">
+      <div class="form-price" aria-live="polite">
+        <span class="form-price__label"><span data-price-for>Итого</span><small data-price-pp>72 000 ₽ за человека</small></span>
+        <span class="form-price__value"><span data-form-price>72 000</span> ₽</span>
+      </div>
+      <button class="btn btn--primary btn--block" type="submit"><span data-submit-label>Оставить заявку</span></button>
+      <p class="t-small apply-form__note">Оплата не сейчас: пришлём договор, место закрепим после предоплаты 30%. Условия поездки — в <a href="#legal-offer" data-open-legal="offer">договоре-оферте</a>; договор заключается с внесением предоплаты. * — обязательные поля. Как мы обрабатываем данные — в <a href="#legal-privacy" data-open-legal="privacy">Политике конфиденциальности</a>.</p>
+    </div>
+  </form>
+  <div class="apply-success" hidden data-apply-success tabindex="-1">
+    <span class="apply-success__icon"><svg class="icon icon--24" aria-hidden="true"><use href="#i-circle-check"/></svg></span>
+    <h3 class="t-h2">Заявка отправлена</h3>
+    <p class="t-body muted">Это демонстрация: данные никуда не передаются. На настоящем сайте дальше было бы так:</p>
+    <ol class="next-steps">
+      <li><span class="next-steps__n">1</span><span><b>Координатор свяжется в течение рабочего дня</b> — ответит на вопросы.</span></li>
+      <li><span class="next-steps__n">2</span><span><b>Пришлём договор и ссылку на предоплату 30%</b>.</span></li>
+      <li><span class="next-steps__n">3</span><span><b>Место держим за вами 3 дня</b> — пока ничего не оплачено.</span></li>
+    </ol>
+    <button class="text-link" type="button" data-apply-reset><span>Оставить ещё одну заявку</span></button>
+  </div>
+</template>
+<script src="js/vendor/lenis.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

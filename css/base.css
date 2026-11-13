@@ -1,0 +1,158 @@
+/* База, типографика и общие компоненты */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* Lenis — плавный скролл */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth, .lenis [data-lenis-prevent] { scroll-behavior: auto !important; }
+.lenis [data-lenis-prevent], .lenis .modal { overscroll-behavior: contain; }
+.lenis.lenis-autoToggle { transition-property: overflow; transition-duration: 1ms; transition-behavior: allow-discrete; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; } }
+body {
+  margin: 0;
+  background: var(--color-surface-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: "wdth" 100;
+}
+img { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; }
+p, h1, h2, h3, h4, ul, ol, dl, dd, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip-link { position: absolute; left: 16px; top: -60px; z-index: 200; background: var(--color-surface-raised); color: var(--color-text-link); padding: 12px 16px; font-weight: 600; }
+.skip-link:focus { top: 16px; }
+
+:focus-visible { outline: var(--border-focus) solid var(--color-focus-ring); outline-offset: 2px; }
+.on-dark :focus-visible { outline-color: var(--color-focus-ring-on-inverse); }
+.on-media :focus-visible { outline-color: var(--color-focus-ring-on-media); box-shadow: 0 0 0 5px var(--color-focus-halo-on-media); }
+
+/* Типографика */
+.t-display { font-family: var(--font-serif); font-weight: 400; font-size: 132px; line-height: 1; letter-spacing: -0.025em; }
+.t-section { font-family: var(--font-serif); font-weight: 400; font-size: 72px; line-height: 1; letter-spacing: -0.02em; }
+.t-section-sm { font-family: var(--font-serif); font-weight: 400; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em; }
+.t-question { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.25; letter-spacing: -0.02em; }
+.t-lead { font-family: var(--font-serif); font-style: italic; font-size: 34px; line-height: 1.15; }
+.t-tagline { font-family: var(--font-serif); font-style: italic; font-size: 20px; line-height: 1.5; }
+.t-h1 { font-weight: 600; font-size: 48px; line-height: 1; letter-spacing: -0.02em; }
+.t-h2 { font-weight: 600; font-size: 24px; line-height: 1.3; }
+.t-body-lg { font-size: 20px; line-height: 1.35; }
+.t-body { font-size: 17px; line-height: 1.5; }
+.t-body-strong { font-size: 17px; line-height: 1.5; font-weight: 600; }
+.t-small { font-size: 14px; line-height: 1.5; }
+.t-caption { font-size: 13px; line-height: 1.5; }
+.t-label { font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; }
+.t-label-sm { font-weight: 500; font-size: 13px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; }
+.t-label-strong { font-weight: 600; font-size: 14px; line-height: 1.5; }
+.italic { font-style: italic; }
+.muted { color: var(--color-text-secondary); }
+
+/* Иконки (Lucide, обводка 1,5) */
+.icon { width: 18px; height: 18px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.icon--14 { width: 14px; height: 14px; }
+.icon--16 { width: 16px; height: 16px; }
+.icon--24 { width: 24px; height: 24px; }
+.icon--30 { width: 30px; height: 30px; }
+
+/* Раскладка */
+.wrap { width: 100%; max-width: calc(var(--content-max) + 2 * var(--layout-margin)); margin: 0 auto; padding: 0 var(--layout-margin); }
+.section { padding: var(--layout-section) 0; }
+.on-dark { background: var(--color-surface-night); color: var(--color-text-on-media); }
+
+/* Ярлык секции */
+.eyebrow { display: inline-flex; align-items: center; gap: var(--space-2); color: var(--color-text-secondary); }
+.on-dark .eyebrow { color: var(--color-text-on-inverse-muted); }
+
+/* Вступление секции: заголовок слева, лид справа с 8-й колонки */
+.intro { display: grid; grid-template-columns: 755fr 533fr; gap: var(--layout-gutter); align-items: start; }
+.intro__aside { padding-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+.intro__aside p + p { margin-top: calc(-1 * var(--space-2)); }
+.intro__text { color: var(--color-text-secondary); }
+
+/* Кнопки */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  height: 52px; padding: 0 var(--space-5);
+  border: var(--border-control) solid var(--color-action-secondary-border);
+  font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.btn--primary { background: var(--color-action-primary-bg); border-color: var(--color-action-primary-bg); color: var(--color-action-primary-text); }
+.btn--primary:hover { background: var(--color-action-primary-bg-hover); border-color: var(--color-action-primary-bg-hover); }
+.btn--primary[aria-busy="true"] { background: var(--color-action-primary-bg-busy); border-color: var(--color-action-primary-bg-busy); cursor: progress; }
+.btn--secondary { background: transparent; color: var(--color-action-secondary-text); }
+.btn--secondary:hover { background: var(--color-action-secondary-text); color: var(--color-action-primary-text); }
+.btn--on-dark { background: transparent; border-color: var(--color-text-on-inverse); color: var(--color-text-on-inverse); }
+.btn--on-dark:hover { background: var(--color-text-on-inverse); color: var(--color-text-primary); }
+.btn--block { width: 100%; }
+.btn--split { justify-content: space-between; }
+
+/* Ссылка-действие */
+.text-link {
+  display: inline-flex; align-items: center; gap: var(--space-2); min-height: 44px;
+  font-weight: 600; font-size: 17px; line-height: 1.5;
+  color: var(--color-text-link); text-decoration: none;
+}
+.text-link span { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.text-link:hover { color: var(--color-text-link-hover); }
+.text-link--plain span { text-decoration: none; }
+.text-link--on-media { color: var(--color-text-on-media); }
+.text-link--on-media:hover { color: var(--color-text-on-media-muted); }
+
+/* Стеклянная кнопка (Пауза/Воспроизвести) и стеклянные поверхности */
+.glass {
+  background: var(--glass-bg);
+  border: var(--border-hairline) solid var(--glass-border);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+.glass-btn {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  min-height: 44px; padding: 0 var(--space-3); border-radius: var(--radius-full);
+  color: var(--color-text-on-inverse);
+  font-weight: 500; font-size: 13px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background-color var(--dur) var(--ease);
+}
+.glass-btn:hover { background: var(--glass-bg-hover); }
+
+/* Переключатель «Снаружи / Внутри» */
+.segment { display: inline-flex; gap: var(--space-1); padding: var(--space-1); border-radius: var(--radius-full); }
+.segment__item {
+  min-height: 44px; padding: var(--space-2) var(--space-4); border-radius: var(--radius-full);
+  border: var(--border-hairline) solid transparent;
+  color: var(--color-text-on-inverse-muted);
+  font-weight: 500; font-size: 13px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.segment__item:hover { color: var(--color-text-on-inverse); }
+.segment__item[aria-pressed="true"] { background: var(--color-text-on-inverse); border-color: var(--color-text-on-inverse); color: var(--color-text-primary); }
+
+/* Метки */
+.tag { display: inline-flex; align-items: center; height: 28px; padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); font-size: 13px; line-height: 1.5; white-space: nowrap; }
+.tag--required { background: var(--color-tag-required-bg); color: var(--color-tag-required-text); }
+.tag--optional { border: var(--border-hairline) solid var(--color-tag-optional); color: var(--color-tag-optional); }
+.badge { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-4); background: var(--color-surface-raised); color: var(--color-text-primary); font-weight: 600; font-size: 14px; line-height: 1.3; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Фото с заглушкой, пока нет картинки */
+.ph { position: relative; overflow: hidden; background: var(--color-surface-placeholder); }
+.ph > img { width: 100%; height: 100%; object-fit: cover; }
+.ph--dark { background: #2a3134; }
+
+/* Кнопка-кружок «+ / –» */
+.round-toggle { width: 56px; height: 56px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-full); border: var(--border-hairline) solid var(--color-border-emphasis); color: var(--color-text-primary); transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease); }
+.round-toggle:hover { background: var(--color-text-primary); color: var(--color-surface-page); }
+.round-toggle .icon-minus { display: none; }
+[aria-expanded="true"] .round-toggle .icon-plus, .round-toggle[aria-expanded="true"] .icon-plus { display: none; }
+[aria-expanded="true"] .round-toggle .icon-minus, .round-toggle[aria-expanded="true"] .icon-minus { display: block; }
+
+/* Раскрывающиеся области */
+.collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur) var(--ease); }
+.collapse > div { overflow: hidden; }
+.collapse.is-open { grid-template-rows: 1fr; }

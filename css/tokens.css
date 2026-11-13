@@ -1,0 +1,107 @@
+/* ALTAI — дизайн-токены (из Figma: Primitives / Foundations / Colors · Light) */
+:root {
+  /* Цвета — семантика */
+  --color-text-primary: #242b2d;
+  --color-text-secondary: #4f5557;
+  --color-text-tertiary: #5e6466;
+  --color-text-disabled: #6b7072;
+  --color-text-link: #29495c;
+  --color-text-link-hover: #1c3442;
+  --color-text-on-accent: #ffffff;
+  --color-text-on-inverse: #f3f1ec;
+  --color-text-on-inverse-muted: #d4d1ca;
+  --color-text-on-inverse-subtle: #c9c6bf;
+  --color-text-on-media: #ffffff;
+  --color-text-on-media-muted: #e2e0da;
+  --color-text-warm: #8f4a1c;
+  --color-text-on-dark-warm: #f3e6d6;
+
+  --color-surface-page: #f3f1ec;
+  --color-surface-raised: #ffffff;
+  --color-surface-subtle: #e6e3dc;
+  --color-surface-subtle-alt: #e9e7e1;
+  --color-surface-inverse: #242b2d;
+  --color-surface-placeholder: #dedad2;
+  --color-surface-intro: #fafaf8;
+  --color-surface-night: #0d1112;
+  --color-surface-warm: #f3e6d6;
+  --color-surface-warm-strong: #ead3ba;
+
+  --color-border-default: #d2cec5;
+  --color-border-subtle: #e4e1da;
+  --color-border-strong: #b9b4aa;
+  --color-border-emphasis: #242b2d;
+  --color-border-field: #6b7072;
+  --color-border-accent: #29495c;
+  --color-border-inverse: #5a6164;
+
+  --color-action-primary-bg: #29495c;
+  --color-action-primary-bg-hover: #1c3442;
+  --color-action-primary-bg-busy: #5e6e78;
+  --color-action-primary-text: #ffffff;
+  --color-action-secondary-text: #29495c;
+  --color-action-secondary-border: #29495c;
+
+  --color-focus-ring: #29495c;
+  --color-focus-ring-on-inverse: #f3f1ec;
+  --color-focus-ring-on-media: #ffffff;
+  --color-focus-halo-on-media: #242b2d;
+
+  --color-tag-required-bg: #c3c7c5;
+  --color-tag-required-text: #2c3335;
+  --color-tag-optional: #29495c;
+
+  --color-accent-warm: #d9822b;
+  --color-map-route: #c08c69;
+  --color-map-marker: #c08c69;
+
+  --overlay-on-dark-subtle: rgba(255, 255, 255, 0.06);
+  --overlay-on-dark-border: rgba(255, 255, 255, 0.15);
+  --overlay-glass-panel: rgba(244, 241, 234, 0.72);
+  --overlay-glass-field: rgba(255, 255, 255, 0.82);
+  --overlay-glass-border: rgba(255, 255, 255, 0.5);
+  --overlay-glass-summary: rgba(239, 230, 216, 0.85);
+  --overlay-scrim: rgba(18, 23, 26, 0.6);
+  --glass-bg: rgba(243, 241, 236, 0.12);
+  --glass-bg-hover: rgba(243, 241, 236, 0.22);
+  --glass-border: rgba(243, 241, 236, 0.38);
+
+  /* Отступы */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-30: 120px;
+
+  --layout-margin: 64px;
+  --layout-gutter: 24px;
+  --layout-section: 96px;
+  --layout-section-lg: 120px;
+  --content-max: 1312px;
+  --form-max: 560px;
+
+  /* Радиусы и линии */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-media-sm: 16px;
+  --radius-media: 20px;
+  --radius-full: 999px;
+  --border-hairline: 1px;
+  --border-control: 1.5px;
+  --border-strong: 2px;
+  --border-focus: 3px;
+
+  /* Шрифты */
+  --font-serif: "Old Standard TT", Georgia, "Times New Roman", serif;
+  --font-sans: "Roboto Flex", "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 320ms;
+}
