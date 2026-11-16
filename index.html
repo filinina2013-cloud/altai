@@ -147,6 +147,7 @@
       <div class="hero__intro">
         <p class="t-small hero__time">Алтай, сейчас <time data-altai-time>13:38</time></p>
         <p class="t-body-lg">Пять дней на зимнем Алтае: прогулки, тишина и время для себя</p>
+        <p class="t-body-strong hero__dates">15–19 января · 5 дней / 4 ночи</p>
       </div>
       <div class="hero__controls">
         <a class="text-link text-link--on-media text-link--plain hero__program" href="#program">
@@ -274,6 +275,7 @@
             <span class="team-card__facts">
               <span class="team-card__row"><span>Опыт в туризме</span><b>9 лет</b></span>
               <span class="team-card__row"><span>Организовано путешествий</span><b>56</b></span>
+              <span class="team-card__row"><span>Telegram</span><b>@altai_journey_team</b></span>
             </span>
           </span>
         </article>
@@ -327,6 +329,7 @@
         </article>
       </li>
     </ul>
+    <p class="team__contact t-body">Вопросы до поездки — Анне: <a class="text-link text-link--plain" href="https://t.me/altai_journey_team" target="_blank" rel="noopener">Telegram @altai_journey_team</a> или <a class="text-link text-link--plain" href="tel:+79132845716">+7 (913) 284-57-16</a>, с 9:00 до 21:00 по местному времени.</p>
   </div>
 </section>
 
@@ -345,7 +348,14 @@
           <div class="fact"><dt class="t-caption">длительность</dt><dd class="t-body-strong">5 дней / 4 ночи</dd></div>
           <div class="fact"><dt class="t-caption">проживание</dt><dd class="t-body-strong">Одна тёплая база, без переездов</dd></div>
           <div class="fact"><dt class="t-caption">когда едем</dt><dd class="t-h2">15–19 января 2027</dd></div>
-          <div class="fact fact--price"><dt class="t-caption">стоимость</dt><dd class="t-section-sm">от 72 000 ₽</dd></div>
+          <div class="fact fact--price"><dt class="t-caption">стоимость</dt><dd>
+            <p class="price-main"><span class="t-section-sm">72&nbsp;000&nbsp;₽</span> <span class="t-body muted">за человека</span></p>
+            <ul class="price-lines t-body">
+              <li><span>Вдвоём</span><b>144&nbsp;000&nbsp;₽</b></li>
+              <li><span>Один в отдельном номере</span><b>84&nbsp;000&nbsp;₽</b></li>
+            </ul>
+            <p class="price-excl t-small"><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg><span>Не входят: авиабилеты, страховка и трансфер из аэропорта. <a href="#cost-details" data-open-cost>Подробнее</a></span></p>
+          </dd></div>
         </dl>
         <div class="cta-group">
           <button class="btn btn--primary btn--block" type="button" data-open-booking>Оставить заявку <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
@@ -377,12 +387,12 @@
           <h3 class="t-section-sm">Что входит и не входит в стоимость</h3>
           <p class="t-body muted">Проживание, питание, прогулки и занятия — в цене 72 000 ₽. Трансфер из аэропорта и обратно — отдельно: сбор на машину и топливо. Билеты до Горно-Алтайска и страховка — отдельно. Отказаться можно в любой момент — вернём оплату за вычетом фактически понесённых расходов; условия — в <a href="#legal-offer" data-open-legal="offer">договоре-оферте</a>.</p>
         </div>
-        <button class="round-toggle" type="button" aria-expanded="false" aria-controls="cost-details" aria-label="Подробнее о стоимости">
+        <button class="round-toggle" type="button" aria-expanded="true" aria-controls="cost-details" aria-label="Свернуть">
           <svg class="icon icon--24 icon-plus" aria-hidden="true"><use href="#i-plus"/></svg>
           <svg class="icon icon--24 icon-minus" aria-hidden="true"><use href="#i-minus"/></svg>
         </button>
       </div>
-      <div class="collapse" id="cost-details"><div>
+      <div class="collapse is-open" id="cost-details"><div>
         <div class="cost-grid">
           <div>
             <p class="t-label cost-grid__label">Входит в 72 000 ₽</p>
@@ -425,7 +435,11 @@
       <div class="intro__aside">
         <svg class="icon icon--30" aria-hidden="true"><use href="#i-book-open"/></svg>
         <p class="t-lead">Каждый день — своя глава.</p>
-        <p class="t-body-lg intro__text">Ритм каждого дня: пешком не больше 90 минут в первой половине дня (дорога на машине — отдельно), занятие 30–60 минут ближе к вечеру по желанию и не меньше двух часов личного времени.</p>
+        <p class="t-body-lg intro__text">Ритм каждого дня: пешком не больше 90 минут в первой половине дня (дорога на машине — отдельно), занятие 30–60 минут ближе к вечеру и не меньше двух часов личного времени. Дни 1 и 5 — дорога из аэропорта и обратно.</p>
+        <ul class="program-notes">
+          <li><b>Всё по желанию.</b> Обязательны только встреча в аэропорту и инструктаж в первый день. На любую прогулку или занятие можно не идти и остаться на базе.</li>
+          <li><b>Что такое занятия.</b> Вечером Мария Лебедева ведёт 30–60 минут письменных упражнений в блокноте: выбрать, что для вас сейчас важно, и наметить небольшой шаг. Это не тренинг и не терапия, делиться вслух не нужно.</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -442,6 +456,11 @@
           <h2 class="t-section" id="stay-title">Одна база,<br><span class="italic">пять точек</span></h2>
           <p class="t-body-lg muted">Живём все пять дней в одном месте — в Чемальском районе, на берегу Катуни. Из аэропорта едем по Чуйскому тракту, на все прогулки — на машине вместе с гидом.</p>
         </div>
+        <ul class="map-key t-small" aria-label="Обозначения на карте">
+          <li><span class="map-key__line map-key__line--road" aria-hidden="true"></span>Чуйский тракт — дорога из аэропорта на базу, около 2 часов</li>
+          <li><span class="map-key__line map-key__line--trip" aria-hidden="true"></span>Выезды с базы на машине вместе с гидом</li>
+          <li><span class="marker map-key__marker" aria-hidden="true">А</span>Точки маршрута — нажмите, чтобы увидеть фото и день программы</li>
+        </ul>
         <ol class="legend" data-legend></ol>
       </div>
       <div class="route-map" data-map>
@@ -479,17 +498,17 @@
       </div>
       <ul class="rooms">
         <li class="room">
-          <div class="room__row" aria-hidden="true"><span><b>В одиночку</b><small>Подселение или свой номер</small></span><b class="room__row-price">0 или +12&nbsp;000&nbsp;₽</b></div>
-          <div class="room__full"><p class="room__title">Если едете в одиночку</p><p class="room__price">без доплаты или +12 000 ₽</p></div>
+          <div class="room__row" aria-hidden="true"><span><b>В одиночку</b><small>Подселение или свой номер</small></span><b class="room__row-price">72&nbsp;000 или<br>84&nbsp;000&nbsp;₽</b></div>
+          <div class="room__full"><p class="room__title">Если едете в одиночку</p><p class="room__price">72 000 ₽ с подселением, 84 000 ₽ в своём номере</p></div>
           <ul class="room__features">
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Подселение без доплаты: своя кровать, соседа вашего пола назовём заранее</span></li>
-            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Отдельный номер — +12 000 ₽ за поездку, таких номеров немного</span></li>
+            <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Отдельный номер — 84&nbsp;000&nbsp;₽ за поездку вместо 72&nbsp;000 (доплата 12&nbsp;000&nbsp;₽), таких номеров немного</span></li>
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Вариант отметьте в заявке</span></li>
           </ul>
         </li>
         <li class="room">
-          <div class="room__row" aria-hidden="true"><span><b>Вдвоём</b><small>Большая кровать или две отдельные</small></span><b class="room__row-price">входит<br>в стоимость</b></div>
-          <div class="room__full"><p class="room__title">Если едете вдвоём</p><p class="room__price">входит в стоимость</p></div>
+          <div class="room__row" aria-hidden="true"><span><b>Вдвоём</b><small>Большая кровать или две отдельные</small></span><b class="room__row-price">144&nbsp;000&nbsp;₽<br>за двоих</b></div>
+          <div class="room__full"><p class="room__title">Если едете вдвоём</p><p class="room__price">144 000 ₽ за двоих</p></div>
           <ul class="room__features">
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Одна большая кровать — номер «Катунь»</span></li>
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Две отдельные кровати — «Чемал» или «Ая»</span></li>
@@ -497,8 +516,8 @@
           </ul>
         </li>
         <li class="room">
-          <div class="room__row" aria-hidden="true"><span><b>Компанией</b><small>Втроём, вчетвером — номер на&nbsp;всех</small></span><b class="room__row-price">входит<br>в стоимость</b></div>
-          <div class="room__full"><p class="room__title">Если едете компанией</p><p class="room__price">входит в стоимость</p></div>
+          <div class="room__row" aria-hidden="true"><span><b>Компанией</b><small>Втроём, вчетвером — номер на&nbsp;всех</small></span><b class="room__row-price">72&nbsp;000&nbsp;₽<br>с человека</b></div>
+          <div class="room__full"><p class="room__title">Если едете компанией</p><p class="room__price">72 000 ₽ с человека</p></div>
           <ul class="room__features">
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Втроём — номер «Кедр» или «Тайга»</span></li>
             <li><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg><span>Вчетвером — семейный номер «Белуха»</span></li>
@@ -645,6 +664,7 @@
       </div>
       <p class="footer__credit">Design by <a href="https://t.me/Kollinzli" target="_blank" rel="noopener">Filinina</a></p>
     </div>
+    <p class="footer__media footer__org t-small">ООО «Алтай Внутри» · ИНН 0000000000 · ОГРН 0000000000000 · реестр туроператоров РТО 000000 — условные данные учебного проекта</p>
     <p class="footer__media t-small">Часть видеоматериалов — автор <a href="https://www.pexels.com/@yaroslav-shuraev/" target="_blank" rel="noopener">Ярослав Шураев</a> (Pexels)</p>
   </div>
   <p class="footer__wordmark" aria-hidden="true">ALTAI</p>
@@ -715,7 +735,7 @@
     <div class="field" data-field="contact">
       <label class="field__label" for="contact-{id}" data-contact-label>Ник в Telegram или номер*</label>
       <input class="field__input" id="contact-{id}" name="contact" type="text" placeholder="@username" required>
-      <p class="field__error" hidden><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg><span data-contact-error>Укажите ник или номер</span></p>
+      <p class="field__error" hidden><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg><span data-contact-error>Ник — от 5 символов: латиница, цифры и _ (например, @altai_trip). Или номер: +7 900 000-00-00</span></p>
     </div>
     <div class="field" data-field="guests">
       <p class="field__label" id="guests-label-{id}">Сколько вас едет*</p>
@@ -733,7 +753,7 @@
     </fieldset>
     <div class="field" data-field="question">
       <label class="field__label" for="question-{id}">Вопрос — по желанию</label>
-      <textarea class="field__input field__input--area" id="question-{id}" name="question" rows="3" placeholder="Например, про нагрузку или питание"></textarea>
+      <textarea class="field__input field__input--area" id="question-{id}" name="question" rows="3" placeholder="Например, про нагрузку, питание или аллергии"></textarea>
     </div>
     <div class="field" data-field="consent">
       <label class="checkbox-row"><input type="checkbox" name="consent" required><span class="checkbox"><svg class="icon icon--16" aria-hidden="true"><use href="#i-check"/></svg></span><span>Даю <a href="#legal-consent" data-open-legal="consent">согласие на обработку персональных данных</a>*</span></label>
@@ -744,6 +764,8 @@
         <span class="form-price__label"><span data-price-for>Итого</span><small data-price-pp>72 000 ₽ за человека</small></span>
         <span class="form-price__value"><span data-form-price>72 000</span> ₽</span>
       </div>
+      <p class="t-caption form-price__excl">Авиабилеты, страховка и трансфер оплачиваются отдельно</p>
+      <p class="form-submit-error" role="alert" hidden data-submit-error><svg class="icon icon--16" aria-hidden="true"><use href="#i-circle-alert"/></svg><span data-submit-error-text>Заявка не отправлена: заполните отмеченные поля</span></p>
       <button class="btn btn--primary btn--block" type="submit"><span data-submit-label>Оставить заявку</span></button>
       <p class="t-small apply-form__note">Оплата не сейчас: пришлём договор, место закрепим после предоплаты 30%. Условия поездки — в <a href="#legal-offer" data-open-legal="offer">договоре-оферте</a>; договор заключается с внесением предоплаты. * — обязательные поля. Как мы обрабатываем данные — в <a href="#legal-privacy" data-open-legal="privacy">Политике конфиденциальности</a>.</p>
     </div>

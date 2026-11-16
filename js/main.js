@@ -19,14 +19,24 @@
   const SCRUB = lenis ? 0.3 : 0.12, SCRUB_FOOT = lenis ? 0.32 : 0.14;
   const icon = (name, cls = '') => `<svg class="icon ${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const img = (src, alt = '', extra = '') => `<img src="assets/img/${src}.jpg" alt="${esc(alt)}" loading="lazy" ${extra} onerror="this.remove()">`;
+  const img = (src, alt = '', extra = '') => `<img src="assets/img/${src}.jpg" alt="${esc(alt)}" loading="lazy" ${extra} onerror="__imgFail(this)">`;
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
     set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* без хранилища */ } },
   };
 
-  /* Картинки, которых пока нет, — оставляем серую заглушку */
-  $$('img').forEach(i => { i.addEventListener('error', () => i.remove(), { once: true }); if (i.complete && !i.naturalWidth && i.src) i.remove(); });
+  /* Картинка не загрузилась: пробуем ещё два раза (сбой сети бывает разовым),
+     и только потом оставляем серую заглушку */
+  function imgFail(i) {
+    const n = +(i.dataset.retry || 0);
+    if (n >= 2 || !i.getAttribute('src')) { i.remove(); return; }
+    i.dataset.retry = n + 1;
+    const base = i.getAttribute('src').split('?')[0];
+    setTimeout(() => { if (i.isConnected) i.src = base + '?r=' + (n + 1); }, 800 * (n + 1));
+  }
+  window.__imgFail = imgFail;
+  const watchImg = i => { i.addEventListener('error', () => imgFail(i)); if (i.complete && !i.naturalWidth && i.getAttribute('src')) imgFail(i); };
+  $$('img').forEach(watchImg);
 
   /* ---------- Местное время на Алтае (UTC+7) ---------- */
   function altaiNow() {
@@ -306,6 +316,15 @@
     });
   });
 
+  // «Подробнее» под ценой: раскрыть блок «Что входит» (если свёрнут) и прокрутить к нему
+  document.addEventListener('click', e => {
+    const a = e.target.closest('[data-open-cost]'); if (!a) return;
+    e.preventDefault();
+    const acc = $('[data-accordion]'), btn = $('.round-toggle', acc);
+    if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
+    if (lenis) lenis.scrollTo(acc, { offset: -100, duration: 1 }); else acc.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  });
+
   /* ---------- Программа: карточки дней ---------- */
   const daysEl = $('[data-days]');
   daysEl.innerHTML = D.DAYS.map(d => {
@@ -314,7 +333,7 @@
     const w = d.walk ? `<div class="glass walk-load"><span class="t-caption">Нагрузка</span><span><span class="walk-load__type">${d.walk[0]}</span><span class="t-caption walk-load__details" style="display:block">${d.walk[1]}</span></span></div>` : '';
     return `<article class="day-card" id="day-${d.n}">
       <div class="day-card__content">
-        <div class="day-card__top"><p class="t-label-sm day-card__eyebrow">День 0${d.n} / 05</p><h3 class="t-section-sm">${d.card.title.replace('|', '<br>')}</h3></div>
+        <div class="day-card__top"><p class="t-label-sm day-card__eyebrow">День 0${d.n} / 05${d.n === 1 || d.n === 5 ? ' · день дороги' : ''}</p><h3 class="t-section-sm">${d.card.title.replace('|', '<br>')}</h3></div>
         <ul class="day-card__meta">${metas}</ul>
         <button class="btn btn--secondary btn--split" type="button" data-open-day="${d.n}">Расписание дня ${icon('arrow-right')}</button>
       </div>
@@ -406,7 +425,7 @@
         ${prev ? `<button class="day-nav" type="button" data-goto-day="${prev.n}">${icon('arrow-left', 'icon--20')}<span><small>День ${prev.n}</small><b>${prev.title}</b></span></button>` : ''}
         ${next ? `<button class="day-nav day-nav--next" type="button" data-goto-day="${next.n}"><span><small>День ${next.n}</small><b>${next.title}</b></span>${icon('arrow-right', 'icon--20')}</button>` : `<button class="btn btn--primary day-nav--next" type="button" data-open-booking>Оставить заявку ${icon('arrow-right')}</button>`}
       </footer>`;
-    $$('img', dayPanel).forEach(i => i.addEventListener('error', () => i.remove(), { once: true }));
+    
     const dh = $('.disclosure__head', dayPanel);
     dh.addEventListener('click', () => {
       const open = dh.getAttribute('aria-expanded') !== 'true';
@@ -523,7 +542,7 @@
     stack.innerHTML = cs.length > 1 ? cardHTML(cs[1]) + cardHTML(cs[0]) : cardHTML(cs[0]);
     const cards = $$('.place-card', stack);
     if (cards.length > 1) setRoles(cards[1], cards[0]); else cards[0].classList.add('place-card--front');
-    $$('img', stack).forEach(im => im.addEventListener('error', () => im.remove(), { once: true }));
+    
     if (animate && !reduce) { stack.classList.remove('is-entering'); void stack.offsetWidth; stack.classList.add('is-entering'); }
     fitStack();
     $$('img', stack).forEach(im => { if (!im.complete) im.addEventListener('load', fitStack, { once: true }); });
@@ -566,7 +585,7 @@
     const g = D.GALLERY[tab];
     const cap = k => (g.captions && g.captions[k]) || g.caption;
     slides.innerHTML = Array.from({ length: g.count }, (_, k) => `<figure class="ph gallery__slide${k === idx ? ' is-active' : ''}">${img(tab + '-' + (k + 1), (g.captions && g.captions[k]) ? cap(k) : g.alt + ', фото ' + (k + 1))}</figure>`).join('');
-    $$('img', slides).forEach(im => im.addEventListener('error', () => im.remove(), { once: true }));
+    
     update();
   }
   function update() {
@@ -615,9 +634,9 @@
   /* ---------- Форма заявки (в секции и в окне) ---------- */
   const tpl = $('#apply-form-tpl');
   const CONTACT = {
-    telegram: { label: 'Ник в Telegram или номер*', ph: '@username', type: 'text', ac: 'off', err: 'Укажите ник или номер', ok: v => /^@?[a-zA-Z0-9_]{5,32}$/.test(v) || /^\+?[\d\s()-]{10,18}$/.test(v) },
+    telegram: { label: 'Ник в Telegram или номер*', ph: '@username', type: 'text', ac: 'off', err: 'Ник — от 5 символов: латиница, цифры и _ (например, @altai_trip). Или номер: +7 900 000-00-00', ok: v => /^@?[a-zA-Z0-9_]{5,32}$/.test(v) || /^\+?[\d\s()-]{10,18}$/.test(v) },
     phone: { label: 'Номер телефона*', ph: '+7 900 000-00-00', type: 'tel', ac: 'tel', err: 'Проверьте номер: +7 900 000-00-00', ok: v => v.replace(/\D/g, '').length >= 11 },
-    email: { label: 'Email*', ph: 'name@example.ru', type: 'email', ac: 'email', err: 'Проверьте адрес почты', ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+    email: { label: 'Email*', ph: 'name@example.ru', type: 'email', ac: 'email', err: 'Проверьте адрес почты, например name@example.ru', ok: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
   };
   $$('[data-form-slot]').forEach((slot, k) => {
     const id = slot.dataset.formSlot;
@@ -732,14 +751,28 @@
       Object.entries(errs).forEach(([n, b]) => fieldState(n, b));
       return errs;
     }
-    $$('input, textarea', form).forEach(i => i.addEventListener('input', () => { if (form.classList.contains('was-validated')) validate(); }));
+    $$('input, textarea', form).forEach(i => i.addEventListener(i.type === 'checkbox' ? 'change' : 'input', () => {
+      if (!form.classList.contains('was-validated')) return;
+      const errs = validate(); const ok = !Object.values(errs).some(Boolean);
+      if (ok) { $('[data-form-error]', form).hidden = true; $('[data-submit-error]', form).hidden = true; }
+    }));
     form.addEventListener('submit', e => {
       e.preventDefault();
       form.classList.add('was-validated');
       const errs = validate();
       const bad = Object.keys(errs).filter(k => errs[k]);
       $('[data-form-error]', form).hidden = !bad.length;
-      if (bad.length) { const first = $(`[data-field="${bad[0]}"] input`, form); first && first.focus(); return; }
+      const subErr = $('[data-submit-error]', form);
+      subErr.hidden = !bad.length;
+      if (bad.length) {
+        const NAMES = { name: 'имя', contact: 'контакт для связи', consent: 'согласие на обработку данных' };
+        $('[data-submit-error-text]', form).textContent = 'Заявка не отправлена. Проверьте: ' + bad.map(k => NAMES[k]).join(', ') + '.';
+        const field = $(`[data-field="${bad[0]}"]`, form), first = $('input', field);
+        if (lenis && !form.closest('.modal')) lenis.scrollTo(field, { offset: -Math.round(innerHeight / 3), duration: 0.8 });
+        else field.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+        first && first.focus({ preventScroll: true });
+        return;
+      }
       const btn = $('button[type="submit"]', form);
       btn.setAttribute('aria-busy', 'true'); btn.disabled = true;
       $('[data-submit-label]', btn).textContent = 'Отправляем…';
@@ -753,6 +786,7 @@
       form.reset(); setMethod('telegram'); form.classList.remove('was-validated');
       ['name', 'contact', 'consent'].forEach(n => fieldState(n, false));
       $('[data-form-error]', form).hidden = true;
+      $('[data-submit-error]', form).hidden = true;
       success.hidden = true; form.hidden = false; form.elements.name.focus();
     });
   });
