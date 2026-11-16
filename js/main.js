@@ -66,6 +66,31 @@
     if (window.scrollY < hero.offsetHeight * 0.6) navLinks.forEach(a => a.setAttribute('aria-current', 'false'));
   }
   window.addEventListener('scroll', onScrollHeader, { passive: true }); onScrollHeader();
+
+  /* ---------- Заголовок первого экрана: строки выезжают при загрузке и съезжаются при прокрутке ---------- */
+  (function heroTitle() {
+    const l1 = $('.hero__line1'), l2 = $('.hero__line2'); if (!l1 || !l2 || reduce) return;
+    hero.classList.add('is-title-intro');
+    requestAnimationFrame(() => requestAnimationFrame(() => hero.classList.add('is-title-in')));
+    let dist = 0, raf = 0;
+    function measure() {
+      // насколько строки должны сдвинуться навстречу друг другу, чтобы встать одна под другой
+      // (offsetLeft не зависит от transform, поэтому мерить можно и во время вступления)
+      const start2 = l2.offsetLeft + parseFloat(getComputedStyle(l2).paddingLeft);
+      dist = Math.max(innerWidth * 0.04, (start2 - l1.offsetLeft) / 2);
+    }
+    function render() {
+      raf = 0;
+      const p = Math.min(1, Math.max(0, window.scrollY / (hero.offsetHeight * 0.7)));
+      const e = p * p * (3 - 2 * p);
+      l1.style.translate = (dist * e).toFixed(1) + 'px 0';
+      l2.style.translate = (-dist * e).toFixed(1) + 'px 0';
+    }
+    measure(); render();
+    window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(render); }, { passive: true });
+    window.addEventListener('resize', () => { l1.style.translate = l2.style.translate = ''; measure(); render(); });
+    if (document.fonts) document.fonts.ready.then(() => { l1.style.translate = l2.style.translate = ''; measure(); render(); });
+  })();
   const spy = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
@@ -316,15 +341,6 @@
     });
   });
 
-  // «Подробнее» под ценой: раскрыть блок «Что входит» (если свёрнут) и прокрутить к нему
-  document.addEventListener('click', e => {
-    const a = e.target.closest('[data-open-cost]'); if (!a) return;
-    e.preventDefault();
-    const acc = $('[data-accordion]'), btn = $('.round-toggle', acc);
-    if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
-    if (lenis) lenis.scrollTo(acc, { offset: -100, duration: 1 }); else acc.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-  });
-
   /* ---------- Программа: карточки дней ---------- */
   const daysEl = $('[data-days]');
   daysEl.innerHTML = D.DAYS.map(d => {
@@ -339,7 +355,7 @@
       </div>
       <div class="day-card__photo ph">${img('day-' + d.n, d.alt)}${w}</div>
     </article>`;
-  }).join('') + `<article class="note-card"><p class="t-label-sm note-card__eyebrow">После поездки</p><h3 class="t-section italic note-card__title">Личный лист</h3><p class="t-body-lg">При желании вы уедете с личным листом: важная тема → направление → первый шаг → дата возвращения к вопросу. Можно просто дать себе время.</p></article>`;
+  }).join('') + `<article class="note-card"><p class="t-label-sm note-card__eyebrow">После поездки</p><h3 class="t-section italic note-card__title">Что увезёте с собой</h3><p class="t-body-lg">Если ходили на занятия — лист с записями: какая тема для вас сейчас важна, какой вариант решения вы выбрали, план на две недели и письмо себе, которое откроете через месяц. Если не ходили — просто отдых и впечатления, этого тоже достаточно.</p></article>`;
 
   /* ---------- Модальные окна: общий механизм ---------- */
   let lastFocus = null;
@@ -358,7 +374,7 @@
     el.hidden = true;
     if (!$$('.modal').some(m => !m.hidden)) { document.body.classList.remove('has-modal'); if (lenis) lenis.start(); }
     if (lastFocus && lastFocus.focus) lastFocus.focus();
-    if (location.hash.startsWith('#legal-') || location.hash.startsWith('#day-')) history.replaceState(null, '', location.pathname);
+    if (location.hash.startsWith('#legal-') || location.hash.startsWith('#day-') || location.hash === '#memo') history.replaceState(null, '', location.pathname);
   }
   document.addEventListener('click', e => {
     const c = e.target.closest('[data-close]');
@@ -377,6 +393,18 @@
     }
   });
 
+  /* ---------- Окна «Что входит в стоимость» и «Памятка участника» ---------- */
+  const costModal = $('#cost-modal'), memoModal = $('#memo-modal');
+  const costSrc = $('#cost-details .cost-grid');
+  if (costSrc) $('[data-cost-body]', costModal).innerHTML = costSrc.outerHTML;
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-open-cost]');
+    if (c) { e.preventDefault(); openModal(costModal); return; }
+    const m = e.target.closest('[data-open-memo]');
+    if (m) { e.preventDefault(); openModal(memoModal); history.replaceState(null, '', '#memo'); }
+  });
+  if (location.hash === '#memo') openModal(memoModal);
+
   /* ---------- Окно дня ---------- */
   const dayModal = $('#day-modal');
   const dayPanel = $('[data-day-modal]');
@@ -386,7 +414,7 @@
     const prev = D.DAYS[n - 2], next = D.DAYS[n];
     const moments = d.moments.map(m => `<div class="moment">
         <div class="moment__when"><span class="moment__part">${m.part}</span><span class="moment__time">${m.time}</span></div>
-        <div class="moment__story"><h4 class="moment__title">${m.title}</h4><p class="t-body moment__text">${m.text}</p>
+        <div class="moment__story"><h4 class="moment__title">${m.title}</h4>${m.level ? `<p class="level" aria-label="Сложность прогулки: ${m.level.word}, ${m.level.n} из 5"><span class="level__label">Сложность прогулки</span><span class="level__dots" aria-hidden="true">${[1, 2, 3, 4, 5].map(k => `<i${k <= m.level.n ? ' class="is-on"' : ''}></i>`).join('')}</span><b>${m.level.word}</b><span class="level__n" aria-hidden="true">${m.level.n} из 5</span></p>` : ''}<p class="t-body moment__text">${m.text}</p>
           <div class="moment__meta">${m.tag ? `<span class="tag ${m.tag === 'Для всех' ? 'tag--required' : 'tag--optional'}">${m.tag}</span>` : ''}${m.dur ? `<span class="moment__dur">${icon('clock', 'icon--16')}${m.dur}</span>` : ''}<span class="moment__facts">${m.facts}</span></div>
         </div></div>`).join('');
     const dishes = d.dishes.map(x => `<div class="dish"><div class="ph">${img('dish-' + x.img, x.name)}</div><div><p class="dish__name">${x.name}</p><p class="dish__desc">${x.desc}</p></div></div>`).join('');
@@ -409,11 +437,11 @@
         <div class="moments">${moments}</div>
         <div class="food"><h4 class="food__title">На столе</h4><div class="dishes">${dishes}</div><p class="t-caption food__note">${d.foodNote}</p></div>
         <div class="disclosure">
-          <button class="disclosure__head" type="button" aria-expanded="false" aria-controls="day-details">
+          <button class="disclosure__head" type="button" aria-expanded="true" aria-controls="day-details">
             <span>${icon('backpack', 'icon--20')}Расписание по часам, нагрузка и что взять</span>
             <span class="icon-btn disclosure__toggle">${icon('plus', 'icon--24 icon-plus')}${icon('minus', 'icon--24 icon-minus')}</span>
           </button>
-          <div class="collapse" id="day-details"><div><div class="disclosure__body">
+          <div class="collapse is-open" id="day-details"><div><div class="disclosure__body">
             ${d.walk ? `<p class="t-body"><b>Нагрузка:</b> ${d.walk[0].toLowerCase()}, ${d.walk[1]}.</p>` : ''}
             <ul class="schedule">${schedule}</ul>
             ${d.bridge ? `<p class="bridge-note">${icon('triangle-alert', 'icon--16')}${D.BRIDGE_NOTE}</p>` : ''}
@@ -432,7 +460,6 @@
       dh.setAttribute('aria-expanded', String(open));
       $('#day-details').classList.toggle('is-open', open);
     });
-    if (openDetails) { dh.click(); }
     dayModal.scrollTop = 0;
   }
   document.addEventListener('click', e => {
