@@ -326,7 +326,6 @@
     tip.addEventListener('keydown', e => { if (e.key === 'Escape') tip.classList.add('is-closed'); });
     tip.addEventListener('mouseleave', reset);
     tip.addEventListener('focusout', e => { if (!tip.contains(e.relatedTarget)) reset(); });
-    $('.price-tip__link', tip).addEventListener('click', () => tip.classList.add('is-closed'));
   });
 
   /* ---------- Снаружи / Внутри ---------- */
