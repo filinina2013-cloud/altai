@@ -1029,3 +1029,17 @@ body { overflow-x: clip; }
   .hero [data-video-toggle] { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
   .hero [data-video-toggle] .icon { stroke-width: 1; }
 }
+
+/* ---------- Команда: контакты в раскрытой карточке (ПК), по макету «Team card · Expanded с контактами» ---------- */
+.team-card__contacts { display: none; }
+@media (min-width: 1101px) {
+  .team__ask, .team-card__row--tg { display: none; }
+  .team-card__contacts { display: flex; flex-direction: column; gap: var(--space-1); }
+  .team-card__contact { display: inline-flex; align-items: center; gap: var(--space-2); align-self: flex-start; font-size: 14px; line-height: 1.5; color: var(--color-text-secondary); text-decoration: none; }
+  .team-card__contact .icon { color: var(--color-text-tertiary); }
+  a.team-card__contact:hover { color: var(--color-text-primary); text-decoration: underline; text-underline-offset: 3px; }
+  a.team-card__contact:focus-visible { outline: 3px solid var(--color-state-focus-ring, #29495c); outline-offset: 2px; }
+  /* карточка не закрывается, пока фокус с клавиатуры на ссылке внутри неё */
+  .team-card:has(a:focus-visible) .team-card__front { opacity: 0; }
+  .team-card:has(a:focus-visible) .team-card__back { opacity: 1; pointer-events: auto; }
+}
