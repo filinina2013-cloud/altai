@@ -1088,3 +1088,23 @@ body { overflow-x: clip; }
   .team__cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 48px; }
   .team__cta-text { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.2; color: var(--color-text-primary); }
 }
+
+/* ---------- Телефон и планшет: секции 1–5 по решениям для ПК ---------- */
+.team__ask { display: none; }
+@media (max-width: 1100px) {
+  /* первый экран: плотнее затемнение под текстом, как на ПК */
+  .hero__shade { background:
+    linear-gradient(0deg, rgba(9, 13, 15, 0.91) 0%, rgba(9, 13, 15, 0.66) 42%, rgba(9, 13, 15, 0.5) 60%, rgba(9, 13, 15, 0) 86%),
+    linear-gradient(180deg, rgba(13, 17, 18, 0.35) 0%, rgba(13, 17, 18, 0) 18%); }
+  /* команда: строка с Telegram под карточками */
+  .team__cta { display: flex; flex-direction: column; align-items: stretch; gap: 24px; margin-top: 48px; }
+  .team__cta-text { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.2; color: var(--color-text-primary); }
+  .team__cta .btn { width: 100%; }
+  /* цена: пояснения обычным серым текстом, без значка */
+  .fact--price .price-note, .fact--price .price-excl { display: block; font-size: 14px; line-height: 1.5; color: var(--color-text-tertiary); }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .team__cta { flex-direction: row; align-items: center; justify-content: space-between; }
+  .team__cta .btn { width: auto; }
+}
+@media (max-width: 1100px) { .team__cta-q { display: block; } }
