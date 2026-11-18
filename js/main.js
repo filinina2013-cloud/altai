@@ -307,11 +307,13 @@
      На сенсорных экранах наведения нет — там карточку открывает касание. ---------- */
   const canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
   const teamCards = $$('.team-card');
+  const compactTeam = window.matchMedia('(max-width: 1100px)');
   teamCards.forEach(card => {
     card.addEventListener('mouseenter', () => { if (canHover.matches) card.classList.add('is-open'); });
     card.addEventListener('mouseleave', () => { if (canHover.matches) card.classList.remove('is-open'); });
     card.addEventListener('click', () => {
-      if (canHover.matches) return;
+      // на телефоне и планшете карточки не раскрываются: там только фото
+      if (canHover.matches || compactTeam.matches) return;
       const open = !card.classList.contains('is-open');
       teamCards.forEach(c => c.classList.remove('is-open'));
       card.classList.toggle('is-open', open);

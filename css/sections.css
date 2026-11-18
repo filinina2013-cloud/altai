@@ -1043,3 +1043,9 @@ body { overflow-x: clip; }
   .team-card:has(a:focus-visible) .team-card__front { opacity: 0; }
   .team-card:has(a:focus-visible) .team-card__back { opacity: 1; pointer-events: auto; }
 }
+/* Команда на телефоне и планшете: только фото, карточки не раскрываются */
+@media (max-width: 1100px) {
+  .team-card__back { display: none; }
+  .team-card.is-open .team-card__front, .team-card:focus-visible .team-card__front { opacity: 1; }
+}
+.team__ask a, .team-card__contact span { white-space: nowrap; }
