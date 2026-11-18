@@ -1103,8 +1103,5 @@ body { overflow-x: clip; }
   /* цена: пояснения обычным серым текстом, без значка */
   .fact--price .price-note, .fact--price .price-excl { display: block; font-size: 14px; line-height: 1.5; color: var(--color-text-tertiary); }
 }
-@media (min-width: 761px) and (max-width: 1100px) {
-  .team__cta { flex-direction: row; align-items: center; justify-content: space-between; }
-  .team__cta .btn { width: auto; }
-}
-@media (max-width: 1100px) { .team__cta-q { display: block; } }
+
+@media (max-width: 760px) { .team__cta-q { display: block; } }
