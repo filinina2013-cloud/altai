@@ -1023,3 +1023,9 @@ body { overflow-x: clip; }
 /* новый текст первого экрана — пока только на ПК; телефон и планшет ждут своего макета */
 .hero-pc { display: none; }
 @media (min-width: 1101px) { .hero-pc { display: inline; } .hero-touch { display: none; } }
+/* точная подгонка под макет: заголовок 132 px на 1440, тень и иконка «Паузы» */
+@media (min-width: 1101px) {
+  .hero .hero__title.t-display { font-size: min(132px, 9.1667vw); }
+  .hero [data-video-toggle] { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12); }
+  .hero [data-video-toggle] .icon { stroke-width: 1; }
+}
