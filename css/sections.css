@@ -1049,3 +1049,25 @@ body { overflow-x: clip; }
   .team-card.is-open .team-card__front, .team-card:focus-visible .team-card__front { opacity: 1; }
 }
 .team__ask a, .team-card__contact span { white-space: nowrap; }
+
+/* ---------- О путешествии (ПК): подсказка у цены вместо оранжевой строки ---------- */
+.pc-only { display: none; }
+@media (min-width: 1101px) {
+  .pc-only { display: inline; }
+  .touch-only, .fact--price .price-note, .fact--price .price-excl { display: none; }
+  p.price-plain { display: block; margin-top: var(--space-1); color: var(--color-text-tertiary); }
+  .price-tip { position: relative; display: inline-flex; vertical-align: middle; margin-left: var(--space-1); }
+  .price-tip__btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: -12px; padding: 0; border: 0; background: none; color: var(--color-text-tertiary); cursor: help; }
+  .price-tip__btn:hover, .price-tip:focus-within .price-tip__btn { color: var(--color-text-primary); }
+  .price-tip__btn:focus-visible { outline: 3px solid var(--color-state-focus-ring, #29495c); outline-offset: -6px; }
+  /* окно подсказки: открывается при наведении и фокусе, не закрывается, пока курсор на нём */
+  .price-tip__pop { position: absolute; z-index: 5; right: -16px; top: 100%; width: 320px; padding: var(--space-4); margin-top: var(--space-2);
+    display: flex; flex-direction: column; gap: var(--space-2); background: var(--color-surface-raised, #fff); border: 1px solid var(--color-border-default);
+    font-size: 14px; line-height: 1.5; color: var(--color-text-secondary); opacity: 0; visibility: hidden; transform: translateY(4px);
+    transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s linear 200ms; }
+  .price-tip__pop::before { content: ""; position: absolute; left: 0; right: 0; top: calc(-1 * var(--space-2) - 12px); height: calc(var(--space-2) + 12px); } /* мостик, чтобы подсказка не закрывалась по пути курсора */
+  .price-tip:hover .price-tip__pop, .price-tip:focus-within .price-tip__pop { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .price-tip.is-closed .price-tip__pop { opacity: 0; visibility: hidden; }
+  .price-tip__link { display: inline-flex; align-items: center; gap: var(--space-1); align-self: flex-start; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--color-text-link); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+}
+@media (prefers-reduced-motion: reduce) { .price-tip__pop { transition: none !important; } }

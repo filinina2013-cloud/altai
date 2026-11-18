@@ -320,6 +320,15 @@
     });
   });
 
+  /* ---------- Подсказка у цены (ПК): закрывается по Esc, снова открывается при следующем наведении или фокусе ---------- */
+  $$('.price-tip').forEach(tip => {
+    const reset = () => tip.classList.remove('is-closed');
+    tip.addEventListener('keydown', e => { if (e.key === 'Escape') tip.classList.add('is-closed'); });
+    tip.addEventListener('mouseleave', reset);
+    tip.addEventListener('focusout', e => { if (!tip.contains(e.relatedTarget)) reset(); });
+    $('.price-tip__link', tip).addEventListener('click', () => tip.classList.add('is-closed'));
+  });
+
   /* ---------- Снаружи / Внутри ---------- */
   $$('[data-photo-toggle]').forEach(box => {
     const cap = $('.photo-toggle__caption', box);
