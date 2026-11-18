@@ -1071,3 +1071,20 @@ body { overflow-x: clip; }
   .price-tip__link { display: inline-flex; align-items: center; gap: var(--space-1); align-self: flex-start; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--color-text-link); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 }
 @media (prefers-reduced-motion: reduce) { .price-tip__pop { transition: none !important; } }
+
+/* ---------- Сверка с макетами Figma (ПК): Trip info v3.1 и Team section ---------- */
+.team__cta { display: none; }
+@media (min-width: 1101px) {
+  .trip > .wrap > .eyebrow { display: flex; }
+  .trip__grid { margin-top: 40px; }
+  .fact--price .price-main { align-items: flex-start; }
+  .fact--price .price-main .t-section-sm { line-height: 40px; }
+  .fact--price .price-main > .t-body { align-self: flex-end; font-size: 13px; line-height: 1.5; }
+  .price-tip { margin-left: -6px; align-self: flex-start; } /* 10 px общего зазора − 6 = 4 px, как в макете */
+  .price-tip__btn { margin: -13px; }
+  .fact--price dd { row-gap: 8px; }
+  p.price-plain { margin-top: 0; }
+  #trip .accordion-section { margin-top: 49px; } /* в макете блок на 12 px выше */
+  .team__cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 48px; }
+  .team__cta-text { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.2; color: var(--color-text-primary); }
+}

@@ -349,6 +349,10 @@
       btn.setAttribute('aria-label', open ? 'Свернуть' : 'Подробнее о стоимости');
       body.classList.toggle('is-open', open);
     });
+    // на ПК блок «Что входит и не входит» по макету свёрнут
+    if (window.matchMedia('(min-width: 1101px)').matches && btn.getAttribute('aria-expanded') === 'true') {
+      btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Подробнее о стоимости'); body.classList.remove('is-open');
+    }
   });
 
   /* ---------- Программа: карточки дней ---------- */
