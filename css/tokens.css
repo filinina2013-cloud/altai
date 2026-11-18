@@ -82,6 +82,13 @@
 
   --layout-margin: 64px;
   --layout-gutter: 24px;
+  /* затемнение поверх фото и видео: ночной #0D1112 с прозрачностью (как color/overlay/night-* в Figma) */
+  --color-overlay-night-0: rgba(13, 17, 18, 0);
+  --color-overlay-night-35: rgba(13, 17, 18, 0.35);
+  --color-overlay-night-50: rgba(13, 17, 18, 0.5);
+  --color-overlay-night-66: rgba(13, 17, 18, 0.66);
+  --color-overlay-night-88: rgba(13, 17, 18, 0.88);
+  --color-overlay-night-91: rgba(13, 17, 18, 0.91);
   --layout-section: 96px;
   --layout-section-lg: 120px;
   --content-max: 1312px;
