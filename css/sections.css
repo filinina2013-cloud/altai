@@ -1020,3 +1020,6 @@ body { overflow-x: clip; }
   .hero__program--framed { min-height: 52px; padding: 0 var(--space-5); border: var(--border-hairline) solid var(--color-text-on-inverse); transition: background-color var(--dur) var(--ease); }
   .hero__program--framed:hover { background: rgba(243, 241, 236, 0.12); color: var(--color-text-on-media); }
 }
+/* новый текст первого экрана — пока только на ПК; телефон и планшет ждут своего макета */
+.hero-pc { display: none; }
+@media (min-width: 1101px) { .hero-pc { display: inline; } .hero-touch { display: none; } }
