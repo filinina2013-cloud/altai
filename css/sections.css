@@ -1326,3 +1326,21 @@ body { overflow-x: clip; }
   .faq__grid { gap: var(--layout-stack); }
   .faq__list + .help-card, .faq__aside .help-card { margin-top: 0; }
 }
+
+/* Второй экран на планшете и телефоне — спокойная «редакционная» мозаика без анимации и прокрутки вбок:
+   видео, широкий кадр, два вертикальных, широкий кадр, подпись слева */
+@media (max-width: 1100px) {
+  .reel.is-static { padding: var(--layout-section) 0; }
+  .reel.is-static .reel__col--center { padding: 0 var(--layout-margin); }
+  .reel.is-static .reel__slot { aspect-ratio: 4 / 5; }
+  .reel__strip { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); margin-top: var(--space-2); padding: 0 var(--layout-margin); overflow: visible; scroll-snap-type: none; }
+  .reel__strip figure { position: relative; flex: none; width: auto; aspect-ratio: 4 / 5; }
+  .reel__strip figure:nth-child(1), .reel__strip figure:nth-child(7) { grid-column: 1 / -1; aspect-ratio: 3 / 2; }
+  .reel__strip figure:nth-child(2), .reel__strip figure:nth-child(4), .reel__strip figure:nth-child(5) { display: none; }
+  .reel.is-static .reel__caption { margin: var(--layout-stack) var(--layout-margin) 0; text-align: left; font-size: 34px; line-height: 1.1; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .reel.is-static .reel__slot { aspect-ratio: 16 / 10; }
+  .reel__strip { gap: var(--space-3); margin-top: var(--space-3); }
+  .reel.is-static .reel__caption { font-size: 48px; }
+}
