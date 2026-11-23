@@ -1373,3 +1373,22 @@ a[href^="tel:"], .nowrap { white-space: nowrap; }
   .about__heading > .about__photo { grid-column: 1; grid-row: 1 / span 4; }
   .about__heading > .about__copy { grid-column: 2; grid-row: 2; }
 }
+
+/* Cookie-баннер не закрывает кнопки первого экрана: пока он виден, содержимое hero поднимается на нужную высоту (--cookie-lift считает main.js) */
+.hero__content { padding-bottom: var(--cookie-lift, 0px); transition: padding-bottom 300ms var(--ease); }
+@media (min-width: 1101px) {
+  .cookie { padding: var(--space-3) var(--space-5); gap: var(--space-6); }
+}
+
+/* Памятка: печать / «Сохранить в PDF» — на странице только памятка, светлая, без кнопок */
+@media print {
+  body.is-printing-memo > :not(#memo-modal) { display: none !important; }
+  body.is-printing-memo #memo-modal { position: static !important; display: block !important; padding: 0 !important; overflow: visible !important; }
+  body.is-printing-memo #memo-modal .modal__scrim,
+  body.is-printing-memo #memo-modal .info-modal__tools,
+  body.is-printing-memo #memo-modal .info-modal__actions { display: none !important; }
+  body.is-printing-memo #memo-modal .modal__panel { width: auto !important; max-height: none !important; overflow: visible !important; box-shadow: none !important; animation: none !important; background: #fff !important; color: #242b2d !important; }
+  body.is-printing-memo #memo-modal .info-modal__head { position: static !important; background: #fff !important; }
+  body.is-printing-memo #memo-modal * { color: #242b2d !important; background: transparent !important; }
+  body.is-printing-memo #memo-modal .memo__sec { break-inside: avoid; }
+}

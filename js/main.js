@@ -440,6 +440,15 @@
     if (m) { e.preventDefault(); openModal(memoModal); history.replaceState(null, '', '#memo'); }
   });
   if (location.hash === '#memo') openModal(memoModal);
+  /* Сохранить памятку в PDF: печатаем только памятку, в браузере выбирают «Сохранить как PDF» */
+  document.addEventListener('click', e => {
+    if (!e.target.closest('[data-memo-print]')) return;
+    document.body.classList.add('is-printing-memo');
+    const done = () => { document.body.classList.remove('is-printing-memo'); window.removeEventListener('afterprint', done); };
+    window.addEventListener('afterprint', done);
+    window.print();
+    setTimeout(done, 1000);
+  });
 
   /* ---------- Окно дня ---------- */
   const dayModal = $('#day-modal');
@@ -481,7 +490,7 @@
             ${d.walk ? `<p class="t-body"><b>Нагрузка:</b> ${d.walk[0].toLowerCase()}, ${d.walk[1]}.</p>` : ''}
             <ul class="schedule">${schedule}</ul>
             ${d.bridge ? `<p class="bridge-note">${icon('triangle-alert', 'icon--16')}${D.BRIDGE_NOTE}</p>` : ''}
-            <div class="packing"><h4>Что взять на прогулку</h4><ul>${D.PACKING.map(p => `<li>${icon('check', 'icon--16')}${p}</li>`).join('')}</ul><p class="t-caption" style="margin-top:8px;color:var(--color-text-tertiary)">${D.PACKING_NOTE}</p></div>
+            <div class="packing"><h4>${d.walk ? 'Что взять на прогулку' : 'Что взять в дорогу'}</h4><ul>${(d.walk ? D.PACKING : D.ROAD_PACKING).map(p => `<li>${icon('check', 'icon--16')}${p}</li>`).join('')}</ul><p class="t-caption" style="margin-top:8px;color:var(--color-text-tertiary)">${d.walk ? D.PACKING_NOTE : D.ROAD_PACKING_NOTE}</p></div>
           </div></div></div>
         </div>
       </div>
@@ -905,11 +914,25 @@
     const v = store.get('altai_consent');
     s.textContent = v === 'all' ? 'Сейчас: приняты все cookie.' : v === 'necessary' ? 'Сейчас: только обязательные cookie.' : 'Выбор ещё не сделан.';
   }
-  if (!store.get('altai_consent')) setTimeout(() => { cookie.hidden = false; }, 1200);
+  const heroContent = $('.hero__content');
+  function liftHero() {
+    if (!heroContent) return;
+    const root = document.documentElement;
+    if (cookie.hidden) { root.style.setProperty('--cookie-lift', '0px'); return; }
+    const prev = getComputedStyle(heroContent).paddingBottom;
+    root.style.setProperty('--cookie-lift', '0px');
+    heroContent.style.transition = 'none';
+    const overlap = ($('.hero__controls', heroContent) || heroContent).getBoundingClientRect().bottom + 16 - (window.innerHeight - parseFloat(getComputedStyle(cookie).bottom) - cookie.offsetHeight);
+    root.style.setProperty('--cookie-lift', prev);
+    void heroContent.offsetHeight; heroContent.style.transition = '';
+    root.style.setProperty('--cookie-lift', Math.max(0, Math.round(overlap)) + 'px');
+  }
+  window.addEventListener('resize', liftHero);
+  if (!store.get('altai_consent')) setTimeout(() => { cookie.hidden = false; liftHero(); }, 1200);
   document.addEventListener('click', e => {
     const c = e.target.closest('[data-cookie-choice]'); if (!c) return;
     store.set('altai_consent', c.dataset.cookieChoice);
-    cookie.hidden = true; showCookieState();
+    cookie.hidden = true; showCookieState(); liftHero();
   });
 
   /* ---------- Телефон: меню, липкая плашка, свайп-ленты ---------- */
