@@ -1,0 +1,2149 @@
+{
+  "Primitives": {
+    "color": {
+      "white": {
+        "value": "#ffffff",
+        "type": "color"
+      },
+      "stone": {
+        "50": {
+          "value": "#fafaf8",
+          "type": "color"
+        },
+        "100": {
+          "value": "#f3f1ec",
+          "type": "color",
+          "description": "Фон страницы из брифа"
+        },
+        "150": {
+          "value": "#e9e7e1",
+          "type": "color"
+        },
+        "200": {
+          "value": "#e6e3dc",
+          "type": "color"
+        },
+        "250": {
+          "value": "#e4e1da",
+          "type": "color"
+        },
+        "300": {
+          "value": "#e2e0da",
+          "type": "color"
+        },
+        "350": {
+          "value": "#dedad2",
+          "type": "color"
+        },
+        "400": {
+          "value": "#d4d1ca",
+          "type": "color"
+        },
+        "450": {
+          "value": "#d2cec5",
+          "type": "color"
+        },
+        "500": {
+          "value": "#cfccc5",
+          "type": "color"
+        },
+        "550": {
+          "value": "#c9c6bf",
+          "type": "color"
+        },
+        "600": {
+          "value": "#bebbb4",
+          "type": "color"
+        },
+        "700": {
+          "value": "#b9b4aa",
+          "type": "color"
+        }
+      },
+      "slate": {
+        "100": {
+          "value": "#e9e7e2",
+          "type": "color"
+        },
+        "150": {
+          "value": "#c3c7c5",
+          "type": "color"
+        },
+        "200": {
+          "value": "#a8aead",
+          "type": "color"
+        },
+        "300": {
+          "value": "#8e9496",
+          "type": "color"
+        },
+        "350": {
+          "value": "#8c8e8a",
+          "type": "color"
+        },
+        "400": {
+          "value": "#80858a",
+          "type": "color"
+        },
+        "450": {
+          "value": "#7d8689",
+          "type": "color"
+        },
+        "500": {
+          "value": "#73787b",
+          "type": "color"
+        },
+        "550": {
+          "value": "#6b7072",
+          "type": "color"
+        },
+        "575": {
+          "value": "#6a7175",
+          "type": "color"
+        },
+        "600": {
+          "value": "#5e6466",
+          "type": "color"
+        },
+        "625": {
+          "value": "#5c6367",
+          "type": "color"
+        },
+        "650": {
+          "value": "#5a6164",
+          "type": "color"
+        },
+        "675": {
+          "value": "#566064",
+          "type": "color"
+        },
+        "700": {
+          "value": "#4f5557",
+          "type": "color"
+        },
+        "750": {
+          "value": "#4a5054",
+          "type": "color"
+        },
+        "760": {
+          "value": "#4a5256",
+          "type": "color"
+        },
+        "800": {
+          "value": "#3a4245",
+          "type": "color"
+        },
+        "850": {
+          "value": "#2c3335",
+          "type": "color"
+        },
+        "860": {
+          "value": "#262d2f",
+          "type": "color"
+        },
+        "870": {
+          "value": "#22292b",
+          "type": "color"
+        },
+        "880": {
+          "value": "#20262a",
+          "type": "color"
+        },
+        "900": {
+          "value": "#242b2d",
+          "type": "color",
+          "description": "Основной текст из брифа"
+        },
+        "920": {
+          "value": "#1f2527",
+          "type": "color"
+        },
+        "950": {
+          "value": "#171c1e",
+          "type": "color"
+        },
+        "990": {
+          "value": "#0d1112",
+          "type": "color"
+        }
+      },
+      "spruce": {
+        "50": {
+          "value": "#e4eaed",
+          "type": "color"
+        },
+        "100": {
+          "value": "#d5e2ea",
+          "type": "color"
+        },
+        "200": {
+          "value": "#c4dce8",
+          "type": "color"
+        },
+        "300": {
+          "value": "#9ec3d7",
+          "type": "color"
+        },
+        "500": {
+          "value": "#5e6e78",
+          "type": "color"
+        },
+        "550": {
+          "value": "#4c5e69",
+          "type": "color"
+        },
+        "600": {
+          "value": "#335c74",
+          "type": "color"
+        },
+        "700": {
+          "value": "#29495c",
+          "type": "color",
+          "description": "Акцент из брифа"
+        },
+        "800": {
+          "value": "#1c3442",
+          "type": "color"
+        }
+      },
+      "hearth": {
+        "100": {
+          "value": "#f3e6d6",
+          "type": "color",
+          "description": "Основная тёплая поверхность: проживание, короткий манифест, подложка под фото."
+        },
+        "200": {
+          "value": "#ead3ba",
+          "type": "color",
+          "description": "Песочная поверхность для небольших вставок."
+        },
+        "800": {
+          "value": "#3a2f25",
+          "type": "color"
+        },
+        "900": {
+          "value": "#2a231d",
+          "type": "color"
+        }
+      },
+      "buckthorn": {
+        "500": {
+          "value": "#d9822b",
+          "type": "color",
+          "description": "Кандидат акцента: облепиха. Графитовый текст; на светлой карте нужен контур."
+        }
+      },
+      "larch": {
+        "300": {
+          "value": "#e0a878",
+          "type": "color"
+        },
+        "700": {
+          "value": "#8f4a1c",
+          "type": "color",
+          "description": "Тёплые подписи и иконки на светлом. Основной текст остаётся графитовым."
+        }
+      },
+      "wood": {
+        "400": {
+          "value": "#c08c69",
+          "type": "color",
+          "description": "Альтернатива облепихе; финальный акцент выбирается на макете."
+        }
+      },
+      "red": {
+        "50": {
+          "value": "#fdecea",
+          "type": "color"
+        },
+        "700": {
+          "value": "#b42318",
+          "type": "color"
+        }
+      }
+    },
+    "space": {
+      "0": {
+        "value": 0,
+        "type": "spacing"
+      },
+      "50": {
+        "value": 2,
+        "type": "spacing"
+      },
+      "100": {
+        "value": 4,
+        "type": "spacing"
+      },
+      "200": {
+        "value": 8,
+        "type": "spacing"
+      },
+      "300": {
+        "value": 12,
+        "type": "spacing"
+      },
+      "400": {
+        "value": 16,
+        "type": "spacing"
+      },
+      "500": {
+        "value": 20,
+        "type": "spacing"
+      },
+      "600": {
+        "value": 24,
+        "type": "spacing"
+      },
+      "800": {
+        "value": 32,
+        "type": "spacing"
+      },
+      "1000": {
+        "value": 40,
+        "type": "spacing"
+      },
+      "1200": {
+        "value": 48,
+        "type": "spacing"
+      },
+      "1600": {
+        "value": 64,
+        "type": "spacing"
+      },
+      "2400": {
+        "value": 96,
+        "type": "spacing"
+      },
+      "3000": {
+        "value": 120,
+        "type": "spacing"
+      }
+    },
+    "radius": {
+      "0": {
+        "value": 0,
+        "type": "borderRadius"
+      },
+      "2": {
+        "value": 2,
+        "type": "borderRadius"
+      },
+      "4": {
+        "value": 4,
+        "type": "borderRadius"
+      },
+      "16": {
+        "value": 16,
+        "type": "borderRadius"
+      },
+      "20": {
+        "value": 20,
+        "type": "borderRadius"
+      },
+      "pill": {
+        "value": 999,
+        "type": "borderRadius"
+      }
+    },
+    "border-width": {
+      "1": {
+        "value": 1,
+        "type": "borderWidth"
+      },
+      "2": {
+        "value": 2,
+        "type": "borderWidth"
+      },
+      "3": {
+        "value": 3,
+        "type": "borderWidth"
+      },
+      "4": {
+        "value": 4,
+        "type": "borderWidth"
+      },
+      "6": {
+        "value": 6,
+        "type": "borderWidth"
+      },
+      "10": {
+        "value": 10,
+        "type": "borderWidth"
+      },
+      "1-5": {
+        "value": 1.5,
+        "type": "borderWidth"
+      },
+      "2-5": {
+        "value": 2.5,
+        "type": "borderWidth"
+      }
+    },
+    "size": {
+      "24": {
+        "value": 24,
+        "type": "sizing"
+      },
+      "36": {
+        "value": 36,
+        "type": "sizing"
+      },
+      "40": {
+        "value": 40,
+        "type": "sizing"
+      },
+      "44": {
+        "value": 44,
+        "type": "sizing"
+      },
+      "48": {
+        "value": 48,
+        "type": "sizing"
+      },
+      "52": {
+        "value": 52,
+        "type": "sizing"
+      },
+      "56": {
+        "value": 56,
+        "type": "sizing"
+      },
+      "64": {
+        "value": 64,
+        "type": "sizing"
+      }
+    },
+    "font-family": {
+      "serif": {
+        "value": "Old Standard TT",
+        "type": "fontFamilies"
+      },
+      "sans": {
+        "value": "Roboto Flex",
+        "type": "fontFamilies"
+      }
+    },
+    "font-weight": {
+      "regular": {
+        "value": 400,
+        "type": "fontWeights"
+      },
+      "medium": {
+        "value": 500,
+        "type": "fontWeights"
+      },
+      "semibold": {
+        "value": 600,
+        "type": "fontWeights"
+      },
+      "bold": {
+        "value": 700,
+        "type": "fontWeights"
+      },
+      "heavy": {
+        "value": 800,
+        "type": "fontWeights"
+      },
+      "italic": {
+        "value": "Italic",
+        "type": "fontWeights",
+        "description": "Old Standard TT Italic (400)"
+      }
+    },
+    "font-size": {
+      "13": {
+        "value": 13,
+        "type": "fontSizes"
+      },
+      "14": {
+        "value": 14,
+        "type": "fontSizes"
+      },
+      "16": {
+        "value": 16,
+        "type": "fontSizes"
+      },
+      "17": {
+        "value": 17,
+        "type": "fontSizes"
+      },
+      "20": {
+        "value": 20,
+        "type": "fontSizes"
+      },
+      "24": {
+        "value": 24,
+        "type": "fontSizes"
+      },
+      "26": {
+        "value": 26,
+        "type": "fontSizes"
+      },
+      "32": {
+        "value": 32,
+        "type": "fontSizes"
+      },
+      "34": {
+        "value": 34,
+        "type": "fontSizes"
+      },
+      "40": {
+        "value": 40,
+        "type": "fontSizes"
+      },
+      "48": {
+        "value": 48,
+        "type": "fontSizes"
+      },
+      "64": {
+        "value": 64,
+        "type": "fontSizes"
+      },
+      "72": {
+        "value": 72,
+        "type": "fontSizes"
+      },
+      "132": {
+        "value": 132,
+        "type": "fontSizes"
+      }
+    },
+    "line-height": {
+      "tight": {
+        "value": "100%",
+        "type": "lineHeights"
+      },
+      "snug": {
+        "value": "105%",
+        "type": "lineHeights"
+      },
+      "heading": {
+        "value": "130%",
+        "type": "lineHeights"
+      },
+      "lead": {
+        "value": "135%",
+        "type": "lineHeights"
+      },
+      "body": {
+        "value": "150%",
+        "type": "lineHeights"
+      },
+      "poster": {
+        "value": "95%",
+        "type": "lineHeights"
+      },
+      "serif-lead": {
+        "value": "115%",
+        "type": "lineHeights"
+      },
+      "serif-lead-mobile": {
+        "value": "120%",
+        "type": "lineHeights"
+      }
+    },
+    "letter-spacing": {
+      "display": {
+        "value": "-2.5%",
+        "type": "letterSpacing"
+      },
+      "heading": {
+        "value": "-2%",
+        "type": "letterSpacing"
+      },
+      "poster": {
+        "value": "-1%",
+        "type": "letterSpacing"
+      },
+      "none": {
+        "value": "0%",
+        "type": "letterSpacing"
+      },
+      "caps": {
+        "value": "6%",
+        "type": "letterSpacing"
+      },
+      "caps-wide": {
+        "value": "8%",
+        "type": "letterSpacing"
+      }
+    },
+    "font-width": {
+      "normal": {
+        "value": "100%",
+        "type": "other",
+        "description": "font-stretch / ось wdth Roboto Flex: заголовки, текст, интерфейс"
+      }
+    },
+    "duration": {
+      "fast": {
+        "value": 200,
+        "type": "number"
+      },
+      "base": {
+        "value": 700,
+        "type": "number"
+      },
+      "slow": {
+        "value": 1200,
+        "type": "number"
+      }
+    },
+    "easing": {
+      "out": {
+        "value": "cubic-bezier(.2,.7,.2,1)",
+        "type": "other"
+      }
+    },
+    "alpha": {
+      "transparent": {
+        "value": "#00000000",
+        "type": "color"
+      },
+      "glass-bg": {
+        "value": "#f3f1ec1f",
+        "type": "color"
+      },
+      "glass-bg-hover": {
+        "value": "#f3f1ec38",
+        "type": "color"
+      },
+      "glass-border": {
+        "value": "#f3f1ec61",
+        "type": "color"
+      }
+    }
+  },
+  "Foundations": {
+    "space": {
+      "inline": {
+        "xs": {
+          "value": "{space.100}",
+          "type": "spacing"
+        },
+        "sm": {
+          "value": "{space.200}",
+          "type": "spacing"
+        },
+        "md": {
+          "value": "{space.300}",
+          "type": "spacing"
+        }
+      },
+      "stack": {
+        "xs": {
+          "value": "{space.100}",
+          "type": "spacing"
+        },
+        "sm": {
+          "value": "{space.200}",
+          "type": "spacing"
+        },
+        "md": {
+          "value": "{space.400}",
+          "type": "spacing"
+        },
+        "lg": {
+          "value": "{space.600}",
+          "type": "spacing"
+        },
+        "xl": {
+          "value": "{space.1200}",
+          "type": "spacing"
+        }
+      },
+      "inset": {
+        "control": {
+          "value": "{space.500}",
+          "type": "spacing"
+        },
+        "card-sm": {
+          "value": "{space.400}",
+          "type": "spacing"
+        },
+        "card": {
+          "value": "{space.800}",
+          "type": "spacing"
+        },
+        "panel": {
+          "value": "{space.1000}",
+          "type": "spacing"
+        }
+      }
+    },
+    "layout": {
+      "desktop": {
+        "margin": {
+          "value": "{space.1600}",
+          "type": "spacing",
+          "description": "Поля страницы 1440"
+        },
+        "gutter": {
+          "value": "{space.600}",
+          "type": "spacing",
+          "description": "Межколонник, 12 колонок"
+        },
+        "section": {
+          "value": "{space.2400}",
+          "type": "spacing",
+          "description": "Вертикальный отступ секции"
+        },
+        "section-lg": {
+          "value": "{space.3000}",
+          "type": "spacing",
+          "description": "Секция заявки"
+        },
+        "stack": {
+          "value": "{space.1200}",
+          "type": "spacing",
+          "description": "Шаг между блоками внутри секции (ПК)"
+        }
+      },
+      "mobile": {
+        "margin": {
+          "value": "{space.500}",
+          "type": "spacing",
+          "description": "Поля страницы 390"
+        },
+        "gutter": {
+          "value": "{space.400}",
+          "type": "spacing",
+          "description": "Межколонник, 4 колонки"
+        },
+        "section": {
+          "value": "{space.1200}",
+          "type": "spacing",
+          "description": "Вертикальный отступ секции"
+        },
+        "stack": {
+          "value": "{space.600}",
+          "type": "spacing",
+          "description": "Шаг между блоками внутри секции (телефон)"
+        }
+      },
+      "tablet": {
+        "margin": {
+          "value": "{space.1000}",
+          "type": "spacing",
+          "description": "Поля страницы 768–1023"
+        },
+        "gutter": {
+          "value": 20,
+          "type": "spacing"
+        },
+        "section": {
+          "value": 64,
+          "type": "spacing",
+          "description": "Отступ между секциями 768–1023"
+        },
+        "stack": {
+          "value": "{space.800}",
+          "type": "spacing",
+          "description": "Шаг между блоками внутри секции (планшет)"
+        }
+      },
+      "desktop-sm": {
+        "margin": {
+          "value": 40,
+          "type": "spacing",
+          "description": "Поля страницы 1024–1279"
+        }
+      },
+      "columns": {
+        "mobile": {
+          "value": 4,
+          "type": "number"
+        },
+        "tablet": {
+          "value": 8,
+          "type": "number"
+        },
+        "desktop": {
+          "value": 12,
+          "type": "number"
+        }
+      },
+      "content": {
+        "max-width": {
+          "value": 1312,
+          "type": "sizing",
+          "description": "Максимальная ширина контента (1440 − 2×64)"
+        },
+        "form-max": {
+          "value": 560,
+          "type": "sizing",
+          "description": "Макс. ширина формы на планшете"
+        }
+      }
+    },
+    "radius": {
+      "surface": {
+        "value": "{radius.0}",
+        "type": "borderRadius",
+        "description": "Карточки, кнопки, поля — прямые углы"
+      },
+      "media": {
+        "value": "{radius.20}",
+        "type": "borderRadius",
+        "description": "Кадр Hero, desktop"
+      },
+      "media-sm": {
+        "value": "{radius.16}",
+        "type": "borderRadius",
+        "description": "Кадр Hero, mobile"
+      },
+      "tag": {
+        "value": "{radius.pill}",
+        "type": "borderRadius",
+        "description": "Теги и сегменты-пилюли"
+      },
+      "xs": {
+        "value": "{radius.2}",
+        "type": "borderRadius",
+        "description": "Мелкие элементы: фокус-рамки, тайлы медиа"
+      },
+      "sm": {
+        "value": "{radius.4}",
+        "type": "borderRadius",
+        "description": "Основной радиус карточек, фото, панелей"
+      },
+      "full": {
+        "value": "{radius.pill}",
+        "type": "borderRadius",
+        "description": "Круги и pill: чипы, маркеры, круглые кнопки"
+      }
+    },
+    "border-width": {
+      "hairline": {
+        "value": "{border-width.1}",
+        "type": "borderWidth",
+        "description": "Разделители"
+      },
+      "control": {
+        "value": "{border-width.1-5}",
+        "type": "borderWidth",
+        "description": "Контурные кнопки, радио-карточки, верхние линии"
+      },
+      "error": {
+        "value": "{border-width.2}",
+        "type": "borderWidth",
+        "description": "Поле с ошибкой, статус-баннер"
+      },
+      "focus": {
+        "value": "{border-width.3}",
+        "type": "borderWidth",
+        "description": "Фокус, полоса статуса"
+      },
+      "success": {
+        "value": "{border-width.4}",
+        "type": "borderWidth",
+        "description": "Верхняя линия успеха"
+      },
+      "strong": {
+        "value": "{border-width.2}",
+        "type": "borderWidth",
+        "description": "Акцентная линия 2 px"
+      }
+    },
+    "size": {
+      "control": {
+        "sm": {
+          "value": "{size.40}",
+          "type": "sizing",
+          "description": "Сегмент, тег-кнопка"
+        },
+        "md": {
+          "value": "{size.44}",
+          "type": "sizing",
+          "description": "Минимальная цель касания"
+        },
+        "field": {
+          "value": "{size.48}",
+          "type": "sizing",
+          "description": "Поле ввода, вторичная кнопка"
+        },
+        "lg": {
+          "value": "{size.52}",
+          "type": "sizing",
+          "description": "Главная кнопка"
+        }
+      },
+      "header": {
+        "desktop": {
+          "value": "{size.64}",
+          "type": "sizing",
+          "description": "Шапка 1440"
+        },
+        "mobile": {
+          "value": "{size.56}",
+          "type": "sizing",
+          "description": "Шапка 390"
+        },
+        "tablet": {
+          "value": 64,
+          "type": "sizing",
+          "description": "Высота шапки 768–1279"
+        }
+      }
+    },
+    "font-width": {
+      "heading": {
+        "value": "{font-width.normal}",
+        "type": "other",
+        "description": "heading-1, heading-2: 100%"
+      },
+      "text": {
+        "value": "{font-width.normal}",
+        "type": "other",
+        "description": "body, small, caption, label: 100%"
+      }
+    },
+    "breakpoint": {
+      "mobile-min": {
+        "value": 360,
+        "type": "sizing",
+        "description": "Минимальная поддерживаемая ширина"
+      },
+      "tablet": {
+        "value": 768,
+        "type": "sizing",
+        "description": "Планшет: 768–1023"
+      },
+      "desktop-sm": {
+        "value": 1024,
+        "type": "sizing",
+        "description": "Компактный десктоп: 1024–1279"
+      },
+      "desktop": {
+        "value": 1280,
+        "type": "sizing",
+        "description": "Десктоп: от 1280"
+      },
+      "wide": {
+        "value": 1440,
+        "type": "sizing",
+        "description": "Макетная ширина десктопа"
+      }
+    }
+  },
+  "Colors/Light": {
+    "color": {
+      "text": {
+        "primary": {
+          "value": "{color.slate.900}",
+          "type": "color",
+          "description": "Основной текст"
+        },
+        "secondary": {
+          "value": "{color.slate.700}",
+          "type": "color",
+          "description": "Вторичный текст, пояснения"
+        },
+        "tertiary": {
+          "value": "{color.slate.600}",
+          "type": "color",
+          "description": "Метки полей, время, метаданные"
+        },
+        "disabled": {
+          "value": "{color.slate.550}",
+          "type": "color",
+          "description": "Неактивное, плейсхолдер поля"
+        },
+        "link": {
+          "value": "{color.spruce.700}",
+          "type": "color",
+          "description": "Ссылки"
+        },
+        "link-hover": {
+          "value": "{color.spruce.800}",
+          "type": "color",
+          "description": "Ссылка при наведении"
+        },
+        "on-accent": {
+          "value": "{color.white}",
+          "type": "color",
+          "description": "Текст на акцентной заливке"
+        },
+        "on-accent-muted": {
+          "value": "{color.spruce.50}",
+          "type": "color",
+          "description": "Вторичный текст на акценте"
+        },
+        "on-inverse": {
+          "value": "{color.stone.100}",
+          "type": "color",
+          "description": "Текст на тёмных поверхностях: футер, статус-строка, тост"
+        },
+        "on-inverse-muted": {
+          "value": "{color.stone.400}",
+          "type": "color",
+          "description": "Вторичный текст на тёмном"
+        },
+        "on-inverse-subtle": {
+          "value": "{color.stone.550}",
+          "type": "color",
+          "description": "Третичный текст на тёмном (футер)"
+        },
+        "on-media": {
+          "value": "{color.white}",
+          "type": "color",
+          "description": "Текст поверх кадра/фото"
+        },
+        "on-media-muted": {
+          "value": "{color.stone.300}",
+          "type": "color",
+          "description": "Вторичный текст поверх кадра"
+        },
+        "error": {
+          "value": "{color.red.700}",
+          "type": "color",
+          "description": "Текст ошибки"
+        },
+        "warm": {
+          "value": "{color.larch.700}",
+          "type": "color",
+          "description": "Тёплые подписи и иконки. Основной текст остаётся text-primary."
+        },
+        "on-accent-warm": {
+          "value": "{color.slate.900}",
+          "type": "color",
+          "description": "Графитовый текст на тёплом акценте. Белый текст не использовать."
+        },
+        "on-dark-warm": {
+          "value": "{color.hearth.100}",
+          "type": "color",
+          "description": "Тёплый светлый текст на тёмных поверхностях"
+        }
+      },
+      "surface": {
+        "page": {
+          "value": "{color.stone.100}",
+          "type": "color",
+          "description": "Фон страницы"
+        },
+        "raised": {
+          "value": "{color.white}",
+          "type": "color",
+          "description": "Карточки, форма, поля, панель дня"
+        },
+        "subtle": {
+          "value": "{color.stone.200}",
+          "type": "color",
+          "description": "Тонированные плашки"
+        },
+        "subtle-alt": {
+          "value": "{color.stone.150}",
+          "type": "color",
+          "description": "Фон секции FAQ"
+        },
+        "inverse": {
+          "value": "{color.slate.900}",
+          "type": "color",
+          "description": "Тёмные поверхности: футер, тост"
+        },
+        "media": {
+          "value": "{color.slate.600}",
+          "type": "color",
+          "description": "Кадр Hero до загрузки медиа"
+        },
+        "placeholder": {
+          "value": "{color.stone.350}",
+          "type": "color",
+          "description": "Плейсхолдер фото (только wireframe)"
+        },
+        "intro": {
+          "value": "{color.stone.50}",
+          "type": "color"
+        },
+        "warm": {
+          "value": "{color.hearth.100}",
+          "type": "color",
+          "description": "Основная тёплая поверхность"
+        },
+        "warm-strong": {
+          "value": "{color.hearth.200}",
+          "type": "color",
+          "description": "Песочная поверхность для небольших вставок"
+        },
+        "disabled": {
+          "value": "{color.stone.50}",
+          "type": "color",
+          "description": "Фон заблокированного поля"
+        },
+        "night": {
+          "value": "{color.slate.990}",
+          "type": "color",
+          "description": "Ночной фон: hero, фильм"
+        },
+        "warm-dark": {
+          "value": "{color.hearth.900}",
+          "type": "color",
+          "description": "Тёплый тёмный фон"
+        },
+        "error": {
+          "value": "{color.red.50}",
+          "type": "color",
+          "description": "Фон плашки ошибки"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.stone.450}",
+          "type": "color",
+          "description": "Разделители строк, рамки"
+        },
+        "subtle": {
+          "value": "{color.stone.250}",
+          "type": "color",
+          "description": "Внутренние разделители"
+        },
+        "strong": {
+          "value": "{color.stone.700}",
+          "type": "color",
+          "description": "Рамка плейсхолдера, неактивная кнопка"
+        },
+        "emphasis": {
+          "value": "{color.slate.900}",
+          "type": "color",
+          "description": "Верхняя линия списков и блоков (1.5px)"
+        },
+        "field": {
+          "value": "{color.slate.550}",
+          "type": "color",
+          "description": "Рамка поля и радио-карточки"
+        },
+        "control-on-inverse": {
+          "value": "{color.slate.400}",
+          "type": "color",
+          "description": "Рамка прозрачных контролов на тёмном"
+        },
+        "error": {
+          "value": "{color.red.700}",
+          "type": "color",
+          "description": "Рамка поля с ошибкой"
+        },
+        "accent": {
+          "value": "{color.spruce.700}",
+          "type": "color",
+          "description": "Контурные кнопки, выбранный контур"
+        },
+        "inverse": {
+          "value": "{color.slate.650}",
+          "type": "color",
+          "description": "Рамки на тёмном"
+        },
+        "media-grid": {
+          "value": "{color.slate.400}",
+          "type": "color"
+        },
+        "media-cross": {
+          "value": "{color.slate.500}",
+          "type": "color"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "value": "{color.spruce.700}",
+            "type": "color",
+            "description": "Главная кнопка"
+          },
+          "bg-hover": {
+            "value": "{color.spruce.800}",
+            "type": "color"
+          },
+          "bg-busy": {
+            "value": "{color.spruce.500}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.white}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.spruce.700}",
+            "type": "color"
+          },
+          "text-hover": {
+            "value": "{color.white}",
+            "type": "color"
+          }
+        },
+        "secondary": {
+          "text": {
+            "value": "{color.spruce.700}",
+            "type": "color",
+            "description": "Контурная кнопка"
+          },
+          "border": {
+            "value": "{color.spruce.700}",
+            "type": "color"
+          }
+        },
+        "disabled": {
+          "text": {
+            "value": "{color.slate.700}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.stone.700}",
+            "type": "color"
+          }
+        }
+      },
+      "state": {
+        "focus-ring": {
+          "value": "{color.spruce.700}",
+          "type": "color",
+          "description": "Обводка фокуса на светлых поверхностях"
+        },
+        "focus-ring-on-inverse": {
+          "value": "{color.stone.100}",
+          "type": "color"
+        },
+        "focus-ring-on-media": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "focus-halo-on-media": {
+          "value": "{color.slate.900}",
+          "type": "color"
+        },
+        "selected": {
+          "bg": {
+            "value": "{color.spruce.700}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.white}",
+            "type": "color"
+          }
+        },
+        "selected-on-inverse": {
+          "bg": {
+            "value": "{color.stone.100}",
+            "type": "color",
+            "description": "Выбранная кнопка «Снаружи/Внутри»"
+          },
+          "text": {
+            "value": "{color.slate.900}",
+            "type": "color"
+          }
+        }
+      },
+      "tag": {
+        "optional": {
+          "text": {
+            "value": "{color.spruce.700}",
+            "type": "color",
+            "description": "Тег «По желанию»"
+          },
+          "border": {
+            "value": "{color.spruce.700}",
+            "type": "color"
+          }
+        },
+        "required": {
+          "bg": {
+            "value": "{color.slate.150}",
+            "type": "color",
+            "description": "Тег «Для всех»"
+          },
+          "text": {
+            "value": "{color.slate.850}",
+            "type": "color"
+          }
+        }
+      },
+      "accent": {
+        "warm": {
+          "value": "{color.buckthorn.500}",
+          "type": "color",
+          "description": "Редкий тёплый акцент"
+        }
+      },
+      "overlay": {
+        "on-dark-subtle": {
+          "value": "#ffffff0f",
+          "type": "color"
+        },
+        "on-dark-border": {
+          "value": "#ffffff26",
+          "type": "color"
+        },
+        "clear": {
+          "value": "#ffffff00",
+          "type": "color"
+        },
+        "glass-panel": {
+          "value": "#f4f1eab8",
+          "type": "color",
+          "description": "Светлая стеклянная панель (плашки на карте, форма)"
+        },
+        "glass-field": {
+          "value": "#ffffffd1",
+          "type": "color"
+        },
+        "glass-border": {
+          "value": "#ffffff80",
+          "type": "color"
+        },
+        "glass-summary": {
+          "value": "#efe6d8d9",
+          "type": "color"
+        },
+        "scrim": {
+          "value": "#12171a99",
+          "type": "color",
+          "description": "Затемнение под модальным окном"
+        },
+        "night-0": {
+          "value": "#0d111200",
+          "type": "color"
+        },
+        "night-35": {
+          "value": "#0d111259",
+          "type": "color"
+        },
+        "night-50": {
+          "value": "#0d111280",
+          "type": "color",
+          "description": "Затемнение под окном дня"
+        },
+        "night-66": {
+          "value": "#0d1112a8",
+          "type": "color"
+        },
+        "night-88": {
+          "value": "#0d1112e0",
+          "type": "color"
+        },
+        "night-91": {
+          "value": "#0d1112e8",
+          "type": "color"
+        }
+      },
+      "map": {
+        "route": {
+          "value": "{color.wood.400}",
+          "type": "color"
+        },
+        "marker": {
+          "value": "{color.wood.400}",
+          "type": "color"
+        }
+      },
+      "theme": {
+        "bg": {
+          "value": "{color.surface.page}",
+          "type": "color",
+          "description": "Фон памятки"
+        },
+        "text": {
+          "value": "{color.text.primary}",
+          "type": "color"
+        },
+        "text-muted": {
+          "value": "{color.text.secondary}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.border.default}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{color.surface.subtle}",
+          "type": "color"
+        },
+        "warm-text": {
+          "value": "{color.text.warm}",
+          "type": "color"
+        },
+        "card-warm": {
+          "value": "{color.surface.warm}",
+          "type": "color"
+        },
+        "focus": {
+          "value": "{color.state.focus-ring}",
+          "type": "color"
+        }
+      },
+      "shadow": {
+        "soft-16": {
+          "value": "#0d111229",
+          "type": "color",
+          "description": "Elevation/Modal soft"
+        },
+        "soft-06": {
+          "value": "#0d11120f",
+          "type": "color",
+          "description": "Elevation/Modal soft"
+        },
+        "soft-08": {
+          "value": "#0d111214",
+          "type": "color",
+          "description": "Elevation/Card soft"
+        },
+        "soft-04": {
+          "value": "#0d11120a",
+          "type": "color",
+          "description": "Elevation/Card soft"
+        }
+      }
+    }
+  },
+  "Colors/Dark": {
+    "color": {
+      "text": {
+        "primary": {
+          "value": "{color.slate.100}",
+          "type": "color"
+        },
+        "secondary": {
+          "value": "{color.slate.150}",
+          "type": "color"
+        },
+        "tertiary": {
+          "value": "{color.slate.200}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{color.slate.300}",
+          "type": "color"
+        },
+        "link": {
+          "value": "{color.spruce.300}",
+          "type": "color"
+        },
+        "link-hover": {
+          "value": "{color.spruce.200}",
+          "type": "color"
+        },
+        "on-accent": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "on-accent-muted": {
+          "value": "{color.spruce.100}",
+          "type": "color"
+        },
+        "on-inverse": {
+          "value": "{color.slate.100}",
+          "type": "color"
+        },
+        "on-inverse-muted": {
+          "value": "{color.stone.500}",
+          "type": "color"
+        },
+        "on-inverse-subtle": {
+          "value": "{color.stone.600}",
+          "type": "color"
+        },
+        "on-media": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "on-media-muted": {
+          "value": "{color.stone.300}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{color.red.700}",
+          "type": "color"
+        },
+        "warm": {
+          "value": "{color.larch.300}",
+          "type": "color"
+        },
+        "on-accent-warm": {
+          "value": "{color.slate.900}",
+          "type": "color"
+        },
+        "on-dark-warm": {
+          "value": "{color.hearth.100}",
+          "type": "color"
+        }
+      },
+      "surface": {
+        "page": {
+          "value": "{color.slate.950}",
+          "type": "color"
+        },
+        "raised": {
+          "value": "{color.slate.920}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{color.slate.860}",
+          "type": "color"
+        },
+        "subtle-alt": {
+          "value": "{color.slate.870}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{color.slate.990}",
+          "type": "color"
+        },
+        "media": {
+          "value": "{color.slate.750}",
+          "type": "color"
+        },
+        "placeholder": {
+          "value": "{color.slate.850}",
+          "type": "color"
+        },
+        "intro": {
+          "value": "{color.slate.880}",
+          "type": "color"
+        },
+        "warm": {
+          "value": "{color.hearth.900}",
+          "type": "color"
+        },
+        "warm-strong": {
+          "value": "{color.hearth.800}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{color.slate.880}",
+          "type": "color"
+        },
+        "night": {
+          "value": "{color.slate.990}",
+          "type": "color"
+        },
+        "warm-dark": {
+          "value": "{color.hearth.900}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{color.red.50}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{color.slate.800}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{color.slate.850}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{color.slate.675}",
+          "type": "color"
+        },
+        "emphasis": {
+          "value": "{color.slate.100}",
+          "type": "color"
+        },
+        "field": {
+          "value": "{color.slate.450}",
+          "type": "color"
+        },
+        "control-on-inverse": {
+          "value": "{color.slate.575}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{color.red.700}",
+          "type": "color"
+        },
+        "accent": {
+          "value": "{color.spruce.300}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{color.slate.760}",
+          "type": "color"
+        },
+        "media-grid": {
+          "value": "{color.slate.575}",
+          "type": "color"
+        },
+        "media-cross": {
+          "value": "{color.slate.625}",
+          "type": "color"
+        }
+      },
+      "action": {
+        "primary": {
+          "bg": {
+            "value": "{alpha.transparent}",
+            "type": "color"
+          },
+          "bg-hover": {
+            "value": "{color.stone.100}",
+            "type": "color"
+          },
+          "bg-busy": {
+            "value": "{color.spruce.550}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.stone.100}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.stone.100}",
+            "type": "color"
+          },
+          "text-hover": {
+            "value": "{color.slate.900}",
+            "type": "color"
+          }
+        },
+        "secondary": {
+          "text": {
+            "value": "{color.spruce.300}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.spruce.300}",
+            "type": "color"
+          }
+        },
+        "disabled": {
+          "text": {
+            "value": "{color.slate.150}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.slate.675}",
+            "type": "color"
+          }
+        }
+      },
+      "state": {
+        "focus-ring": {
+          "value": "{color.spruce.300}",
+          "type": "color"
+        },
+        "focus-ring-on-inverse": {
+          "value": "{color.slate.100}",
+          "type": "color"
+        },
+        "focus-ring-on-media": {
+          "value": "{color.white}",
+          "type": "color"
+        },
+        "focus-halo-on-media": {
+          "value": "{color.slate.990}",
+          "type": "color"
+        },
+        "selected": {
+          "bg": {
+            "value": "{color.spruce.600}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.white}",
+            "type": "color"
+          }
+        },
+        "selected-on-inverse": {
+          "bg": {
+            "value": "{color.slate.100}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.slate.900}",
+            "type": "color"
+          }
+        }
+      },
+      "tag": {
+        "optional": {
+          "text": {
+            "value": "{color.spruce.300}",
+            "type": "color"
+          },
+          "border": {
+            "value": "{color.spruce.300}",
+            "type": "color"
+          }
+        },
+        "required": {
+          "bg": {
+            "value": "{color.slate.100}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{color.slate.900}",
+            "type": "color"
+          }
+        }
+      },
+      "accent": {
+        "warm": {
+          "value": "{color.buckthorn.500}",
+          "type": "color"
+        }
+      },
+      "overlay": {
+        "on-dark-subtle": {
+          "value": "#ffffff0f",
+          "type": "color"
+        },
+        "on-dark-border": {
+          "value": "#ffffff26",
+          "type": "color"
+        },
+        "clear": {
+          "value": "#ffffff00",
+          "type": "color"
+        },
+        "glass-panel": {
+          "value": "#f4f1eab8",
+          "type": "color"
+        },
+        "glass-field": {
+          "value": "#ffffffd1",
+          "type": "color"
+        },
+        "glass-border": {
+          "value": "#ffffff80",
+          "type": "color"
+        },
+        "glass-summary": {
+          "value": "#efe6d8d9",
+          "type": "color"
+        },
+        "scrim": {
+          "value": "#12171a99",
+          "type": "color"
+        },
+        "night-0": {
+          "value": "#0d111200",
+          "type": "color"
+        },
+        "night-35": {
+          "value": "#0d111259",
+          "type": "color"
+        },
+        "night-50": {
+          "value": "#0d111280",
+          "type": "color"
+        },
+        "night-66": {
+          "value": "#0d1112a8",
+          "type": "color"
+        },
+        "night-88": {
+          "value": "#0d1112e0",
+          "type": "color"
+        },
+        "night-91": {
+          "value": "#0d1112e8",
+          "type": "color"
+        }
+      },
+      "map": {
+        "route": {
+          "value": "{color.wood.400}",
+          "type": "color"
+        },
+        "marker": {
+          "value": "{color.wood.400}",
+          "type": "color"
+        }
+      },
+      "theme": {
+        "bg": {
+          "value": "{color.surface.night}",
+          "type": "color"
+        },
+        "text": {
+          "value": "{color.text.on-media}",
+          "type": "color"
+        },
+        "text-muted": {
+          "value": "{color.text.on-media-muted}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.overlay.on-dark-border}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{color.overlay.on-dark-subtle}",
+          "type": "color"
+        },
+        "warm-text": {
+          "value": "{color.text.on-dark-warm}",
+          "type": "color"
+        },
+        "card-warm": {
+          "value": "{color.surface.warm-dark}",
+          "type": "color"
+        },
+        "focus": {
+          "value": "{color.state.focus-ring-on-inverse}",
+          "type": "color"
+        }
+      },
+      "shadow": {
+        "soft-16": {
+          "value": "#0d111229",
+          "type": "color"
+        },
+        "soft-06": {
+          "value": "#0d11120f",
+          "type": "color"
+        },
+        "soft-08": {
+          "value": "#0d111214",
+          "type": "color"
+        },
+        "soft-04": {
+          "value": "#0d11120a",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "Components": {
+    "button": {
+      "primary": {
+        "bg": {
+          "value": "{color.action.primary.bg}",
+          "type": "color"
+        },
+        "bg-hover": {
+          "value": "{color.action.primary.bg-hover}",
+          "type": "color"
+        },
+        "bg-busy": {
+          "value": "{color.action.primary.bg-busy}",
+          "type": "color"
+        },
+        "text": {
+          "value": "{color.action.primary.text}",
+          "type": "color"
+        },
+        "height": {
+          "value": "{size.control.lg}",
+          "type": "sizing"
+        },
+        "padding-x": {
+          "value": "{space.inset.control}",
+          "type": "spacing"
+        },
+        "radius": {
+          "value": "{radius.surface}",
+          "type": "borderRadius"
+        }
+      },
+      "secondary": {
+        "text": {
+          "value": "{color.action.secondary.text}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.action.secondary.border}",
+          "type": "color"
+        },
+        "border-width": {
+          "value": "{border-width.control}",
+          "type": "borderWidth"
+        },
+        "height": {
+          "value": "{size.control.field}",
+          "type": "sizing"
+        }
+      },
+      "disabled": {
+        "text": {
+          "value": "{color.action.disabled.text}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.action.disabled.border}",
+          "type": "color"
+        }
+      }
+    },
+    "field": {
+      "bg": {
+        "value": "{color.surface.raised}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{color.text.primary}",
+        "type": "color"
+      },
+      "placeholder": {
+        "value": "{color.text.disabled}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{color.border.field}",
+        "type": "color"
+      },
+      "border-error": {
+        "value": "{color.border.error}",
+        "type": "color"
+      },
+      "border-width": {
+        "value": "{border-width.hairline}",
+        "type": "borderWidth"
+      },
+      "border-width-error": {
+        "value": "{border-width.error}",
+        "type": "borderWidth"
+      },
+      "height": {
+        "value": "{size.control.field}",
+        "type": "sizing"
+      },
+      "padding-x": {
+        "value": "{space.inline.md}",
+        "type": "spacing"
+      },
+      "bg-disabled": {
+        "value": "{color.surface.disabled}",
+        "type": "color"
+      },
+      "border-disabled": {
+        "value": "{color.border.strong}",
+        "type": "color"
+      },
+      "text-disabled": {
+        "value": "{color.text.disabled}",
+        "type": "color"
+      }
+    },
+    "radio-card": {
+      "bg": {
+        "value": "{color.surface.raised}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{color.border.field}",
+        "type": "color"
+      },
+      "border-selected": {
+        "value": "{color.border.accent}",
+        "type": "color"
+      },
+      "height": {
+        "value": "{size.control.md}",
+        "type": "sizing"
+      }
+    },
+    "tab-day": {
+      "bg": {
+        "value": "{color.surface.raised}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{color.border.default}",
+        "type": "color"
+      },
+      "bg-selected": {
+        "value": "{color.state.selected.bg}",
+        "type": "color"
+      },
+      "text-selected": {
+        "value": "{color.state.selected.text}",
+        "type": "color"
+      }
+    },
+    "segment-media": {
+      "bg-selected": {
+        "value": "{color.state.selected-on-inverse.bg}",
+        "type": "color"
+      },
+      "text-selected": {
+        "value": "{color.state.selected-on-inverse.text}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{color.border.control-on-inverse}",
+        "type": "color"
+      },
+      "radius": {
+        "value": "{radius.tag}",
+        "type": "borderRadius"
+      }
+    },
+    "accordion": {
+      "bg": {
+        "value": "{color.surface.page}",
+        "type": "color"
+      },
+      "min-height": {
+        "value": "{size.control.lg}",
+        "type": "sizing"
+      }
+    },
+    "tag": {
+      "optional": {
+        "text": {
+          "value": "{color.tag.optional.text}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{color.tag.optional.border}",
+          "type": "color"
+        }
+      },
+      "required": {
+        "bg": {
+          "value": "{color.tag.required.bg}",
+          "type": "color"
+        },
+        "text": {
+          "value": "{color.tag.required.text}",
+          "type": "color"
+        }
+      },
+      "radius": {
+        "value": "{radius.tag}",
+        "type": "borderRadius"
+      }
+    },
+    "status-banner": {
+      "border": {
+        "value": "{color.border.error}",
+        "type": "color"
+      },
+      "border-width": {
+        "value": "{border-width.error}",
+        "type": "borderWidth"
+      },
+      "bg": {
+        "value": "{color.surface.raised}",
+        "type": "color"
+      }
+    },
+    "toast": {
+      "bg": {
+        "value": "{color.surface.inverse}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{color.text.on-inverse}",
+        "type": "color"
+      }
+    },
+    "focus": {
+      "ring": {
+        "value": "{color.state.focus-ring}",
+        "type": "color"
+      },
+      "ring-on-inverse": {
+        "value": "{color.state.focus-ring-on-inverse}",
+        "type": "color"
+      },
+      "ring-on-media": {
+        "value": "{color.state.focus-ring-on-media}",
+        "type": "color"
+      },
+      "halo-on-media": {
+        "value": "{color.state.focus-halo-on-media}",
+        "type": "color"
+      },
+      "width": {
+        "value": "{border-width.focus}",
+        "type": "borderWidth"
+      }
+    },
+    "control": {
+      "bg": {
+        "value": "{color.surface.raised}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{color.border.field}",
+        "type": "color"
+      },
+      "border-error": {
+        "value": "{color.border.error}",
+        "type": "color"
+      },
+      "checked-bg": {
+        "value": "{color.action.primary.bg}",
+        "type": "color"
+      },
+      "checked-mark": {
+        "value": "{color.action.primary.text}",
+        "type": "color"
+      }
+    },
+    "video": {
+      "glass": {
+        "bg": {
+          "value": "{alpha.glass-bg}",
+          "type": "color"
+        },
+        "bg-hover": {
+          "value": "{alpha.glass-bg-hover}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{alpha.glass-border}",
+          "type": "color"
+        }
+      }
+    },
+    "map": {
+      "route-width": {
+        "value": "{border-width.2-5}",
+        "type": "borderWidth",
+        "description": "Пунктир маршрута на схеме"
+      },
+      "river-width": {
+        "value": "{border-width.10}",
+        "type": "borderWidth",
+        "description": "Река Катунь на схеме"
+      }
+    },
+    "map-marker": {
+      "ring-width": {
+        "value": "{border-width.6}",
+        "type": "borderWidth",
+        "description": "Кольцо активного маркера"
+      },
+      "ring-width-sm": {
+        "value": "{border-width.3}",
+        "type": "borderWidth",
+        "description": "Кольцо пройденного маркера"
+      }
+    }
+  },
+  "$themes": [
+    {
+      "id": "altai-light",
+      "name": "Light",
+      "selectedTokenSets": {
+        "Primitives": "source",
+        "Foundations": "source",
+        "Colors/Light": "enabled",
+        "Components": "enabled"
+      }
+    },
+    {
+      "id": "altai-dark",
+      "name": "Dark",
+      "selectedTokenSets": {
+        "Primitives": "source",
+        "Foundations": "source",
+        "Colors/Dark": "enabled",
+        "Components": "enabled"
+      }
+    }
+  ],
+  "$metadata": {
+    "tokenSetOrder": [
+      "Primitives",
+      "Foundations",
+      "Colors/Light",
+      "Colors/Dark",
+      "Components"
+    ]
+  }
+}
