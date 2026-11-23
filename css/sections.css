@@ -1345,3 +1345,24 @@ body { overflow-x: clip; }
   .reel__strip { gap: var(--space-3); margin-top: var(--space-3); }
   .reel.is-static .reel__caption { font-size: 48px; }
 }
+
+/* Номера на планшете и телефоне — то же наполнение, что на ПК: заголовок, цена, пункты */
+@media (max-width: 1100px) {
+  .room__row { display: none; }
+  .room__full { display: block; }
+  .room .room__features { display: flex; }
+  .room { gap: var(--space-3); }
+  .room__title { font-size: 18px; }
+}
+/* Телефоны не переносятся */
+a[href^="tel:"], .nowrap { white-space: nowrap; }
+
+/* Поле в фокусе — рамка 1,5 px (вместо 3) */
+.field__input:focus, .field__input:focus-visible { outline: none; border-color: var(--color-focus-ring); box-shadow: 0 0 0 0.5px var(--color-focus-ring); }
+
+/* FAQ: ответ больше не обрезается сверху (убран отрицательный отступ); вопрос 24 сверху/снизу, до ответа 16 — как FAQ item */
+.faq-item__a > div > p { margin-top: 0; }
+.faq-item__q { padding: var(--space-6) 0; }
+.faq-item__q[aria-expanded="true"] { padding-bottom: var(--space-4); }
+.faq-item__a > div > p { padding-bottom: var(--space-6); }
+@media (max-width: 760px) { .faq-item__q { padding: var(--space-4) 0; } .faq-item__q[aria-expanded="true"] { padding-bottom: var(--space-3); } .faq-item__a > div > p { padding-bottom: var(--space-4); } }
