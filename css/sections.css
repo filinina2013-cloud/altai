@@ -1266,3 +1266,6 @@ body { overflow-x: clip; }
 @media (min-width: 1101px) { .faq__grid { grid-template-columns: minmax(0, 1fr) 755px; gap: var(--layout-gutter); } }
 /* Соседние секции с одним фоном (ПК): один отступ 96 вместо 96 + 96 */
 @media (min-width: 1101px) { #program.section, #program, #route, #stay { padding-top: 0; } }
+
+/* About и Team: от eyebrow до заголовка — 24, как в остальных секциях (space/stack/lg) */
+@media (min-width: 1101px) { .about__heading, .team__header { gap: var(--space-6); } }
