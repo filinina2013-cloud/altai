@@ -1273,3 +1273,56 @@ body { overflow-x: clip; }
 /* Форма заявки: итог → «оплачивается отдельно» → кнопка → сноска — шаг 12, как в компоненте Apply form panel */
 .apply-form__submit { display: flex; flex-direction: column; gap: var(--space-3); }
 .apply-form__submit > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+
+/* Телефон: в первом экране только «Программа по дням» (памятка — в меню); тексты над заголовком — шаг 8 */
+@media (max-width: 760px) {
+  .hero__links [data-open-memo] { display: none; }
+  .hero__intro { gap: var(--space-2); }
+  .hero__intro > * { margin: 0; }
+  .hero__controls { align-items: center; }
+}
+
+/* Цена на планшете и телефоне — как на ПК: обычное начертание, «без авиабилетов…» одной серой строкой */
+@media (max-width: 1100px) {
+  .fact--price .price-main .t-section-sm { font-style: normal; font-size: 34px; line-height: 1.15; }
+  .fact--price .price-main { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-2); row-gap: 0; }
+  .fact--price .price-main .muted { font-size: 13px; }
+  .fact--price .price-plain.pc-only { display: block; }
+  .fact--price .price-note, .fact--price .price-excl { display: none; }
+}
+
+/* Планшет и телефон: eyebrow прямо над заголовком (фото — выше), как на ПК */
+@media (max-width: 1100px) {
+  .trip__col { display: flex; flex-direction: column; gap: var(--space-6); order: 1; }
+  .trip .photo-toggle { order: 0; }
+  .trip__col > .eyebrow, .trip .trip__info { order: initial; }
+  /* «Что входит и не входит»: в свёрнутом виде — только заголовок и «+» */
+  .accordion-section:has(.round-toggle[aria-expanded="false"]) .accordion-section__text > p { display: none; }
+}
+@media (max-width: 760px) {
+  .about__heading > .about__photo { order: -1; margin-bottom: 0; }
+  #about.section { padding-top: var(--layout-section); }
+}
+@media (max-width: 1100px) {
+  /* eyebrow → заголовок = 24 во всех секциях (space/stack/lg) */
+  .team__header > .eyebrow { margin-bottom: calc(var(--space-6) - 20px); }
+  .stay__heading > .eyebrow, .faq__heading > .eyebrow { margin-bottom: var(--space-2); }
+}
+#booking .eyebrow + .booking__title { margin-top: var(--space-4); }
+
+/* Номера на планшете и телефоне — белые карточки, как на ПК (Room row = card) */
+@media (max-width: 1100px) {
+  .rooms { gap: var(--space-2); }
+  .room { padding: var(--space-4); border: 1px solid var(--color-border-default); border-radius: var(--radius-sm); background: var(--color-surface-raised); }
+}
+
+/* Планшет и телефон: шаг между блоками секции = layout/tablet|mobile/stack (32 и 24) */
+@media (max-width: 1100px) {
+  .stay__aside { display: contents; }
+  .stay__heading { order: 0; } .stay__mapcol { order: 1; } .legend { order: 2; }
+  .team__header + * { margin-top: 0; }
+  #team .wrap { display: flex; flex-direction: column; gap: var(--layout-stack); }
+  #team .wrap > * { margin-top: 0 !important; margin-bottom: 0 !important; }
+  .faq__grid { gap: var(--layout-stack); }
+  .faq__list + .help-card, .faq__aside .help-card { margin-top: 0; }
+}
