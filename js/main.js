@@ -448,9 +448,9 @@
     const d = D.DAYS[n - 1];
     dayPanel.dataset.day = n;
     const prev = D.DAYS[n - 2], next = D.DAYS[n];
-    const moments = d.moments.map(m => `<div class="moment">
+    const moments = d.moments.map((m, i) => `<div class="moment">
         <div class="moment__when"><span class="moment__part">${m.part}</span><span class="moment__time">${m.time}</span></div>
-        <div class="moment__story"><h4 class="moment__title">${m.title}</h4>${m.level ? `<p class="level" aria-label="Сложность прогулки: ${m.level.word}, ${m.level.n} из 5"><span class="level__label">Сложность прогулки</span><span class="level__dots" aria-hidden="true">${[1, 2, 3, 4, 5].map(k => `<i${k <= m.level.n ? ' class="is-on"' : ''}></i>`).join('')}</span><b>${m.level.word}</b><span class="level__n" aria-hidden="true">${m.level.n} из 5</span></p>` : ''}<p class="t-body moment__text">${m.text}</p>
+        <div class="moment__story"><h4 class="moment__title">${m.title}${m.tip ? `<span class="tip tip--title"><button class="tip__btn" type="button" aria-label="Подробнее о занятии" aria-describedby="mtip-${n}-${i}" aria-expanded="false">${icon('info', 'icon--20')}</button><span class="tip__pop" role="tooltip" id="mtip-${n}-${i}">${m.tip}</span></span>` : ''}</h4>${m.level ? `<p class="level" aria-label="Сложность прогулки: ${m.level.word}, ${m.level.n} из 5"><span class="level__label">Сложность прогулки</span><span class="level__dots" aria-hidden="true">${[1, 2, 3, 4, 5].map(k => `<i${k <= m.level.n ? ' class="is-on"' : ''}></i>`).join('')}</span><b>${m.level.word}</b><span class="level__n" aria-hidden="true">${m.level.n} из 5</span></p>` : ''}<p class="t-body moment__text">${m.text}</p>
           <div class="moment__meta">${m.tag ? `<span class="tag ${m.tag === 'Для всех' ? 'tag--required' : 'tag--optional'}">${m.tag}</span>` : ''}${m.dur ? `<span class="moment__dur">${icon('clock', 'icon--16')}${m.dur}</span>` : ''}<span class="moment__facts">${m.facts}</span></div>
         </div></div>`).join('');
     const dishes = d.dishes.map(x => `<div class="dish"><div class="ph">${img('dish-' + x.img, x.name)}</div><div><p class="dish__name">${x.name}</p><p class="dish__desc">${x.desc}</p></div></div>`).join('');

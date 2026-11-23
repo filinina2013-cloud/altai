@@ -1163,3 +1163,29 @@ body { overflow-x: clip; }
 }
 .info-modal[data-theme="dark"] { --color-text-link: var(--color-text-on-media); --color-action-secondary-text: var(--color-text-on-media); --color-action-secondary-border: var(--color-text-on-media); }
 .info-modal[data-theme] .icon-btn { color: var(--color-theme-text); }
+
+/* ---------- Окно дня: мягкая тень и светлее фон (стиль Elevation / Modal soft в Figma) ---------- */
+:root { --shadow-modal-soft: 0 16px 48px rgba(13, 17, 18, 0.16), 0 2px 8px rgba(13, 17, 18, 0.06); }
+#day-modal .modal__panel { box-shadow: var(--shadow-modal-soft); }
+#day-modal .modal__scrim { background: var(--color-overlay-night-50); }
+/* подсказка у заголовка занятия в окне дня: значок сразу после текста, окно под заголовком */
+.moment__story { position: relative; }
+.tip--title { display: inline-flex; vertical-align: middle; margin-left: 4px; position: static; }
+.tip--title .tip__btn { margin: -12px; }
+.moment__title { position: relative; }
+.moment__title .tip__pop { top: calc(100% + 8px); bottom: auto; width: min(360px, 100%); }
+.moment__title .tip__pop::before { top: -12px; bottom: auto; }
+.tip__pop { font-family: var(--font-sans); font-style: normal; }
+
+/* ===== Отступы секций строго по ДС: layout/desktop|tablet|mobile/section = 96 / 64 / 48 ===== */
+.program { padding-block: var(--layout-section); }
+.program__intro { padding-bottom: var(--space-12, 48px); }
+@media (min-width: 761px) and (max-width: 1100px) {
+  :root { --layout-section: 64px; }
+  .program { padding-block: var(--layout-section); }
+}
+@media (max-width: 760px) {
+  :root { --layout-section: 48px; }
+  .program { padding-block: var(--layout-section); }
+  #team.section, .booking { padding-block: var(--layout-section); }
+}
