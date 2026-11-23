@@ -100,6 +100,10 @@
   --color-theme-focus: var(--color-focus-ring);
   --layout-section: 96px;
   --layout-section-lg: 120px;
+  --layout-stack: 48px;            /* layout/desktop/stack — шаг между блоками внутри секции; планшет 32, телефон 24 */
+  --color-shadow-soft-16: rgba(13, 17, 18, 0.16);
+  --color-shadow-soft-06: rgba(13, 17, 18, 0.06);
+  --shadow-modal-soft: 0 16px 48px var(--color-shadow-soft-16), 0 2px 8px var(--color-shadow-soft-06); /* Elevation/Modal soft */
   --content-max: 1312px;
   --form-max: 560px;
 
