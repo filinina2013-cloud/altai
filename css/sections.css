@@ -1242,3 +1242,12 @@ body { overflow-x: clip; }
   .map-panel .map-key__line { margin-top: 0; }
   .route-map__hint.glass { right: 12px; bottom: 12px; padding: 6px 12px; }
 }
+
+/* Проживание: группы «Что есть на базе» и «Как устроены дни» — один блок; от карточек номеров он отделён сильнее (64 / 48), между группами — обычный шаг (40 / 24) */
+.accommodation > .rooms + .base-group { margin-top: var(--space-6); }
+.accommodation > .base-group + .base-group { margin-top: 0; }
+
+/* Карта: при работе с точками и карточками плашки легенды и подсказки уходят, после — возвращаются */
+.map-panel, .route-map__hint.glass { transition: opacity 200ms var(--ease), visibility 0s linear 0s; }
+.route-map.is-interacting .map-panel, .route-map.is-interacting .route-map__hint.glass { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 200ms var(--ease), visibility 0s linear 200ms; }
+@media (prefers-reduced-motion: reduce) { .map-panel, .route-map__hint.glass { transition: none !important; } }

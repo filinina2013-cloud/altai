@@ -542,6 +542,18 @@
   pts.innerHTML = D.PLACES.map((p, i) => `<button class="map-point${p.left ? ' map-point--left' : ''}" type="button" style="left:${(p.x / 7.76).toFixed(3)}%;top:${(p.y / 8.2).toFixed(3)}%" data-select-place="${i}" aria-pressed="false" aria-label="${esc(p.name + ' ' + p.sub)}">
       <span class="map-point__hit"></span><span class="marker">${p.id}</span><span class="map-point__label"><b>${p.name}</b><span>${p.sub}</span></span></button>`).join('');
   const stack = $('[data-place-stack]');
+  // пока пользователь работает с картой (наводит/нажимает на точки и карточки) — плашки легенды и подсказки скрываются; вернутся, когда он уйдёт с карты
+  const mapEl = $('.route-map');
+  if (mapEl) {
+    let idleT;
+    const busy = () => { clearTimeout(idleT); mapEl.classList.add('is-interacting'); };
+    const idle = (ms = 600) => { clearTimeout(idleT); idleT = setTimeout(() => mapEl.classList.remove('is-interacting'), ms); };
+    mapEl.addEventListener('pointerover', e => { if (e.pointerType === 'mouse' && e.target.closest('.map-point, .place-stack')) busy(); });
+    mapEl.addEventListener('pointerout', e => { if (e.pointerType === 'mouse' && e.target.closest('.map-point, .place-stack') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.map-point, .place-stack'))) idle(); });
+    mapEl.addEventListener('pointerleave', () => idle(300));
+    mapEl.addEventListener('focusin', e => { if (e.target.closest('.map-point, .place-stack')) busy(); });
+    mapEl.addEventListener('focusout', e => { if (!mapEl.contains(e.relatedTarget)) idle(300); });
+  }
   function cardHTML(c) {
     const link = c.day ? `<a class="text-link" href="#day-${c.day}" data-open-day="${c.day}"><span>${c.link}</span>${icon('arrow-right', 'icon--16')}</a>` : c.href ? `<a class="text-link" href="${c.href}"><span>${c.link}</span>${icon('arrow-right', 'icon--16')}</a>` : '';
     return `<div class="place-card" data-title="${esc(c.title)}"><div class="place-card__photo ph">${img(c.img, c.title)}</div><div class="place-card__body"><p class="place-card__meta">${c.meta}</p><p class="place-card__title">${c.title}</p>${link}</div></div>`;
