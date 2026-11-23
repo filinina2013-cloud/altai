@@ -1108,3 +1108,58 @@ body { overflow-x: clip; }
 
 /* планшет: «О нас» и «Команда» с отступом 64 px сверху и снизу, как в макете (layout/tablet/section) */
 @media (min-width: 761px) and (max-width: 1100px) { #about.section { padding: 48px 0 64px; } #team.section { padding-block: 64px; } }
+
+/* ---------- Программа: подсказки к занятиям (значок «i» в строке карточки дня) ---------- */
+.day-card__meta .meta-row { position: relative; }
+.meta-row__label { display: inline-flex; align-items: center; gap: var(--space-1); min-width: 0; }
+.tip__btn { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: -14px; padding: 0; border: 0; background: none; color: var(--color-text-tertiary); cursor: help; flex: none; }
+.tip__btn:hover, .tip.is-open .tip__btn, .tip:focus-within .tip__btn { color: var(--color-text-primary); }
+.tip__btn:focus-visible { outline: 3px solid var(--color-state-focus-ring, #29495c); outline-offset: -10px; }
+.tip__btn .icon { stroke-width: 1.5; }
+.tip__pop { position: absolute; z-index: 6; left: 0; top: calc(100% + 8px); width: min(320px, 100%); padding: var(--space-4); background: var(--color-surface-raised, #fff); border: 1px solid var(--color-border-default);
+  font-size: 14px; line-height: 1.5; color: var(--color-text-secondary); text-align: left; font-weight: 400; letter-spacing: 0; text-transform: none;
+  opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 200ms var(--ease), transform 200ms var(--ease), visibility 0s linear 200ms; }
+.tip__pop::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+.tip.is-open .tip__pop { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+@media (hover: hover) and (pointer: fine) {
+  .tip:hover .tip__pop, .tip:focus-within .tip__pop { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+}
+.tip.is-hushed .tip__pop { opacity: 0 !important; visibility: hidden !important; }
+.day-card:has(.tip.is-open, .tip:hover, .tip:focus-within) { z-index: 3; }
+@media (prefers-reduced-motion: reduce) { .tip__pop { transition: none !important; } }
+/* окно дня: подпись к блюдам над ними */
+.food .food__note { margin-top: calc(-1 * var(--space-2)); } /* 8 px под заголовком, блюда ниже через общий отступ */
+@media (max-width: 1100px) {
+  /* лента карточек срезает всё ниже карточки — подсказка открывается вверх */
+  .tip__pop { top: auto; bottom: calc(100% + 8px); width: 100%; }
+  .tip__pop::before { top: auto; bottom: -12px; }
+}
+
+/* ---------- Памятка: переключатель темы и тёмная тема ---------- */
+.info-modal__tools { display: flex; gap: var(--space-2); flex: none; }
+.icon-btn--outline { border: 1px solid var(--color-theme-border, var(--color-border-default)); }
+[data-theme="dark"] {
+  --color-theme-bg: var(--color-surface-night);
+  --color-theme-text: var(--color-text-on-media);
+  --color-theme-text-muted: var(--color-text-on-media-muted);
+  --color-theme-border: rgba(255, 255, 255, 0.15);
+  --color-theme-subtle: rgba(255, 255, 255, 0.06);
+  --color-theme-warm-text: var(--color-text-on-dark-warm);
+  --color-theme-card-warm: #2a231d;
+  --color-theme-focus: var(--color-focus-ring-on-inverse);
+}
+.info-modal[data-theme] {
+  --color-surface-page: var(--color-theme-bg);
+  --color-text-primary: var(--color-theme-text);
+  --color-text-secondary: var(--color-theme-text-muted);
+  --color-text-tertiary: var(--color-theme-text-muted);
+  --color-border-default: var(--color-theme-border);
+  --color-surface-subtle: var(--color-theme-subtle);
+  --color-text-warm: var(--color-theme-warm-text);
+  --color-surface-warm: var(--color-theme-card-warm);
+  --color-focus-ring: var(--color-theme-focus);
+  background: var(--color-theme-bg); color: var(--color-theme-text);
+  transition: background-color 200ms var(--ease), color 200ms var(--ease);
+}
+.info-modal[data-theme="dark"] { --color-text-link: var(--color-text-on-media); --color-action-secondary-text: var(--color-text-on-media); --color-action-secondary-border: var(--color-text-on-media); }
+.info-modal[data-theme] .icon-btn { color: var(--color-theme-text); }

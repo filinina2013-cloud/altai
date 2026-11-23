@@ -89,6 +89,15 @@
   --color-overlay-night-66: rgba(13, 17, 18, 0.66);
   --color-overlay-night-88: rgba(13, 17, 18, 0.88);
   --color-overlay-night-91: rgba(13, 17, 18, 0.91);
+  /* тема памятки: как color/theme/* в Figma (светлая по умолчанию, тёмная через data-theme="dark") */
+  --color-theme-bg: var(--color-surface-page);
+  --color-theme-text: var(--color-text-primary);
+  --color-theme-text-muted: var(--color-text-secondary);
+  --color-theme-border: var(--color-border-default);
+  --color-theme-subtle: var(--color-surface-subtle);
+  --color-theme-warm-text: var(--color-text-warm);
+  --color-theme-card-warm: var(--color-surface-warm);
+  --color-theme-focus: var(--color-focus-ring);
   --layout-section: 96px;
   --layout-section-lg: 120px;
   --content-max: 1312px;

@@ -65,7 +65,8 @@
   <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
   <path d="M20 2v4" />
   <path d="M22 4h-4" />
-  <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" />
+  <circle cx="4" cy="20" r="2" /></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" />
   <path d="M12 2v2" />
   <path d="M12 20v2" />
   <path d="m4.93 4.93 1.41 1.41" />
@@ -446,10 +447,6 @@
     <div class="intro">
       <div class="intro__main">
         <h2 class="t-section" id="program-title">Пять дней<br><span class="italic">на Алтае</span></h2>
-          <ul class="program-notes">
-            <li><b>Всё по желанию.</b> Обязательны только встреча в аэропорту и инструктаж в первый день. На любую прогулку или занятие можно не идти и остаться на базе.</li>
-            <li><b>Что такое занятия.</b> Вечером ведущая Мария Лебедева 30–60 минут задаёт простые вопросы, а вы письменно отвечаете в блокноте. За три вечера можно выбрать, что сейчас важно в жизни — работа, отдых, отношения, — и составить небольшой план на две недели. Это не тренинг и не терапия, делиться вслух не нужно.</li>
-          </ul>
       </div>
       <div class="intro__aside">
         <svg class="icon icon--30" aria-hidden="true"><use href="#i-book-open"/></svg>
@@ -750,7 +747,10 @@
         <h2 class="t-section-sm" id="memo-modal-title">Памятка участника</h2>
         <p class="t-body muted">Всё, что пригодится до поездки и на месте. Сохраните её в телефон: на прогулках связь бывает не везде.</p>
       </div>
-      <button class="icon-btn" type="button" data-close aria-label="Закрыть"><svg class="icon icon--24" aria-hidden="true"><use href="#i-x"/></svg></button>
+      <div class="info-modal__tools">
+        <button class="icon-btn icon-btn--outline" type="button" data-memo-theme aria-pressed="false" aria-label="Тёмная тема"><svg class="icon icon--24" aria-hidden="true"><use href="#i-moon"/></svg></button>
+        <button class="icon-btn icon-btn--outline" type="button" data-close aria-label="Закрыть"><svg class="icon icon--24" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </div>
     </div>
     <div class="info-modal__body memo">
       <section class="memo__sec">

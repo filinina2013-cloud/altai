@@ -320,6 +320,28 @@
     });
   });
 
+  /* ---------- Памятка: светлая и тёмная тема (выбор запоминается в этом браузере) ---------- */
+  const memoPanel = $('#memo'), themeBtn = $('[data-memo-theme]');
+  const setMemoTheme = dark => {
+    if (!memoPanel || !themeBtn) return;
+    memoPanel.dataset.theme = dark ? 'dark' : 'light';
+    themeBtn.setAttribute('aria-pressed', String(dark));
+    themeBtn.setAttribute('aria-label', dark ? 'Светлая тема' : 'Тёмная тема');
+    $('use', themeBtn).setAttribute('href', dark ? '#i-sun' : '#i-moon');
+  };
+  let memoDark = false; try { memoDark = localStorage.getItem('altai-memo-theme') === 'dark'; } catch (e) {}
+  setMemoTheme(memoDark);
+  if (themeBtn) themeBtn.addEventListener('click', () => { memoDark = !memoDark; setMemoTheme(memoDark); try { localStorage.setItem('altai-memo-theme', memoDark ? 'dark' : 'light'); } catch (e) {} });
+
+  /* ---------- Подсказки к занятиям: наведение и Tab на ПК, нажатие на телефоне ---------- */
+  const closeTips = except => $$('.tip.is-open').forEach(t => { if (t !== except) { t.classList.remove('is-open'); $('.tip__btn', t).setAttribute('aria-expanded', 'false'); } });
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.tip__btn');
+    if (btn) { e.preventDefault(); e.stopPropagation(); const t = btn.closest('.tip'); const open = !t.classList.contains('is-open'); closeTips(t); t.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); return; }
+    if (!e.target.closest('.tip__pop')) closeTips();
+  }, true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && $('.tip.is-open, .tip:focus-within')) { closeTips(); const f = document.activeElement; if (f && f.classList.contains('tip__btn')) { f.closest('.tip').classList.add('is-hushed'); f.addEventListener('blur', () => f.closest('.tip').classList.remove('is-hushed'), { once: true }); } } });
+
   /* ---------- Подсказка у цены (ПК): закрывается по Esc, снова открывается при следующем наведении или фокусе ---------- */
   $$('.price-tip').forEach(tip => {
     const reset = () => tip.classList.remove('is-closed');
@@ -358,12 +380,12 @@
   /* ---------- Программа: карточки дней ---------- */
   const daysEl = $('[data-days]');
   daysEl.innerHTML = D.DAYS.map(d => {
-    const metas = d.card.meta.map(([text, kind, tag]) => `<li class="meta-row"><span class="t-small">${text}</span>${
+    const metas = d.card.meta.map(([text, kind, tag, tip], k) => `<li class="meta-row"><span class="meta-row__label"><span class="t-small">${text}</span>${tip ? `<span class="tip"><button class="tip__btn" type="button" aria-label="Подробнее: ${text.replace(/"/g, '&quot;')}" aria-describedby="tip-${d.n}-${k}" aria-expanded="false">${icon('info', 'icon--16')}</button><span class="tip__pop" role="tooltip" id="tip-${d.n}-${k}">${tip}</span></span>` : ''}</span>${
       kind === 'required' ? `<span class="tag tag--required">${tag}</span>` : kind === 'optional' ? `<span class="tag tag--optional">${tag}</span>` : kind === 'load' ? `<span class="tag tag--load">${tag}</span>` : icon(kind)}</li>`).join('');
     const w = d.walk ? `<div class="glass walk-load"><span class="t-caption">Нагрузка</span><span><span class="walk-load__type">${d.walk[0]}</span><span class="t-caption walk-load__details" style="display:block">${d.walk[1]}</span></span></div>` : '';
     return `<article class="day-card" id="day-${d.n}">
       <div class="day-card__content">
-        <div class="day-card__top"><p class="t-label-sm day-card__eyebrow">День 0${d.n} / 05${d.n === 1 || d.n === 5 ? ' · день дороги' : ''}</p><h3 class="t-section-sm">${d.card.title.replace('|', '<br>')}</h3></div>
+        <div class="day-card__top"><p class="t-label-sm day-card__eyebrow">День 0${d.n} / 05</p><h3 class="t-section-sm">${d.card.title.replace('|', '<br>')}</h3></div>
         <ul class="day-card__meta">${metas}</ul>
         <button class="btn btn--secondary btn--split" type="button" data-open-day="${d.n}">Расписание дня ${icon('arrow-right')}</button>
       </div>
@@ -449,7 +471,7 @@
       <div class="day-story">
         <p class="day-story__lead">${d.lead}</p>
         <div class="moments">${moments}</div>
-        <div class="food"><h4 class="food__title">На столе</h4><div class="dishes">${dishes}</div><p class="t-caption food__note">${d.foodNote}</p></div>
+        <div class="food"><h4 class="food__title">Что может быть на столе</h4><p class="t-caption food__note">${d.foodNote}</p><div class="dishes">${dishes}</div></div>
         <div class="disclosure">
           <button class="disclosure__head" type="button" aria-expanded="true" aria-controls="day-details">
             <span>${icon('backpack', 'icon--20')}Расписание по часам, нагрузка и что взять</span>
