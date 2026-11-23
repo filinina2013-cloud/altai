@@ -92,7 +92,7 @@
   <nav class="header__nav" aria-label="Разделы">
     <a href="#trip">О путешествии</a>
     <a href="#program">Программа</a>
-    <a href="#stay">Условия</a>
+    <a href="#stay">Проживание</a>
     <a href="#team">Команда</a>
     <a href="#faq">FAQ</a>
     <a href="#participants">Участникам</a>
@@ -114,7 +114,7 @@
   <nav class="mnav__list" aria-label="Разделы">
     <a href="#trip" data-menu-link>О поездке<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
     <a href="#program" data-menu-link>Программа<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
-    <a href="#stay" data-menu-link>Локации и проживание<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
+    <a href="#stay" data-menu-link>Проживание<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
     <a href="#team" data-menu-link>Команда<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
     <a href="#faq" data-menu-link>Вопросы и ответы<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
     <a href="#booking" data-menu-link>Бронирование<svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg></a>
@@ -458,24 +458,31 @@
   <div class="days" data-days></div>
 </section>
 
-<!-- 07 Локации и проживание -->
-<section class="stay section" id="stay" aria-labelledby="stay-title">
+<!-- 07 Локации: карта маршрута -->
+<section class="stay route section" id="route" aria-labelledby="stay-title">
   <div class="wrap">
     <div class="stay__route">
       <div class="stay__aside">
         <div class="stay__heading">
-          <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>О путешествии</p>
+          <p class="eyebrow t-label-sm"><svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>Локации</p>
           <h2 class="t-section" id="stay-title">Одна база,<br><span class="italic">пять точек</span></h2>
           <p class="t-body-lg muted">Живём все пять дней в одном месте — в Чемальском районе, на берегу Катуни. Из аэропорта едем по Чуйскому тракту, на все прогулки — на машине вместе с гидом.</p>
         </div>
         <ol class="legend" data-legend></ol>
       </div>
       <div class="stay__mapcol">
-        <p class="route-map__hint t-small"><svg class="icon icon--16" aria-hidden="true"><use href="#i-mouse-pointer-click"/></svg><span class="hint--fine">Карта интерактивная: нажмите на точку</span><span class="hint--touch">Нажмите на место в списке ниже — покажем фото и день программы</span></p>
       <div class="route-map" data-map>
         <img class="route-map__base" src="assets/map-base.svg" alt="" aria-hidden="true">
-        <div class="route-map__scale"><span class="route-map__bar"></span><p class="t-caption">≈ 95 км по Р-256 от аэропорта до базы</p></div>
-        <p class="t-caption route-map__note">Схема условная, не в масштабе. Точный адрес базы — в памятке после бронирования.</p>
+        <div class="map-panel glass">
+          <div class="route-map__scale"><span class="route-map__bar"></span><p class="t-caption">≈ 95 км по Р-256 от аэропорта до базы</p></div>
+          <p class="t-caption route-map__note">Схема условная, не в масштабе. Точный адрес базы — в памятке после бронирования.</p>
+          <ul class="map-key t-small" aria-label="Обозначения на карте">
+            <li><span class="map-key__line map-key__line--road" aria-hidden="true"></span><span class="key--full">Чуйский тракт — дорога из аэропорта, около 2&nbsp;часов</span><span class="key--short">Чуйский тракт</span></li>
+            <li><span class="map-key__line map-key__line--trip" aria-hidden="true"></span><span class="key--full">Выезды с базы на машине с гидом</span><span class="key--short">Выезды с гидом</span></li>
+            <li class="map-key__points"><span class="marker map-key__marker" aria-hidden="true">А</span><span class="hint--fine">Точки маршрута: нажмите, чтобы увидеть фото и день программы</span><span class="hint--touch">Точки маршрута: нажмите на место в списке ниже — покажем фото и день программы</span></li>
+          </ul>
+        </div>
+        <p class="route-map__hint glass t-small"><svg class="icon icon--16" aria-hidden="true"><use href="#i-mouse-pointer-click"/></svg><span class="hint--fine">Карта интерактивная: нажмите на точку</span><span class="hint--touch">Нажмите на место в списке ниже</span></p>
         <p class="t-label-strong route-map__north" aria-hidden="true">С ↑</p>
         <p class="t-caption route-map__label route-map__label--river" aria-hidden="true">р. Катунь</p>
         <p class="t-caption route-map__label route-map__label--road" aria-hidden="true">Р-256 Чуйский тракт</p>
@@ -483,17 +490,17 @@
         <div class="route-map__points" data-map-points></div>
         <div class="place-stack" data-place-stack aria-live="polite"></div>
       </div>
-      <ul class="map-key t-small" aria-label="Обозначения на карте">
-        <li><span class="map-key__line map-key__line--road" aria-hidden="true"></span>Чуйский тракт — дорога из аэропорта, около 2 часов</li>
-        <li><span class="map-key__line map-key__line--trip" aria-hidden="true"></span>Выезды с базы на машине с гидом</li>
-        <li><span class="marker map-key__marker" aria-hidden="true">А</span>Точки маршрута: нажмите, чтобы увидеть фото и день программы</li>
-      </ul>
       </div>
     </div>
+  </div>
+</section>
 
+<!-- 08 Проживание -->
+<section class="stay section" id="stay" aria-labelledby="accommodation-title">
+  <div class="wrap">
     <div class="accommodation" id="accommodation">
       <div class="accommodation__head">
-        <h3 class="t-section">Проживание</h3>
+        <h2 class="t-section" id="accommodation-title">Проживание</h2>
         <p class="t-body-lg muted">Деревянные домики на берегу Катуни: тёплые номера, а ещё бассейн, баня и ресторан на территории базы. Тип номера выбираете при бронировании.</p>
       </div>
       <div class="gallery on-media" data-gallery aria-roledescription="карусель" aria-label="Фото базы">
@@ -652,7 +659,7 @@
         <p class="t-label footer__label">Меню</p>
         <a href="#trip">О поездке</a>
         <a href="#program">Программа</a>
-        <a href="#stay">Локации и проживание</a>
+        <a href="#stay">Проживание</a>
         <a href="#team">Команда</a>
         <a href="#faq">Вопросы и ответы</a>
         <a href="#booking">Бронирование</a>
