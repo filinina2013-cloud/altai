@@ -1251,3 +1251,18 @@ body { overflow-x: clip; }
 .map-panel, .route-map__hint.glass { transition: opacity 200ms var(--ease), visibility 0s linear 0s; }
 .route-map.is-interacting .map-panel, .route-map.is-interacting .route-map__hint.glass { opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 200ms var(--ease), visibility 0s linear 200ms; }
 @media (prefers-reduced-motion: reduce) { .map-panel, .route-map__hint.glass { transition: none !important; } }
+
+/* Trip: eyebrow — прямо над заголовком (24), как в остальных секциях */
+.trip__col { display: flex; flex-direction: column; gap: var(--space-6); min-width: 0; }
+.trip > .wrap > .eyebrow { display: none; }
+.trip__col > .eyebrow { display: flex; margin: 0; }
+@media (max-width: 1100px) {
+  .trip__col { display: contents; }
+  .trip__col > .eyebrow { order: 0; }
+  .trip .photo-toggle { order: 1; }
+  .trip .trip__info { order: 2; }
+}
+/* FAQ: сетка 5/7 колонок, как в Trip и карте */
+@media (min-width: 1101px) { .faq__grid { grid-template-columns: minmax(0, 1fr) 755px; gap: var(--layout-gutter); } }
+/* Соседние секции с одним фоном (ПК): один отступ 96 вместо 96 + 96 */
+@media (min-width: 1101px) { #program.section, #program, #route, #stay { padding-top: 0; } }
