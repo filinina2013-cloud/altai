@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALTAI — кейс: сайт зимней поездки на Алтай</title>
+<style>
+@font-face{font-family:"Old Standard TT";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Old Standard TT";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Old Standard TT";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-cyrillic-400-italic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Old Standard TT";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Roboto Flex";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/roboto-flex-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Roboto Flex";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/roboto-flex-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{
+  --page:#f3f1ec; --raised:#fff; --subtle:#e6e3dc; --warm:#f3e6d6; --night:#0d1112;
+  --text:#242b2d; --text-2:#4f5557; --text-3:#5e6466; --on-dark:#f3f1ec; --on-dark-2:#bebbb4;
+  --accent:#29495c; --warm-text:#8f4a1c; --border:#d2cec5; --border-strong:#242b2d;
+  --serif:"Old Standard TT",Georgia,serif; --sans:"Roboto Flex",system-ui,sans-serif;
+  --margin:64px; --section:96px; --stack:48px;
+}
+@media (max-width:1100px){:root{--margin:40px;--section:64px;--stack:32px}}
+@media (max-width:760px){:root{--margin:20px;--section:48px;--stack:24px}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--text);font:400 17px/1.5 var(--sans)}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--accent)}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--margin)}
+.section{padding:var(--section) 0}
+.section + .section{padding-top:0}
+.eyebrow{display:flex;align-items:center;gap:8px;font:500 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin:0 0 24px}
+.eyebrow b{font-weight:500;color:var(--warm-text)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.02em}
+h2{font-size:48px;line-height:1.05}
+h2 em,h1 em{font-style:italic}
+h3{font-size:26px;line-height:1.15}
+p{margin:0}
+.lead{font-family:var(--serif);font-size:24px;line-height:1.35;max-width:840px}
+.muted{color:var(--text-2)}
+.small{font-size:14px;line-height:1.45;color:var(--text-3)}
+.head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:end;margin-bottom:var(--stack)}
+.head > p{max-width:640px;color:var(--text-2)}
+@media (max-width:900px){.head{grid-template-columns:1fr} h2{font-size:34px}}
+.rule{border:0;border-top:1.5px solid var(--border-strong);margin:0}
+
+/* hero */
+.hero{background:var(--night);color:var(--on-dark);position:relative;overflow:hidden}
+.hero__bg{position:absolute;inset:0;background:url(img/photo-hero.jpg) center/cover;opacity:.38}
+.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,18,.2),rgba(13,17,18,.95))}
+.hero .wrap{position:relative;padding-top:120px;padding-bottom:64px}
+.hero .eyebrow{color:var(--on-dark-2)}
+.hero h1{font-size:96px;line-height:.98;letter-spacing:-.025em;max-width:1100px}
+.hero h1 em{display:block}
+.hero__lead{margin-top:32px;max-width:720px;font-size:20px;line-height:1.45;color:var(--on-dark)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:64px;border-top:1px solid rgba(255,255,255,.2);padding-top:24px}
+.meta dt{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-2);margin-bottom:8px}
+.meta dd{margin:0;font-size:16px;line-height:1.45}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 20px;font:500 14px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
+.btn--light{background:var(--on-dark);color:var(--text)}
+.btn--ghost{border:1.5px solid rgba(255,255,255,.6);color:var(--on-dark)}
+.hero__shot{margin-top:64px;border-radius:4px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.45)}
+@media (max-width:1100px){.hero h1{font-size:72px}.meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.hero .wrap{padding-top:72px;padding-bottom:48px}.hero h1{font-size:46px}.hero__lead{font-size:17px}.meta{grid-template-columns:1fr;margin-top:40px}}
+
+/* figures */
+figure{margin:0}
+figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-3)}
+.shot{background:var(--raised);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
+.placeholder{aspect-ratio:595/842;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:repeating-linear-gradient(45deg,#e9e7e1 0 12px,#e4e1da 12px 24px);color:var(--text-3);font-size:14px;border:1px dashed var(--border)}
+.origin{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;align-items:end}
+@media (max-width:900px){.origin{grid-template-columns:1fr}}
+
+/* cards */
+.card{background:var(--raised);padding:32px;border-top:1.5px solid var(--border-strong)}
+.card h3{margin-bottom:12px}
+.card--warm{background:var(--warm)}
+.card ul{margin:16px 0 0;padding-left:20px}
+.card li+li{margin-top:6px}
+.tag{display:inline-block;font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--warm-text);margin-bottom:16px}
+.reqs{margin-top:var(--stack);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;list-style:none;padding:0;counter-reset:r}
+.reqs li{counter-increment:r;border-top:1px solid var(--border);padding-top:16px;font-size:15px;line-height:1.45}
+.reqs li::before{content:counter(r,decimal-leading-zero);display:block;font:400 28px/1 var(--serif);margin-bottom:12px;color:var(--warm-text)}
+@media (max-width:1100px){.reqs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.reqs{grid-template-columns:1fr}}
+.note{margin-top:24px;font-size:15px;color:var(--text-2);max-width:840px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:var(--stack)}
+.stat{border-top:1.5px solid var(--border-strong);padding-top:20px}
+.stat b{display:block;font:400 64px/1 var(--serif);letter-spacing:-.02em}
+.stat span{display:block;margin-top:12px;font-size:15px;color:var(--text-2)}
+@media (max-width:900px){.stats{grid-template-columns:1fr}.stat b{font-size:48px}}
+
+/* insight rows */
+.rows{border-top:1.5px solid var(--border-strong)}
+.row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,5fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--border)}
+.row__k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
+.row__src{font-size:14px;color:var(--text-3)}
+.row__arrow{color:var(--accent)}
+@media (max-width:900px){.row{grid-template-columns:1fr;gap:12px}}
+
+/* concept */
+.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.sw{aspect-ratio:1/1.1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-size:12px;line-height:1.3;border:1px solid rgba(0,0,0,.06)}
+.sw b{font-weight:500;display:block}
+@media (max-width:760px){.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.type{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+.type__card{background:var(--raised);padding:32px}
+.type__big{font-size:72px;line-height:1;margin:16px 0}
+.type__big--sans{font-family:var(--sans);font-weight:500;font-size:56px;letter-spacing:-.02em}
+@media (max-width:760px){.type{grid-template-columns:1fr}.type__big{font-size:52px}}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin-top:var(--stack)}
+.fact{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--border);font-size:15px}
+.fact dt{color:var(--text-3)} .fact dd{margin:0}
+@media (max-width:900px){.facts{grid-template-columns:1fr}.fact{grid-template-columns:1fr;gap:4px}}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:0;counter-reset:f}
+.flow li{counter-increment:f;background:var(--raised);padding:16px 12px;font-size:14px;line-height:1.35;min-height:120px;position:relative}
+.flow li::before{content:counter(f);display:block;font:400 28px/1 var(--serif);color:var(--warm-text);margin-bottom:12px}
+.flow li:last-child{background:var(--accent);color:#fff}
+.flow li:last-child::before{color:#d5e2ea}
+@media (max-width:1100px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ds table */
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);border-bottom:1.5px solid var(--border-strong)}
+td.num{font-family:var(--serif);font-size:24px;line-height:1}
+.scroll{overflow-x:auto}
+
+/* decisions */
+.dec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 24px}
+.dec figure .shot{max-height:520px;overflow:hidden}
+.dec h3{margin:20px 0 8px}
+@media (max-width:900px){.dec{grid-template-columns:1fr}}
+
+/* chart */
+.chart{background:var(--raised);padding:32px}
+.chart svg{width:100%;height:auto;display:block}
+.findings{list-style:none;padding:0;margin:0}
+.findings li{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:16px}
+.bar{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)}
+.bar i{display:block;height:10px;background:var(--accent)}
+.bar s{display:block;height:10px;background:var(--subtle);text-decoration:none}
+@media (max-width:760px){.findings li{grid-template-columns:1fr;gap:8px}}
+
+/* stories */
+.story{padding:var(--stack) 0;border-top:1.5px solid var(--border-strong)}
+.story__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;margin-bottom:32px}
+.story__num{font:400 18px/1 var(--serif);color:var(--warm-text);margin-bottom:12px}
+.story__obs{font-size:16px;color:var(--text-2)}
+.story__obs b{color:var(--text);font-weight:500}
+@media (max-width:900px){.story__head{grid-template-columns:1fr}}
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.ba + .ba{margin-top:24px}
+.ba__label{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+.ba__label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--text-3)}
+.ba__label--new::before{background:var(--accent)}
+.ba--narrow{grid-template-columns:repeat(2,minmax(0,360px));justify-content:start}
+.ba--rooms{grid-template-columns:repeat(2,minmax(0,520px))}
+.memo .memo__grid--stack{grid-template-columns:1fr}
+.memo .memo__grid--stack .memo__list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px}
+@media (max-width:900px){.memo__grid--stack .memo__list{grid-template-columns:1fr}}
+.memo .memo__grid--stack .memo__shots{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px}
+@media (max-width:760px){.memo__grid--stack .memo__shots{grid-template-columns:1fr}}
+@media (max-width:760px){.ba{grid-template-columns:1fr}.ba--narrow{grid-template-columns:minmax(0,1fr)}}
+.status{margin-top:24px;padding:16px 20px;background:var(--subtle);font-size:15px;color:var(--text-2)}
+
+/* memo */
+.memo{background:var(--warm)}
+.memo__grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start}
+.memo__list{list-style:none;padding:0;margin:0}
+.memo__list li{padding:20px 0;border-top:1px solid rgba(36,43,45,.18)}
+.memo__list b{display:block;font:400 22px/1.2 var(--serif);margin-bottom:6px}
+.memo__shots{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px;align-items:start}
+@media (max-width:900px){.memo__grid{grid-template-columns:1fr}}
+
+/* adaptive */
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
+.phone{border-radius:24px;overflow:hidden;border:6px solid #1f2527;background:#1f2527}
+@media (max-width:760px){.phones{grid-template-columns:1fr 1fr}}
+
+.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.results{grid-template-columns:1fr}}
+blockquote{margin:0;padding:32px;background:var(--night);color:var(--on-dark);font:italic 400 28px/1.3 var(--serif)}
+blockquote small{display:block;margin-top:16px;font:400 14px/1.4 var(--sans);color:var(--on-dark-2)}
+
+.foot{background:var(--night);color:var(--on-dark-2);padding:48px 0;font-size:14px}
+.foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.foot a{color:var(--on-dark)}
+.nowrap{white-space:nowrap}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">Кейс · UX/UI · 2026</p>
+    <h1>ALTAI — сайт зимней поездки <em>от&nbsp;брифа до&nbsp;теста</em></h1>
+    <p class="hero__lead">Сделала адаптивный сайт поездки на&nbsp;Алтай с&nbsp;двумя сценариями: выбрать поездку и&nbsp;оставить заявку, а&nbsp;после записи&nbsp;— подготовиться к&nbsp;выезду. Проверила его на&nbsp;шести людях и&nbsp;доработала по&nbsp;результатам.</p>
+    <dl class="meta">
+      <div><dt>Роль</dt><dd>UX/UI-дизайнер: исследование, сценарии, дизайн-система, макеты, юзабилити-тест, вёрстка</dd></div>
+      <div><dt>Тип</dt><dd>Самостоятельный UX/UI-концепт на&nbsp;основе коммерческого проекта</dd></div>
+      <div><dt>Инструменты</dt><dd>Figma, HTML, CSS, JavaScript, GitHub Pages</dd></div>
+      <div><dt>Тест</dt><dd>6&nbsp;участников, 7&nbsp;заданий, 24&nbsp;уникальные проблемы</dd></div>
+    </dl>
+    <div class="btns">
+      <a class="btn btn--light" href="https://filinina2013-cloud.github.io/altai/" target="_blank" rel="noopener">Открыть сайт ↗</a>
+      <a class="btn btn--ghost" href="https://www.figma.com/design/8CO9NoGJ4X73LY2wKcgA6Y" target="_blank" rel="noopener">Макеты в&nbsp;Figma ↗</a>
+    </div>
+    <figure class="hero__shot"><img src="img/new-hero.jpg" width="1440" height="900" alt="Первый экран сайта ALTAI: видео гор, заголовок «Холод снаружи. Тепло внутри», даты и цена"></figure>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="origin">
+  <div class="wrap">
+    <p class="eyebrow"><b>01</b> С&nbsp;чего начинался проект</p>
+    <div class="head"><h2>От&nbsp;гайда <em>к&nbsp;сайту</em></h2>
+      <p>В&nbsp;2024&nbsp;году я&nbsp;разработала информационный гайд для&nbsp;участников поездки на&nbsp;Алтай по&nbsp;коммерческому заказу. В&nbsp;2026&nbsp;году самостоятельно пересмотрела концепцию путешествия и&nbsp;создала адаптивный сайт с&nbsp;двумя сценариями&nbsp;— выбор поездки и&nbsp;подготовка к&nbsp;ней после записи. Разработала новую программу, интерфейс и&nbsp;работающую веб-версию, которую проверила с&nbsp;участниками юзабилити-теста.</p>
+    </div>
+    <div class="origin">
+      <figure><div class="placeholder">Страница гайда 2024<br>(экспорт из&nbsp;Figma, «99&nbsp;— Archive»)</div><figcaption>2024 · гайд в&nbsp;PDF для&nbsp;тех, кто уже едет</figcaption></figure>
+      <figure><div class="shot"><img src="img/new-hero.jpg" width="1440" height="900" alt="Первый экран нового сайта" loading="lazy"></div><figcaption>2026 · сайт: выбрать поездку, записаться, подготовиться</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="task">
+  <div class="wrap">
+    <p class="eyebrow"><b>02</b> Задача</p>
+    <div class="head"><h2>Два человека <em>на&nbsp;одном сайте</em></h2>
+      <p>Тур: 5&nbsp;дней и&nbsp;4&nbsp;ночи в&nbsp;январе, группа 8–10&nbsp;человек, одна база отдыха. Днём короткие прогулки до&nbsp;90&nbsp;минут, вечером печка, баня и&nbsp;бассейн.</p>
+    </div>
+    <div class="grid2">
+      <div class="card"><span class="tag">До&nbsp;заявки</span><h3>Посетитель</h3><p class="muted">Понять формат, нагрузку и&nbsp;стоимость поездки и&nbsp;оставить заявку.</p></div>
+      <div class="card card--warm"><span class="tag">После записи</span><h3>Участник</h3><p class="muted">Быстро найти расписание, место встречи, список вещей и&nbsp;контакты команды.</p></div>
+    </div>
+    <ol class="reqs">
+      <li>Сразу показать даты, цену и&nbsp;что входит в&nbsp;стоимость</li>
+      <li>Объяснить программу по&nbsp;дням и&nbsp;нагрузку</li>
+      <li>Показать, где жить и&nbsp;кто ведёт группу</li>
+      <li>Дать оставить заявку с&nbsp;правильной ценой: один, вдвоём, отдельный номер</li>
+      <li>Дать прямой доступ к&nbsp;программе и&nbsp;памятке: из&nbsp;первого экрана и&nbsp;из&nbsp;шапки</li>
+    </ol>
+    <p class="note">Новую версию я&nbsp;делала по&nbsp;своей инициативе, поэтому часть данных условная. Для&nbsp;концепта предусмотрены страницы условий и&nbsp;документов.</p>
+  </div>
+</section>
+
+<section class="section" id="research">
+  <div class="wrap">
+    <p class="eyebrow"><b>03</b> Исследование</p>
+    <div class="head"><h2>Что важно <em>перед поездкой</em></h2>
+      <p>Потребности людей я&nbsp;взяла из&nbsp;интервью и&nbsp;разбора отзывов, а&nbsp;анализ аналогов показал, как другие туры отвечают на&nbsp;те&nbsp;же вопросы.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>5</b><span>качественных интервью: трое съездили в&nbsp;групповые поездки, двое не&nbsp;поехали</span></div>
+      <div class="stat"><b>28</b><span>отзывов о&nbsp;групповых и&nbsp;авторских турах, считаю отдельно от&nbsp;интервью</span></div>
+      <div class="stat"><b>5</b><span>аналогов: Altay Chill, SKEMTOUR, «Алтайское пробуждение», ретрит «Осознанность», PORA</span></div>
+    </div>
+    <div class="rows">
+      <div class="row">
+        <div><p class="row__k">Наблюдение</p><p>Человек хочет заранее понять ритм дня: переезды утомляют, свободного времени бывает слишком мало или много, важно, можно&nbsp;ли пропустить активность.</p></div>
+        <div><p class="row__k">Основание</p><p class="row__src">P01–P05, отзывы R09–R11, R16–R18, R24</p></div>
+        <div><p class="row__k row__arrow">→ Решение</p><p>В&nbsp;программе по&nbsp;дням&nbsp;— время в&nbsp;пути, длительность прогулки, свободное время и&nbsp;пометка «по&nbsp;желанию».</p></div>
+      </div>
+      <div class="row">
+        <div><p class="row__k">Наблюдение</p><p>Перед записью нужна конкретика по&nbsp;деньгам и&nbsp;быту: общая стоимость, доплаты, размещение, отмена.</p></div>
+        <div><p class="row__k">Основание</p><p class="row__src">P01–P05, отзывы R18–R20, R26</p></div>
+        <div><p class="row__k row__arrow">→ Решение</p><p>Блок «Что входит и&nbsp;не&nbsp;входит», варианты номеров, пересчёт цены в&nbsp;форме, условия бронирования до&nbsp;заявки.</p></div>
+      </div>
+      <div class="row">
+        <div><p class="row__k">Наблюдение</p><p>После записи сведения о&nbsp;поездке собирают вручную: скриншот встречи, заметка с&nbsp;контактами и&nbsp;трансфером, PDF.</p></div>
+        <div><p class="row__k">Основание</p><p class="row__src">P02, P05</p></div>
+        <div><p class="row__k row__arrow">→ Решение</p><p>Прямой вход «Участникам» в&nbsp;памятку: встреча, адрес, вещи, контакты и&nbsp;сохранение в&nbsp;PDF.</p></div>
+      </div>
+    </div>
+    <p class="note">Границы: выборка маленькая и&nbsp;из&nbsp;знакомых контекстов, поездки были не&nbsp;зимние. Третье наблюдение подтверждено двумя интервью: это основание для&nbsp;памятки, но&nbsp;не&nbsp;для&nbsp;личного кабинета. Спрос на&nbsp;занятия по&nbsp;личным целям интервью не&nbsp;подтвердили&nbsp;— это идея концепта, и&nbsp;тест показал, что её нужно объяснять проще.</p>
+  </div>
+</section>
+
+<section class="section" id="concept">
+  <div class="wrap">
+    <p class="eyebrow"><b>04</b> Концепция</p>
+    <div class="head"><h2>Холод снаружи. <em>Тепло внутри</em></h2>
+      <p>Визуал построен на&nbsp;контрасте холодной улицы и&nbsp;тёплого дома: холодные тона для&nbsp;природы, тёплые&nbsp;— для&nbsp;проживания и&nbsp;вечеров, синий&nbsp;— для&nbsp;кнопок и&nbsp;ссылок.</p>
+    </div>
+    <div class="swatches">
+      <div class="sw" style="background:#0d1112;color:#f3f1ec"><b>Ночь</b>#0D1112</div>
+      <div class="sw" style="background:#242b2d;color:#f3f1ec"><b>Текст</b>#242B2D</div>
+      <div class="sw" style="background:#f3f1ec"><b>Страница</b>#F3F1EC</div>
+      <div class="sw" style="background:#f3e6d6"><b>Тепло</b>#F3E6D6</div>
+      <div class="sw" style="background:#8f4a1c;color:#fff"><b>Лиственница</b>#8F4A1C</div>
+      <div class="sw" style="background:#29495c;color:#fff"><b>Акцент</b>#29495C</div>
+    </div>
+    <div class="type">
+      <div class="type__card"><p class="small">Заголовки · Old Standard TT</p><p class="type__big" style="font-family:var(--serif)">Зимний <em>Алтай</em></p><p class="muted">Спокойные и&nbsp;тёплые заголовки, курсив&nbsp;— для&nbsp;второй строки.</p></div>
+      <div class="type__card"><p class="small">Текст и&nbsp;интерфейс · Roboto Flex</p><p class="type__big type__big--sans">72&nbsp;000&nbsp;₽</p><p class="muted">Цифры, цены и&nbsp;даты читаются легко.</p></div>
+    </div>
+    <p class="note">Визуальные референсы: Lorunser, Heure Bleue, Vita Travel, Flyward, Travel Sensations и&nbsp;PORA. Из&nbsp;них я&nbsp;взяла спокойную подачу, крупные фото и&nbsp;видео без&nbsp;звука в&nbsp;первом экране.</p>
+  </div>
+</section>
+
+<section class="section" id="structure">
+  <div class="wrap">
+    <p class="eyebrow"><b>05</b> Структура</p>
+    <div class="head"><h2>Порядок <em>вопросов</em></h2>
+      <p>Секции идут в&nbsp;том порядке, в&nbsp;каком человек задаёт вопросы: сначала «что это и&nbsp;сколько стоит», в&nbsp;конце «как записаться». В&nbsp;первой версии форма стояла в&nbsp;первом экране, в&nbsp;третьей ушла в&nbsp;конец: до&nbsp;неё человек ещё не&nbsp;знает программу и&nbsp;условия.</p>
+    </div>
+    <ol class="flow">
+      <li>Первый экран: даты, цена, программа</li><li>О&nbsp;нас</li><li>О&nbsp;поездке и&nbsp;стоимость</li><li>Программа по&nbsp;дням</li><li>Локации на&nbsp;карте</li><li>Проживание</li><li>Команда</li><li>Вопросы и&nbsp;ответы</li><li>Заявка с&nbsp;пересчётом цены</li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="ds">
+  <div class="wrap">
+    <p class="eyebrow"><b>06</b> Дизайн-система</p>
+    <div class="head"><h2>Одни правила <em>для&nbsp;трёх экранов</em></h2>
+      <p>Цвета, типографика и&nbsp;отступы описаны токенами и&nbsp;используются в&nbsp;макетах и&nbsp;коде. Это помогало последовательно применять изменения к&nbsp;компонентам и&nbsp;адаптивам.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>357</b><span>переменных в&nbsp;Figma в&nbsp;четырёх коллекциях: базовые значения, смысловые отступы, цвета, компоненты</span></div>
+      <div class="stat"><b>2</b><span>темы: светлая и&nbsp;тёмная</span></div>
+      <div class="stat"><b>3</b><span>ширины экрана: ПК, планшет, телефон&nbsp;— у&nbsp;каждой секции свой вариант</span></div>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>Отступ, px</th><th>ПК</th><th>Планшет</th><th>Телефон</th></tr></thead>
+      <tbody>
+        <tr><td>Между секциями</td><td class="num">96</td><td class="num">64</td><td class="num">48</td></tr>
+        <tr><td>Между блоками внутри секции</td><td class="num">48</td><td class="num">32</td><td class="num">24</td></tr>
+        <tr><td>Поля страницы</td><td class="num">64</td><td class="num">40</td><td class="num">20</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Значения токенов выгружены в&nbsp;файл для&nbsp;Tokens Studio и&nbsp;повторены в&nbsp;CSS-переменных сайта; сверяю их вручную.</p>
+  </div>
+</section>
+
+<section class="section" id="decisions">
+  <div class="wrap">
+    <p class="eyebrow"><b>07</b> Ключевые решения</p>
+    <div class="head"><h2>Ответы <em>на&nbsp;главные вопросы</em></h2><p>Четыре решения, которые отвечают на&nbsp;то, что человек хочет знать до&nbsp;заявки.</p></div>
+    <div class="dec">
+      <figure><div class="shot"><img src="img/new-form2.jpg" alt="Форма заявки: выбрано 2 человека, итого 144 000 ₽" loading="lazy"></div>
+        <h3>Форма с&nbsp;пересчётом цены</h3><p class="muted">Цена зависит от&nbsp;того, едет человек один или вдвоём и&nbsp;нужен&nbsp;ли отдельный номер. Итог пересчитывается сразу, поэтому сумма видна до&nbsp;отправки.</p></figure>
+      <figure><div class="shot"><img src="img/new-map.jpg" alt="Карта маршрута с обозначениями и подсказкой прямо на карте" loading="lazy"></div>
+        <h3>Карта маршрута</h3><p class="muted">Точки открывают карточки мест. Обозначения и&nbsp;подсказка лежат прямо на&nbsp;карте и&nbsp;скрываются, пока человек с&nbsp;ней работает.</p></figure>
+      <figure><div class="shot"><img src="img/new-day2-c.jpg" alt="Окно дня: утро, день, вечер, сложность прогулки и пометка «По желанию»" loading="lazy"></div>
+        <h3>Программа по&nbsp;дням</h3><p class="muted">У&nbsp;каждого дня видно, что для&nbsp;всех, а&nbsp;что по&nbsp;желанию, сколько идти пешком и&nbsp;когда свободное время.</p></figure>
+      <figure><div class="shot"><img src="img/new-stay-c.jpg" alt="Карточки размещения и что есть на базе" loading="lazy"></div>
+        <h3>Проживание отдельно от&nbsp;карты</h3><p class="muted">Раньше карта и&nbsp;условия проживания были в&nbsp;одной секции. Теперь это две секции, а&nbsp;пункт «Проживание» ведёт сразу к&nbsp;номерам.</p></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="test">
+  <div class="wrap">
+    <p class="eyebrow"><b>08</b> Юзабилити-тест</p>
+    <div class="head"><h2>Шесть человек, <em>семь заданий</em></h2>
+      <p>13–14&nbsp;ноября 2026. Участники 19–26&nbsp;лет, с&nbsp;телефона и&nbsp;с&nbsp;ПК. Задания: понять формат, найти цену вдвоём и&nbsp;что не&nbsp;входит, третий день, номер на&nbsp;одного, фото бани, заявку на&nbsp;троих, питание при&nbsp;аллергии.</p>
+    </div>
+    <div class="chart">
+      <svg viewBox="0 0 760 400" role="img" aria-label="Оценка выполнения по заданиям: хуже всего задание 2, цена вдвоём и что не входит, 2,5 из 7" font-family="Roboto Flex, system-ui, sans-serif" font-size="13">
+        <text x="0" y="22" font-size="17" font-weight="600" fill="#242b2d">Сложнее всего — цена вдвоём и что не входит в стоимость</text>
+        <text x="0" y="46" fill="#5e6466">Оценка выполнения по записям, ставила я · 1 — не справился, 7 — сразу без ошибок</text>
+        <g id="bars"></g>
+      </svg>
+    </div>
+    <p class="note">Как читать: среднее по&nbsp;шести участникам. 7&nbsp;— сразу и&nbsp;без ошибок, 5&nbsp;— сам, но&nbsp;искал, 3&nbsp;— после подсказки, 1&nbsp;— не&nbsp;справился. Отдельно трое последних участников сами оценили лёгкость заданий по&nbsp;шкале SEQ: 6,2, 7,0 и&nbsp;6,0. Это другой показатель, поэтому с&nbsp;оценкой выполнения я&nbsp;его не&nbsp;смешиваю.</p>
+
+    <h3 style="margin:var(--stack) 0 16px">Главные проблемы</h3>
+    <ul class="findings">
+      <li>Не&nbsp;находят, что не&nbsp;входит в&nbsp;цену<span class="bar"><i style="width:120px"></i>6&nbsp;из&nbsp;6</span></li>
+      <li>«+12&nbsp;000&nbsp;₽» читают как доплату за&nbsp;второго, не&nbsp;знают цену за&nbsp;двоих<span class="bar"><i style="width:100px"></i><s style="width:20px"></s>5&nbsp;из&nbsp;6</span></li>
+      <li>Непонятно, что такое «занятия», «Первый шаг», «Письмо себе»<span class="bar"><i style="width:80px"></i><s style="width:40px"></s>4&nbsp;из&nbsp;6</span></li>
+      <li>Не&nbsp;указана организация, нет контактов организатора<span class="bar"><i style="width:80px"></i><s style="width:40px"></s>4&nbsp;из&nbsp;6</span></li>
+      <li>Вопрос про питание не&nbsp;находят без&nbsp;подсказки<span class="bar"><i style="width:60px"></i><s style="width:60px"></s>3&nbsp;из&nbsp;6</span></li>
+      <li>Ошибки формы не&nbsp;объясняют, что исправить<span class="bar"><i style="width:60px"></i><s style="width:60px"></s>3&nbsp;из&nbsp;6</span></li>
+      <li>Путают длительность поездки<span class="bar"><i style="width:40px"></i><s style="width:80px"></s>2&nbsp;из&nbsp;6</span></li>
+    </ul>
+    <p class="note">Всего 24&nbsp;уникальные проблемы: одинаковые наблюдения разных участников я&nbsp;объединяла в&nbsp;одну строку и&nbsp;записывала, у&nbsp;скольких она встретилась.</p>
+  </div>
+</section>
+
+<section class="section" id="fixes">
+  <div class="wrap">
+    <p class="eyebrow"><b>09</b> Что исправила после теста</p>
+    <div class="head"><h2>Три истории <em>«было&nbsp;— стало»</em></h2>
+      <p>Все изменения внесены в&nbsp;макеты для&nbsp;ПК, планшета и&nbsp;телефона и&nbsp;на&nbsp;сайт; старые версии сохранены рядом для&nbsp;сравнения.</p>
+    </div>
+
+    <article class="story">
+      <div class="story__head">
+        <div><p class="story__num">01</p><h3>Стоимость</h3></div>
+        <p class="story__obs"><b>Наблюдение.</b> Что не&nbsp;входит в&nbsp;цену, сами не&nbsp;нашли 6&nbsp;из&nbsp;6. «+12&nbsp;000&nbsp;₽» читали как доплату за&nbsp;второго человека&nbsp;— 5&nbsp;из&nbsp;6. <b>Стало:</b> у&nbsp;цены подписано «за&nbsp;человека» и&nbsp;«без авиабилетов, страховки и&nbsp;трансфера», в&nbsp;карточках размещения&nbsp;— полные суммы вместо доплаты.</p>
+      </div>
+      <div class="ba">
+        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-tripinfo.jpg" alt="Было: «от 72 000 ₽» без пояснений" loading="lazy"></div></figure>
+        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-tripinfo.jpg" alt="Стало: «72 000 ₽ за человека, без авиабилетов, страховки и трансфера»" loading="lazy"></div></figure>
+      </div>
+      <div class="ba ba--narrow ba--rooms">
+        <figure><div class="shot"><img src="img/old-room1.jpg" alt="Было: «без доплаты или +12 000 ₽»" loading="lazy"></div><figcaption>Было: «без доплаты или +12&nbsp;000&nbsp;₽»</figcaption></figure>
+        <figure><div class="shot"><img src="img/new-room1.jpg" alt="Стало: «от 72 000 ₽», «номер только для вас — 84 000 ₽»" loading="lazy"></div><figcaption>Стало: «от&nbsp;72&nbsp;000&nbsp;₽» и&nbsp;«Номер только для вас&nbsp;— 84&nbsp;000&nbsp;₽»</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story__head">
+        <div><p class="story__num">02</p><h3>Понятность программы</h3></div>
+        <p class="story__obs"><b>Наблюдение.</b> Непонятно, что такое «занятия», «Первый шаг», «Письмо себе»&nbsp;— 4&nbsp;из&nbsp;6. Все выезды считали обязательными&nbsp;— 2&nbsp;из&nbsp;6. <b>Стало:</b> занятия названы по&nbsp;содержанию и&nbsp;объяснены, у&nbsp;прогулки&nbsp;— шкала сложности.</p>
+      </div>
+      <div class="ba">
+        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-day2-c.jpg" alt="Было: «Занятие „Что для меня важно“»" loading="lazy"></div></figure>
+        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-day2-c.jpg" alt="Стало: «Занятие с Марией: о чём хочется подумать» и сложность прогулки «лёгкая, 2 из 5»" loading="lazy"></div></figure>
+      </div>
+    </article>
+
+    <article class="story">
+      <div class="story__head">
+        <div><p class="story__num">03</p><h3>Быстрый доступ к&nbsp;информации</h3></div>
+        <p class="story__obs"><b>Наблюдение.</b> Путали длительность поездки&nbsp;— 2&nbsp;из&nbsp;6. Ответ про питание без&nbsp;подсказки не&nbsp;нашли&nbsp;— 3&nbsp;из&nbsp;6. <b>Стало:</b> даты и&nbsp;«5&nbsp;дней / 4&nbsp;ночи» в&nbsp;первом экране, вопрос о&nbsp;питании первым в&nbsp;списке, «Участникам» в&nbsp;шапке открывает памятку.</p>
+      </div>
+      <div class="ba ba--narrow">
+        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-m-hero.jpg" alt="Было: первый экран телефона без дат и длительности" loading="lazy"></div></figure>
+        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-m-hero.jpg" alt="Стало: «15–19 января 2027 · 5 дней / 4 ночи · от 72 000 ₽»" loading="lazy"></div></figure>
+      </div>
+      <div class="ba">
+        <figure><div class="shot"><img src="img/old-faq-c.jpg" alt="Было: вопрос о питании в конце списка" loading="lazy"></div><figcaption>Было: вопроса о&nbsp;питании нет среди первых</figcaption></figure>
+        <figure><div class="shot"><img src="img/new-faq-c.jpg" alt="Стало: «Как кормят?» первым вопросом" loading="lazy"></div><figcaption>Стало: «Как кормят? Учитываете ли ограничения в&nbsp;еде?»&nbsp;— первый</figcaption></figure>
+      </div>
+    </article>
+
+    <h3 style="margin:var(--stack) 0 16px">Остальные правки</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Проблема</th><th>У&nbsp;скольких</th><th>Что сделала</th></tr></thead>
+      <tbody>
+        <tr><td>Нет сведений об&nbsp;организаторе и&nbsp;контактов</td><td class="nowrap">4&nbsp;из&nbsp;6</td><td>В&nbsp;футере&nbsp;— реквизиты, явно обозначенные как условные данные учебного проекта. Контакты координатора и&nbsp;гида&nbsp;— в&nbsp;блоке заявки и&nbsp;других разделах</td></tr>
+        <tr><td>Ошибки формы не&nbsp;объясняют, что исправить</td><td class="nowrap">3&nbsp;из&nbsp;6</td><td>У&nbsp;полей подсказки и&nbsp;текст ошибки, который говорит, что исправить</td></tr>
+        <tr><td>Карта на&nbsp;телефоне непонятна</td><td class="nowrap">2&nbsp;из&nbsp;6</td><td>Условные обозначения и&nbsp;подсказка&nbsp;— прямо на&nbsp;карте</td></tr>
+      </tbody>
+    </table></div>
+    <p class="status">Статус проверки: повторного теста с&nbsp;замерами не&nbsp;было. Участники первого теста посмотрели новую версию и&nbsp;сказали, что стало понятнее.</p>
+  </div>
+</section>
+
+<section class="section memo" id="memo">
+  <div class="wrap" style="padding-top:var(--section)">
+    <p class="eyebrow"><b>10</b> Памятка участника</p>
+    <div class="memo__grid memo__grid--stack">
+      <div>
+        <h2 style="margin-bottom:24px">Во&nbsp;что вырос <em>гайд 2024&nbsp;года</em></h2>
+        <p class="lead" style="font-size:20px;margin-bottom:24px">Одно место со&nbsp;всем, что нужно уже записавшемуся участнику.</p>
+        <ul class="memo__list">
+          <li><b>Зачем</b>В&nbsp;интервью P02 и&nbsp;P05 люди собирали сведения о&nbsp;поездке вручную: скриншоты, заметки, PDF. В&nbsp;тесте участник искал памятку после заявки: когда, куда, что взять.</li>
+          <li><b>Что внутри</b>Встреча и&nbsp;дорога, адрес базы, что взять, правила на&nbsp;базе, безопасность, контакты координатора и&nbsp;гида.</li>
+          <li><b>Как попасть</b>Пункт «Участникам» в&nbsp;шапке, кнопка в&nbsp;меню телефона, ссылки из&nbsp;окна дня и&nbsp;подписи к&nbsp;карте.</li>
+          <li><b>Как сохранить</b>Кнопка «Сохранить в&nbsp;PDF»: в&nbsp;файл попадает только памятка, чтобы её можно было открыть без&nbsp;связи на&nbsp;прогулке.</li>
+        </ul>
+      </div>
+      <div class="memo__shots">
+        <figure><div class="shot"><img src="img/new-memo-top.jpg" alt="Памятка участника на сайте: встреча и дорога, что взять" loading="lazy"></div><figcaption>На&nbsp;сайте</figcaption></figure>
+        <figure><div class="shot"><img src="img/memo-pdf-1.jpg" alt="Памятка, сохранённая в PDF" loading="lazy"></div><figcaption>В&nbsp;PDF</figcaption></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="adaptive" style="padding-top:var(--section)">
+  <div class="wrap">
+    <p class="eyebrow"><b>11</b> Адаптив</p>
+    <div class="head"><h2>То&nbsp;же содержание, <em>другая подача</em></h2>
+      <p>На&nbsp;телефоне в&nbsp;первом экране одна кнопка «Программа по&nbsp;дням», памятка в&nbsp;меню. Номера&nbsp;— белые карточки с&nbsp;тем&nbsp;же содержанием, что на&nbsp;ПК. На&nbsp;планшете в&nbsp;«О&nbsp;нас» фото слева, текст справа.</p>
+    </div>
+    <div class="phones">
+      <figure><div class="phone"><img src="img/new-m-hero.jpg" alt="Телефон: первый экран" loading="lazy"></div><figcaption>Телефон · первый экран</figcaption></figure>
+      <figure><div class="phone"><img src="img/new-m-rooms.jpg" alt="Телефон: карточки номеров" loading="lazy"></div><figcaption>Телефон · номера</figcaption></figure>
+      <figure><div class="shot"><img src="img/new-t-about.jpg" alt="Планшет: секция «О нас»" loading="lazy"></div><figcaption>Планшет · «О&nbsp;нас»</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="wrap">
+    <p class="eyebrow"><b>12</b> Итоги</p>
+    <div class="head"><h2>Что получилось</h2>
+      <p>Сайт сверстан по&nbsp;макетам и&nbsp;опубликован на&nbsp;GitHub Pages. После правок я&nbsp;показала новую версию участникам теста. Они подтвердили, что стало понятнее. Повторного теста с&nbsp;замерами не&nbsp;было.</p>
+    </div>
+    <div class="results">
+      <div class="card"><h3>Что вынесла</h3><ul>
+        <li>Тест нашёл проблемы в&nbsp;самом важном месте&nbsp;— в&nbsp;цене. Без&nbsp;него я&nbsp;бы считала эту часть готовой.</li>
+        <li>Токены для&nbsp;цвета, типографики и&nbsp;отступов помогали вносить правки после теста последовательно&nbsp;— в&nbsp;компоненты и&nbsp;во&nbsp;все три адаптива.</li>
+      </ul></div>
+      <div class="card card--warm"><h3>Что сделала&nbsp;бы иначе</h3><p class="muted">Проверила&nbsp;бы блок цены на&nbsp;людях ещё на&nbsp;вайрфреймах и&nbsp;заложила второй раунд теста с&nbsp;теми&nbsp;же заданиями, чтобы сравнить цифры.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>ALTAI · кейс · 2026</span>
+    <span><a href="https://filinina2013-cloud.github.io/altai/" target="_blank" rel="noopener">Сайт</a> · <a href="https://www.figma.com/design/8CO9NoGJ4X73LY2wKcgA6Y" target="_blank" rel="noopener">Figma</a></span>
+    <span>design by Filinina</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rows=[["1. Что это за путешествие",4.3],["2. Цена вдвоём и что не входит",2.5],["3. Третий день и нагрузка",5.3],["4. Один в номере",6.2],["5. Фото бани",6.2],["6. Заявка на троих",5.5],["7. Аллергия и питание",4.3]];
+  var g=document.getElementById('bars'), ns='http://www.w3.org/2000/svg', left=280, w=420, y0=80, rh=40;
+  var low=Math.min.apply(null,rows.map(function(r){return r[1]}));
+  function el(t,a,txt){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;g.appendChild(e);return e}
+  rows.forEach(function(r,i){
+    var y=y0+i*rh, hi=r[1]===low, v=r[1].toFixed(1).replace('.',',');
+    el('text',{x:left-14,y:y+19,'text-anchor':'end',fill:hi?'#242b2d':'#4f5557','font-weight':hi?'600':'400'},r[0]);
+    var b=el('rect',{x:left,y:y+4,width:r[1]/7*w,height:22,fill:hi?'#29495c':'#c9c6bf'}); var t=document.createElementNS(ns,'title'); t.textContent=r[0]+': '+v+' из 7'; b.appendChild(t);
+    el('text',{x:left+r[1]/7*w+8,y:y+20,fill:'#242b2d','font-weight':hi?'600':'400'},v);
+  });
+  el('line',{x1:left,x2:left,y1:y0,y2:y0+rows.length*rh,stroke:'#8e9496'});
+  el('line',{x1:left+w,x2:left+w,y1:y0,y2:y0+rows.length*rh,stroke:'#b9b4aa','stroke-dasharray':'3 3'});
+  el('text',{x:left+w,y:y0+rows.length*rh+18,'text-anchor':'middle',fill:'#5e6466'},'7 — максимум');
+})();
+</script>
+</body>
+</html>
