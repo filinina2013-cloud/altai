@@ -370,6 +370,165 @@ em{font-style:italic}
 .close .ctrl{margin-top:48px;flex-wrap:wrap}
 .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:32px var(--m);font-size:13px;color:var(--on-3);border-top:1px solid rgba(243,241,236,.12)}
 
+
+/* ===== v3 additions ===== */
+.ghost{font:400 clamp(160px,30vw,460px)/.8 var(--serif);letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1px rgba(243,241,236,.22);white-space:nowrap;pointer-events:none;user-select:none;margin:0 0 -.12em -.04em}
+.light .ghost,.warm .ghost{-webkit-text-stroke-color:rgba(36,43,45,.16)}
+.ghost-band{overflow:hidden;padding-top:40px}
+/* process map */
+.process{position:relative;margin-top:64px;border-radius:4px;overflow:hidden;background:#0a0d0e}
+.process svg{display:block;width:100%;height:auto}
+.process .node text{font:500 13px var(--sans);fill:var(--on-2);paint-order:stroke;stroke:#0a0d0e;stroke-width:6px;stroke-linejoin:round}
+.process .node .t{font:400 22px var(--serif);fill:var(--on)}
+.process .node .d{font:500 12px var(--sans);fill:var(--buck);letter-spacing:.06em}
+.process .node circle{transition:r .5s var(--ease),fill .5s}
+.process .node.on circle.c{fill:var(--buck)}
+.proc-list{display:none}
+@media (max-width:760px){.process{display:none}.proc-list{display:block;list-style:none;padding:0;margin:48px 0 0;border-left:1px dashed var(--buck)}.proc-list li{padding:0 0 28px 24px;position:relative}.proc-list li::before{content:"";position:absolute;left:-6px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--buck)}.proc-list b{display:block;font:400 22px/1.2 var(--serif)}.proc-list span{font-size:14px;color:var(--on-2)}}
+/* segmented stat */
+.seg{display:flex;gap:4px;margin:14px 0 4px}
+.seg i{flex:1;height:10px;background:rgba(36,43,45,.12)}
+.seg i.f{background:var(--spruce)}
+.dark .seg i{background:rgba(243,241,236,.14)}.dark .seg i.f{background:var(--buck)}
+.seg i{transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease)}
+.in .seg i,.seg.in i{transform:none}
+.seg i:nth-child(2){transition-delay:.06s}.seg i:nth-child(3){transition-delay:.12s}.seg i:nth-child(4){transition-delay:.18s}.seg i:nth-child(5){transition-delay:.24s}.seg i:nth-child(6){transition-delay:.3s}
+/* UX research blocks */
+.ux-title{font:400 clamp(32px,3vw,48px)/1.05 var(--serif);margin:120px 0 32px}
+.jtbd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
+.jt{border-top:1px solid rgba(243,241,236,.2);padding-top:20px;display:flex;flex-direction:column;gap:12px}
+.jt b{font:italic 400 20px/1 var(--serif);color:var(--buck)}
+.jt h4{margin:0;font:400 26px/1.15 var(--serif)}
+.jt p{font-size:15px;color:var(--on-2)}
+.jt .ok{margin-top:auto;font-size:13px;color:var(--spruce-l)}
+.ctx{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.ctx > div{position:relative;border-radius:4px;overflow:hidden;min-height:440px;padding:36px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px}
+.ctx img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
+.ctx > div > *:not(img){position:relative}
+.ctx h4{margin:0;font:400 34px/1.1 var(--serif)}
+.ctx p{font-size:15px;color:#e2e0da;max-width:520px}
+.ctx .note{grid-column:1/-1;min-height:0;background:#171c1e;padding:24px 28px;font-size:15px;color:var(--on-2)}
+.cjm{display:grid;grid-template-columns:repeat(8,minmax(220px,1fr));gap:12px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory}
+.cjm::-webkit-scrollbar{height:6px}.cjm::-webkit-scrollbar-thumb{background:#3a4245}
+.st{scroll-snap-align:start;background:#171c1e;border-radius:4px;padding:24px;display:flex;flex-direction:column;gap:10px;position:relative}
+.st.after{background:#1f2a2e}
+.st em{font:italic 400 18px/1 var(--serif);color:var(--buck)}
+.st h4{margin:0;font:400 22px/1.15 var(--serif)}
+.st p{font-size:13px;line-height:1.45;color:var(--on-2)}
+.st p b{color:var(--on);font-weight:500}
+.cjm-head{display:grid;grid-template-columns:4fr 4fr;gap:12px;margin-bottom:12px;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.cjm-head span{border-top:2px solid var(--buck);padding-top:10px}.cjm-head span+span{border-color:var(--spruce-l)}
+.hyp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap)}
+.hyp div{background:#171c1e;border-radius:4px;padding:24px}
+.hyp span{display:inline-block;font:500 12px/1 var(--sans);padding:8px 10px;border-radius:999px;margin-bottom:14px}
+.hyp .y{background:#2f5a3a;color:#d7f0dc}.hyp .p{background:#6b4a1c;color:#f3e6d6}.hyp .n{background:#3a4245;color:#e2e0da}
+.hyp h4{margin:0 0 8px;font:400 22px/1.2 var(--serif)}.hyp p{font-size:14px;color:var(--on-2)}
+@media (max-width:900px){.jtbd,.hyp{grid-template-columns:1fr 1fr}.ctx{grid-template-columns:1fr}}
+@media (max-width:560px){.jtbd,.hyp{grid-template-columns:1fr}}
+/* polaroid palette */
+.pola{position:relative;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;margin-top:80px;padding:40px 0}
+.po{background:#fbfaf7;padding:12px 12px 18px;box-shadow:0 24px 50px rgba(0,0,0,.35);transform:rotate(var(--r));transition:transform .6s var(--ease)}
+.po:hover{transform:rotate(0) translateY(-8px) scale(1.03)}
+.po .ph{aspect-ratio:4/5;overflow:hidden}
+.po img{width:100%;height:100%;object-fit:cover}
+.po .chip{height:56px;margin-top:12px}
+.po b{display:block;margin-top:10px;font:italic 400 22px/1 var(--serif);color:var(--ink)}
+.po small{display:block;margin-top:4px;font-size:12px;color:var(--ink-3)}
+@media (max-width:900px){.pola{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){.pola{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* program table */
+.days5{margin-top:80px;border-top:1.5px solid var(--ink)}
+.d5{display:grid;grid-template-columns:120px minmax(0,3fr) minmax(0,4fr) 260px;gap:24px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);transition:background .4s,padding .4s var(--ease)}
+.d5:hover{background:var(--hearth);padding-left:16px;padding-right:16px}
+.d5 .n{font:italic 400 44px/1 var(--serif);color:var(--larch)}
+.d5 h3{font-size:clamp(28px,2.6vw,40px);line-height:1.05}
+.d5 p{font-size:15px;color:var(--ink-2)}
+.d5 .w{font-size:13px;color:var(--ink-3);margin-top:8px}
+.d5 .w b{display:inline-block;font-weight:500;color:var(--ink);background:var(--stone-2);padding:4px 8px;border-radius:999px;margin-right:6px}
+.d5 .ph{height:150px;overflow:hidden;border-radius:4px}
+.d5 .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.d5:hover .ph img{transform:scale(1.06)}
+@media (max-width:900px){.d5{grid-template-columns:64px 1fr;}.d5 p{grid-column:2}.d5 .ph{grid-column:1/-1;height:200px}}
+/* nature mockup */
+.nature{position:relative;margin-top:80px;height:min(860px,92vh);min-height:560px;border-radius:4px;overflow:hidden}
+.nature > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1);transition:transform 2.4s var(--ease)}
+.nature.in > img{transform:scale(1)}
+.nature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,18,.1),rgba(13,17,18,.45))}
+.nature .laptop{position:absolute;left:50%;bottom:9%;width:min(860px,70%);transform:translateX(-50%);margin:0;z-index:2}
+.nature .laptop__base{box-shadow:0 60px 80px rgba(0,0,0,.6)}
+.nature .phone{position:absolute;right:6%;bottom:12%;width:min(220px,18%);z-index:3;transform:rotate(6deg)}
+.nature .phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+@media (max-width:760px){.nature{height:520px}.nature .laptop{width:88%;bottom:18%}.nature .phone{width:110px;right:4%;bottom:6%}}
+/* cascade */
+.cascade{position:relative;height:300vh;margin-top:40px}
+.cascade__sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;perspective:1800px;overflow:hidden}
+.cascade__stack{position:relative;width:min(900px,80vw);aspect-ratio:16/10;transform-style:preserve-3d;transform:rotateX(18deg) rotateZ(-6deg)}
+.cascade__stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;box-shadow:0 30px 60px rgba(0,0,0,.5);will-change:transform}
+.cascade__cap{position:absolute;left:var(--m);top:96px;z-index:5;font:400 clamp(24px,2.4vw,36px)/1.2 var(--serif);max-width:420px;z-index:2}
+@media (max-width:760px){.cascade{height:200vh}.cascade__cap{top:72px;right:var(--m)}}
+/* responsive row */
+.resp{display:flex;align-items:flex-end;justify-content:center;gap:clamp(16px,3vw,48px);margin-top:80px}
+.resp figure{margin:0;display:flex;flex-direction:column;gap:16px;align-items:center}
+.resp .d{width:min(760px,56vw)}.resp .t{width:min(280px,20vw)}.resp .m{width:min(150px,11vw)}
+.resp .frame{border:10px solid #151a1c;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45);width:100%}
+.resp .t .frame{border-radius:24px;border-width:12px}.resp .m .frame{border-radius:24px;border-width:7px}
+.resp img{width:100%;display:block}
+.resp span{font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-2)}
+.resp span b{color:var(--on);font-weight:500}
+@media (max-width:760px){.resp{gap:10px}.resp .d{width:58vw}.resp .t{width:22vw}.resp .m{width:13vw}.resp span{font-size:10px}}
+/* design system sheet */
+.dsx{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:80px}
+.card{background:#171c1e;border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.card.lt{background:var(--stone);color:var(--ink)}
+.card h4{margin:0;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--on-3)}
+.card.lt h4{color:var(--ink-3)}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+@media (max-width:1000px){.dsx > *{grid-column:span 6!important}}
+@media (max-width:640px){.dsx > *{grid-column:span 12!important}}
+.atomic{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.atomic div{border:1px solid rgba(243,241,236,.15);border-radius:4px;padding:18px}
+.atomic b{display:block;font:400 48px/1 var(--serif)}
+.atomic span{font-size:13px;color:var(--on-2)}
+.atomic i{display:block;font-style:normal;font:400 20px/1.2 var(--serif);margin-bottom:12px}
+@media (max-width:640px){.atomic{grid-template-columns:1fr 1fr}}
+.tok{display:grid;grid-template-columns:1fr 54px 54px;gap:8px 12px;align-items:center;font-size:13px}
+.tok code{font:12px/1.3 ui-monospace,Menlo,monospace;color:var(--on-2);overflow-wrap:anywhere}
+.tok i{height:30px;border-radius:4px;border:1px solid rgba(243,241,236,.15)}
+.tok .hd{font:500 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--on-3);text-align:center}
+.ramp p{display:flex;align-items:baseline;gap:16px;border-bottom:1px solid rgba(36,43,45,.1);padding:6px 0;white-space:nowrap;overflow:hidden}
+.ramp small{flex:none;width:80px;font:12px ui-monospace,Menlo,monospace;color:var(--ink-3)}
+.radii{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.radii div{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--on-2)}
+.radii i{width:56px;height:56px;border:1.5px solid var(--buck);border-right:0;border-bottom:0}
+.comp-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.f-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.f-st div{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--ink-3)}
+.f-st span{height:44px;border:1px solid #6b7072;background:#fff;display:flex;align-items:center;padding:0 10px;font-size:13px;color:var(--ink)}
+.f-st .fo{border:1px solid var(--spruce);box-shadow:0 0 0 .5px var(--spruce)}
+.f-st .er{border:2px solid #b42318}
+.f-st .di{background:#fafaf8;color:#6b7072;border-color:#b9b4aa}
+@media (max-width:640px){.f-st{grid-template-columns:1fr 1fr}}
+.daycard{background:#fff;border-radius:4px;overflow:hidden;color:var(--ink);display:grid;grid-template-columns:1fr 120px}
+.daycard div{padding:16px;display:flex;flex-direction:column;gap:6px}
+.daycard b{font:500 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--larch)}
+.daycard h5{margin:0;font:400 24px/1.1 var(--serif)}
+.daycard p{font-size:12px;color:var(--ink-3)}
+.daycard img{width:100%;height:100%;object-fit:cover}
+.acc{border-top:1px solid #d2cec5}
+.acc p{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #d2cec5;font:400 17px/1.3 var(--serif)}
+.acc p span{font-family:var(--sans);color:var(--ink-3)}
+.marker{display:flex;align-items:center;gap:14px}
+.marker i{width:22px;height:22px;border-radius:50%;background:var(--wood);box-shadow:0 0 0 6px rgba(192,140,105,.3)}
+.glass{background:rgba(244,241,234,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.5);border-radius:4px;padding:14px 16px;color:var(--ink);font-size:13px}
+.theme-demo{border-radius:6px;padding:24px;transition:background .5s,color .5s;background:var(--stone);color:var(--ink)}
+.theme-demo.dk{background:#0d1112;color:#f3f1ec}
+.theme-demo h5{margin:0 0 6px;font:400 28px/1.1 var(--serif)}
+.theme-demo p{font-size:13px;opacity:.75}
+.theme-demo ul{margin:14px 0 0;padding-left:18px;font-size:13px}
+.thanks{padding:var(--sec) 0 64px;text-align:left}
+.thanks .ghost{-webkit-text-stroke-color:rgba(243,241,236,.35)}
+.thanks p{max-width:560px;color:var(--on-2);margin-top:24px}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv,.mask>span,.hero__title span,.hero__sub{opacity:1!important;transform:none!important}
@@ -444,9 +603,21 @@ em{font-style:italic}
   </div>
 </section>
 
-<section class="band light" id="task" style="padding-top:0">
+<section class="band dark" id="process">
   <div class="wrap">
-    <p class="kicker rv"><b>03</b>Задача</p>
+    <p class="kicker rv"><b>03</b>Процесс</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Маршрут</span></span><span class="mask"><span><em>проекта</em></span></span></h2>
+      <p class="lead muted rv rv-d1">Восемь этапов: от&nbsp;гайда 2024&nbsp;года до&nbsp;финальной версии после юзабилити-теста. Даты указаны там, где они зафиксированы в&nbsp;файлах.</p>
+    </div>
+    <div class="process rv" id="proc"><svg viewBox="0 0 1312 620" role="img" aria-label="Этапы проекта на маршруте: от гайда 2024 до финала v3" id="procSvg"></svg></div>
+    <ol class="proc-list" id="procList"></ol>
+  </div>
+</section>
+
+<section class="band light" id="task">
+  <div class="wrap">
+    <p class="kicker rv"><b>04</b>Задача</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Два человека</span></span><span class="mask"><span><em>на&nbsp;одном сайте</em></span></span></h2>
       <p class="lead rv rv-d1" style="color:var(--ink-2)">Тур: 5&nbsp;дней и&nbsp;4&nbsp;ночи в&nbsp;январе, группа 8–10&nbsp;человек, одна база отдыха. Днём прогулки до&nbsp;90&nbsp;минут, вечером печка, баня и&nbsp;бассейн.</p>
@@ -467,7 +638,7 @@ em{font-style:italic}
 
 <section class="band dark" id="research">
   <div class="wrap">
-    <p class="kicker rv"><b>04</b>Исследование</p>
+    <p class="kicker rv"><b>05</b>Исследование</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Что важно</span></span><span class="mask"><span><em>перед поездкой</em></span></span></h2>
       <div class="sources rv rv-d1">
@@ -481,20 +652,56 @@ em{font-style:italic}
       <article class="ins rv rv-d1"><span class="ins__n">ii</span><h3>Перед записью нужна конкретика по&nbsp;деньгам и&nbsp;быту</h3><p class="muted">Общая стоимость, доплаты, размещение, отмена.</p><p class="ins__src">P01–P05 · отзывы R18–R20, R26</p><p class="ins__sol"><b>Решение</b>«Что входит и&nbsp;не&nbsp;входит», варианты номеров, пересчёт цены в&nbsp;форме, условия до&nbsp;заявки.</p></article>
       <article class="ins rv rv-d2"><span class="ins__n">iii</span><h3>После записи сведения собирают вручную</h3><p class="muted">Скриншот встречи, заметка с&nbsp;контактами и&nbsp;трансфером, PDF.</p><p class="ins__src">P02, P05</p><p class="ins__sol"><b>Решение</b>Вход «Участникам» прямо в&nbsp;памятку: встреча, адрес, вещи, контакты, сохранение в&nbsp;PDF.</p></article>
     </div>
+
+    <h3 class="ux-title rv">Задачи путешественника</h3>
+    <div class="jtbd">
+      <div class="jt rv"><b>JTBD 01</b><h4>Выбрать подходящий ритм</h4><p>Когда я устал от&nbsp;привычного графика и&nbsp;выбираю поездку, я&nbsp;хочу понять нагрузку, время в&nbsp;дороге и&nbsp;свободу участия, чтобы отдохнуть в&nbsp;своём темпе.</p><p class="ok">Признак: могу объяснить типичный день</p></div>
+      <div class="jt rv rv-d1"><b>JTBD 02</b><h4>Доверить организацию</h4><p>Когда еду с&nbsp;незнакомыми людьми, я&nbsp;хочу понять, кто сопровождает и&nbsp;как устроен быт, чтобы чувствовать себя спокойнее.</p><p class="ok">Признак: нахожу ведущих, жильё, трансфер, контакт</p></div>
+      <div class="jt rv rv-d2"><b>JTBD 03</b><h4>Принять обоснованное решение</h4><p>Перед бронированием я&nbsp;хочу оценить весь бюджет, даты и&nbsp;условия отмены, чтобы сопоставить поездку с&nbsp;планами.</p><p class="ok">Признак: понимаю, что включено и&nbsp;что отдельно</p></div>
+      <div class="jt rv rv-d3"><b>JTBD 04</b><h4>Сориентироваться после записи</h4><p>Когда поездка забронирована, я&nbsp;хочу быстро найти время встречи, контакты и&nbsp;вещи, чтобы не&nbsp;собирать их по&nbsp;перепискам.</p><p class="ok">Признак: открываю памятку без&nbsp;прокрутки сайта</p></div>
+    </div>
+
+    <h3 class="ux-title rv">Два контекста выбора</h3>
+    <div class="ctx">
+      <div class="rv"><img src="../assets/img/film-3.jpg" alt="" loading="lazy"><h4>Отдохнуть без&nbsp;давления</h4><p>Ищет природу и&nbsp;готовую организацию, хочет сам выбирать общение. Барьеры: обязательные практики, неясная нагрузка, работа. Нужны программа, свободное время, условия отмены. Основание: P02–P05.</p></div>
+      <div class="rv rv-d1"><img src="../assets/img/trip-inside.jpg" alt="" loading="lazy"><h4>Впечатления с&nbsp;теми, кому доверяешь</h4><p>Ценит насыщенность, местную культуру и&nbsp;заботу. Барьеры: неизвестный ведущий, утомительные переезды. Нужны состав команды, маршрут и&nbsp;комфорт. Основание: P01, отзывы R01–R07.</p></div>
+      <p class="note rv">Это составные модели, а&nbsp;не&nbsp;портреты людей: без&nbsp;выдуманных имён, фото и&nbsp;долей рынка. Один человек может хотеть и&nbsp;компании, и&nbsp;времени наедине.</p>
+    </div>
+
+    <h3 class="ux-title rv">Путь клиента</h3>
+    <div class="cjm-head rv"><span>До&nbsp;бронирования</span><span>После бронирования</span></div>
+    <div class="cjm rv" tabindex="0" aria-label="Путь клиента из восьми этапов, прокручивается вбок">
+      <div class="st"><em>01</em><h4>Возникает идея</h4><p><b>Барьер:</b> работа и&nbsp;неясный формат.</p><p><b>ALTAI:</b> кратко объяснить формат и&nbsp;длительность.</p></div>
+      <div class="st"><em>02</em><h4>Сравнивает варианты</h4><p><b>Барьер:</b> неясные практики, нагрузка, свободное время.</p><p><b>ALTAI:</b> обзор пяти дней, часы дороги, добровольность.</p></div>
+      <div class="st"><em>03</em><h4>Проверяет доверие</h4><p><b>Барьер:</b> неизвестный сопровождающий, доплаты.</p><p><b>ALTAI:</b> роли команды, состав цены, контакт.</p></div>
+      <div class="st"><em>04</em><h4>Решает</h4><p><b>Барьер:</b> внешние причины, работа.</p><p><b>ALTAI:</b> понятный статус заявки и&nbsp;условия брони.</p></div>
+      <div class="st after"><em>05</em><h4>Готовится</h4><p><b>Барьер:</b> информация в&nbsp;нескольких местах.</p><p><b>ALTAI:</b> единая памятка: встреча, контакт, вещи.</p></div>
+      <div class="st after"><em>06</em><h4>Добирается</h4><p><b>Барьер:</b> поиск контакта на&nbsp;ходу.</p><p><b>ALTAI:</b> карточка встречи с&nbsp;ориентиром, сохранение заранее.</p></div>
+      <div class="st after"><em>07</em><h4>Участвует</h4><p><b>Барьер:</b> нагрузка и&nbsp;быт отличаются от&nbsp;ожиданий.</p><p><b>ALTAI:</b> программа дня, одежда, место сбора.</p></div>
+      <div class="st after"><em>08</em><h4>Возвращается</h4><p><b>Барьер:</b> задержка трансфера, усталость.</p><p><b>ALTAI:</b> понятный план возвращения.</p></div>
+    </div>
+
+    <h3 class="ux-title rv">Что знаем и&nbsp;что проверяли</h3>
+    <div class="hyp">
+      <div class="rv"><span class="y">Подтверждено</span><h4>Формат и&nbsp;ведущие</h4><p>Понятность формата и&nbsp;конкретные люди важны при&nbsp;выборе. P01–P05.</p></div>
+      <div class="rv rv-d1"><span class="p">Частично</span><h4>Доступ к&nbsp;памятке</h4><p>P02 и&nbsp;P05 сохраняли материалы вручную. Основание для&nbsp;памятки, но&nbsp;не&nbsp;для&nbsp;кабинета.</p></div>
+      <div class="rv rv-d2"><span class="n">Проверяли тестом</span><h4>Занятия о&nbsp;целях</h4><p>Интервью спрос не&nbsp;подтвердили. Тест показал: занятия нужно объяснять проще.</p></div>
+      <div class="rv rv-d3"><span class="n">Проверяли тестом</span><h4>Зима и&nbsp;интерфейс</h4><p>Найти день, расходы, добровольность и&nbsp;памятку&nbsp;— задания юзабилити-теста.</p></div>
+    </div>
   </div>
 </section>
 
 <section class="band dark" id="concept" style="padding-top:0">
   <div class="wrap">
-    <p class="kicker rv"><b>05</b>Концепция</p>
+    <p class="kicker rv"><b>06</b>Концепция</p>
     <h2 class="h2 rv"><span class="mask"><span>Холод снаружи.</span></span><span class="mask"><span><em>Тепло внутри</em></span></span></h2>
-    <div class="palette rv">
-      <div class="sw" style="background:#0d1112;color:#f3f1ec;outline:1px solid #2c3335"><b>Ночь</b>#0D1112 · первый экран, фильм</div>
-      <div class="sw" style="background:#242b2d;color:#f3f1ec"><b>Графит</b>#242B2D · текст</div>
-      <div class="sw" style="background:#f3f1ec;color:#242b2d"><b>Снег</b>#F3F1EC · страница</div>
-      <div class="sw" style="background:#f3e6d6;color:#242b2d"><b>Очаг</b>#F3E6D6 · проживание</div>
-      <div class="sw" style="background:#8f4a1c;color:#fff"><b>Лиственница</b>#8F4A1C · тёплые подписи</div>
-      <div class="sw" style="background:#29495c;color:#fff"><b>Ель</b>#29495C · кнопки</div>
+    <div class="pola">
+      <div class="po rv" style="--r:-4deg"><div class="ph"><img src="../assets/img/film-2.jpg" alt="Ночь на базе" loading="lazy"></div><div class="chip" style="background:#0d1112"></div><b>Ночь</b><small>#0D1112 · первый экран</small></div>
+      <div class="po rv rv-d1" style="--r:3deg"><div class="ph"><img src="../assets/img/hero.jpg" alt="Горы" loading="lazy"></div><div class="chip" style="background:#242b2d"></div><b>Графит</b><small>#242B2D · текст</small></div>
+      <div class="po rv rv-d2" style="--r:-2deg"><div class="ph"><img src="../assets/img/day-4.jpg" alt="Снег" loading="lazy"></div><div class="chip" style="background:#f3f1ec;outline:1px solid #e4e1da"></div><b>Снег</b><small>#F3F1EC · страница</small></div>
+      <div class="po rv rv-d3" style="--r:4deg"><div class="ph"><img src="../assets/img/trip-inside.jpg" alt="Очаг" loading="lazy"></div><div class="chip" style="background:#f3e6d6"></div><b>Очаг</b><small>#F3E6D6 · проживание</small></div>
+      <div class="po rv" style="--r:-3deg"><div class="ph"><img src="../assets/img/film-9.jpg" alt="Деревянные балки" loading="lazy"></div><div class="chip" style="background:#8f4a1c"></div><b>Лиственница</b><small>#8F4A1C · тёплые подписи</small></div>
+      <div class="po rv rv-d1" style="--r:2deg"><div class="ph"><img src="../assets/img/film-8.jpg" alt="Еловый лес" loading="lazy"></div><div class="chip" style="background:#29495c"></div><b>Ель</b><small>#29495C · кнопки</small></div>
     </div>
     <div class="type-row">
       <div class="type-card rv"><p class="abc">Заголовки · Old Standard TT</p><p class="big">Зимний <em>Алтай</em></p><p class="abc">Спокойный антиквенный шрифт, курсив — для второй строки заголовка.</p></div>
@@ -503,9 +710,21 @@ em{font-style:italic}
   </div>
 </section>
 
-<section class="band dark" id="iterations" style="background:#0a0d0e">
+<section class="band light" id="days5">
   <div class="wrap">
-    <p class="kicker rv"><b>06</b>Итерации</p>
+    <p class="kicker rv"><b>07</b>Продукт</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Пять дней</span></span><span class="mask"><span><em>на&nbsp;одной базе</em></span></span></h2>
+      <p class="lead rv rv-d1" style="color:var(--ink-2)">Новая программа вместо трёх дней тренинга: одна база, короткие прогулки и&nbsp;вечерние занятия по&nbsp;желанию.</p>
+    </div>
+    <div class="days5"><div class="d5 rv"><span class="n">01</span><div><h3>Дорога и&nbsp;база</h3><p class="w"><b>Прогулки нет</b>15&nbsp;января</p></div><p>Прилёт утром, к&nbsp;обеду вы в&nbsp;тёплом доме у&nbsp;Катуни. Ничего не нужно успевать.</p><div class="ph"><img src="../assets/img/day-1.jpg" alt="Дорога и&nbsp;база" loading="lazy"></div></div><div class="d5 rv"><span class="n">02</span><div><h3>Зубы Дракона</h3><p class="w"><b>Лёгкая · до&nbsp;60 мин</b>16&nbsp;января</p></div><p>Подвесной мост на&nbsp;остров Патмос, скалы над Катунью. Вечером —&nbsp;занятие с&nbsp;Марией.</p><div class="ph"><img src="../assets/img/day-2.jpg" alt="Зубы Дракона" loading="lazy"></div></div><div class="d5 rv"><span class="n">03</span><div><h3>Гора Верблюд</h3><p class="w"><b>Подъём · до&nbsp;60 мин</b>17&nbsp;января</p></div><p>Обзорная площадка над долиной Катуни. Вечером записываем, как можно поступить.</p><div class="ph"><img src="../assets/img/day-3.jpg" alt="Гора Верблюд" loading="lazy"></div></div><div class="d5 rv"><span class="n">04</span><div><h3>Голубые озёра</h3><p class="w"><b>Лёгкая · до&nbsp;90 мин</b>18&nbsp;января</p></div><p>Бирюзовая вода среди льда —&nbsp;самое яркое место поездки. План на&nbsp;две недели.</p><div class="ph"><img src="../assets/img/day-4.jpg" alt="Голубые озёра" loading="lazy"></div></div><div class="d5 rv"><span class="n">05</span><div><h3>Утро и&nbsp;отъезд</h3><p class="w"><b>Прогулки нет</b>19&nbsp;января</p></div><p>Спокойное утро, короткое письмо себе и&nbsp;дорога домой.</p><div class="ph"><img src="../assets/img/day-5.jpg" alt="Утро и&nbsp;отъезд" loading="lazy"></div></div></div>
+  </div>
+</section>
+
+<section class="band dark" id="iterations" style="background:#0a0d0e">
+  <div class="ghost-band" aria-hidden="true" style="padding-top:0;margin-top:-80px"><div class="ghost">34&nbsp;версии</div></div>
+  <div class="wrap">
+    <p class="kicker rv"><b>08</b>Итерации</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>34 версии,</span></span><span class="mask"><span><em>одна за&nbsp;другой</em></span></span></h2>
       <p class="lead muted rv rv-d1">Каждая версия — сохранённое состояние сайта. Передвиньте ползунок: видно, как менялись первый экран на&nbsp;телефоне, блок о&nbsp;поездке, программа и&nbsp;команда.</p>
@@ -549,33 +768,68 @@ em{font-style:italic}
   </div>
 </section>
 
-<section class="band light" id="ds">
+<section class="band dark" id="ds">
+  <div class="ghost-band" aria-hidden="true"><div class="ghost">ALTAI</div></div>
   <div class="wrap">
-    <p class="kicker rv"><b>07</b>Дизайн-система</p>
+    <p class="kicker rv"><b>09</b>Дизайн-система</p>
     <div class="split">
-      <h2 class="h2 rv"><span class="mask"><span>Одни правила</span></span><span class="mask"><span><em>для&nbsp;трёх экранов</em></span></span></h2>
-      <p class="lead rv rv-d1" style="color:var(--ink-2)">Цвета, типографика и&nbsp;отступы описаны токенами и&nbsp;используются в&nbsp;макетах и&nbsp;коде. Это помогало последовательно применять изменения к&nbsp;компонентам и&nbsp;адаптивам.</p>
+      <h2 class="h2 rv"><span class="mask"><span>Полноценная</span></span><span class="mask"><span><em>дизайн-система</em></span></span></h2>
+      <p class="lead muted rv rv-d1">Цвета, типографика и&nbsp;отступы описаны токенами и&nbsp;используются в&nbsp;макетах и&nbsp;коде. Компоненты собраны по&nbsp;атомарной системе&nbsp;— от&nbsp;переменных до&nbsp;целых секций для&nbsp;трёх ширин.</p>
     </div>
-    <div class="ds">
-      <div class="tile t7 rv"><h3 class="tile__h">Кнопки</h3><div style="display:flex;gap:12px;flex-wrap:wrap"><span class="ui-btn ui-btn--p">Оставить заявку →</span><span class="ui-btn ui-btn--s">Программа по&nbsp;дням</span></div></div>
-      <div class="tile t5 rv rv-d1"><h3 class="tile__h">Теги участия</h3><div class="ui-tags"><span class="ui-tag ui-tag--r">Для всех</span><span class="ui-tag ui-tag--o">По желанию</span></div><div class="ui-dots">Сложность прогулки <i class="f"></i><i class="f"></i><i></i><i></i><i></i> лёгкая, 2&nbsp;из&nbsp;5</div></div>
-      <div class="tile t5 rv"><h3 class="tile__h">Счётчик гостей</h3><div class="ui-step"><button type="button" data-step="-1" aria-label="Меньше">−</button><output id="guests">2 человека</output><button type="button" data-step="1" aria-label="Больше">+</button></div><p style="font:400 40px/1 var(--serif)" id="total">144&nbsp;000&nbsp;₽</p><p style="font-size:13px;color:var(--ink-3)">Итого · авиабилеты, страховка и&nbsp;трансфер — отдельно</p></div>
-      <div class="tile t7 rv rv-d1"><h3 class="tile__h">Поле с&nbsp;ошибкой</h3><div class="ui-field"><span>Ник в&nbsp;Telegram или номер*</span><div>@an</div><small>Ник — от&nbsp;5&nbsp;символов: латиница, цифры и&nbsp;_</small></div></div>
-      <div class="tile t8 rv"><h3 class="tile__h">Отступы, px</h3><div class="scale"><div><i style="height:96px"></i>96</div><div><i style="height:64px"></i>64</div><div><i style="height:48px"></i>48</div><div><i style="height:32px"></i>32</div><div><i style="height:24px"></i>24</div><div><i style="height:16px"></i>16</div><div><i style="height:8px"></i>8</div></div><p style="font-size:14px;color:var(--ink-3)">Между секциями 96 / 64 / 48, между блоками 48 / 32 / 24 — ПК, планшет, телефон</p></div>
-      <div class="tile t4 rv rv-d1"><h3 class="tile__h">В&nbsp;Figma</h3><div class="ds-num"><div><b>357</b><span>переменных</span></div><div><b>88</b><span>компонентов</span></div><div><b>34</b><span>текстовых стиля</span></div><div><b>2</b><span>темы</span></div></div></div>
+    <div class="dsx">
+      <div class="card c12 rv"><h4>Структура в&nbsp;Figma</h4><div class="atomic">
+        <div><i>Переменные</i><b data-count="357">0</b><span>4 коллекции, светлая и&nbsp;тёмная тема</span></div>
+        <div><i>Атомы</i><b data-count="97">0</b><span>компонентов в&nbsp;10 наборах</span></div>
+        <div><i>Молекулы</i><b data-count="171">0</b><span>компонент в&nbsp;45 наборах</span></div>
+        <div><i>Организмы</i><b data-count="152">0</b><span>компонента в&nbsp;32 наборах</span></div>
+      </div></div>
+      <div class="card c5 rv"><h4>Цветовые токены · светлая / тёмная</h4><div class="tok">
+        <span class="hd" style="text-align:left">Токен</span><span class="hd">Light</span><span class="hd">Dark</span>
+        <code>surface/page</code><i style="background:#f3f1ec"></i><i style="background:#171c1e"></i>
+        <code>surface/warm</code><i style="background:#f3e6d6"></i><i style="background:#2a231d"></i>
+        <code>surface/night</code><i style="background:#0d1112"></i><i style="background:#0d1112"></i>
+        <code>text/primary</code><i style="background:#242b2d"></i><i style="background:#e9e7e2"></i>
+        <code>text/warm</code><i style="background:#8f4a1c"></i><i style="background:#e0a878"></i>
+        <code>action/primary/bg</code><i style="background:#29495c"></i><i style="background:transparent;border:1.5px solid #f3f1ec"></i>
+        <code>border/default</code><i style="background:#d2cec5"></i><i style="background:#3a4245"></i>
+        <code>text/error</code><i style="background:#b42318"></i><i style="background:#b42318"></i>
+      </div></div>
+      <div class="card lt c7 rv rv-d1"><h4>Типографика · 34 стиля</h4><div class="ramp">
+        <p><small>132 / 100%</small><span style="font:400 80px/1 var(--serif)">Холод снаружи</span></p>
+        <p><small>72 / 105%</small><span style="font:400 54px/1 var(--serif)">Зимний <em>Алтай</em></span></p>
+        <p><small>48 / 105%</small><span style="font:400 40px/1.05 var(--serif)">Пять дней на&nbsp;Алтае</span></p>
+        <p><small>32 / 130%</small><span style="font:400 28px/1.2 var(--serif)">Зубы Дракона</span></p>
+        <p><small>20 / 135%</small><span style="font:400 20px/1.35 var(--serif)">Живём на&nbsp;одной тёплой базе у&nbsp;Катуни</span></p>
+        <p><small>17 / 150%</small><span style="font:400 17px/1.5 var(--sans)">Прогулки до&nbsp;90 минут, вечером баня и&nbsp;печка</span></p>
+        <p><small>13 · caps</small><span style="font:500 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase">Оставить заявку</span></p>
+      </div></div>
+      <div class="card c4 rv"><h4>Отступы · шкала 4</h4><div class="scale" style="height:150px"><div><i style="height:96px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>96</div><div><i style="height:64px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>64</div><div><i style="height:48px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>48</div><div><i style="height:32px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>32</div><div><i style="height:24px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>24</div><div><i style="height:16px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>16</div><div><i style="height:8px;background:rgba(217,130,43,.25);border-top:2px solid var(--buck)"></i>8</div></div><p style="font-size:13px;color:var(--on-2)">Секции 96&nbsp;/&nbsp;64&nbsp;/&nbsp;48, блоки 48&nbsp;/&nbsp;32&nbsp;/&nbsp;24, поля 64&nbsp;/&nbsp;40&nbsp;/&nbsp;20</p></div>
+      <div class="card c4 rv rv-d1"><h4>Радиусы и&nbsp;линии</h4><div class="radii"><div><i style="border-top-left-radius:0px"></i>0 · карточки</div><div><i style="border-top-left-radius:4px"></i>4 · фото</div><div><i style="border-top-left-radius:16px"></i>16 · видео</div><div><i style="border-top-left-radius:28px"></i>pill · теги</div></div><p style="font-size:13px;color:var(--on-2)">Линии 1 / 1,5 / 2 / 3 px: разделитель, контрол, ошибка, фокус</p></div>
+      <div class="card c4 rv rv-d2"><h4>Тёмная тема · живой пример</h4><div class="theme-demo" id="themeDemo"><h5>Памятка участника</h5><p>15–19 января 2027 · 5 дней / 4 ночи</p><ul><li>Встреча в&nbsp;09:00 у&nbsp;выхода из&nbsp;зоны прилёта</li><li>До базы около 2 часов</li></ul></div><button class="btn" id="themeBtn" type="button">Переключить тему</button></div>
+      <div class="card lt c7 rv"><h4>Атомы · кнопки, теги, поля</h4>
+        <div class="comp-row"><span class="ui-btn ui-btn--p">Оставить заявку →</span><span class="ui-btn ui-btn--s">Программа по&nbsp;дням</span><span class="ui-tag ui-tag--r">Для всех</span><span class="ui-tag ui-tag--o">По желанию</span></div>
+        <div class="f-st"><div>По умолчанию<span>Анна</span></div><div>Фокус<span class="fo">Анна|</span></div><div>Ошибка<span class="er">@an</span></div><div>Недоступно<span class="di">—</span></div></div>
+        <div class="comp-row"><div class="ui-step"><button type="button" data-step="-1" aria-label="Меньше">−</button><output id="guests">2 человека</output><button type="button" data-step="1" aria-label="Больше">+</button></div><b style="font:400 32px/1 var(--serif)" id="total">144&nbsp;000&nbsp;₽</b></div>
+      </div>
+      <div class="card c5 rv rv-d1"><h4>Молекулы · день, вопрос, точка карты</h4>
+        <div class="daycard"><div><b>День 02 · 16 января</b><h5>Зубы Дракона</h5><p>Лёгкая прогулка · до&nbsp;60 мин</p></div><img src="../assets/img/day-2.jpg" alt="" loading="lazy"></div>
+        <div class="card lt" style="padding:16px"><div class="acc"><p>Как кормят? <span>−</span></p><p>Сколько стоит и&nbsp;что входит? <span>+</span></p></div></div>
+        <div class="marker"><i></i><div class="glass">Остров Патмос · 25 мин от&nbsp;базы</div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="band dark" id="decisions">
   <div class="wrap">
-    <p class="kicker rv"><b>08</b>Ключевые решения</p>
+    <p class="kicker rv"><b>10</b>Ключевые решения</p>
     <h2 class="h2 rv"><span class="mask"><span>Ответы</span></span><span class="mask"><span><em>на&nbsp;главные вопросы</em></span></span></h2>
-    <div class="laptop rv">
-      <div class="laptop__screen"><div id="lapScreen"><iframe src="../" title="Сайт ALTAI вживую" loading="lazy" tabindex="-1"></iframe></div></div>
-      <div class="laptop__base"></div>
-      <p class="laptop__hint">Это живой сайт&nbsp;— его можно пролистать прямо здесь</p>
+    <div class="nature rv">
+      <img src="../assets/img/day-2.jpg" alt="" aria-hidden="true">
+      <div class="laptop"><div class="laptop__screen"><div id="lapScreen"><iframe src="../" title="Сайт ALTAI вживую" loading="lazy" tabindex="-1"></iframe></div></div><div class="laptop__base"></div></div>
+      <div class="phone"><div><img src="img/new-m-hero.jpg" alt="Сайт на телефоне" loading="lazy"></div></div>
     </div>
+    <p class="laptop__hint rv">В&nbsp;ноутбуке живой сайт&nbsp;— его можно пролистать прямо здесь</p>
     <div class="decs">
       <div class="dec rv"><div class="phone"><div><img src="img/new-form2.jpg" alt="Форма заявки: 2 человека, итого 144 000 ₽" loading="lazy"></div></div><h3>Форма с&nbsp;пересчётом цены</h3><p>Один, вдвоём или отдельный номер&nbsp;— итог пересчитывается сразу, сумма видна до&nbsp;отправки.</p></div>
       <div class="dec rv rv-d1"><div class="phone"><div><img src="img/new-day2-c.jpg" alt="Окно дня: утро, день, вечер, сложность прогулки" loading="lazy" style="height:100%;object-fit:cover;object-position:top left"></div></div><h3>Программа по&nbsp;дням</h3><p>Что для&nbsp;всех, а&nbsp;что по&nbsp;желанию, сколько идти пешком и&nbsp;когда свободное время.</p></div>
@@ -584,9 +838,16 @@ em{font-style:italic}
   </div>
 </section>
 
+<section class="dark" id="screens" aria-label="Экраны сайта">
+  <div class="cascade" id="cascade"><div class="cascade__sticky">
+    <p class="cascade__cap">Девять экранов сайта&nbsp;— от&nbsp;первого до&nbsp;заявки</p>
+    <div class="cascade__stack" id="stack"><img src="img/screen-0.jpg" alt="Экран сайта 1" loading="lazy"><img src="img/screen-1.jpg" alt="Экран сайта 2" loading="lazy"><img src="img/screen-2.jpg" alt="Экран сайта 3" loading="lazy"><img src="img/screen-3.jpg" alt="Экран сайта 4" loading="lazy"><img src="img/screen-4.jpg" alt="Экран сайта 5" loading="lazy"><img src="img/screen-5.jpg" alt="Экран сайта 6" loading="lazy"><img src="img/screen-6.jpg" alt="Экран сайта 7" loading="lazy"><img src="img/screen-7.jpg" alt="Экран сайта 8" loading="lazy"><img src="img/screen-8.jpg" alt="Экран сайта 9" loading="lazy"></div>
+  </div></div>
+</section>
+
 <section class="band dark" id="micro" style="padding-top:0">
   <div class="wrap">
-    <p class="kicker rv"><b>09</b>Микроинтеракции</p>
+    <p class="kicker rv"><b>11</b>Микроинтеракции</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Как это</span></span><span class="mask"><span><em>работает вживую</em></span></span></h2>
       <p class="lead muted rv rv-d1">Записи с&nbsp;опубликованного сайта: карта, окно дня, форма, вопросы, памятка и&nbsp;телефон.</p>
@@ -604,7 +865,7 @@ em{font-style:italic}
 
 <section class="band light" id="test">
   <div class="wrap">
-    <p class="kicker rv"><b>10</b>Юзабилити-тест · 13–14&nbsp;ноября</p>
+    <p class="kicker rv"><b>12</b>Юзабилити-тест · 13–14&nbsp;ноября</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Шесть человек,</span></span><span class="mask"><span><em>семь заданий</em></span></span></h2>
       <p class="lead rv rv-d1" style="color:var(--ink-2)">Хуже всего прошло задание про цену вдвоём и&nbsp;то, что не&nbsp;входит в&nbsp;стоимость: 2,5&nbsp;из&nbsp;7.</p>
@@ -612,10 +873,10 @@ em{font-style:italic}
     <div class="chart" id="chart"></div>
     <p class="chart__note">Оценка выполнения: я&nbsp;ставила её по&nbsp;записям сессий, от&nbsp;1&nbsp;— не&nbsp;справился до&nbsp;7&nbsp;— сразу и&nbsp;без ошибок; среднее по&nbsp;шести участникам. Трое последних отдельно оценили лёгкость по&nbsp;SEQ (6,2, 7,0 и&nbsp;6,0)&nbsp;— это другой показатель, его я&nbsp;не&nbsp;смешиваю.</p>
     <div class="probs">
-      <div class="prob rv"><b>6<small>/6</small></b><p>не&nbsp;нашли сами, что не&nbsp;входит в&nbsp;цену</p></div>
-      <div class="prob rv rv-d1"><b>5<small>/6</small></b><p>читали «+12&nbsp;000&nbsp;₽» как доплату за&nbsp;второго</p></div>
-      <div class="prob rv rv-d2"><b>4<small>/6</small></b><p>не&nbsp;поняли, что такое «занятия» и&nbsp;«Письмо себе»</p></div>
-      <div class="prob rv rv-d3"><b>4<small>/6</small></b><p>не&nbsp;нашли данных об&nbsp;организаторе и&nbsp;контактов</p></div>
+      <div class="prob rv"><b>6<small>/6</small></b><div class="seg"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></div><p>не&nbsp;нашли сами, что не&nbsp;входит в&nbsp;цену</p></div>
+      <div class="prob rv rv-d1"><b>5<small>/6</small></b><div class="seg"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div><p>читали «+12&nbsp;000&nbsp;₽» как доплату за&nbsp;второго</p></div>
+      <div class="prob rv rv-d2"><b>4<small>/6</small></b><div class="seg"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div><p>не&nbsp;поняли, что такое «занятия» и&nbsp;«Письмо себе»</p></div>
+      <div class="prob rv rv-d3"><b>4<small>/6</small></b><div class="seg"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div><p>не&nbsp;нашли данных об&nbsp;организаторе и&nbsp;контактов</p></div>
     </div>
     <p class="chart__note" style="margin-top:32px">Всего 24&nbsp;уникальные проблемы: одинаковые наблюдения разных участников объединены в&nbsp;одну строку со&nbsp;счётчиком.</p>
   </div>
@@ -623,7 +884,7 @@ em{font-style:italic}
 
 <section class="band dark" id="fixes">
   <div class="wrap">
-    <p class="kicker rv"><b>11</b>Что изменилось после теста</p>
+    <p class="kicker rv"><b>13</b>Что изменилось после теста</p>
     <h2 class="h2 rv"><span class="mask"><span>Было&nbsp;—</span></span><span class="mask"><span><em>стало</em></span></span></h2>
     <p class="lead muted rv rv-d1" style="margin-top:32px">Потяните разделитель на&nbsp;картинке.</p>
 
@@ -659,7 +920,7 @@ em{font-style:italic}
 
 <section class="band warm" id="memo">
   <div class="wrap">
-    <p class="kicker rv"><b>12</b>Памятка участника</p>
+    <p class="kicker rv"><b>14</b>Памятка участника</p>
     <h2 class="h2 rv"><span class="mask"><span>Во&nbsp;что вырос</span></span><span class="mask"><span><em>гайд 2024 года</em></span></span></h2>
     <div class="memo-grid">
       <div>
@@ -682,22 +943,22 @@ em{font-style:italic}
 
 <section class="band dark" id="adaptive">
   <div class="wrap">
-    <p class="kicker rv"><b>13</b>Адаптив</p>
+    <p class="kicker rv"><b>15</b>Адаптив</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>То&nbsp;же содержание,</span></span><span class="mask"><span><em>другая подача</em></span></span></h2>
       <p class="lead muted rv rv-d1">На&nbsp;телефоне одна кнопка в&nbsp;первом экране, памятка в&nbsp;меню, номера&nbsp;— белыми карточками, фильм&nbsp;— мозаикой.</p>
     </div>
-    <div class="devices rv">
-      <img class="dv dv--lap clip" src="img/new-hero.jpg" alt="ПК: первый экран" loading="lazy">
-      <div class="dv dv--tab"><img src="img/new-t-about.jpg" alt="Планшет: «О нас»" loading="lazy"></div>
-      <div class="dv dv--ph"><img src="img/final-m-full.jpg" alt="Телефон: страница целиком" loading="lazy" id="phLong"></div>
+    <div class="resp rv">
+      <figure class="d"><div class="frame"><img src="img/new-hero.jpg" alt="ПК 1440" loading="lazy"></div><span><b>Desktop</b> · 1440</span></figure>
+      <figure class="t"><div class="frame"><img src="img/new-t-hero.jpg" alt="Планшет 768" loading="lazy"></div><span><b>Tablet</b> · 768</span></figure>
+      <figure class="m"><div class="frame"><img src="img/new-m-hero.jpg" alt="Телефон 390" loading="lazy"></div><span><b>Mobile</b> · 390</span></figure>
     </div>
   </div>
 </section>
 
 <section class="band light" id="results">
   <div class="wrap">
-    <p class="kicker rv"><b>14</b>Итоги</p>
+    <p class="kicker rv"><b>16</b>Итоги</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Что</span></span><span class="mask"><span><em>получилось</em></span></span></h2>
       <p class="lead rv rv-d1" style="color:var(--ink-2)">Сайт опубликован на&nbsp;GitHub Pages. Участники теста посмотрели новую версию и&nbsp;подтвердили, что стало понятнее.</p>
@@ -707,6 +968,11 @@ em{font-style:italic}
       <div class="rv rv-d1"><h3>Что сделала&nbsp;бы иначе</h3><p>Проверила&nbsp;бы блок цены на&nbsp;людях ещё на&nbsp;вайрфреймах и&nbsp;заложила второй раунд теста с&nbsp;теми&nbsp;же заданиями, чтобы сравнить цифры.</p></div>
     </div>
   </div>
+</section>
+
+<section class="dark thanks" aria-label="Спасибо">
+  <div class="ghost-band" aria-hidden="true" style="padding-top:0"><div class="ghost">ALTAI</div></div>
+  <div class="wrap"><h2 class="h2 rv"><span class="mask"><span>Спасибо</span></span><span class="mask"><span><em>за&nbsp;просмотр</em></span></span></h2><p class="rv">Если хотите обсудить проект или&nbsp;задать вопрос по&nbsp;кейсу, напишите мне.</p></div>
 </section>
 
 <section class="close dark" aria-label="Финал">
@@ -817,6 +1083,36 @@ const fit=()=>{fr.style.transform='scale('+(ls.clientWidth/1440)+')'};fit();new 
 /* lazy videos play only when visible */
 const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load()}if(!reduce)v.play().catch(()=>{})}else v.pause()}),{threshold:.25});
 document.querySelectorAll('video[data-lazy]').forEach(v=>vio.observe(v));
+
+
+/* process route map */
+{
+const P=[["2024","Гайд по заказу","PDF для участников"],["26.10","Бриф и исследование","5 интервью, 28 отзывов, 5 аналогов"],["","Сценарии","2 user flow: до и после записи"],["","Вайрфреймы","v1 → v3"],["","UI и дизайн-система","357 переменных, 88 компонентов"],["13.11","Сайт","ПК, планшет, телефон"],["13–14.11","Юзабилити-тест","6 участников, 7 заданий"],["23.11","Финал v3","34 версии, правки по тесту"]];
+const svg=document.getElementById('procSvg'),ns='http://www.w3.org/2000/svg';
+const E=(t,a,par)=>{const e=document.createElementNS(ns,t);for(const k in a)e.setAttribute(k,a[k]);(par||svg).appendChild(e);return e};
+for(let i=0;i<14;i++){E('path',{d:`M-20 ${60+i*42} C 300 ${20+i*44}, 600 ${110+i*40}, 900 ${50+i*43} S 1250 ${90+i*40}, 1340 ${70+i*42}`,fill:'none',stroke:'rgba(243,241,236,.05)','stroke-width':1})}
+E('path',{d:'M-20 540 C 200 470, 330 560, 520 470 S 820 300, 1000 340 S 1250 260, 1340 200',fill:'none',stroke:'rgba(158,195,215,.22)','stroke-width':10,'stroke-linecap':'round'});
+const pts=[[80,470],[250,390],[420,470],[560,330],[720,410],[880,250],[1040,330],[1210,170]];
+const d='M'+pts.map((q,i)=>i?`C ${pts[i-1][0]+70} ${pts[i-1][1]}, ${q[0]-70} ${q[1]}, ${q[0]} ${q[1]}`:`${q[0]} ${q[1]}`).join(' ');
+E('path',{d,fill:'none',stroke:'rgba(243,241,236,.16)','stroke-width':2,'stroke-dasharray':'4 8'});
+const route=E('path',{d,fill:'none',stroke:'#d9822b','stroke-width':2.5,'stroke-linecap':'round'});
+const L=route.getTotalLength();route.style.strokeDasharray=L;route.style.strokeDashoffset=L;
+const nodes=pts.map((q,i)=>{const g=E('g',{class:'node'});E('circle',{cx:q[0],cy:q[1],r:16,fill:'rgba(217,130,43,.15)'},g);E('circle',{class:'c',cx:q[0],cy:q[1],r:6,fill:'#3a4245'},g);const up=i%2===0;const y=up?q[1]+44:q[1]-62;const tx=Math.min(Math.max(q[0]-10,10),1150);if(P[i][0])E('text',{x:tx,y:y-24,class:'d'},g).textContent=P[i][0];E('text',{x:tx,y,class:'t'},g).textContent=P[i][1];E('text',{x:tx,y:y+22},g).textContent=P[i][2];return g});
+const car=E('circle',{r:9,fill:'#f3f1ec',stroke:'#d9822b','stroke-width':3});
+const lens=pts.map(q=>{let best=0,bd=1e9;for(let t=0;t<=L;t+=4){const p=route.getPointAtLength(t);const dd=(p.x-q[0])**2+(p.y-q[1])**2;if(dd<bd){bd=dd;best=t}}return best});
+const list=document.getElementById('procList');list.innerHTML=P.map(x=>`<li><b>${x[1]}</b><span>${x[0]?x[0]+' · ':''}${x[2]}</span></li>`).join('');
+const box=document.getElementById('proc');
+const upd=()=>{const r=box.getBoundingClientRect(),vh=innerHeight;let k=(vh*.85-r.top)/(r.height+vh*.35);k=reduce?1:Math.max(0,Math.min(1,k));const len=L*k;route.style.strokeDashoffset=L-len;const pt=route.getPointAtLength(len);car.setAttribute('cx',pt.x);car.setAttribute('cy',pt.y);nodes.forEach((g,i)=>g.classList.toggle('on',len>=lens[i]-2))};
+addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+}
+/* cascade of screens */
+{
+const cas=document.getElementById('cascade'),imgs=[...document.querySelectorAll('#stack img')];
+const upd=()=>{const r=cas.getBoundingClientRect();let k=-r.top/(r.height-innerHeight);k=reduce?1:Math.max(0,Math.min(1,k));const n=imgs.length;imgs.forEach((im,i)=>{const c=i-(n-1)/2;const spread=k;im.style.transform=`translate3d(${c*spread*14}%,${c*spread*-9}%,${(i-n)*spread*30}px) rotateZ(${c*spread*2}deg)`;im.style.zIndex=i})};
+addEventListener('scroll',upd,{passive:true});upd();
+}
+/* theme demo */
+{const b=document.getElementById('themeBtn'),d=document.getElementById('themeDemo');if(b)b.addEventListener('click',()=>d.classList.toggle('dk'))}
 
 /* adaptive phone long scroll */
 const ph=$('#phLong');
