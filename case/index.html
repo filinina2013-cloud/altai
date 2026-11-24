@@ -268,6 +268,23 @@ em{font-style:italic}
 .dec:nth-child(2){margin-top:120px}
 @media (max-width:900px){.decs{grid-template-columns:1fr}.dec:nth-child(2){margin-top:0}}
 
+
+/* micro-interactions */
+.micro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);margin-top:80px;align-items:start}
+.win{background:#1d2325;border-radius:12px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45);transition:transform .5s var(--ease)}
+.win:hover{transform:translateY(-4px)}
+.win__bar{display:flex;gap:6px;padding:12px 14px;align-items:center}
+.win__bar i{width:10px;height:10px;border-radius:50%;background:#3a4245}
+.win__bar span{margin-left:12px;font-size:12px;color:var(--on-3)}
+.win video{width:100%;display:block;background:#000}
+.mi h3{font-size:26px;line-height:1.15;margin:24px 0 8px}
+.mi p{color:var(--on-2);font-size:15px;max-width:520px}
+.mi--a{grid-column:1/8}.mi--b{grid-column:8/13;margin-top:120px}.mi--c{grid-column:1/6;margin-top:48px}.mi--d{grid-column:6/13;margin-top:48px}
+.mi--e{grid-column:1/8;margin-top:48px}.mi--f{grid-column:9/13;margin-top:48px}
+.mi--f .phone{max-width:300px}
+.mi--f video{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:900px){.micro > *{grid-column:1/-1!important;margin-top:0!important}}
+
 /* test chart */
 .chart{margin-top:80px;display:grid;gap:14px}
 .crow{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr) 56px;gap:20px;align-items:center;font-size:16px}
@@ -364,7 +381,7 @@ em{font-style:italic}
 <div class="progress" aria-hidden="true"></div>
 <header class="topnav">
   <a href="#top">ALTAI · кейс</a>
-  <nav><a href="#iterations">Итерации</a><a href="#test">Тест</a><a href="#memo">Памятка</a><a href="../" target="_blank" rel="noopener">Сайт ↗</a></nav>
+  <nav><a href="#iterations">Итерации</a><a href="#micro">Анимации</a><a href="#test">Тест</a><a href="#memo">Памятка</a><a href="../" target="_blank" rel="noopener">Сайт ↗</a></nav>
 </header>
 
 <main id="top">
@@ -567,9 +584,27 @@ em{font-style:italic}
   </div>
 </section>
 
+<section class="band dark" id="micro" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker rv"><b>09</b>Микроинтеракции</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Как это</span></span><span class="mask"><span><em>работает вживую</em></span></span></h2>
+      <p class="lead muted rv rv-d1">Записи с&nbsp;опубликованного сайта: карта, окно дня, форма, вопросы, памятка и&nbsp;телефон.</p>
+    </div>
+    <div class="micro">
+      <div class="mi mi--a rv"><div class="win"><div class="win__bar"><i></i><i></i><i></i><span>Локации</span></div><video data-lazy src="video/map.mp4" poster="video/map.jpg" muted loop playsinline preload="none" aria-label="Карта: при наведении на точку открывается карточка места"></video></div><h3>Карта маршрута</h3><p>Наведение на&nbsp;точку открывает карточку места. Легенда и&nbsp;подсказка прячутся, пока человек работает с&nbsp;картой, и&nbsp;возвращаются после.</p></div>
+      <div class="mi mi--b rv rv-d1"><div class="win"><div class="win__bar"><i></i><i></i><i></i><span>Программа</span></div><video data-lazy src="video/day.mp4" poster="video/day.jpg" muted loop playsinline preload="none" aria-label="Окно дня открывается по клику на карточку дня"></video></div><h3>Окно дня</h3><p>Карточка дня раскрывается в&nbsp;расписание: утро, день, вечер, что по&nbsp;желанию и&nbsp;сколько идти пешком.</p></div>
+      <div class="mi mi--c rv"><div class="win"><div class="win__bar"><i></i><i></i><i></i><span>Заявка</span></div><video data-lazy src="video/form.mp4" poster="video/form.jpg" muted loop playsinline preload="none" aria-label="Форма: при смене числа гостей меняются варианты размещения и итог"></video></div><h3>Форма заявки</h3><p>Число гостей меняет варианты размещения и&nbsp;итог. Ошибки появляются у&nbsp;своих полей и&nbsp;объясняют, что исправить.</p></div>
+      <div class="mi mi--d rv rv-d1"><div class="win"><div class="win__bar"><i></i><i></i><i></i><span>Участникам</span></div><video data-lazy src="video/memo.mp4" poster="video/memo.jpg" muted loop playsinline preload="none" aria-label="Памятка открывается из шапки, переключается тёмная тема"></video></div><h3>Памятка</h3><p>Открывается из&nbsp;шапки одним нажатием, есть тёмная тема и&nbsp;сохранение в&nbsp;PDF.</p></div>
+      <div class="mi mi--e rv"><div class="win"><div class="win__bar"><i></i><i></i><i></i><span>Вопросы и&nbsp;ответы</span></div><video data-lazy src="video/faq.mp4" poster="video/faq.jpg" muted loop playsinline preload="none" aria-label="Вопросы раскрываются по нажатию"></video></div><h3>Вопросы и&nbsp;ответы</h3><p>Вопрос о&nbsp;питании&nbsp;— первым и&nbsp;раскрыт. Остальные открываются по&nbsp;нажатию.</p></div>
+      <div class="mi mi--f rv rv-d1"><div class="phone"><div><video data-lazy src="video/mobile.mp4" poster="video/mobile.jpg" muted loop playsinline preload="none" aria-label="Телефон: первый экран, меню и прокрутка"></video></div></div><h3>Телефон</h3><p>Одна кнопка в&nbsp;первом экране, меню на&nbsp;весь экран, мозаика кадров вместо анимации.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="band light" id="test">
   <div class="wrap">
-    <p class="kicker rv"><b>09</b>Юзабилити-тест · 13–14&nbsp;ноября</p>
+    <p class="kicker rv"><b>10</b>Юзабилити-тест · 13–14&nbsp;ноября</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Шесть человек,</span></span><span class="mask"><span><em>семь заданий</em></span></span></h2>
       <p class="lead rv rv-d1" style="color:var(--ink-2)">Хуже всего прошло задание про цену вдвоём и&nbsp;то, что не&nbsp;входит в&nbsp;стоимость: 2,5&nbsp;из&nbsp;7.</p>
@@ -588,7 +623,7 @@ em{font-style:italic}
 
 <section class="band dark" id="fixes">
   <div class="wrap">
-    <p class="kicker rv"><b>10</b>Что изменилось после теста</p>
+    <p class="kicker rv"><b>11</b>Что изменилось после теста</p>
     <h2 class="h2 rv"><span class="mask"><span>Было&nbsp;—</span></span><span class="mask"><span><em>стало</em></span></span></h2>
     <p class="lead muted rv rv-d1" style="margin-top:32px">Потяните разделитель на&nbsp;картинке.</p>
 
@@ -624,7 +659,7 @@ em{font-style:italic}
 
 <section class="band warm" id="memo">
   <div class="wrap">
-    <p class="kicker rv"><b>11</b>Памятка участника</p>
+    <p class="kicker rv"><b>12</b>Памятка участника</p>
     <h2 class="h2 rv"><span class="mask"><span>Во&nbsp;что вырос</span></span><span class="mask"><span><em>гайд 2024 года</em></span></span></h2>
     <div class="memo-grid">
       <div>
@@ -647,7 +682,7 @@ em{font-style:italic}
 
 <section class="band dark" id="adaptive">
   <div class="wrap">
-    <p class="kicker rv"><b>12</b>Адаптив</p>
+    <p class="kicker rv"><b>13</b>Адаптив</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>То&nbsp;же содержание,</span></span><span class="mask"><span><em>другая подача</em></span></span></h2>
       <p class="lead muted rv rv-d1">На&nbsp;телефоне одна кнопка в&nbsp;первом экране, памятка в&nbsp;меню, номера&nbsp;— белыми карточками, фильм&nbsp;— мозаикой.</p>
@@ -662,7 +697,7 @@ em{font-style:italic}
 
 <section class="band light" id="results">
   <div class="wrap">
-    <p class="kicker rv"><b>13</b>Итоги</p>
+    <p class="kicker rv"><b>14</b>Итоги</p>
     <div class="split">
       <h2 class="h2 rv"><span class="mask"><span>Что</span></span><span class="mask"><span><em>получилось</em></span></span></h2>
       <p class="lead rv rv-d1" style="color:var(--ink-2)">Сайт опубликован на&nbsp;GitHub Pages. Участники теста посмотрели новую версию и&nbsp;подтвердили, что стало понятнее.</p>
@@ -777,6 +812,11 @@ document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',(
 /* laptop iframe scale */
 const ls=$('#lapScreen'),fr=ls.querySelector('iframe');
 const fit=()=>{fr.style.transform='scale('+(ls.clientWidth/1440)+')'};fit();new ResizeObserver(fit).observe(ls);
+
+
+/* lazy videos play only when visible */
+const vio=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(v.preload==='none'){v.preload='auto';v.load()}if(!reduce)v.play().catch(()=>{})}else v.pause()}),{threshold:.25});
+document.querySelectorAll('video[data-lazy]').forEach(v=>vio.observe(v));
 
 /* adaptive phone long scroll */
 const ph=$('#phLong');
