@@ -3,533 +3,785 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ALTAI — кейс: сайт зимней поездки на Алтай</title>
+<title>ALTAI — кейс</title>
+<meta name="description" content="Кейс: сайт зимней поездки на Алтай — от гайда 2024 года до сайта, проверенного юзабилити-тестом. 34 версии за 11 дней.">
+<meta property="og:title" content="ALTAI — кейс">
+<meta property="og:image" content="img/new-hero.jpg">
+<link rel="preload" href="fonts/old-standard-tt-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{font-family:"Old Standard TT";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:"Old Standard TT";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Old Standard TT";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
 @font-face{font-family:"Old Standard TT";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-cyrillic-400-italic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:"Old Standard TT";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Old Standard TT";font-style:italic;font-weight:400;font-display:swap;src:url(fonts/old-standard-tt-latin-400-italic.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
 @font-face{font-family:"Roboto Flex";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/roboto-flex-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:"Roboto Flex";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/roboto-flex-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Roboto Flex";font-style:normal;font-weight:100 1000;font-display:swap;src:url(fonts/roboto-flex-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122,U+2212}
 
 :root{
-  --page:#f3f1ec; --raised:#fff; --subtle:#e6e3dc; --warm:#f3e6d6; --night:#0d1112;
-  --text:#242b2d; --text-2:#4f5557; --text-3:#5e6466; --on-dark:#f3f1ec; --on-dark-2:#bebbb4;
-  --accent:#29495c; --warm-text:#8f4a1c; --border:#d2cec5; --border-strong:#242b2d;
-  --serif:"Old Standard TT",Georgia,serif; --sans:"Roboto Flex",system-ui,sans-serif;
-  --margin:64px; --section:96px; --stack:48px;
+  --night:#0d1112; --night-2:#171c1e; --night-3:#22292b;
+  --stone:#f3f1ec; --stone-2:#e6e3dc; --line:#d2cec5;
+  --hearth:#f3e6d6; --sand:#ead3ba; --larch:#8f4a1c; --buck:#d9822b; --wood:#c08c69;
+  --ink:#242b2d; --ink-2:#4f5557; --ink-3:#6b7072;
+  --on:#f3f1ec; --on-2:#a8aead; --on-3:#8e9496;
+  --spruce:#29495c; --spruce-l:#9ec3d7;
+  --serif:"Old Standard TT",Georgia,serif; --sans:"Roboto Flex",system-ui,-apple-system,sans-serif;
+  --m:64px; --sec:clamp(96px,12vw,180px); --gap:24px;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
-@media (max-width:1100px){:root{--margin:40px;--section:64px;--stack:32px}}
-@media (max-width:760px){:root{--margin:20px;--section:48px;--stack:24px}}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--page);color:var(--text);font:400 17px/1.5 var(--sans)}
-img{display:block;max-width:100%;height:auto}
-a{color:var(--accent)}
-.wrap{max-width:1440px;margin:0 auto;padding:0 var(--margin)}
-.section{padding:var(--section) 0}
-.section + .section{padding-top:0}
-.eyebrow{display:flex;align-items:center;gap:8px;font:500 13px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin:0 0 24px}
-.eyebrow b{font-weight:500;color:var(--warm-text)}
-h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.02em}
-h2{font-size:48px;line-height:1.05}
-h2 em,h1 em{font-style:italic}
-h3{font-size:26px;line-height:1.15}
+@media (max-width:1100px){:root{--m:40px}}
+@media (max-width:760px){:root{--m:20px;--gap:16px}}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--on);font:400 17px/1.55 var(--sans);overflow-x:clip}
+img,video{display:block;max-width:100%}
+a{color:inherit}
 p{margin:0}
-.lead{font-family:var(--serif);font-size:24px;line-height:1.35;max-width:840px}
-.muted{color:var(--text-2)}
-.small{font-size:14px;line-height:1.45;color:var(--text-3)}
-.head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:end;margin-bottom:var(--stack)}
-.head > p{max-width:640px;color:var(--text-2)}
-@media (max-width:900px){.head{grid-template-columns:1fr} h2{font-size:34px}}
-.rule{border:0;border-top:1.5px solid var(--border-strong);margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.02em}
+em{font-style:italic}
+.wrap{max-width:1440px;margin:0 auto;padding:0 var(--m)}
+.band{padding:var(--sec) 0;position:relative}
+.light{background:var(--stone);color:var(--ink)}
+.warm{background:var(--hearth);color:var(--ink)}
+.dark{background:var(--night);color:var(--on)}
+.kicker{display:flex;align-items:baseline;gap:16px;font:500 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:32px}
+.kicker b{font:400 15px/1 var(--serif);letter-spacing:0;text-transform:none;opacity:1;color:var(--buck)}
+.light .kicker b,.warm .kicker b{color:var(--larch)}
+.h2{font-size:clamp(44px,6.4vw,104px);line-height:.98;letter-spacing:-.03em}
+.h2 em{display:block}
+.lead{font:400 clamp(20px,1.9vw,28px)/1.35 var(--serif);max-width:900px}
+.muted{opacity:.72}
+.split{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:var(--gap);align-items:end}
+@media (max-width:900px){.split{grid-template-columns:1fr;gap:32px}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+.mask{overflow:hidden;display:block}
+.mask > span{display:block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.in .mask > span,.mask.in > span{transform:none}
+.clip{clip-path:inset(12% 6% 12% 6% round 8px);transition:clip-path 1.4s var(--ease)}
+.clip.in{clip-path:inset(0 0 0 0 round 4px)}
+
+/* progress + nav */
+.progress{position:fixed;left:0;top:0;height:2px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:var(--buck);z-index:60}
+.topnav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px var(--m);mix-blend-mode:difference;color:#fff;font:500 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
+.topnav a{pointer-events:auto;text-decoration:none}
+.topnav nav{display:flex;gap:24px}
+@media (max-width:760px){.topnav nav a:not(:last-child){display:none}}
 
 /* hero */
-.hero{background:var(--night);color:var(--on-dark);position:relative;overflow:hidden}
-.hero__bg{position:absolute;inset:0;background:url(img/photo-hero.jpg) center/cover;opacity:.38}
-.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,18,.2),rgba(13,17,18,.95))}
-.hero .wrap{position:relative;padding-top:120px;padding-bottom:64px}
-.hero .eyebrow{color:var(--on-dark-2)}
-.hero h1{font-size:96px;line-height:.98;letter-spacing:-.025em;max-width:1100px}
-.hero h1 em{display:block}
-.hero__lead{margin-top:32px;max-width:720px;font-size:20px;line-height:1.45;color:var(--on-dark)}
-.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:64px;border-top:1px solid rgba(255,255,255,.2);padding-top:24px}
-.meta dt{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--on-dark-2);margin-bottom:8px}
-.meta dd{margin:0;font-size:16px;line-height:1.45}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
-.btn{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 20px;font:500 14px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;text-decoration:none}
-.btn--light{background:var(--on-dark);color:var(--text)}
-.btn--ghost{border:1.5px solid rgba(255,255,255,.6);color:var(--on-dark)}
-.hero__shot{margin-top:64px;border-radius:4px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.45)}
-@media (max-width:1100px){.hero h1{font-size:72px}.meta{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:760px){.hero .wrap{padding-top:72px;padding-bottom:48px}.hero h1{font-size:46px}.hero__lead{font-size:17px}.meta{grid-template-columns:1fr;margin-top:40px}}
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--night)}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);animation:heroZoom 2.4s var(--ease) forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,18,.35) 0%,rgba(13,17,18,.1) 40%,rgba(13,17,18,.85) 100%)}
+.hero__in{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--m) 40px;max-width:1440px;margin:0 auto}
+.hero__top{position:absolute;top:96px;left:var(--m);right:var(--m);display:flex;justify-content:space-between;font:500 13px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--on-2)}
+.hero__title{font:400 clamp(96px,23vw,360px)/.8 var(--serif);letter-spacing:-.04em;display:flex;margin-left:-.04em}
+.hero__title span{display:inline-block;transform:translateY(110%);animation:rise 1.3s var(--ease) forwards}
+.hero__title .t{overflow:hidden;display:inline-block;padding-bottom:.04em}
+@keyframes rise{to{transform:none}}
+.hero__sub{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:24px;border-top:1px solid rgba(243,241,236,.25);padding-top:20px;opacity:0;animation:fade 1s var(--ease) 1s forwards}
+@keyframes fade{to{opacity:1}}
+.hero__slogan{font:italic 400 clamp(24px,2.6vw,40px)/1.1 var(--serif)}
+.hero__meta{display:grid;grid-template-columns:repeat(3,auto);gap:8px 40px;font-size:14px;color:var(--on-2)}
+.hero__meta b{display:block;font-weight:500;color:var(--on);font-size:15px}
+.scroll-cue{position:absolute;right:var(--m);top:50%;z-index:3;writing-mode:vertical-rl;font:500 12px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--on-2)}
+.scroll-cue::after{content:"";display:block;width:1px;height:64px;margin:16px auto 0;background:linear-gradient(var(--on-2),transparent);animation:cue 2s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@media (max-width:760px){.hero__sub{flex-direction:column;align-items:flex-start}.hero__meta{grid-template-columns:1fr 1fr}.scroll-cue{display:none}.hero__top{top:72px}}
 
-/* figures */
-figure{margin:0}
-figcaption{margin-top:12px;font-size:14px;line-height:1.45;color:var(--text-3)}
-.shot{background:var(--raised);border:1px solid var(--border);border-radius:4px;overflow:hidden}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-@media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}}
-.placeholder{aspect-ratio:595/842;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:repeating-linear-gradient(45deg,#e9e7e1 0 12px,#e4e1da 12px 24px);color:var(--text-3);font-size:14px;border:1px dashed var(--border)}
-.origin{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:24px;align-items:end}
-@media (max-width:900px){.origin{grid-template-columns:1fr}}
+/* iso wall cover */
+.cover{position:relative;height:150vh;min-height:900px;background:var(--hearth);color:var(--ink);overflow:hidden}
+.iso{position:absolute;left:50%;top:50%;width:2200px;height:2200px;transform:translate(-50%,-50%) rotateX(52deg) rotateZ(-34deg);transform-style:preserve-3d;display:grid;grid-template-columns:repeat(7,1fr);gap:28px}
+.iso__col{display:flex;flex-direction:column;gap:28px;animation:up 60s linear infinite}
+.iso__col:nth-child(even){animation-name:down}
+.iso__col img{width:100%;border-radius:18px;box-shadow:0 30px 60px rgba(58,47,37,.28),0 2px 0 rgba(255,255,255,.4) inset}
+@keyframes up{to{transform:translateY(-50%)}}
+@keyframes down{from{transform:translateY(-50%)}to{transform:none}}
+.cover__veil{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(243,230,214,.96) 0%,rgba(243,230,214,.85) 30%,rgba(243,230,214,0) 62%)}
+.cover__text{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;z-index:2}
+.cover__big{font:400 clamp(120px,19vw,300px)/.82 var(--serif);letter-spacing:-.05em;color:var(--ink)}
+.cover__big small{display:block;font-size:clamp(28px,3.2vw,48px);letter-spacing:-.02em;line-height:1.1;margin-top:20px}
+.cover__big small em{color:var(--larch)}
+@media (max-width:760px){.cover{height:120vh}.iso{width:1400px;height:1400px;grid-template-columns:repeat(5,1fr);gap:16px}.iso__col{gap:16px}.cover__veil{background:linear-gradient(180deg,rgba(243,230,214,.9),rgba(243,230,214,.6) 60%,rgba(243,230,214,.2))}}
 
-/* cards */
-.card{background:var(--raised);padding:32px;border-top:1.5px solid var(--border-strong)}
-.card h3{margin-bottom:12px}
-.card--warm{background:var(--warm)}
-.card ul{margin:16px 0 0;padding-left:20px}
-.card li+li{margin-top:6px}
-.tag{display:inline-block;font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--warm-text);margin-bottom:16px}
-.reqs{margin-top:var(--stack);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;list-style:none;padding:0;counter-reset:r}
-.reqs li{counter-increment:r;border-top:1px solid var(--border);padding-top:16px;font-size:15px;line-height:1.45}
-.reqs li::before{content:counter(r,decimal-leading-zero);display:block;font:400 28px/1 var(--serif);margin-bottom:12px;color:var(--warm-text)}
-@media (max-width:1100px){.reqs{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:760px){.reqs{grid-template-columns:1fr}}
-.note{margin-top:24px;font-size:15px;color:var(--text-2);max-width:840px}
+/* origin */
+.vs{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--gap);align-items:stretch;margin-top:96px}
+.vs__card{padding:40px;border:1px solid rgba(243,241,236,.18);border-radius:4px;display:flex;flex-direction:column;gap:20px;min-height:420px}
+.vs__year{font:400 clamp(72px,8vw,128px)/.9 var(--serif);letter-spacing:-.04em}
+.vs__card ul{list-style:none;padding:0;margin:auto 0 0;font-size:17px}
+.vs__card li{padding:12px 0;border-top:1px solid rgba(243,241,236,.15)}
+.vs__card--old{color:var(--on-3)}
+.vs__card--old li{text-decoration:line-through;text-decoration-color:rgba(217,130,43,.7)}
+.vs__card--new{background:var(--hearth);color:var(--ink);border-color:var(--hearth)}
+.vs__card--new li{border-color:rgba(36,43,45,.15)}
+.vs__arrow{align-self:center;font:400 64px/1 var(--serif);color:var(--buck)}
+@media (max-width:900px){.vs{grid-template-columns:1fr}.vs__arrow{transform:rotate(90deg);justify-self:center}.vs__card{min-height:0}}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-bottom:var(--stack)}
-.stat{border-top:1.5px solid var(--border-strong);padding-top:20px}
-.stat b{display:block;font:400 64px/1 var(--serif);letter-spacing:-.02em}
-.stat span{display:block;margin-top:12px;font-size:15px;color:var(--text-2)}
-@media (max-width:900px){.stats{grid-template-columns:1fr}.stat b{font-size:48px}}
+/* scale counters */
+.counters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);margin-top:80px}
+.counter{padding:32px 24px 32px 0;border-bottom:1px solid var(--line)}
+.counter:not(:nth-child(4n)){border-right:1px solid var(--line);padding-right:24px}
+.counter:not(:nth-child(4n+1)){padding-left:24px}
+.counter b{display:block;font:400 clamp(56px,6vw,96px)/1 var(--serif);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.counter span{display:block;margin-top:12px;font-size:15px;line-height:1.4;color:var(--ink-2);max-width:240px}
+@media (max-width:900px){.counters{grid-template-columns:1fr 1fr}.counter{padding:24px 12px!important;border-right:0!important}.counter:nth-child(odd){border-right:1px solid var(--line)!important}}
 
-/* insight rows */
-.rows{border-top:1.5px solid var(--border-strong)}
-.row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,5fr);gap:24px;padding:24px 0;border-bottom:1px solid var(--border)}
-.row__k{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);margin-bottom:6px}
-.row__src{font-size:14px;color:var(--text-3)}
-.row__arrow{color:var(--accent)}
-@media (max-width:900px){.row{grid-template-columns:1fr;gap:12px}}
+/* scenarios */
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:80px}
+.scen__card{position:relative;min-height:620px;border-radius:4px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:40px;color:var(--on)}
+.scen__card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.scen__card:hover img{transform:scale(1.04)}
+.scen__card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(13,17,18,.88))}
+.scen__card > *:not(img){position:relative;z-index:1}
+.scen__tag{font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:16px}
+.scen__card h3{font-size:clamp(40px,4vw,64px);line-height:1}
+.scen__card p{margin-top:16px;max-width:440px;font-size:18px;color:#e2e0da}
+.reqs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap);margin-top:48px;list-style:none;padding:0;counter-reset:r}
+.reqs li{counter-increment:r;border-top:1px solid var(--line);padding-top:16px;font-size:15px;color:var(--ink-2)}
+.reqs li::before{content:counter(r,decimal-leading-zero);display:block;font:400 24px/1 var(--serif);color:var(--larch);margin-bottom:12px}
+@media (max-width:900px){.scen{grid-template-columns:1fr}.scen__card{min-height:460px;padding:28px}.reqs{grid-template-columns:1fr 1fr}}
+
+/* research */
+.insights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:80px}
+.ins{background:var(--night-2);border-radius:4px;padding:36px;display:flex;flex-direction:column;gap:20px;min-height:520px;transition:background .4s,transform .4s var(--ease)}
+.ins:hover{background:var(--night-3);transform:translateY(-4px)}
+.ins__n{font:italic 400 56px/1 var(--serif);color:var(--buck)}
+.ins h3{font-size:28px;line-height:1.15}
+.ins__src{font-size:13px;letter-spacing:.04em;color:var(--on-3)}
+.ins__sol{margin-top:auto;padding-top:20px;border-top:1px solid rgba(243,241,236,.14);font-size:16px}
+.ins__sol b{display:block;font-weight:500;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--spruce-l);margin-bottom:8px}
+.sources{display:flex;flex-wrap:wrap;gap:48px;margin-top:48px}
+.sources div b{display:block;font:400 72px/1 var(--serif)}
+.sources div span{font-size:14px;color:var(--on-2);display:block;max-width:260px;margin-top:8px}
+@media (max-width:900px){.insights{grid-template-columns:1fr}.ins{min-height:0}}
 
 /* concept */
-.swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
-.sw{aspect-ratio:1/1.1;display:flex;flex-direction:column;justify-content:flex-end;padding:12px;font-size:12px;line-height:1.3;border:1px solid rgba(0,0,0,.06)}
-.sw b{font-weight:500;display:block}
-@media (max-width:760px){.swatches{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.type{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
-.type__card{background:var(--raised);padding:32px}
-.type__big{font-size:72px;line-height:1;margin:16px 0}
-.type__big--sans{font-family:var(--sans);font-weight:500;font-size:56px;letter-spacing:-.02em}
-@media (max-width:760px){.type{grid-template-columns:1fr}.type__big{font-size:52px}}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;margin-top:var(--stack)}
-.fact{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--border);font-size:15px}
-.fact dt{color:var(--text-3)} .fact dd{margin:0}
-@media (max-width:900px){.facts{grid-template-columns:1fr}.fact{grid-template-columns:1fr;gap:4px}}
+.palette{display:flex;height:420px;margin-top:80px;gap:6px}
+.sw{flex:1;border-radius:4px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;font-size:13px;line-height:1.4;transition:flex 1s var(--ease)}
+.sw b{font:400 22px/1.1 var(--serif);display:block;margin-bottom:4px}
+.palette:hover .sw{flex:.8}.palette .sw:hover{flex:2.4}
+.type-row{display:grid;grid-template-columns:7fr 5fr;gap:var(--gap);margin-top:var(--gap)}
+.type-card{background:var(--stone);color:var(--ink);border-radius:4px;padding:40px;overflow:hidden}
+.type-card .big{font:400 clamp(96px,13vw,220px)/.85 var(--serif);letter-spacing:-.04em;margin:24px 0}
+.type-card .big--sans{font-family:var(--sans);font-weight:500;letter-spacing:-.04em;font-size:clamp(80px,9vw,150px)}
+.type-card .abc{font-size:15px;color:var(--ink-2)}
+@media (max-width:900px){.palette{height:auto;flex-direction:column}.sw{min-height:84px}.type-row{grid-template-columns:1fr}}
 
-/* flow */
-.flow{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px;list-style:none;padding:0;margin:0;counter-reset:f}
-.flow li{counter-increment:f;background:var(--raised);padding:16px 12px;font-size:14px;line-height:1.35;min-height:120px;position:relative}
-.flow li::before{content:counter(f);display:block;font:400 28px/1 var(--serif);color:var(--warm-text);margin-bottom:12px}
-.flow li:last-child{background:var(--accent);color:#fff}
-.flow li:last-child::before{color:#d5e2ea}
-@media (max-width:1100px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* iterations */
+.scrub{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;margin-top:80px;align-items:start}
+.scrub__side{position:sticky;top:96px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.tab{font:500 14px/1 var(--sans);padding:12px 18px;border-radius:999px;border:1px solid rgba(243,241,236,.3);background:transparent;color:var(--on);cursor:pointer;transition:background .25s,color .25s,transform .15s}
+.tab:hover{border-color:var(--on)}
+.tab:active{transform:scale(.97)}
+.tab[aria-selected=true]{background:var(--on);color:var(--ink)}
+.ver{font:400 clamp(80px,9vw,140px)/.9 var(--serif);letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.ver small{font-size:.35em;color:var(--on-3);letter-spacing:0}
+.ver-date{margin-top:16px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--buck)}
+.ver-msg{margin-top:8px;font:400 24px/1.25 var(--serif);min-height:3.8em}
+.range{width:100%;margin-top:32px;accent-color:var(--buck);height:44px;cursor:pointer}
+.ctrl{display:flex;gap:12px;margin-top:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;font:500 14px/1 var(--sans);letter-spacing:.04em;cursor:pointer;border:1px solid rgba(243,241,236,.35);background:transparent;color:var(--on);text-decoration:none;transition:background .25s,color .25s,transform .15s}
+.btn:hover{background:var(--on);color:var(--ink)}
+.btn:active{transform:scale(.97)}
+.btn--fill{background:var(--on);color:var(--ink);border-color:var(--on)}
+.btn--fill:hover{background:var(--buck);border-color:var(--buck);color:var(--ink)}
+.light .btn,.warm .btn{border-color:rgba(36,43,45,.35);color:var(--ink)}
+.light .btn:hover,.warm .btn:hover{background:var(--ink);color:var(--on)}
+.stage{position:relative;background:var(--night-2);border-radius:4px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding:40px;min-height:640px}
+.stage img{border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.5);max-height:min(760px,72vh);width:auto;object-fit:contain;object-position:top}
+.stage[data-mode=m] img{border-radius:28px;outline:8px solid #2c3335}
+.ticks{display:flex;gap:3px;margin-top:20px}
+.ticks i{flex:1;height:22px;background:var(--night-3);border-radius:2px;cursor:pointer;transition:background .2s}
+.ticks i.on{background:var(--buck)}
+.ticks i.day{margin-left:8px}
+@media (max-width:900px){.scrub{grid-template-columns:1fr;gap:24px}.scrub__side{position:static}.stage{padding:20px;min-height:0}.ver-msg{min-height:0}}
+.marquee{overflow:hidden;margin-top:var(--sec);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee__track{display:flex;gap:20px;width:max-content;animation:mq 90s linear infinite}
+.marquee:hover .marquee__track{animation-play-state:paused}
+.marquee__track figure{margin:0;width:160px;height:720px;overflow:hidden;border-radius:4px;position:relative;flex:none}
+.marquee__track img{width:160px}
+.marquee__track figure span{position:absolute;left:8px;bottom:8px;font:500 11px/1 var(--sans);padding:6px 8px;border-radius:999px;background:rgba(13,17,18,.8)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.gens{margin-top:var(--sec);border-top:1px solid rgba(243,241,236,.18)}
+.gen{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1.2fr);gap:var(--gap);padding:28px 0;border-bottom:1px solid rgba(243,241,236,.18);align-items:baseline;transition:padding .4s var(--ease)}
+.gen:hover{padding-left:16px}
+.gen__n{font:italic 400 40px/1 var(--serif);color:var(--buck)}
+.gen h3{font-size:clamp(28px,3vw,44px);line-height:1.05}
+.gen p{color:var(--on-2);font-size:16px}
+@media (max-width:760px){.gen{grid-template-columns:1fr;gap:8px}}
+.days{display:flex;align-items:flex-end;gap:12px;height:220px;margin-top:48px}
+.days div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;height:100%}
+.days i{display:block;background:var(--buck);border-radius:2px 2px 0 0;height:0;transition:height 1.4s var(--ease)}
+.days.in i{height:var(--h)}
+.days b{font:400 28px/1 var(--serif)}
+.days span{font-size:13px;color:var(--on-2)}
 
-/* ds table */
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--border);vertical-align:top}
-th{font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-3);border-bottom:1.5px solid var(--border-strong)}
-td.num{font-family:var(--serif);font-size:24px;line-height:1}
-.scroll{overflow-x:auto}
+/* design system */
+.ds{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);margin-top:80px}
+.tile{background:#fff;border-radius:4px;padding:32px;display:flex;flex-direction:column;gap:20px;color:var(--ink)}
+.tile h4{margin:0;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.t4{grid-column:span 4}.t5{grid-column:span 5}.t7{grid-column:span 7}.t8{grid-column:span 8}.t6{grid-column:span 6}.t12{grid-column:span 12}
+@media (max-width:900px){.ds > *{grid-column:span 12!important}}
+.ui-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;font:500 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;border:1.5px solid var(--spruce);transition:background .25s,color .25s}
+.ui-btn--p{background:var(--spruce);color:#fff}.ui-btn--p:hover{background:#1c3442}
+.ui-btn--s{color:var(--spruce);background:transparent}.ui-btn--s:hover{background:var(--spruce);color:#fff}
+.ui-tags{display:flex;gap:8px;flex-wrap:wrap}
+.ui-tag{font-size:13px;padding:8px 14px;border-radius:999px}
+.ui-tag--o{border:1px solid var(--spruce);color:var(--spruce)}
+.ui-tag--r{background:#c3c7c5;color:#2c3335}
+.ui-step{display:inline-flex;align-items:center;border:1px solid #6b7072;height:48px}
+.ui-step button{width:48px;height:46px;border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--ink)}
+.ui-step button:hover{background:var(--stone-2)}
+.ui-step output{min-width:120px;text-align:center;font-size:15px}
+.ui-field{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.ui-field span{font-weight:500}
+.ui-field div{height:48px;border:2px solid #b42318;display:flex;align-items:center;padding:0 12px;color:var(--ink-3);background:#fff}
+.ui-field small{color:#b42318;font-size:13px}
+.ui-dots{display:flex;align-items:center;gap:6px;font-size:14px}
+.ui-dots i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--larch)}
+.ui-dots i.f{background:var(--larch)}
+.scale{display:flex;align-items:flex-end;gap:16px;height:180px}
+.scale div{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;font-size:13px;color:var(--ink-3)}
+.scale i{display:block;width:100%;background:var(--hearth);border-top:2px solid var(--larch)}
+.ds-num{display:flex;flex-wrap:wrap;gap:32px}
+.ds-num div b{display:block;font:400 56px/1 var(--serif)}
+.ds-num div span{font-size:13px;color:var(--ink-3)}
 
-/* decisions */
-.dec{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 24px}
-.dec figure .shot{max-height:520px;overflow:hidden}
-.dec h3{margin:20px 0 8px}
-@media (max-width:900px){.dec{grid-template-columns:1fr}}
+/* decisions with devices */
+.laptop{position:relative;margin:80px auto 0;max-width:1100px}
+.laptop__screen{background:#0b0d0e;border-radius:18px 18px 0 0;padding:14px 14px 0;border:1px solid #2c3335}
+.laptop__screen > div{aspect-ratio:16/10;overflow:hidden;border-radius:6px 6px 0 0;position:relative;background:#000}
+.laptop__screen iframe{position:absolute;left:0;top:0;width:1440px;height:900px;border:0;transform-origin:0 0}
+.laptop__base{height:22px;background:linear-gradient(#3a4245,#171c1e);border-radius:0 0 22px 22px;margin:0 -5%;box-shadow:0 40px 60px rgba(0,0,0,.5)}
+.laptop__hint{text-align:center;margin-top:24px;font-size:14px;color:var(--on-2)}
+.decs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:var(--sec);align-items:start}
+.phone{border-radius:44px;padding:12px;background:#151a1c;box-shadow:0 0 0 1px #3a4245,0 40px 80px rgba(0,0,0,.5);max-width:340px;margin:0 auto}
+.phone > div{border-radius:34px;overflow:hidden;aspect-ratio:390/844;background:var(--stone);position:relative}
+.phone img{width:100%}
+.phone--scroll img{animation:pscroll 26s var(--ease) infinite alternate}
+@keyframes pscroll{0%,8%{transform:translateY(0)}92%,100%{transform:translateY(calc(-100% + 100cqh))}}
+.phone > div{container-type:size}
+.dec h3{font-size:32px;line-height:1.1;margin:32px 0 12px}
+.dec p{color:var(--on-2);font-size:16px}
+.dec:nth-child(2){margin-top:120px}
+@media (max-width:900px){.decs{grid-template-columns:1fr}.dec:nth-child(2){margin-top:0}}
 
-/* chart */
-.chart{background:var(--raised);padding:32px}
-.chart svg{width:100%;height:auto;display:block}
-.findings{list-style:none;padding:0;margin:0}
-.findings li{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:24px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border);font-size:16px}
-.bar{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-2)}
-.bar i{display:block;height:10px;background:var(--accent)}
-.bar s{display:block;height:10px;background:var(--subtle);text-decoration:none}
-@media (max-width:760px){.findings li{grid-template-columns:1fr;gap:8px}}
+/* test chart */
+.chart{margin-top:80px;display:grid;gap:14px}
+.crow{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr) 56px;gap:20px;align-items:center;font-size:16px}
+.crow .bar{height:36px;background:var(--stone-2);border-radius:2px;position:relative;overflow:hidden}
+.crow .bar i{position:absolute;inset:0 auto 0 0;width:0;background:#bebbb4;transition:width 1.6s var(--ease)}
+.chart.in .crow .bar i{width:var(--w)}
+.crow.hi .bar i{background:var(--spruce)}
+.crow.hi{font-weight:500}
+.crow b{font:400 28px/1 var(--serif);text-align:right}
+.chart__note{font-size:14px;color:var(--ink-3);margin-top:12px}
+@media (max-width:760px){.crow{grid-template-columns:1fr 48px}.crow .bar{grid-column:1/-1;order:3;height:20px}}
+.probs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);margin-top:var(--sec)}
+.prob{border-top:1.5px solid var(--ink);padding-top:20px}
+.prob b{display:block;font:400 72px/1 var(--serif);letter-spacing:-.03em}
+.prob b small{font-size:.4em;color:var(--ink-3)}
+.prob p{margin-top:12px;font-size:16px;color:var(--ink-2)}
+@media (max-width:900px){.probs{grid-template-columns:1fr 1fr}}
 
-/* stories */
-.story{padding:var(--stack) 0;border-top:1.5px solid var(--border-strong)}
-.story__head{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;margin-bottom:32px}
-.story__num{font:400 18px/1 var(--serif);color:var(--warm-text);margin-bottom:12px}
-.story__obs{font-size:16px;color:var(--text-2)}
-.story__obs b{color:var(--text);font-weight:500}
-@media (max-width:900px){.story__head{grid-template-columns:1fr}}
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
-.ba + .ba{margin-top:24px}
-.ba__label{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
-.ba__label::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--text-3)}
-.ba__label--new::before{background:var(--accent)}
-.ba--narrow{grid-template-columns:repeat(2,minmax(0,360px));justify-content:start}
-.ba--rooms{grid-template-columns:repeat(2,minmax(0,520px))}
-.memo .memo__grid--stack{grid-template-columns:1fr}
-.memo .memo__grid--stack .memo__list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 24px}
-@media (max-width:900px){.memo__grid--stack .memo__list{grid-template-columns:1fr}}
-.memo .memo__grid--stack .memo__shots{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px}
-@media (max-width:760px){.memo__grid--stack .memo__shots{grid-template-columns:1fr}}
-@media (max-width:760px){.ba{grid-template-columns:1fr}.ba--narrow{grid-template-columns:minmax(0,1fr)}}
-.status{margin-top:24px;padding:16px 20px;background:var(--subtle);font-size:15px;color:var(--text-2)}
+/* before / after */
+.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;padding:96px 0;border-top:1px solid rgba(243,241,236,.18);align-items:start}
+.story > div:first-child{position:sticky;top:120px}
+.story .cmp{max-width:640px;justify-self:end;width:100%}
+@media (max-width:900px){.story > div:first-child{position:static}.story .cmp{justify-self:stretch}}
+.story:first-of-type{border-top:0}
+.story__n{font:italic 400 88px/1 var(--serif);color:var(--buck)}
+.story h3{font-size:clamp(36px,3.6vw,56px);line-height:1.02;margin:16px 0 24px}
+.story p{color:var(--on-2);font-size:16px}
+.story p + p{margin-top:12px}
+.story p b{color:var(--on);font-weight:500}
+.cmp{position:relative;overflow:hidden;border-radius:4px;user-select:none;touch-action:pan-y;cursor:ew-resize;background:var(--stone);--x:50%}
+.cmp img{width:100%;display:block;pointer-events:none}
+.cmp .after{position:absolute;inset:0;clip-path:inset(0 0 0 var(--x))}
+.cmp .after img{height:100%;object-fit:cover;object-position:top}
+.cmp .handle{position:absolute;top:0;bottom:0;left:var(--x);width:2px;background:var(--buck);transform:translateX(-1px)}
+.cmp .handle::after{content:"↔";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:var(--buck);color:var(--ink);display:grid;place-items:center;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.cmp .lbl{position:absolute;top:16px;font:500 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:999px;background:rgba(13,17,18,.78);color:var(--on)}
+.cmp .lbl--b{left:16px}.cmp .lbl--a{right:16px;background:var(--buck);color:var(--ink)}
+.story .cmp--phone{max-width:360px;border-radius:28px}
+.cmp input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:ew-resize;margin:0}
+@media (max-width:900px){.story{grid-template-columns:1fr;gap:32px;padding:64px 0}.cmp--phone{margin:0 auto}}
+.rest{margin-top:48px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.rest div{background:var(--night-2);padding:28px;border-radius:4px}
+.rest b{font:400 40px/1 var(--serif);color:var(--buck);display:block}
+.rest p{margin-top:12px;font-size:15px;color:var(--on-2)}
+.rest h4{margin:12px 0 0;font:500 17px/1.3 var(--sans)}
+@media (max-width:900px){.rest{grid-template-columns:1fr}}
+.status{margin-top:var(--gap);padding:20px 24px;border:1px dashed rgba(243,241,236,.3);border-radius:4px;color:var(--on-2);font-size:15px}
 
 /* memo */
-.memo{background:var(--warm)}
-.memo__grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start}
-.memo__list{list-style:none;padding:0;margin:0}
-.memo__list li{padding:20px 0;border-top:1px solid rgba(36,43,45,.18)}
-.memo__list b{display:block;font:400 22px/1.2 var(--serif);margin-bottom:6px}
-.memo__shots{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:16px;align-items:start}
-@media (max-width:900px){.memo__grid{grid-template-columns:1fr}}
+.memo-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;margin-top:80px;align-items:center}
+.memo-stage{position:relative;height:760px}
+.memo-stage .phone{position:absolute;left:4%;top:0;width:320px}
+.memo-stage .sheet{position:absolute;right:0;top:80px;width:min(440px,56%);background:#fff;box-shadow:0 40px 80px rgba(58,47,37,.25);transform:rotate(4deg);transition:transform .8s var(--ease);padding:0}
+.memo-stage .sheet:hover{transform:rotate(1deg) translateY(-6px)}
+.memo-stage .pdf-tag{position:absolute;right:24px;top:40px;z-index:2;background:var(--larch);color:#fff;font:500 12px/1 var(--sans);letter-spacing:.1em;padding:10px 14px;border-radius:999px;transform:rotate(4deg)}
+.memo-list{list-style:none;padding:0;margin:40px 0 0}
+.memo-list li{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:20px 0;border-top:1px solid rgba(36,43,45,.15);font-size:16px}
+.memo-list li b{font:400 22px/1.2 var(--serif)}
+@media (max-width:900px){.memo-grid{grid-template-columns:1fr}.memo-stage{height:640px}.memo-stage .phone{width:260px;left:0}.memo-stage .sheet{width:58%;top:120px}.memo-list li{grid-template-columns:1fr;gap:6px}}
 
 /* adaptive */
-.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;align-items:start}
-.phone{border-radius:24px;overflow:hidden;border:6px solid #1f2527;background:#1f2527}
-@media (max-width:760px){.phones{grid-template-columns:1fr 1fr}}
+.devices{position:relative;margin-top:80px;height:clamp(420px,52vw,760px)}
+.devices .dv{position:absolute;box-shadow:0 40px 80px rgba(0,0,0,.45)}
+.dv--lap{left:0;top:0;width:68%;border:10px solid #151a1c;border-radius:14px}
+.dv--tab{right:0;top:12%;width:30%;border:12px solid #151a1c;border-radius:26px;overflow:hidden;aspect-ratio:820/1180;background:#000}
+.dv--tab img{width:100%;height:100%;object-fit:cover;object-position:top}
+.dv--ph{left:52%;top:30%;width:19%;border:8px solid #151a1c;border-radius:30px;overflow:hidden;aspect-ratio:390/844}
+.dv--ph img{width:100%;height:100%;object-fit:cover;object-position:top}
 
-.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-@media (max-width:900px){.results{grid-template-columns:1fr}}
-blockquote{margin:0;padding:32px;background:var(--night);color:var(--on-dark);font:italic 400 28px/1.3 var(--serif)}
-blockquote small{display:block;margin-top:16px;font:400 14px/1.4 var(--sans);color:var(--on-dark-2)}
+/* results & close */
+.res{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:80px}
+.res > div{padding:40px;border-radius:4px;background:#fff}
+.res > div:last-child{background:var(--hearth)}
+.res h3{font-size:36px;margin-bottom:20px}
+.res ul{margin:0;padding-left:20px}
+.res li + li{margin-top:12px}
+@media (max-width:900px){.res{grid-template-columns:1fr}}
+.close{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.close video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
+.close .wrap{position:relative;z-index:1;width:100%}
+.close h2{font-size:clamp(64px,10vw,180px);line-height:.9;letter-spacing:-.04em}
+.close h2 em{display:block;padding-left:12vw}
+.close .ctrl{margin-top:48px;flex-wrap:wrap}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;padding:32px var(--m);font-size:13px;color:var(--on-3);border-top:1px solid rgba(243,241,236,.12)}
 
-.foot{background:var(--night);color:var(--on-dark-2);padding:48px 0;font-size:14px}
-.foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.foot a{color:var(--on-dark)}
-.nowrap{white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv,.mask>span,.hero__title span,.hero__sub{opacity:1!important;transform:none!important}
+  .clip{clip-path:none}
+}
 </style>
 </head>
 <body>
-
-<header class="hero">
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="wrap">
-    <p class="eyebrow">Кейс · UX/UI · 2026</p>
-    <h1>ALTAI — сайт зимней поездки <em>от&nbsp;брифа до&nbsp;теста</em></h1>
-    <p class="hero__lead">Сделала адаптивный сайт поездки на&nbsp;Алтай с&nbsp;двумя сценариями: выбрать поездку и&nbsp;оставить заявку, а&nbsp;после записи&nbsp;— подготовиться к&nbsp;выезду. Проверила его на&nbsp;шести людях и&nbsp;доработала по&nbsp;результатам.</p>
-    <dl class="meta">
-      <div><dt>Роль</dt><dd>UX/UI-дизайнер: исследование, сценарии, дизайн-система, макеты, юзабилити-тест, вёрстка</dd></div>
-      <div><dt>Тип</dt><dd>Самостоятельный UX/UI-концепт на&nbsp;основе коммерческого проекта</dd></div>
-      <div><dt>Инструменты</dt><dd>Figma, HTML, CSS, JavaScript, GitHub Pages</dd></div>
-      <div><dt>Тест</dt><dd>6&nbsp;участников, 7&nbsp;заданий, 24&nbsp;уникальные проблемы</dd></div>
-    </dl>
-    <div class="btns">
-      <a class="btn btn--light" href="https://filinina2013-cloud.github.io/altai/" target="_blank" rel="noopener">Открыть сайт ↗</a>
-      <a class="btn btn--ghost" href="https://www.figma.com/design/8CO9NoGJ4X73LY2wKcgA6Y" target="_blank" rel="noopener">Макеты в&nbsp;Figma ↗</a>
-    </div>
-    <figure class="hero__shot"><img src="img/new-hero.jpg" width="1440" height="900" alt="Первый экран сайта ALTAI: видео гор, заголовок «Холод снаружи. Тепло внутри», даты и цена"></figure>
-  </div>
+<div class="progress" aria-hidden="true"></div>
+<header class="topnav">
+  <a href="#top">ALTAI · кейс</a>
+  <nav><a href="#iterations">Итерации</a><a href="#test">Тест</a><a href="#memo">Памятка</a><a href="../" target="_blank" rel="noopener">Сайт ↗</a></nav>
 </header>
 
-<main>
+<main id="top">
 
-<section class="section" id="origin">
-  <div class="wrap">
-    <p class="eyebrow"><b>01</b> С&nbsp;чего начинался проект</p>
-    <div class="head"><h2>От&nbsp;гайда <em>к&nbsp;сайту</em></h2>
-      <p>В&nbsp;2024&nbsp;году я&nbsp;разработала информационный гайд для&nbsp;участников поездки на&nbsp;Алтай по&nbsp;коммерческому заказу. В&nbsp;2026&nbsp;году самостоятельно пересмотрела концепцию путешествия и&nbsp;создала адаптивный сайт с&nbsp;двумя сценариями&nbsp;— выбор поездки и&nbsp;подготовка к&nbsp;ней после записи. Разработала новую программу, интерфейс и&nbsp;работающую веб-версию, которую проверила с&nbsp;участниками юзабилити-теста.</p>
+<section class="hero" aria-label="Обложка">
+  <img class="poster" src="../assets/img/hero.jpg" alt="" aria-hidden="true">
+  <video autoplay muted loop playsinline preload="auto" poster="../assets/img/hero.jpg"><source src="../assets/video/hero-720.mp4" type="video/mp4"></video>
+  <div class="hero__top"><span>Кейс · UX/UI · 2026</span><span>design by Filinina</span></div>
+  <div class="hero__in">
+    <h1 class="hero__title" aria-label="ALTAI"><span class="t"><span style="animation-delay:.1s">A</span></span><span class="t"><span style="animation-delay:.18s">L</span></span><span class="t"><span style="animation-delay:.26s">T</span></span><span class="t"><span style="animation-delay:.34s">A</span></span><span class="t"><span style="animation-delay:.42s">I</span></span></h1>
+    <div class="hero__sub">
+      <p class="hero__slogan">Сайт зимней поездки на&nbsp;Алтай —<br>от&nbsp;гайда 2024&nbsp;года до&nbsp;проверенного сайта</p>
+      <div class="hero__meta">
+        <div><b>Роль</b>UX/UI-дизайнер</div>
+        <div><b>Тип</b>Самостоятельный концепт</div>
+        <div><b>Стек</b>Figma, HTML/CSS/JS</div>
+      </div>
     </div>
-    <div class="origin">
-      <figure><div class="placeholder">Страница гайда 2024<br>(экспорт из&nbsp;Figma, «99&nbsp;— Archive»)</div><figcaption>2024 · гайд в&nbsp;PDF для&nbsp;тех, кто уже едет</figcaption></figure>
-      <figure><div class="shot"><img src="img/new-hero.jpg" width="1440" height="900" alt="Первый экран нового сайта" loading="lazy"></div><figcaption>2026 · сайт: выбрать поездку, записаться, подготовиться</figcaption></figure>
+  </div>
+  <span class="scroll-cue">Листайте</span>
+</section>
+
+<section class="cover" aria-label="34 версии сайта">
+  <div class="iso" id="iso" aria-hidden="true"></div>
+  <div class="cover__veil" aria-hidden="true"></div>
+  <div class="cover__text"><div class="wrap">
+    <p class="cover__big rv">34<small>версии сайта за&nbsp;<em>11&nbsp;дней</em><br>и&nbsp;каждая&nbsp;— шаг к&nbsp;понятности</small></p>
+  </div></div>
+</section>
+
+<section class="band dark" id="origin">
+  <div class="wrap">
+    <p class="kicker rv"><b>01</b>С&nbsp;чего начинался проект</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>От&nbsp;гайда</span></span><span class="mask"><span><em>к&nbsp;сайту</em></span></span></h2>
+      <p class="lead muted rv rv-d1">В&nbsp;2024&nbsp;году я&nbsp;разработала информационный гайд для&nbsp;участников поездки на&nbsp;Алтай по&nbsp;коммерческому заказу. В&nbsp;2026&nbsp;году самостоятельно пересмотрела концепцию путешествия и&nbsp;создала адаптивный сайт с&nbsp;двумя сценариями&nbsp;— выбор поездки и&nbsp;подготовка к&nbsp;ней после записи.</p>
+    </div>
+    <div class="vs">
+      <div class="vs__card vs__card--old rv"><span class="vs__year">2024</span><p>Коммерческий заказ</p><ul><li>Гайд в&nbsp;PDF и&nbsp;посты для&nbsp;соцсетей</li><li>«Трансформационный выезд», 3&nbsp;дня тренинга</li><li>Лидерство, психология денег, стратегии</li><li>Для&nbsp;тех, кто уже едет</li></ul></div>
+      <span class="vs__arrow rv rv-d1" aria-hidden="true">→</span>
+      <div class="vs__card vs__card--new rv rv-d2"><span class="vs__year">2026</span><p>Самостоятельный UX/UI-концепт</p><ul><li>Адаптивный сайт: ПК, планшет, телефон</li><li>Спокойная поездка: одна база, прогулки</li><li>Занятия о&nbsp;личных целях&nbsp;— по&nbsp;желанию</li><li>И&nbsp;для&nbsp;выбирающих, и&nbsp;для&nbsp;записавшихся</li></ul></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="task">
+<section class="band light" id="scale">
   <div class="wrap">
-    <p class="eyebrow"><b>02</b> Задача</p>
-    <div class="head"><h2>Два человека <em>на&nbsp;одном сайте</em></h2>
-      <p>Тур: 5&nbsp;дней и&nbsp;4&nbsp;ночи в&nbsp;январе, группа 8–10&nbsp;человек, одна база отдыха. Днём короткие прогулки до&nbsp;90&nbsp;минут, вечером печка, баня и&nbsp;бассейн.</p>
+    <p class="kicker rv"><b>02</b>Масштаб работы</p>
+    <h2 class="h2 rv"><span class="mask"><span>Много маленьких</span></span><span class="mask"><span><em>решений</em></span></span></h2>
+    <div class="counters">
+      <div class="counter rv"><b data-count="34">0</b><span>версии сайта с&nbsp;13 по&nbsp;23&nbsp;ноября</span></div>
+      <div class="counter rv rv-d1"><b data-count="88">0</b><span>компонентов с&nbsp;вариантами в&nbsp;Figma</span></div>
+      <div class="counter rv rv-d2"><b data-count="405">0</b><span>вариантов компонентов: ПК, планшет, телефон, состояния</span></div>
+      <div class="counter rv rv-d3"><b data-count="357">0</b><span>переменных: цвета в&nbsp;светлой и&nbsp;тёмной теме, отступы, размеры</span></div>
+      <div class="counter rv"><b data-count="34">0</b><span>текстовых стиля</span></div>
+      <div class="counter rv rv-d1"><b data-count="5">0</b><span>интервью и&nbsp;28&nbsp;разобранных отзывов</span></div>
+      <div class="counter rv rv-d2"><b data-count="6">0</b><span>участников юзабилити-теста, 7&nbsp;заданий</span></div>
+      <div class="counter rv rv-d3"><b data-count="24">0</b><span>уникальные проблемы, найденные тестом</span></div>
     </div>
-    <div class="grid2">
-      <div class="card"><span class="tag">До&nbsp;заявки</span><h3>Посетитель</h3><p class="muted">Понять формат, нагрузку и&nbsp;стоимость поездки и&nbsp;оставить заявку.</p></div>
-      <div class="card card--warm"><span class="tag">После записи</span><h3>Участник</h3><p class="muted">Быстро найти расписание, место встречи, список вещей и&nbsp;контакты команды.</p></div>
+  </div>
+</section>
+
+<section class="band light" id="task" style="padding-top:0">
+  <div class="wrap">
+    <p class="kicker rv"><b>03</b>Задача</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Два человека</span></span><span class="mask"><span><em>на&nbsp;одном сайте</em></span></span></h2>
+      <p class="lead rv rv-d1" style="color:var(--ink-2)">Тур: 5&nbsp;дней и&nbsp;4&nbsp;ночи в&nbsp;январе, группа 8–10&nbsp;человек, одна база отдыха. Днём прогулки до&nbsp;90&nbsp;минут, вечером печка, баня и&nbsp;бассейн.</p>
+    </div>
+    <div class="scen">
+      <article class="scen__card rv"><img src="../assets/img/place-dragon.jpg" alt="Скалы Зубы Дракона над Катунью" loading="lazy"><p class="scen__tag">До&nbsp;заявки</p><h3>Посетитель</h3><p>Понять формат, нагрузку и&nbsp;стоимость поездки и&nbsp;оставить заявку.</p></article>
+      <article class="scen__card rv rv-d1"><img src="../assets/img/banya-2.jpg" alt="Баня на базе" loading="lazy"><p class="scen__tag">После записи</p><h3>Участник</h3><p>Быстро найти расписание, место встречи, список вещей и&nbsp;контакты команды.</p></article>
     </div>
     <ol class="reqs">
-      <li>Сразу показать даты, цену и&nbsp;что входит в&nbsp;стоимость</li>
-      <li>Объяснить программу по&nbsp;дням и&nbsp;нагрузку</li>
-      <li>Показать, где жить и&nbsp;кто ведёт группу</li>
-      <li>Дать оставить заявку с&nbsp;правильной ценой: один, вдвоём, отдельный номер</li>
-      <li>Дать прямой доступ к&nbsp;программе и&nbsp;памятке: из&nbsp;первого экрана и&nbsp;из&nbsp;шапки</li>
-    </ol>
-    <p class="note">Новую версию я&nbsp;делала по&nbsp;своей инициативе, поэтому часть данных условная. Для&nbsp;концепта предусмотрены страницы условий и&nbsp;документов.</p>
-  </div>
-</section>
-
-<section class="section" id="research">
-  <div class="wrap">
-    <p class="eyebrow"><b>03</b> Исследование</p>
-    <div class="head"><h2>Что важно <em>перед поездкой</em></h2>
-      <p>Потребности людей я&nbsp;взяла из&nbsp;интервью и&nbsp;разбора отзывов, а&nbsp;анализ аналогов показал, как другие туры отвечают на&nbsp;те&nbsp;же вопросы.</p>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>5</b><span>качественных интервью: трое съездили в&nbsp;групповые поездки, двое не&nbsp;поехали</span></div>
-      <div class="stat"><b>28</b><span>отзывов о&nbsp;групповых и&nbsp;авторских турах, считаю отдельно от&nbsp;интервью</span></div>
-      <div class="stat"><b>5</b><span>аналогов: Altay Chill, SKEMTOUR, «Алтайское пробуждение», ретрит «Осознанность», PORA</span></div>
-    </div>
-    <div class="rows">
-      <div class="row">
-        <div><p class="row__k">Наблюдение</p><p>Человек хочет заранее понять ритм дня: переезды утомляют, свободного времени бывает слишком мало или много, важно, можно&nbsp;ли пропустить активность.</p></div>
-        <div><p class="row__k">Основание</p><p class="row__src">P01–P05, отзывы R09–R11, R16–R18, R24</p></div>
-        <div><p class="row__k row__arrow">→ Решение</p><p>В&nbsp;программе по&nbsp;дням&nbsp;— время в&nbsp;пути, длительность прогулки, свободное время и&nbsp;пометка «по&nbsp;желанию».</p></div>
-      </div>
-      <div class="row">
-        <div><p class="row__k">Наблюдение</p><p>Перед записью нужна конкретика по&nbsp;деньгам и&nbsp;быту: общая стоимость, доплаты, размещение, отмена.</p></div>
-        <div><p class="row__k">Основание</p><p class="row__src">P01–P05, отзывы R18–R20, R26</p></div>
-        <div><p class="row__k row__arrow">→ Решение</p><p>Блок «Что входит и&nbsp;не&nbsp;входит», варианты номеров, пересчёт цены в&nbsp;форме, условия бронирования до&nbsp;заявки.</p></div>
-      </div>
-      <div class="row">
-        <div><p class="row__k">Наблюдение</p><p>После записи сведения о&nbsp;поездке собирают вручную: скриншот встречи, заметка с&nbsp;контактами и&nbsp;трансфером, PDF.</p></div>
-        <div><p class="row__k">Основание</p><p class="row__src">P02, P05</p></div>
-        <div><p class="row__k row__arrow">→ Решение</p><p>Прямой вход «Участникам» в&nbsp;памятку: встреча, адрес, вещи, контакты и&nbsp;сохранение в&nbsp;PDF.</p></div>
-      </div>
-    </div>
-    <p class="note">Границы: выборка маленькая и&nbsp;из&nbsp;знакомых контекстов, поездки были не&nbsp;зимние. Третье наблюдение подтверждено двумя интервью: это основание для&nbsp;памятки, но&nbsp;не&nbsp;для&nbsp;личного кабинета. Спрос на&nbsp;занятия по&nbsp;личным целям интервью не&nbsp;подтвердили&nbsp;— это идея концепта, и&nbsp;тест показал, что её нужно объяснять проще.</p>
-  </div>
-</section>
-
-<section class="section" id="concept">
-  <div class="wrap">
-    <p class="eyebrow"><b>04</b> Концепция</p>
-    <div class="head"><h2>Холод снаружи. <em>Тепло внутри</em></h2>
-      <p>Визуал построен на&nbsp;контрасте холодной улицы и&nbsp;тёплого дома: холодные тона для&nbsp;природы, тёплые&nbsp;— для&nbsp;проживания и&nbsp;вечеров, синий&nbsp;— для&nbsp;кнопок и&nbsp;ссылок.</p>
-    </div>
-    <div class="swatches">
-      <div class="sw" style="background:#0d1112;color:#f3f1ec"><b>Ночь</b>#0D1112</div>
-      <div class="sw" style="background:#242b2d;color:#f3f1ec"><b>Текст</b>#242B2D</div>
-      <div class="sw" style="background:#f3f1ec"><b>Страница</b>#F3F1EC</div>
-      <div class="sw" style="background:#f3e6d6"><b>Тепло</b>#F3E6D6</div>
-      <div class="sw" style="background:#8f4a1c;color:#fff"><b>Лиственница</b>#8F4A1C</div>
-      <div class="sw" style="background:#29495c;color:#fff"><b>Акцент</b>#29495C</div>
-    </div>
-    <div class="type">
-      <div class="type__card"><p class="small">Заголовки · Old Standard TT</p><p class="type__big" style="font-family:var(--serif)">Зимний <em>Алтай</em></p><p class="muted">Спокойные и&nbsp;тёплые заголовки, курсив&nbsp;— для&nbsp;второй строки.</p></div>
-      <div class="type__card"><p class="small">Текст и&nbsp;интерфейс · Roboto Flex</p><p class="type__big type__big--sans">72&nbsp;000&nbsp;₽</p><p class="muted">Цифры, цены и&nbsp;даты читаются легко.</p></div>
-    </div>
-    <p class="note">Визуальные референсы: Lorunser, Heure Bleue, Vita Travel, Flyward, Travel Sensations и&nbsp;PORA. Из&nbsp;них я&nbsp;взяла спокойную подачу, крупные фото и&nbsp;видео без&nbsp;звука в&nbsp;первом экране.</p>
-  </div>
-</section>
-
-<section class="section" id="structure">
-  <div class="wrap">
-    <p class="eyebrow"><b>05</b> Структура</p>
-    <div class="head"><h2>Порядок <em>вопросов</em></h2>
-      <p>Секции идут в&nbsp;том порядке, в&nbsp;каком человек задаёт вопросы: сначала «что это и&nbsp;сколько стоит», в&nbsp;конце «как записаться». В&nbsp;первой версии форма стояла в&nbsp;первом экране, в&nbsp;третьей ушла в&nbsp;конец: до&nbsp;неё человек ещё не&nbsp;знает программу и&nbsp;условия.</p>
-    </div>
-    <ol class="flow">
-      <li>Первый экран: даты, цена, программа</li><li>О&nbsp;нас</li><li>О&nbsp;поездке и&nbsp;стоимость</li><li>Программа по&nbsp;дням</li><li>Локации на&nbsp;карте</li><li>Проживание</li><li>Команда</li><li>Вопросы и&nbsp;ответы</li><li>Заявка с&nbsp;пересчётом цены</li>
+      <li class="rv">Сразу показать даты, цену и&nbsp;что входит в&nbsp;стоимость</li>
+      <li class="rv rv-d1">Объяснить программу по&nbsp;дням и&nbsp;нагрузку</li>
+      <li class="rv rv-d2">Показать, где жить и&nbsp;кто ведёт группу</li>
+      <li class="rv rv-d3">Заявка с&nbsp;правильной ценой: один, вдвоём, отдельный номер</li>
+      <li class="rv">Прямой доступ к&nbsp;программе и&nbsp;памятке</li>
     </ol>
   </div>
 </section>
 
-<section class="section" id="ds">
+<section class="band dark" id="research">
   <div class="wrap">
-    <p class="eyebrow"><b>06</b> Дизайн-система</p>
-    <div class="head"><h2>Одни правила <em>для&nbsp;трёх экранов</em></h2>
-      <p>Цвета, типографика и&nbsp;отступы описаны токенами и&nbsp;используются в&nbsp;макетах и&nbsp;коде. Это помогало последовательно применять изменения к&nbsp;компонентам и&nbsp;адаптивам.</p>
+    <p class="kicker rv"><b>04</b>Исследование</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Что важно</span></span><span class="mask"><span><em>перед поездкой</em></span></span></h2>
+      <div class="sources rv rv-d1">
+        <div><b>5</b><span>интервью: трое съездили в&nbsp;групповые поездки, двое не&nbsp;поехали</span></div>
+        <div><b>28</b><span>отзывов о&nbsp;групповых и&nbsp;авторских турах</span></div>
+        <div><b>5</b><span>аналогов: Altay Chill, SKEMTOUR, «Алтайское пробуждение», «Осознанность», PORA</span></div>
+      </div>
     </div>
-    <div class="stats">
-      <div class="stat"><b>357</b><span>переменных в&nbsp;Figma в&nbsp;четырёх коллекциях: базовые значения, смысловые отступы, цвета, компоненты</span></div>
-      <div class="stat"><b>2</b><span>темы: светлая и&nbsp;тёмная</span></div>
-      <div class="stat"><b>3</b><span>ширины экрана: ПК, планшет, телефон&nbsp;— у&nbsp;каждой секции свой вариант</span></div>
-    </div>
-    <div class="scroll"><table>
-      <thead><tr><th>Отступ, px</th><th>ПК</th><th>Планшет</th><th>Телефон</th></tr></thead>
-      <tbody>
-        <tr><td>Между секциями</td><td class="num">96</td><td class="num">64</td><td class="num">48</td></tr>
-        <tr><td>Между блоками внутри секции</td><td class="num">48</td><td class="num">32</td><td class="num">24</td></tr>
-        <tr><td>Поля страницы</td><td class="num">64</td><td class="num">40</td><td class="num">20</td></tr>
-      </tbody>
-    </table></div>
-    <p class="note">Значения токенов выгружены в&nbsp;файл для&nbsp;Tokens Studio и&nbsp;повторены в&nbsp;CSS-переменных сайта; сверяю их вручную.</p>
-  </div>
-</section>
-
-<section class="section" id="decisions">
-  <div class="wrap">
-    <p class="eyebrow"><b>07</b> Ключевые решения</p>
-    <div class="head"><h2>Ответы <em>на&nbsp;главные вопросы</em></h2><p>Четыре решения, которые отвечают на&nbsp;то, что человек хочет знать до&nbsp;заявки.</p></div>
-    <div class="dec">
-      <figure><div class="shot"><img src="img/new-form2.jpg" alt="Форма заявки: выбрано 2 человека, итого 144 000 ₽" loading="lazy"></div>
-        <h3>Форма с&nbsp;пересчётом цены</h3><p class="muted">Цена зависит от&nbsp;того, едет человек один или вдвоём и&nbsp;нужен&nbsp;ли отдельный номер. Итог пересчитывается сразу, поэтому сумма видна до&nbsp;отправки.</p></figure>
-      <figure><div class="shot"><img src="img/new-map.jpg" alt="Карта маршрута с обозначениями и подсказкой прямо на карте" loading="lazy"></div>
-        <h3>Карта маршрута</h3><p class="muted">Точки открывают карточки мест. Обозначения и&nbsp;подсказка лежат прямо на&nbsp;карте и&nbsp;скрываются, пока человек с&nbsp;ней работает.</p></figure>
-      <figure><div class="shot"><img src="img/new-day2-c.jpg" alt="Окно дня: утро, день, вечер, сложность прогулки и пометка «По желанию»" loading="lazy"></div>
-        <h3>Программа по&nbsp;дням</h3><p class="muted">У&nbsp;каждого дня видно, что для&nbsp;всех, а&nbsp;что по&nbsp;желанию, сколько идти пешком и&nbsp;когда свободное время.</p></figure>
-      <figure><div class="shot"><img src="img/new-stay-c.jpg" alt="Карточки размещения и что есть на базе" loading="lazy"></div>
-        <h3>Проживание отдельно от&nbsp;карты</h3><p class="muted">Раньше карта и&nbsp;условия проживания были в&nbsp;одной секции. Теперь это две секции, а&nbsp;пункт «Проживание» ведёт сразу к&nbsp;номерам.</p></figure>
+    <div class="insights">
+      <article class="ins rv"><span class="ins__n">i</span><h3>Человек хочет заранее понять ритм дня</h3><p class="muted">Переезды утомляют, свободного времени бывает слишком мало или много, важно, можно&nbsp;ли пропустить активность.</p><p class="ins__src">P01–P05 · отзывы R09–R11, R16–R18, R24</p><p class="ins__sol"><b>Решение</b>Время в&nbsp;пути, длительность прогулки, свободное время и&nbsp;пометка «по&nbsp;желанию» в&nbsp;каждом дне.</p></article>
+      <article class="ins rv rv-d1"><span class="ins__n">ii</span><h3>Перед записью нужна конкретика по&nbsp;деньгам и&nbsp;быту</h3><p class="muted">Общая стоимость, доплаты, размещение, отмена.</p><p class="ins__src">P01–P05 · отзывы R18–R20, R26</p><p class="ins__sol"><b>Решение</b>«Что входит и&nbsp;не&nbsp;входит», варианты номеров, пересчёт цены в&nbsp;форме, условия до&nbsp;заявки.</p></article>
+      <article class="ins rv rv-d2"><span class="ins__n">iii</span><h3>После записи сведения собирают вручную</h3><p class="muted">Скриншот встречи, заметка с&nbsp;контактами и&nbsp;трансфером, PDF.</p><p class="ins__src">P02, P05</p><p class="ins__sol"><b>Решение</b>Вход «Участникам» прямо в&nbsp;памятку: встреча, адрес, вещи, контакты, сохранение в&nbsp;PDF.</p></article>
     </div>
   </div>
 </section>
 
-<section class="section" id="test">
+<section class="band dark" id="concept" style="padding-top:0">
   <div class="wrap">
-    <p class="eyebrow"><b>08</b> Юзабилити-тест</p>
-    <div class="head"><h2>Шесть человек, <em>семь заданий</em></h2>
-      <p>13–14&nbsp;ноября 2026. Участники 19–26&nbsp;лет, с&nbsp;телефона и&nbsp;с&nbsp;ПК. Задания: понять формат, найти цену вдвоём и&nbsp;что не&nbsp;входит, третий день, номер на&nbsp;одного, фото бани, заявку на&nbsp;троих, питание при&nbsp;аллергии.</p>
+    <p class="kicker rv"><b>05</b>Концепция</p>
+    <h2 class="h2 rv"><span class="mask"><span>Холод снаружи.</span></span><span class="mask"><span><em>Тепло внутри</em></span></span></h2>
+    <div class="palette rv">
+      <div class="sw" style="background:#0d1112;color:#f3f1ec;outline:1px solid #2c3335"><b>Ночь</b>#0D1112 · первый экран, фильм</div>
+      <div class="sw" style="background:#242b2d;color:#f3f1ec"><b>Графит</b>#242B2D · текст</div>
+      <div class="sw" style="background:#f3f1ec;color:#242b2d"><b>Снег</b>#F3F1EC · страница</div>
+      <div class="sw" style="background:#f3e6d6;color:#242b2d"><b>Очаг</b>#F3E6D6 · проживание</div>
+      <div class="sw" style="background:#8f4a1c;color:#fff"><b>Лиственница</b>#8F4A1C · тёплые подписи</div>
+      <div class="sw" style="background:#29495c;color:#fff"><b>Ель</b>#29495C · кнопки</div>
     </div>
-    <div class="chart">
-      <svg viewBox="0 0 760 400" role="img" aria-label="Оценка выполнения по заданиям: хуже всего задание 2, цена вдвоём и что не входит, 2,5 из 7" font-family="Roboto Flex, system-ui, sans-serif" font-size="13">
-        <text x="0" y="22" font-size="17" font-weight="600" fill="#242b2d">Сложнее всего — цена вдвоём и что не входит в стоимость</text>
-        <text x="0" y="46" fill="#5e6466">Оценка выполнения по записям, ставила я · 1 — не справился, 7 — сразу без ошибок</text>
-        <g id="bars"></g>
-      </svg>
+    <div class="type-row">
+      <div class="type-card rv"><p class="abc">Заголовки · Old Standard TT</p><p class="big">Зимний <em>Алтай</em></p><p class="abc">Спокойный антиквенный шрифт, курсив — для второй строки заголовка.</p></div>
+      <div class="type-card rv rv-d1"><p class="abc">Текст и интерфейс · Roboto Flex</p><p class="big big--sans">72&nbsp;000&nbsp;₽</p><p class="abc">Цены, даты и подписи читаются легко.</p></div>
     </div>
-    <p class="note">Как читать: среднее по&nbsp;шести участникам. 7&nbsp;— сразу и&nbsp;без ошибок, 5&nbsp;— сам, но&nbsp;искал, 3&nbsp;— после подсказки, 1&nbsp;— не&nbsp;справился. Отдельно трое последних участников сами оценили лёгкость заданий по&nbsp;шкале SEQ: 6,2, 7,0 и&nbsp;6,0. Это другой показатель, поэтому с&nbsp;оценкой выполнения я&nbsp;его не&nbsp;смешиваю.</p>
-
-    <h3 style="margin:var(--stack) 0 16px">Главные проблемы</h3>
-    <ul class="findings">
-      <li>Не&nbsp;находят, что не&nbsp;входит в&nbsp;цену<span class="bar"><i style="width:120px"></i>6&nbsp;из&nbsp;6</span></li>
-      <li>«+12&nbsp;000&nbsp;₽» читают как доплату за&nbsp;второго, не&nbsp;знают цену за&nbsp;двоих<span class="bar"><i style="width:100px"></i><s style="width:20px"></s>5&nbsp;из&nbsp;6</span></li>
-      <li>Непонятно, что такое «занятия», «Первый шаг», «Письмо себе»<span class="bar"><i style="width:80px"></i><s style="width:40px"></s>4&nbsp;из&nbsp;6</span></li>
-      <li>Не&nbsp;указана организация, нет контактов организатора<span class="bar"><i style="width:80px"></i><s style="width:40px"></s>4&nbsp;из&nbsp;6</span></li>
-      <li>Вопрос про питание не&nbsp;находят без&nbsp;подсказки<span class="bar"><i style="width:60px"></i><s style="width:60px"></s>3&nbsp;из&nbsp;6</span></li>
-      <li>Ошибки формы не&nbsp;объясняют, что исправить<span class="bar"><i style="width:60px"></i><s style="width:60px"></s>3&nbsp;из&nbsp;6</span></li>
-      <li>Путают длительность поездки<span class="bar"><i style="width:40px"></i><s style="width:80px"></s>2&nbsp;из&nbsp;6</span></li>
-    </ul>
-    <p class="note">Всего 24&nbsp;уникальные проблемы: одинаковые наблюдения разных участников я&nbsp;объединяла в&nbsp;одну строку и&nbsp;записывала, у&nbsp;скольких она встретилась.</p>
   </div>
 </section>
 
-<section class="section" id="fixes">
+<section class="band dark" id="iterations" style="background:#0a0d0e">
   <div class="wrap">
-    <p class="eyebrow"><b>09</b> Что исправила после теста</p>
-    <div class="head"><h2>Три истории <em>«было&nbsp;— стало»</em></h2>
-      <p>Все изменения внесены в&nbsp;макеты для&nbsp;ПК, планшета и&nbsp;телефона и&nbsp;на&nbsp;сайт; старые версии сохранены рядом для&nbsp;сравнения.</p>
+    <p class="kicker rv"><b>06</b>Итерации</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>34 версии,</span></span><span class="mask"><span><em>одна за&nbsp;другой</em></span></span></h2>
+      <p class="lead muted rv rv-d1">Каждая версия — сохранённое состояние сайта. Передвиньте ползунок: видно, как менялись первый экран на&nbsp;телефоне, блок о&nbsp;поездке, программа и&nbsp;команда.</p>
     </div>
+    <div class="scrub">
+      <div class="scrub__side rv">
+        <div class="tabs" role="tablist" aria-label="Раздел сайта">
+          <button class="tab" role="tab" aria-selected="true" data-k="m">Телефон</button>
+          <button class="tab" role="tab" aria-selected="false" data-k="trip">О&nbsp;поездке</button>
+          <button class="tab" role="tab" aria-selected="false" data-k="program">Программа</button>
+          <button class="tab" role="tab" aria-selected="false" data-k="team">Команда</button>
+        </div>
+        <p class="ver" aria-live="polite"><span id="vNum">34</span><small>/34</small></p>
+        <p class="ver-date" id="vDate"></p>
+        <p class="ver-msg" id="vMsg"></p>
+        <input class="range" id="vRange" type="range" min="1" max="34" value="34" aria-label="Версия сайта">
+        <div class="ctrl"><button class="btn btn--fill" id="vPlay" type="button">▶ Проиграть все версии</button></div>
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+      </div>
+      <div class="stage rv rv-d1" id="stage" data-mode="m"><img id="vImg" src="iter/79dda81-m.jpg" alt="Версия сайта" width="390" height="844"></div>
+    </div>
+
+    <div class="days rv" id="days" aria-label="Версии по дням">
+      <div><i style="--h:9%"></i><b>2</b><span>13.11 · сайт и&nbsp;версия для&nbsp;теста</span></div>
+      <div><i style="--h:9%"></i><b>2</b><span>16.11 · правки по&nbsp;тесту</span></div>
+      <div><i style="--h:5%"></i><b>1</b><span>17.11 · тексты</span></div>
+      <div><i style="--h:64%"></i><b>14</b><span>18.11 · сверка с&nbsp;Figma v3</span></div>
+      <div><i style="--h:68%"></i><b>15</b><span>23.11 · дизайн-система, телефон, памятка</span></div>
+    </div>
+  </div>
+  <div class="marquee" aria-label="Все версии страницы целиком"><div class="marquee__track" id="mq"></div></div>
+  <div class="wrap">
+    <div class="gens">
+      <p class="kicker rv" style="margin:48px 0 8px"><b>Figma</b>Поколения макетов до&nbsp;сайта</p>
+      <div class="gen rv"><span class="gen__n">v1</span><h3>Editorial</h3><p>Первый hi-fi: редакционная подача, форма прямо в&nbsp;первом экране.</p></div>
+      <div class="gen rv"><span class="gen__n">v4</span><h3>Hi-Fi с&nbsp;видео</h3><p>Видео в&nbsp;первом экране, лента фото и&nbsp;переход в&nbsp;фильм.</p></div>
+      <div class="gen rv"><span class="gen__n">v2</span><h3>Правки ревью</h3><p>Порядок секций по&nbsp;вопросам человека, форма уходит в&nbsp;конец.</p></div>
+      <div class="gen rv"><span class="gen__n">тест</span><h3>Версия для&nbsp;юзабилити-теста</h3><p>Сайт целиком, ПК, планшет и&nbsp;телефон&nbsp;— 13&nbsp;ноября.</p></div>
+      <div class="gen rv"><span class="gen__n">v3</span><h3>Финал после теста</h3><p>Все находки внесены в&nbsp;компоненты, макеты трёх ширин и&nbsp;сайт.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band light" id="ds">
+  <div class="wrap">
+    <p class="kicker rv"><b>07</b>Дизайн-система</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Одни правила</span></span><span class="mask"><span><em>для&nbsp;трёх экранов</em></span></span></h2>
+      <p class="lead rv rv-d1" style="color:var(--ink-2)">Цвета, типографика и&nbsp;отступы описаны токенами и&nbsp;используются в&nbsp;макетах и&nbsp;коде. Это помогало последовательно применять изменения к&nbsp;компонентам и&nbsp;адаптивам.</p>
+    </div>
+    <div class="ds">
+      <div class="tile t7 rv"><h4>Кнопки</h4><div style="display:flex;gap:12px;flex-wrap:wrap"><span class="ui-btn ui-btn--p">Оставить заявку →</span><span class="ui-btn ui-btn--s">Программа по&nbsp;дням</span></div></div>
+      <div class="tile t5 rv rv-d1"><h4>Теги участия</h4><div class="ui-tags"><span class="ui-tag ui-tag--r">Для всех</span><span class="ui-tag ui-tag--o">По желанию</span></div><div class="ui-dots">Сложность прогулки <i class="f"></i><i class="f"></i><i></i><i></i><i></i> лёгкая, 2&nbsp;из&nbsp;5</div></div>
+      <div class="tile t5 rv"><h4>Счётчик гостей</h4><div class="ui-step"><button type="button" data-step="-1" aria-label="Меньше">−</button><output id="guests">2 человека</output><button type="button" data-step="1" aria-label="Больше">+</button></div><p style="font:400 40px/1 var(--serif)" id="total">144&nbsp;000&nbsp;₽</p><p style="font-size:13px;color:var(--ink-3)">Итого · авиабилеты, страховка и&nbsp;трансфер — отдельно</p></div>
+      <div class="tile t7 rv rv-d1"><h4>Поле с&nbsp;ошибкой</h4><div class="ui-field"><span>Ник в&nbsp;Telegram или номер*</span><div>@an</div><small>Ник — от&nbsp;5&nbsp;символов: латиница, цифры и&nbsp;_</small></div></div>
+      <div class="tile t8 rv"><h4>Отступы, px</h4><div class="scale"><div><i style="height:96px"></i>96</div><div><i style="height:64px"></i>64</div><div><i style="height:48px"></i>48</div><div><i style="height:32px"></i>32</div><div><i style="height:24px"></i>24</div><div><i style="height:16px"></i>16</div><div><i style="height:8px"></i>8</div></div><p style="font-size:14px;color:var(--ink-3)">Между секциями 96 / 64 / 48, между блоками 48 / 32 / 24 — ПК, планшет, телефон</p></div>
+      <div class="tile t4 rv rv-d1"><h4>В&nbsp;Figma</h4><div class="ds-num"><div><b>357</b><span>переменных</span></div><div><b>88</b><span>компонентов</span></div><div><b>34</b><span>текстовых стиля</span></div><div><b>2</b><span>темы</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="decisions">
+  <div class="wrap">
+    <p class="kicker rv"><b>08</b>Ключевые решения</p>
+    <h2 class="h2 rv"><span class="mask"><span>Ответы</span></span><span class="mask"><span><em>на&nbsp;главные вопросы</em></span></span></h2>
+    <div class="laptop rv">
+      <div class="laptop__screen"><div id="lapScreen"><iframe src="../" title="Сайт ALTAI вживую" loading="lazy" tabindex="-1"></iframe></div></div>
+      <div class="laptop__base"></div>
+      <p class="laptop__hint">Это живой сайт&nbsp;— его можно пролистать прямо здесь</p>
+    </div>
+    <div class="decs">
+      <div class="dec rv"><div class="phone"><div><img src="img/new-form2.jpg" alt="Форма заявки: 2 человека, итого 144 000 ₽" loading="lazy"></div></div><h3>Форма с&nbsp;пересчётом цены</h3><p>Один, вдвоём или отдельный номер&nbsp;— итог пересчитывается сразу, сумма видна до&nbsp;отправки.</p></div>
+      <div class="dec rv rv-d1"><div class="phone"><div><img src="img/new-day2-c.jpg" alt="Окно дня: утро, день, вечер, сложность прогулки" loading="lazy" style="height:100%;object-fit:cover;object-position:top left"></div></div><h3>Программа по&nbsp;дням</h3><p>Что для&nbsp;всех, а&nbsp;что по&nbsp;желанию, сколько идти пешком и&nbsp;когда свободное время.</p></div>
+      <div class="dec rv rv-d2"><div class="phone"><div><img src="img/new-map.jpg" alt="Карта маршрута с обозначениями прямо на карте" loading="lazy" style="height:100%;object-fit:cover"></div></div><h3>Карта маршрута</h3><p>Точки открывают карточки мест, обозначения лежат прямо на&nbsp;карте и&nbsp;прячутся, пока с&nbsp;ней работают.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band light" id="test">
+  <div class="wrap">
+    <p class="kicker rv"><b>09</b>Юзабилити-тест · 13–14&nbsp;ноября</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Шесть человек,</span></span><span class="mask"><span><em>семь заданий</em></span></span></h2>
+      <p class="lead rv rv-d1" style="color:var(--ink-2)">Хуже всего прошло задание про цену вдвоём и&nbsp;то, что не&nbsp;входит в&nbsp;стоимость: 2,5&nbsp;из&nbsp;7.</p>
+    </div>
+    <div class="chart" id="chart"></div>
+    <p class="chart__note">Оценка выполнения: я&nbsp;ставила её по&nbsp;записям сессий, от&nbsp;1&nbsp;— не&nbsp;справился до&nbsp;7&nbsp;— сразу и&nbsp;без ошибок; среднее по&nbsp;шести участникам. Трое последних отдельно оценили лёгкость по&nbsp;SEQ (6,2, 7,0 и&nbsp;6,0)&nbsp;— это другой показатель, его я&nbsp;не&nbsp;смешиваю.</p>
+    <div class="probs">
+      <div class="prob rv"><b>6<small>/6</small></b><p>не&nbsp;нашли сами, что не&nbsp;входит в&nbsp;цену</p></div>
+      <div class="prob rv rv-d1"><b>5<small>/6</small></b><p>читали «+12&nbsp;000&nbsp;₽» как доплату за&nbsp;второго</p></div>
+      <div class="prob rv rv-d2"><b>4<small>/6</small></b><p>не&nbsp;поняли, что такое «занятия» и&nbsp;«Письмо себе»</p></div>
+      <div class="prob rv rv-d3"><b>4<small>/6</small></b><p>не&nbsp;нашли данных об&nbsp;организаторе и&nbsp;контактов</p></div>
+    </div>
+    <p class="chart__note" style="margin-top:32px">Всего 24&nbsp;уникальные проблемы: одинаковые наблюдения разных участников объединены в&nbsp;одну строку со&nbsp;счётчиком.</p>
+  </div>
+</section>
+
+<section class="band dark" id="fixes">
+  <div class="wrap">
+    <p class="kicker rv"><b>10</b>Что изменилось после теста</p>
+    <h2 class="h2 rv"><span class="mask"><span>Было&nbsp;—</span></span><span class="mask"><span><em>стало</em></span></span></h2>
+    <p class="lead muted rv rv-d1" style="margin-top:32px">Потяните разделитель на&nbsp;картинке.</p>
 
     <article class="story">
-      <div class="story__head">
-        <div><p class="story__num">01</p><h3>Стоимость</h3></div>
-        <p class="story__obs"><b>Наблюдение.</b> Что не&nbsp;входит в&nbsp;цену, сами не&nbsp;нашли 6&nbsp;из&nbsp;6. «+12&nbsp;000&nbsp;₽» читали как доплату за&nbsp;второго человека&nbsp;— 5&nbsp;из&nbsp;6. <b>Стало:</b> у&nbsp;цены подписано «за&nbsp;человека» и&nbsp;«без авиабилетов, страховки и&nbsp;трансфера», в&nbsp;карточках размещения&nbsp;— полные суммы вместо доплаты.</p>
-      </div>
-      <div class="ba">
-        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-tripinfo.jpg" alt="Было: «от 72 000 ₽» без пояснений" loading="lazy"></div></figure>
-        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-tripinfo.jpg" alt="Стало: «72 000 ₽ за человека, без авиабилетов, страховки и трансфера»" loading="lazy"></div></figure>
-      </div>
-      <div class="ba ba--narrow ba--rooms">
-        <figure><div class="shot"><img src="img/old-room1.jpg" alt="Было: «без доплаты или +12 000 ₽»" loading="lazy"></div><figcaption>Было: «без доплаты или +12&nbsp;000&nbsp;₽»</figcaption></figure>
-        <figure><div class="shot"><img src="img/new-room1.jpg" alt="Стало: «от 72 000 ₽», «номер только для вас — 84 000 ₽»" loading="lazy"></div><figcaption>Стало: «от&nbsp;72&nbsp;000&nbsp;₽» и&nbsp;«Номер только для вас&nbsp;— 84&nbsp;000&nbsp;₽»</figcaption></figure>
-      </div>
+      <div class="rv"><span class="story__n">01</span><h3>Стоимость</h3>
+        <p><b>6&nbsp;из&nbsp;6</b> не&nbsp;нашли, что не&nbsp;входит в&nbsp;цену. <b>5&nbsp;из&nbsp;6</b> читали «+12&nbsp;000&nbsp;₽» как доплату за&nbsp;второго человека.</p>
+        <p>Стало: «72&nbsp;000&nbsp;₽ за&nbsp;человека, без&nbsp;авиабилетов, страховки и&nbsp;трансфера», в&nbsp;карточке номера&nbsp;— полная сумма 84&nbsp;000&nbsp;₽.</p></div>
+      <div class="cmp rv rv-d1"><img src="img/old-tripinfo.jpg" alt="Было: «от 72 000 ₽»" loading="lazy"><div class="after"><img src="img/new-tripinfo.jpg" alt="Стало: «72 000 ₽ за человека, без авиабилетов, страховки и трансфера»" loading="lazy"></div><span class="handle"></span><span class="lbl lbl--b">Было</span><span class="lbl lbl--a">Стало</span><input type="range" min="0" max="100" value="50" aria-label="Сравнить было и стало: стоимость"></div>
     </article>
 
     <article class="story">
-      <div class="story__head">
-        <div><p class="story__num">02</p><h3>Понятность программы</h3></div>
-        <p class="story__obs"><b>Наблюдение.</b> Непонятно, что такое «занятия», «Первый шаг», «Письмо себе»&nbsp;— 4&nbsp;из&nbsp;6. Все выезды считали обязательными&nbsp;— 2&nbsp;из&nbsp;6. <b>Стало:</b> занятия названы по&nbsp;содержанию и&nbsp;объяснены, у&nbsp;прогулки&nbsp;— шкала сложности.</p>
-      </div>
-      <div class="ba">
-        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-day2-c.jpg" alt="Было: «Занятие „Что для меня важно“»" loading="lazy"></div></figure>
-        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-day2-c.jpg" alt="Стало: «Занятие с Марией: о чём хочется подумать» и сложность прогулки «лёгкая, 2 из 5»" loading="lazy"></div></figure>
-      </div>
+      <div class="rv"><span class="story__n">02</span><h3>Понятность программы</h3>
+        <p><b>4&nbsp;из&nbsp;6</b> не&nbsp;поняли, что такое «занятия», «Первый шаг», «Письмо себе».</p>
+        <p>Стало: «Занятие с&nbsp;Марией: о&nbsp;чём хочется подумать» с&nbsp;пояснением, что происходит, и&nbsp;шкала сложности прогулки.</p></div>
+      <div class="cmp rv rv-d1"><img src="img/old-day2-c.jpg" alt="Было: «Занятие „Что для меня важно“»" loading="lazy"><div class="after"><img src="img/new-day2-c.jpg" alt="Стало: «Занятие с Марией: о чём хочется подумать»" loading="lazy"></div><span class="handle"></span><span class="lbl lbl--b">Было</span><span class="lbl lbl--a">Стало</span><input type="range" min="0" max="100" value="50" aria-label="Сравнить было и стало: программа"></div>
     </article>
 
     <article class="story">
-      <div class="story__head">
-        <div><p class="story__num">03</p><h3>Быстрый доступ к&nbsp;информации</h3></div>
-        <p class="story__obs"><b>Наблюдение.</b> Путали длительность поездки&nbsp;— 2&nbsp;из&nbsp;6. Ответ про питание без&nbsp;подсказки не&nbsp;нашли&nbsp;— 3&nbsp;из&nbsp;6. <b>Стало:</b> даты и&nbsp;«5&nbsp;дней / 4&nbsp;ночи» в&nbsp;первом экране, вопрос о&nbsp;питании первым в&nbsp;списке, «Участникам» в&nbsp;шапке открывает памятку.</p>
-      </div>
-      <div class="ba ba--narrow">
-        <figure><p class="ba__label">Было</p><div class="shot"><img src="img/old-m-hero.jpg" alt="Было: первый экран телефона без дат и длительности" loading="lazy"></div></figure>
-        <figure><p class="ba__label ba__label--new">Стало</p><div class="shot"><img src="img/new-m-hero.jpg" alt="Стало: «15–19 января 2027 · 5 дней / 4 ночи · от 72 000 ₽»" loading="lazy"></div></figure>
-      </div>
-      <div class="ba">
-        <figure><div class="shot"><img src="img/old-faq-c.jpg" alt="Было: вопрос о питании в конце списка" loading="lazy"></div><figcaption>Было: вопроса о&nbsp;питании нет среди первых</figcaption></figure>
-        <figure><div class="shot"><img src="img/new-faq-c.jpg" alt="Стало: «Как кормят?» первым вопросом" loading="lazy"></div><figcaption>Стало: «Как кормят? Учитываете ли ограничения в&nbsp;еде?»&nbsp;— первый</figcaption></figure>
-      </div>
+      <div class="rv"><span class="story__n">03</span><h3>Быстрый доступ</h3>
+        <p><b>2&nbsp;из&nbsp;6</b> путали длительность поездки, <b>3&nbsp;из&nbsp;6</b> не&nbsp;нашли ответ про питание.</p>
+        <p>Стало: даты и&nbsp;«5&nbsp;дней / 4&nbsp;ночи» в&nbsp;первом экране, вопрос о&nbsp;питании первым, «Участникам» открывает памятку.</p></div>
+      <div class="cmp cmp--phone rv rv-d1"><img src="img/old-m-hero.jpg" alt="Было: первый экран телефона без дат" loading="lazy"><div class="after"><img src="img/new-m-hero.jpg" alt="Стало: «15–19 января 2027 · 5 дней / 4 ночи»" loading="lazy"></div><span class="handle"></span><span class="lbl lbl--b">Было</span><span class="lbl lbl--a">Стало</span><input type="range" min="0" max="100" value="50" aria-label="Сравнить было и стало: первый экран"></div>
     </article>
 
-    <h3 style="margin:var(--stack) 0 16px">Остальные правки</h3>
-    <div class="scroll"><table>
-      <thead><tr><th>Проблема</th><th>У&nbsp;скольких</th><th>Что сделала</th></tr></thead>
-      <tbody>
-        <tr><td>Нет сведений об&nbsp;организаторе и&nbsp;контактов</td><td class="nowrap">4&nbsp;из&nbsp;6</td><td>В&nbsp;футере&nbsp;— реквизиты, явно обозначенные как условные данные учебного проекта. Контакты координатора и&nbsp;гида&nbsp;— в&nbsp;блоке заявки и&nbsp;других разделах</td></tr>
-        <tr><td>Ошибки формы не&nbsp;объясняют, что исправить</td><td class="nowrap">3&nbsp;из&nbsp;6</td><td>У&nbsp;полей подсказки и&nbsp;текст ошибки, который говорит, что исправить</td></tr>
-        <tr><td>Карта на&nbsp;телефоне непонятна</td><td class="nowrap">2&nbsp;из&nbsp;6</td><td>Условные обозначения и&nbsp;подсказка&nbsp;— прямо на&nbsp;карте</td></tr>
-      </tbody>
-    </table></div>
-    <p class="status">Статус проверки: повторного теста с&nbsp;замерами не&nbsp;было. Участники первого теста посмотрели новую версию и&nbsp;сказали, что стало понятнее.</p>
+    <div class="rest">
+      <div class="rv"><b>4/6</b><h4>Организатор и&nbsp;контакты</h4><p>В&nbsp;футере&nbsp;— реквизиты с&nbsp;пометкой «условные данные учебного проекта», контакты координатора и&nbsp;гида&nbsp;— в&nbsp;блоке заявки.</p></div>
+      <div class="rv rv-d1"><b>3/6</b><h4>Ошибки формы</h4><p>У&nbsp;полей подсказки и&nbsp;текст ошибки, который говорит, что исправить.</p></div>
+      <div class="rv rv-d2"><b>2/6</b><h4>Карта на&nbsp;телефоне</h4><p>Обозначения и&nbsp;подсказка теперь прямо на&nbsp;карте.</p></div>
+    </div>
+    <p class="status rv">Повторного теста с&nbsp;замерами не&nbsp;было. Участники первого теста посмотрели новую версию и&nbsp;сказали, что стало понятнее.</p>
   </div>
 </section>
 
-<section class="section memo" id="memo">
-  <div class="wrap" style="padding-top:var(--section)">
-    <p class="eyebrow"><b>10</b> Памятка участника</p>
-    <div class="memo__grid memo__grid--stack">
+<section class="band warm" id="memo">
+  <div class="wrap">
+    <p class="kicker rv"><b>11</b>Памятка участника</p>
+    <h2 class="h2 rv"><span class="mask"><span>Во&nbsp;что вырос</span></span><span class="mask"><span><em>гайд 2024 года</em></span></span></h2>
+    <div class="memo-grid">
       <div>
-        <h2 style="margin-bottom:24px">Во&nbsp;что вырос <em>гайд 2024&nbsp;года</em></h2>
-        <p class="lead" style="font-size:20px;margin-bottom:24px">Одно место со&nbsp;всем, что нужно уже записавшемуся участнику.</p>
-        <ul class="memo__list">
-          <li><b>Зачем</b>В&nbsp;интервью P02 и&nbsp;P05 люди собирали сведения о&nbsp;поездке вручную: скриншоты, заметки, PDF. В&nbsp;тесте участник искал памятку после заявки: когда, куда, что взять.</li>
-          <li><b>Что внутри</b>Встреча и&nbsp;дорога, адрес базы, что взять, правила на&nbsp;базе, безопасность, контакты координатора и&nbsp;гида.</li>
-          <li><b>Как попасть</b>Пункт «Участникам» в&nbsp;шапке, кнопка в&nbsp;меню телефона, ссылки из&nbsp;окна дня и&nbsp;подписи к&nbsp;карте.</li>
-          <li><b>Как сохранить</b>Кнопка «Сохранить в&nbsp;PDF»: в&nbsp;файл попадает только памятка, чтобы её можно было открыть без&nbsp;связи на&nbsp;прогулке.</li>
+        <p class="lead rv">Одно место со&nbsp;всем, что нужно уже записавшемуся участнику.</p>
+        <ul class="memo-list">
+          <li class="rv"><b>Зачем</b><span>В&nbsp;интервью P02 и&nbsp;P05 люди собирали сведения вручную: скриншоты, заметки, PDF. В&nbsp;тесте участник искал памятку после заявки.</span></li>
+          <li class="rv"><b>Что внутри</b><span>Встреча и&nbsp;дорога, адрес базы, что взять, правила на&nbsp;базе, безопасность, контакты.</span></li>
+          <li class="rv"><b>Как попасть</b><span>«Участникам» в&nbsp;шапке, кнопка в&nbsp;меню телефона, ссылки из&nbsp;окна дня и&nbsp;подписи к&nbsp;карте.</span></li>
+          <li class="rv"><b>Как сохранить</b><span>«Сохранить в&nbsp;PDF»: в&nbsp;файл попадает только памятка&nbsp;— откроется без&nbsp;связи.</span></li>
         </ul>
       </div>
-      <div class="memo__shots">
-        <figure><div class="shot"><img src="img/new-memo-top.jpg" alt="Памятка участника на сайте: встреча и дорога, что взять" loading="lazy"></div><figcaption>На&nbsp;сайте</figcaption></figure>
-        <figure><div class="shot"><img src="img/memo-pdf-1.jpg" alt="Памятка, сохранённая в PDF" loading="lazy"></div><figcaption>В&nbsp;PDF</figcaption></figure>
+      <div class="memo-stage rv rv-d1">
+        <div class="phone phone--scroll"><div><img src="img/memo-m-full.jpg" alt="Памятка на телефоне" loading="lazy"></div></div>
+        <span class="pdf-tag">PDF</span>
+        <img class="sheet" src="img/memo-pdf-1.jpg" alt="Памятка, сохранённая в PDF" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="adaptive" style="padding-top:var(--section)">
+<section class="band dark" id="adaptive">
   <div class="wrap">
-    <p class="eyebrow"><b>11</b> Адаптив</p>
-    <div class="head"><h2>То&nbsp;же содержание, <em>другая подача</em></h2>
-      <p>На&nbsp;телефоне в&nbsp;первом экране одна кнопка «Программа по&nbsp;дням», памятка в&nbsp;меню. Номера&nbsp;— белые карточки с&nbsp;тем&nbsp;же содержанием, что на&nbsp;ПК. На&nbsp;планшете в&nbsp;«О&nbsp;нас» фото слева, текст справа.</p>
+    <p class="kicker rv"><b>12</b>Адаптив</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>То&nbsp;же содержание,</span></span><span class="mask"><span><em>другая подача</em></span></span></h2>
+      <p class="lead muted rv rv-d1">На&nbsp;телефоне одна кнопка в&nbsp;первом экране, памятка в&nbsp;меню, номера&nbsp;— белыми карточками, фильм&nbsp;— мозаикой.</p>
     </div>
-    <div class="phones">
-      <figure><div class="phone"><img src="img/new-m-hero.jpg" alt="Телефон: первый экран" loading="lazy"></div><figcaption>Телефон · первый экран</figcaption></figure>
-      <figure><div class="phone"><img src="img/new-m-rooms.jpg" alt="Телефон: карточки номеров" loading="lazy"></div><figcaption>Телефон · номера</figcaption></figure>
-      <figure><div class="shot"><img src="img/new-t-about.jpg" alt="Планшет: секция «О нас»" loading="lazy"></div><figcaption>Планшет · «О&nbsp;нас»</figcaption></figure>
+    <div class="devices rv">
+      <img class="dv dv--lap clip" src="img/new-hero.jpg" alt="ПК: первый экран" loading="lazy">
+      <div class="dv dv--tab"><img src="img/new-t-about.jpg" alt="Планшет: «О нас»" loading="lazy"></div>
+      <div class="dv dv--ph"><img src="img/final-m-full.jpg" alt="Телефон: страница целиком" loading="lazy" id="phLong"></div>
     </div>
   </div>
 </section>
 
-<section class="section" id="results">
+<section class="band light" id="results">
   <div class="wrap">
-    <p class="eyebrow"><b>12</b> Итоги</p>
-    <div class="head"><h2>Что получилось</h2>
-      <p>Сайт сверстан по&nbsp;макетам и&nbsp;опубликован на&nbsp;GitHub Pages. После правок я&nbsp;показала новую версию участникам теста. Они подтвердили, что стало понятнее. Повторного теста с&nbsp;замерами не&nbsp;было.</p>
+    <p class="kicker rv"><b>13</b>Итоги</p>
+    <div class="split">
+      <h2 class="h2 rv"><span class="mask"><span>Что</span></span><span class="mask"><span><em>получилось</em></span></span></h2>
+      <p class="lead rv rv-d1" style="color:var(--ink-2)">Сайт опубликован на&nbsp;GitHub Pages. Участники теста посмотрели новую версию и&nbsp;подтвердили, что стало понятнее.</p>
     </div>
-    <div class="results">
-      <div class="card"><h3>Что вынесла</h3><ul>
-        <li>Тест нашёл проблемы в&nbsp;самом важном месте&nbsp;— в&nbsp;цене. Без&nbsp;него я&nbsp;бы считала эту часть готовой.</li>
-        <li>Токены для&nbsp;цвета, типографики и&nbsp;отступов помогали вносить правки после теста последовательно&nbsp;— в&nbsp;компоненты и&nbsp;во&nbsp;все три адаптива.</li>
-      </ul></div>
-      <div class="card card--warm"><h3>Что сделала&nbsp;бы иначе</h3><p class="muted">Проверила&nbsp;бы блок цены на&nbsp;людях ещё на&nbsp;вайрфреймах и&nbsp;заложила второй раунд теста с&nbsp;теми&nbsp;же заданиями, чтобы сравнить цифры.</p></div>
+    <div class="res">
+      <div class="rv"><h3>Что вынесла</h3><ul><li>Тест нашёл проблемы в&nbsp;самом важном месте&nbsp;— в&nbsp;цене. Без&nbsp;него я&nbsp;бы считала эту часть готовой.</li><li>Токены цвета, типографики и&nbsp;отступов помогали вносить правки после теста последовательно&nbsp;— в&nbsp;компоненты и&nbsp;все три адаптива.</li></ul></div>
+      <div class="rv rv-d1"><h3>Что сделала&nbsp;бы иначе</h3><p>Проверила&nbsp;бы блок цены на&nbsp;людях ещё на&nbsp;вайрфреймах и&nbsp;заложила второй раунд теста с&nbsp;теми&nbsp;же заданиями, чтобы сравнить цифры.</p></div>
     </div>
   </div>
 </section>
 
+<section class="close dark" aria-label="Финал">
+  <video autoplay muted loop playsinline preload="none" poster="../assets/img/hero.jpg"><source src="../assets/video/hero-720.mp4" type="video/mp4"></video>
+  <div class="wrap">
+    <h2 class="rv"><span class="mask"><span>Холод снаружи.</span></span><span class="mask"><span><em>Тепло внутри</em></span></span></h2>
+    <div class="ctrl rv rv-d1"><a class="btn btn--fill" href="../" target="_blank" rel="noopener">Открыть сайт ↗</a><a class="btn" href="https://www.figma.com/design/8CO9NoGJ4X73LY2wKcgA6Y" target="_blank" rel="noopener">Макеты в&nbsp;Figma ↗</a></div>
+  </div>
+</section>
+<footer class="foot"><span>ALTAI · кейс · 2026</span><span>Фото и&nbsp;видео&nbsp;— Pexels, Pixabay, с&nbsp;цветокоррекцией</span><span>design by Filinina</span></footer>
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <span>ALTAI · кейс · 2026</span>
-    <span><a href="https://filinina2013-cloud.github.io/altai/" target="_blank" rel="noopener">Сайт</a> · <a href="https://www.figma.com/design/8CO9NoGJ4X73LY2wKcgA6Y" target="_blank" rel="noopener">Figma</a></span>
-    <span>design by Filinina</span>
-  </div>
-</footer>
-
 <script>
-(function(){
-  var rows=[["1. Что это за путешествие",4.3],["2. Цена вдвоём и что не входит",2.5],["3. Третий день и нагрузка",5.3],["4. Один в номере",6.2],["5. Фото бани",6.2],["6. Заявка на троих",5.5],["7. Аллергия и питание",4.3]];
-  var g=document.getElementById('bars'), ns='http://www.w3.org/2000/svg', left=280, w=420, y0=80, rh=40;
-  var low=Math.min.apply(null,rows.map(function(r){return r[1]}));
-  function el(t,a,txt){var e=document.createElementNS(ns,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;g.appendChild(e);return e}
-  rows.forEach(function(r,i){
-    var y=y0+i*rh, hi=r[1]===low, v=r[1].toFixed(1).replace('.',',');
-    el('text',{x:left-14,y:y+19,'text-anchor':'end',fill:hi?'#242b2d':'#4f5557','font-weight':hi?'600':'400'},r[0]);
-    var b=el('rect',{x:left,y:y+4,width:r[1]/7*w,height:22,fill:hi?'#29495c':'#c9c6bf'}); var t=document.createElementNS(ns,'title'); t.textContent=r[0]+': '+v+' из 7'; b.appendChild(t);
-    el('text',{x:left+r[1]/7*w+8,y:y+20,fill:'#242b2d','font-weight':hi?'600':'400'},v);
-  });
-  el('line',{x1:left,x2:left,y1:y0,y2:y0+rows.length*rh,stroke:'#8e9496'});
-  el('line',{x1:left+w,x2:left+w,y1:y0,y2:y0+rows.length*rh,stroke:'#b9b4aa','stroke-dasharray':'3 3'});
-  el('text',{x:left+w,y:y0+rows.length*rh+18,'text-anchor':'middle',fill:'#5e6466'},'7 — максимум');
-})();
+{
+const V=[
+["8bb3baf","13.11 · 11:00","Первая версия сайта: ПК, планшет, телефон"],
+["6e7c1f5","13.11 · 11:30","Версия для юзабилити-теста"],
+["8a3db63","16.11 · 14:12","Правки по итогам теста, этап 1"],
+["3ad313b","16.11 · 14:57","Правки по итогам теста, этап 2"],
+["34e4220","17.11 · 14:32","«О нас»: понятный текст без метафор"],
+["4323f94","18.11 · 14:42","Первый экран по макету v3"],
+["5e4623e","18.11 · 14:46","Первый экран: новый текст на ПК"],
+["aa5aede","18.11 · 14:49","Заголовок первого экрана 132 px"],
+["78e29ed","18.11 · 15:08","Команда: контакты со значками"],
+["a3f9445","18.11 · 15:13","Telegram координатора во всех контактах"],
+["2bd30b8","18.11 · 15:26","Команда на телефоне и планшете"],
+["5be4a86","18.11 · 15:28","Новые фото Анны и Михаила"],
+["7c44310","18.11 · 15:37","«О путешествии»: понятное описание"],
+["92703f9","18.11 · 15:44","Новое фото Марии"],
+["866cffa","18.11 · 16:18","Подсказка у цены"],
+["a53f130","18.11 · 16:41","Сверка с Figma: цена как в Trip info v3.1"],
+["86bae8b","18.11 · 16:56","Телефон и планшет: секции 1–5"],
+["6e0c47a","18.11 · 17:00","Планшет: Telegram в «Команде»"],
+["8ed995f","18.11 · 17:08","Затемнения на переменных дизайн-системы"],
+["9e049b8","23.11 · 10:07","Программа и памятка по итогам теста"],
+["2397a6f","23.11 · 10:19","Окно дня: мягкая тень, подсказки к занятиям"],
+["9ba2589","23.11 · 10:27","Отступы по дизайн-системе: 48 / 32 / 24"],
+["3de7682","23.11 · 10:40","Карта и проживание — отдельные секции"],
+["febf436","23.11 · 10:48","Легенда карты прячется при работе с картой"],
+["b098928","23.11 · 10:54","Вопросы и ответы: сетка 5/7"],
+["f912537","23.11 · 11:02","«О нас» и «Команда»: подпись ближе к заголовку"],
+["cefb695","23.11 · 11:07","Пользовательское соглашение"],
+["0434fdd","23.11 · 11:24","Телефон: первый экран с одной кнопкой"],
+["8ddcfb6","23.11 · 11:28","Телефон: мозаика кадров вместо анимации"],
+["753176c","23.11 · 14:43","Стекло на карте, отступы в вопросах"],
+["fd75bc9","23.11 · 14:52","Типографика: без висячих предлогов"],
+["d7667aa","23.11 · 14:56","Лишние строки номеров убраны"],
+["fc7181e","23.11 · 16:18","Токены из Figma, «О нас» на планшете"],
+["79dda81","23.11 · 16:55","Памятка: PDF и адрес базы, cookie-баннер"]];
+const $=s=>document.querySelector(s);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px',threshold:.12});
+document.querySelectorAll('.rv,.clip,.days,.chart').forEach(el=>io.observe(el));
+
+/* progress */
+const bar=$('.progress');
+const onScroll=()=>{const h=document.documentElement;bar.style.transform='scaleX('+(h.scrollTop/(h.scrollHeight-h.clientHeight))+')'};
+addEventListener('scroll',onScroll,{passive:true});
+
+/* counters */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.count;if(reduce){el.textContent=to;return}const t0=performance.now(),d=1600;const step=t=>{const k=Math.min(1,(t-t0)/d),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=v;if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* iso wall */
+const iso=$('#iso');
+const pick=(k,i)=>'iter/'+V[i%V.length][0]+'-'+k+'.jpg';
+for(let c=0;c<7;c++){const col=document.createElement('div');col.className='iso__col';let html='';const list=[];for(let r=0;r<6;r++)list.push(c%2?pick('m',c*5+r):(r%2?pick('trip',c*3+r):pick('m',c*4+r+3)));list.concat(list).forEach(src=>html+='<img src="'+src+'" alt="" loading="lazy">');col.innerHTML=html;col.style.animationDuration=(50+c*7)+'s';iso.appendChild(col)}
+
+/* scrubber */
+let key='m',idx=V.length-1,timer=null;
+const img=$('#vImg'),num=$('#vNum'),date=$('#vDate'),msg=$('#vMsg'),range=$('#vRange'),stage=$('#stage'),ticks=$('#ticks');
+V.forEach((v,i)=>{const t=document.createElement('i');if(i>0&&v[1].slice(0,5)!==V[i-1][1].slice(0,5))t.className='day';t.title=v[1];t.addEventListener('click',()=>{stop();show(i)});ticks.appendChild(t)});
+const cache={};
+function preload(i){[i-1,i+1].forEach(j=>{if(j<0||j>=V.length)return;const s=pick(key,j);if(!cache[s]){cache[s]=new Image();cache[s].src=s}})}
+function show(i){idx=i;const v=V[i];img.src=pick(key,i);img.alt='Версия '+(i+1)+': '+v[2];num.textContent=i+1;date.textContent=v[1];msg.textContent=v[2];range.value=i+1;[...ticks.children].forEach((t,j)=>t.classList.toggle('on',j<=i));preload(i)}
+range.addEventListener('input',()=>{stop();show(range.value-1)});
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',x===b));key=b.dataset.k;stage.dataset.mode=key;show(idx)}));
+const play=$('#vPlay');
+function stop(){if(timer){clearInterval(timer);timer=null;play.textContent='▶ Проиграть все версии'}}
+play.addEventListener('click',()=>{if(timer){stop();return}let i=idx>=V.length-1?0:idx;show(i);play.textContent='❚❚ Пауза';timer=setInterval(()=>{i++;if(i>=V.length){stop();return}show(i)},700)});
+show(idx);
+
+/* marquee of full pages */
+const mq=$('#mq');let mh='';
+V.concat(V).forEach((v,i)=>{mh+='<figure><img src="iter/'+v[0]+'-strip.jpg" alt="" loading="lazy"><span>v'+((i%V.length)+1)+'</span></figure>'});mq.innerHTML=mh;
+
+/* test chart */
+const T=[["1. Что это за путешествие",4.3],["2. Цена вдвоём и что не входит",2.5],["3. Третий день и нагрузка",5.3],["4. Один в номере",6.2],["5. Фото бани",6.2],["6. Заявка на троих",5.5],["7. Аллергия и питание",4.3]];
+const low=Math.min(...T.map(t=>t[1]));
+$('#chart').innerHTML=T.map(t=>'<div class="crow'+(t[1]===low?' hi':'')+'"><span>'+t[0]+'</span><span class="bar"><i style="--w:'+(t[1]/7*100)+'%"></i></span><b>'+t[1].toFixed(1).replace('.',',')+'</b></div>').join('');
+
+/* compare sliders */
+document.querySelectorAll('.cmp').forEach(c=>{const r=c.querySelector('input');const set=v=>c.style.setProperty('--x',v+'%');r.addEventListener('input',()=>set(r.value));
+  const io2=new IntersectionObserver(es=>{if(es[0].isIntersecting&&!reduce){io2.disconnect();let t0=null;const a=t=>{if(!t0)t0=t;const k=Math.min(1,(t-t0)/1800);const v=50+Math.sin(k*Math.PI*2)*28*(1-k);set(v);r.value=v;if(k<1)requestAnimationFrame(a)};requestAnimationFrame(a)}},{threshold:.5});io2.observe(c)});
+
+/* stepper demo */
+let g=2;const gOut=$('#guests'),tot=$('#total');
+const word=n=>n%10===1&&n%100!==11?'человек':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20)?'человека':'человек');
+document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',()=>{g=Math.max(1,Math.min(10,g+ +b.dataset.step));gOut.textContent=g+' '+word(g);tot.textContent=(g*72000).toLocaleString('ru-RU')+' ₽'}));
+
+/* laptop iframe scale */
+const ls=$('#lapScreen'),fr=ls.querySelector('iframe');
+const fit=()=>{fr.style.transform='scale('+(ls.clientWidth/1440)+')'};fit();new ResizeObserver(fit).observe(ls);
+
+/* adaptive phone long scroll */
+const ph=$('#phLong');
+if(ph&&!reduce){const dio=new IntersectionObserver(es=>{if(es[0].isIntersecting){dio.disconnect();ph.animate([{objectPosition:'50% 0%'},{objectPosition:'50% 100%'}],{duration:40000,iterations:Infinity,direction:'alternate',easing:'ease-in-out'})}});dio.observe(ph)}
+}
 </script>
 </body>
 </html>
