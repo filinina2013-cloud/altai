@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>ALTAI · Challenge</title><style>@font-face{font-family:OS;src:url(a/old-standard-tt-latin-400-normal.woff2)}
+@font-face{font-family:OS;src:url(a/old-standard-tt-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-latin-400-italic.woff2)}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-cyrillic-400-italic.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:RF;src:url(a/roboto-flex-latin-wght-normal.woff2);font-weight:100 1000}
+@font-face{font-family:RF;src:url(a/roboto-flex-cyrillic-wght-normal.woff2);font-weight:100 1000;unicode-range:U+0400-04FF}
+:root{--page:#f3f1ec;--warm:#f3e6d6;--raised:#ffffff;--night:#0d1112;--i1:#242b2d;--i2:#4f5557;--i3:#5e6466;--w:#8f4a1c;--b1:#d2cec5;--b2:#b9b4aa;--sp:#29495c;
+--d1:#e9e7e2;--d2:#c3c7c5;--d3:#a8aead;--dw:#e0a878;--db:#3a4245}
+*{box-sizing:border-box}body{margin:0;background:var(--page)}p,h2,h3{margin:0;font-weight:400}
+.f{width:1400px;background:var(--page);color:var(--i1);font-family:RF,system-ui,sans-serif;padding:48px 80px 112px}
+.run{display:flex;justify-content:space-between;font:500 14px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--i3)}
+.run b{font:italic 400 18px/16px OS,serif;letter-spacing:0;text-transform:none;margin-right:10px}
+.top{display:grid;grid-template-columns:818.67px 1fr;column-gap:24px;margin-top:48px}
+.top h2{font:400 120px/128px OS,serif;letter-spacing:-.02em;white-space:nowrap}.top h2 em{font-style:italic;color:var(--w)}
+.sup{grid-column:2;padding-top:16px;padding-left:80px}.sup p{font:400 18px/28px RF;color:var(--i2)}.sup p+p{margin-top:16px;color:var(--i3)}
+.conflict{margin-top:32px;font:400 32px/40px OS,serif}
+.lab{font:500 13px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--i3)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}.chip{font:500 12px/16px RF;letter-spacing:.04em;padding:4px 10px;border:1px solid var(--b1);border-radius:999px;color:var(--i2)}
+.wint{margin-top:24px;border:1.5px dashed var(--b2);padding:32px 40px;display:grid;grid-template-columns:292px repeat(3,1fr);column-gap:24px;align-items:start}
+.wint .h{font:italic 400 32px/40px OS,serif}.wint .s{margin-top:8px;font:400 15px/24px RF;color:var(--i3)}
+.wint .q{font:400 18px/28px RF;color:var(--i1);padding-left:20px;border-left:1px solid var(--b1)}
+
+.sec{margin-top:96px;display:flex;justify-content:space-between;align-items:baseline}
+.panels{margin-top:24px;display:grid;grid-template-columns:608px 608px;column-gap:24px;align-items:stretch}
+.pn{display:flex;flex-direction:column}
+.pn .ph{height:240px;background-size:cover;background-position:center}
+.pn .bd{padding:40px 40px 16px}
+.pn .tg{font:500 13px/16px RF;letter-spacing:.1em;text-transform:uppercase}
+.pn .gw{margin-top:12px;font:400 88px/88px OS,serif;letter-spacing:-.02em}
+.pn .gd{margin-top:16px;font:400 18px/28px RF;max-width:480px}
+.pn .qs{padding:0 40px 40px}
+.pn .qr{padding:24px 0;border-top:1px solid}
+.pn .qr h3{font:400 28px/36px OS,serif}.pn .qr p{margin-top:8px;font:400 17px/24px RF}
+.cold{background:var(--night);color:var(--d1)}.cold .tg{color:var(--d3)}.cold .gd,.cold .qr p{color:var(--d2)}.cold .qr{border-color:var(--db)}
+.cold .chip{border-color:var(--db);color:var(--d3)}
+.warmp{background:var(--warm)}.warmp .tg{color:var(--w)}.warmp .gd,.warmp .qr p{color:var(--i2)}.warmp .qr{border-color:var(--b2)}
+.warmp .ph{flex:1;min-height:240px}
+.warmp .chip{border-color:var(--b2)}
+html[lang=ru] .top h2{font-size:72px;line-height:96px;margin-top:16px}html[lang=ru] .pn .gw{font-size:72px;line-height:88px}</style></head><body><section class="f" id="f"><div class="run"><span><b>02</b><span data-ru="Исследование и стратегия">Discovery &amp; Strategy</span></span><span data-ru="Задача">The challenge</span></div>
+<div class="top"><h2 data-ru="Захотеть — легко.<br><em>Представить — трудно.</em>">Easy to want.<br><em>Hard to picture.</em></h2>
+<div class="sup"><p data-ru="В интервью люди хотели оценить поездку до решения — темп, кто ведёт, что оплачивается отдельно, — а после брони быстро находить практичные детали.">In the interviews, people wanted to judge a trip before committing — the pace, who leads, what costs extra — and, once they had booked, to find the practical details quickly.</p><p data-ru="Зима добавляет вопросы, которых в интервью не было. Они остаются гипотезами до проверки.">Winter adds questions the interviews did not cover. Those stay hypotheses until tested.</p></div></div>
+<p class="conflict" data-ru="Поездка должна одновременно привлекать и быть понятной.">The trip has to feel inviting and read clearly at the same time.</p>
+<div class="sec"><p class="lab" data-ru="Что людям нужно знать — и когда">What people need to know — and when</p><p class="lab" data-ru="Звучало в интервью · P01–P05">Heard in interviews · P01–P05</p></div>
+<div class="panels">
+ <div class="pn cold"><div class="ph" style="background-image:url(a/vf4.5.jpg);background-position:50% 60%"></div>
+  <div class="bd"><p class="tg" data-ru="01 · До брони">01 · Before booking</p><p class="gw" data-ru="Решиться">Decide</p><p class="gd" data-ru="Будущий участник может представить дни, людей и полную стоимость — и оставляет заявку.">A prospective traveller can picture the days, the people and the full cost — and leaves a request.</p></div>
+  <div class="qs"><div class="qr"><h3 data-ru="Нагрузка">Load</h3><p data-ru="Сколько идти пешком — и можно ли пропустить прогулку?">How long are the walks — and can I skip one?</p><div class="chips"><span class="chip">P02</span><span class="chip">P03</span><span class="chip">P04</span><span class="chip">P05</span></div></div><div class="qr"><h3 data-ru="Безопасность">Safety</h3><p data-ru="Кто ведёт группу и кто ответит, если что-то пойдёт не так?">Who leads the group, and who answers if something goes wrong?</p><div class="chips"><span class="chip">P01–P05</span></div></div><div class="qr"><h3 data-ru="Быт">Living</h3><p data-ru="Комнаты, питание, баня — и что не входит в цену.">Rooms, meals, the banya — and what the price leaves out.</p><div class="chips"><span class="chip">P01</span><span class="chip">P02</span><span class="chip">P03</span><span class="chip">P04</span></div></div></div></div>
+ <div class="pn warmp"><div class="bd"><p class="tg" data-ru="02 · После брони">02 · After booking</p><p class="gw" data-ru="Собраться">Prepare</p><p class="gd" data-ru="Записавшийся участник находит расписание, место встречи, контакты и список вещей — до поездки и в дороге.">A confirmed participant finds the schedule, meeting point, contacts and packing list — before the trip and on the way.</p></div>
+  <div class="qs"><div class="qr"><h3 data-ru="После брони">After booking</h3><p data-ru="Где встречаемся, кому звонить, что взять с собой?">Where do we meet, who do I call, what do I pack?</p><div class="chips"><span class="chip">P01</span><span class="chip">P02</span><span class="chip">P03</span><span class="chip">P05</span></div></div></div>
+  <div class="ph" style="background-image:url(a/film-2.jpg);background-position:50% 62%"></div></div>
+</div>
+<div class="wint"><div><p class="h" data-ru="Проверить зимой">To validate in winter</p><p class="s" data-ru="Гипотезы — в интервью не звучали, ещё проверить.">Hypotheses — not raised in the interviews, still to test.</p></div><p class="q" data-ru="Насколько будет холодно и что надеть?">How cold will it be, and what should I wear?</p><p class="q" data-ru="Какая нужна экипировка и что выдадут?">What gear do I need, and what is provided?</p><p class="q" data-ru="Что будет с планом в мороз или снегопад?">What happens to the plan in frost or heavy snow?</p></div>
+</section><script>
+const els=[...document.querySelectorAll('[data-ru]')];els.forEach(e=>e.dataset.en=e.innerHTML);
+function setLang(l){document.documentElement.lang=l;els.forEach(e=>e.innerHTML=l==='ru'?e.dataset.ru:e.dataset.en)}
+addEventListener('message',e=>{if(e.data==='ru'||e.data==='en')setLang(e.data)});
+try{if(localStorage.getItem('altai-case-lang')==='ru')setLang('ru')}catch(e){}
+</script></body></html>
