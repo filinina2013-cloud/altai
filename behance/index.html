@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALTAI — A Journey Within</title>
+<style>
+/*
+  VOICE   calm editorial case study, cold outside / warm inside
+  IDEA    a travel journal that turns into a product brief
+  PICTURE real ALTAI screens, video stills and the research files
+  COLOUR  night, snow, hearth; spruce and larch as the two journeys; amber accent
+  TYPE    Old Standard TT for display, Roboto Flex for text
+  LAYOUT  1400px Behance frames on a 12-column grid, 96px margins
+*/
+@font-face{font-family:OS;src:url(a/old-standard-tt-latin-400-normal.woff2);unicode-range:U+0000-024F,U+2010-2027}
+@font-face{font-family:OS;src:url(a/old-standard-tt-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-latin-400-italic.woff2);unicode-range:U+0000-024F,U+2010-2027}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-cyrillic-400-italic.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:RF;src:url(a/roboto-flex-latin-wght-normal.woff2);font-weight:100 1000;unicode-range:U+0000-024F,U+2010-2027,U+2190-21FF,U+2116,U+20BD}
+@font-face{font-family:RF;src:url(a/roboto-flex-cyrillic-wght-normal.woff2);font-weight:100 1000;unicode-range:U+0400-04FF}
+
+:root{
+  --night:#0d1112; --graphite:#0d1112; --card:#242b2d; --mist:#e6e3dc;
+  --snow:#f3f1ec; --paper:#fafaf8; --hearth:#f3e6d6;
+  --ink:#242b2d; --ink-2:#4f5557; --ink-3:#5e6466;
+  --on:#f3f1ec; --on-2:rgba(243,241,236,.74); --on-3:rgba(243,241,236,.64);
+  --larch:#8f4a1c; --larch-dark:#e0a878; /* color/text/warm · Dark mode (larch/300) */ --amber:#d9822b; --spruce:#29495c; --glacier:#e2e0da;
+  --hair:rgba(31,38,40,.16); --hair-on:rgba(243,241,236,.18);
+  --m:96px; --g:24px; --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#0d1112;overflow-x:hidden}
+body{font-family:RF,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+p,figure{margin:0}
+h1,h2,h3,h4{margin:0;font-weight:400}
+.case{width:1400px;margin:0 auto}
+.spread{position:relative;width:1400px;overflow:hidden}
+.pad{padding:0 var(--m)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+
+.xxl{font:400 150px/.86 OS,serif;letter-spacing:-.025em}
+.xl{font:400 104px/.94 OS,serif;letter-spacing:-.02em}
+.l{font:400 80px/1 OS,serif;letter-spacing:-.015em}
+.m{font:400 56px/1.05 OS,serif;letter-spacing:-.01em}
+.s{font:400 34px/1.15 OS,serif}
+.it{font-style:italic}
+.lead{font:400 28px/1.42 RF}
+.body{font:400 24px/1.5 RF}
+.cap{font:400 19px/1.45 RF}
+.lab{font:500 15px/1.2 RF;letter-spacing:.1em;text-transform:uppercase}
+.num{font:italic 400 22px/1 OS,serif}
+.muted{color:var(--ink-2)}
+.cold,.dark{background:var(--night);color:var(--on)} .cold .muted,.dark .muted{color:var(--on-2)}
+.snow{background:var(--snow)} .paper{background:var(--paper)} .warm{background:var(--hearth)} .mist{background:var(--mist)}
+
+.run{display:flex;justify-content:space-between;align-items:baseline;padding:48px var(--m) 0}
+.run .lab{opacity:.75}
+.run b{font:italic 400 18px/1 OS,serif;letter-spacing:0;text-transform:none;margin-right:10px}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.in .rv,.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
+
+/* language switch — only for the author, hidden in exports */
+.lang{position:fixed;z-index:50;top:16px;right:16px;display:flex;padding:4px;border-radius:999px;background:rgba(13,17,18,.78);backdrop-filter:blur(10px);border:1px solid rgba(243,241,236,.18)}
+.lang button{all:unset;cursor:pointer;min-width:44px;height:36px;display:grid;place-items:center;padding:0 12px;border-radius:999px;font:500 14px/1 RF;letter-spacing:.08em;color:var(--on-2)}
+.lang button[aria-pressed=true]{background:var(--on);color:var(--night)}
+.lang button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+/* ============ S00 cover ============ */
+#cover img{width:1400px;height:1095px;object-fit:cover}
+
+/* ============ S01 opening ============ */
+#opening{height:900px;background:#0d1112}
+#opening .stage{position:absolute;inset:0}
+#opening .back{position:absolute;left:-40px;top:-40px;width:1480px;height:980px;object-fit:cover;filter:blur(18px) brightness(.42) saturate(.8);opacity:0}
+#opening .vid{position:absolute;z-index:1;left:0;top:0;width:1400px;height:900px;overflow:hidden}
+#opening .vid video,#opening .vid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#opening .vid .shot{opacity:0}
+#opening .vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,7,7,.35),rgba(5,7,7,0) 40%,rgba(5,7,7,.45));opacity:var(--veil,1)}
+#opening .chrome{position:absolute;z-index:0;opacity:0;border-radius:14px;background:#e9e7e1;box-shadow:0 60px 120px rgba(0,0,0,.55)}
+#opening .chrome .bar{height:34px;display:flex;align-items:center;gap:7px;padding:0 14px}
+#opening .chrome .bar i{width:10px;height:10px;border-radius:50%;background:#b9b4aa}
+#opening .chrome .bar span{margin-left:16px;width:280px;height:20px;border-radius:6px;background:#f3f1ec;font:400 11px/20px RF;color:#5e6466;padding:0 12px}
+#opening .id{position:absolute;z-index:4;left:0;right:0;top:300px;text-align:center;color:var(--on);opacity:0}
+#opening .id .xxl{font-size:168px;letter-spacing:.06em;line-height:1}
+#opening .id .s{margin-top:10px}
+#opening .id .lab{margin-top:28px;opacity:.8}
+#opening .phone{position:absolute;z-index:3;left:1090px;top:278px;width:232px;height:494px;border-radius:38px;background:#242b2d;padding:8px;opacity:0;box-shadow:-30px 50px 90px rgba(0,0,0,.6),inset 0 0 0 1.5px rgba(255,255,255,.14)}
+#opening .phone .scr{position:relative;width:100%;height:100%;border-radius:30px;overflow:hidden;background:#0d1112;display:flex;flex-direction:column}
+#opening .phone .sb{position:relative;height:30px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 20px 0 24px;font:600 11px/1 RF;color:#f3f1ec}
+#opening .phone .sb i{width:52px;height:16px;border-radius:999px;background:#000;position:absolute;left:50%;top:7px;transform:translateX(-50%)}
+#opening .phone .sb svg{width:34px;height:10px}
+#opening .phone .url{flex:none;margin:2px 10px 6px;height:24px;border-radius:8px;background:rgba(243,241,236,.14);font:400 10px/24px RF;color:#f3f1ec;text-align:center}
+#opening .phone img{flex:1;min-height:0;width:100%;object-fit:cover;object-position:top}
+#opening .tag{position:absolute;z-index:4;top:794px;color:var(--on);opacity:0}
+#opening .tag.t1{left:96px} #opening .tag.t2{left:1090px;width:232px;text-align:right}
+
+/* ============ S02 overview · B1 immersive editorial (grid 1400 / 80 / 24, 8px baseline) ============ */
+#overview{background:#f3f1ec;height:1000px}
+#overview .run{padding:48px 80px 0}
+#overview figure{position:absolute;overflow:hidden}
+#overview figure img{width:100%;height:100%;object-fit:cover}
+#overview .frameline{outline:8px solid #f3f1ec}
+#overview h2{position:absolute;white-space:nowrap;font-family:OS,serif;font-weight:400;letter-spacing:-.015em;color:var(--ink)}
+#overview h2 em{font-style:italic;color:var(--larch)} /* color/text/warm #8f4a1c */
+#overview .desc{position:absolute;font:400 22px/1.5 RF;color:var(--ink)}
+#overview .strip{position:absolute;left:80px;width:1240px;margin:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:24px;border-top:1px solid var(--hair);padding-top:16px}
+#overview .strip dt{font:400 16px/1.4 RF;color:var(--ink-3);margin-bottom:8px}
+#overview .strip dd{margin:0;font:400 20px/1.4 RF}
+
+/* ============ S03 chapter opener ============ */
+.opener{height:900px;color:var(--on)}
+.opener>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 9s cubic-bezier(.2,.6,.2,1)}
+.opener.in>img{transform:scale(1)}
+.opener::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,18,.25),rgba(13,17,18,.1) 35%,rgba(13,17,18,.88))}
+.opener .run{position:relative;z-index:2}
+.opener .wrap{position:absolute;z-index:2;left:var(--m);right:var(--m);bottom:96px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--g);align-items:end}
+.opener h2{grid-column:1/8}
+.opener h2 .lab{display:block;margin-bottom:24px;opacity:.8}
+.opener .mask{display:block;overflow:hidden;padding-bottom:.08em}
+.opener .mask>span{display:block;transform:translateY(105%);transition:transform 1.4s var(--ease)}
+.opener.in .mask>span{transform:none}
+.opener.in .mask+.mask>span{transition-delay:.15s}
+.opener .wrap>p{grid-column:9/13;padding-bottom:8px;color:var(--on-2)}
+
+/* ============ S04 challenge ============ */
+#challenge .big{padding-top:120px}
+#challenge .big h2{grid-column:1/11}
+#challenge .big h2 em{color:var(--larch)}
+#challenge .big p{grid-column:1/7;margin-top:40px}
+#challenge .winter{margin-top:120px}
+#challenge .winter>.lab{grid-column:1/4;padding-top:6px}
+#challenge .factors{grid-column:4/13;display:grid;grid-template-columns:repeat(5,1fr);column-gap:var(--g)}
+#challenge .f{border-top:1px solid var(--hair);padding-top:18px}
+#challenge .f .s{font-size:30px;margin-bottom:12px}
+#challenge .cols{margin-top:112px;align-items:start;padding-bottom:112px}
+#challenge .goal{grid-column:1/6} #challenge .limits{grid-column:7/13}
+#challenge ul{list-style:none;margin:22px 0 0;padding:0}
+#challenge li{padding:16px 0;border-top:1px solid var(--hair);display:grid;grid-template-columns:44px 1fr}
+#challenge li .num{color:var(--larch);padding-top:4px}
+#challenge .tasks{padding:64px var(--m) 72px;background:var(--night);color:var(--on)}
+#challenge .tasks .h{grid-column:1/5}
+#challenge .tasks ol{grid-column:5/13;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;column-gap:var(--g)}
+#challenge .tasks li{border-top:1px solid var(--hair-on);grid-template-columns:44px 1fr}
+#challenge .tasks li .num{color:var(--amber)}
+
+/* ============ S05 research (dark) ============ */
+#research{padding-bottom:120px}
+#research .head{padding-top:120px;align-items:start}
+#research .head h2{grid-column:1/7;padding-top:40px}
+#research .stats{grid-column:7/13;display:flex;flex-direction:column;gap:48px}
+#research .st b{display:block;font:400 120px/.9 OS,serif;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+#research .st .row{display:grid;grid-template-columns:200px 1fr;column-gap:32px;align-items:end}
+#research .st .cap{color:var(--on-2);margin-top:12px}
+#research .bars{display:flex;gap:4px;height:44px;margin-top:20px}
+#research .bars i{flex:1;background:rgba(243,241,236,.1);border-radius:2px;transition:background .25s}
+#research .bars i.on{background:var(--larch-dark)}
+#research .boards{margin-top:120px;position:relative;height:560px}
+#research .boards img{position:absolute;width:560px;box-shadow:0 40px 80px rgba(0,0,0,.5)}
+#research .boards .b1{left:96px;top:40px;transform:rotate(-3deg)}
+#research .boards .b2{left:420px;top:0;transform:rotate(1.5deg);z-index:2}
+#research .boards .b3{left:744px;top:60px;transform:rotate(-1deg)}
+#research .jt{margin-top:120px}
+#research .jt h3{grid-column:1/13;margin-bottom:48px}
+#research .j{grid-column:span 3;border-top:1px solid var(--hair-on);padding-top:20px;display:flex;flex-direction:column;gap:14px}
+#research .j .num{color:var(--larch-dark);font-size:30px}
+#research .j h4{font:400 32px/1.15 OS,serif}
+#research .j p{color:var(--on-2)}
+#research .j .sig{margin-top:auto;padding-top:16px;color:var(--glacier)}
+#research .bench{margin-top:120px}
+#research .bench .h{grid-column:1/5}
+#research table{grid-column:5/13;border-collapse:collapse;width:100%}
+#research th,#research td{text-align:left;vertical-align:top;padding:16px 16px 16px 0;border-top:1px solid var(--hair-on);font:400 18px/1.45 RF;color:var(--on-2)}
+#research th{font:500 14px/1.2 RF;letter-spacing:.1em;text-transform:uppercase;border-top:1.5px solid var(--on)}
+#research td:first-child{font:400 22px/1.3 OS,serif;color:var(--on);width:200px}
+
+/* ============ S06 CJM (animated) ============ */
+#cjm{padding-bottom:120px}
+#cjm .head{padding-top:120px;align-items:end}
+#cjm .head h2{grid-column:1/8} #cjm .head p{grid-column:9/13}
+#cjm .track{position:relative;margin-top:96px}
+#cjm .rail{position:absolute;left:0;right:0;top:11px;height:2px;background:var(--hair)}
+#cjm .rail i{position:absolute;left:0;top:0;height:100%;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--spruce) 0 50%,var(--larch) 50% 100%);transition:transform 2.6s cubic-bezier(.65,0,.35,1)}
+#cjm.in .rail i{transform:scaleX(1)}
+#cjm .walker{position:absolute;z-index:2;top:2px;left:0;width:20px;height:20px;border-radius:50%;background:var(--spruce);opacity:0;transition:left .9s var(--ease),opacity .4s,background .3s}
+#cjm .stages{position:relative;display:grid;grid-template-columns:repeat(8,1fr);column-gap:16px}
+#cjm .stg{position:relative;padding-top:44px;opacity:0;transform:translateY(16px);transition:opacity .7s var(--ease),transform .9s var(--ease)}
+#cjm .stg.on{opacity:1;transform:none}
+#cjm .stg::before{content:"";position:absolute;left:0;top:3px;width:18px;height:18px;border-radius:50%;background:var(--paper);border:2px solid var(--spruce)}
+#cjm .stg.w::before{border-color:var(--larch)}
+#cjm .stg .num{display:block;margin-bottom:10px;color:var(--ink-3);font-size:18px}
+#cjm .stg h4{font:400 26px/1.12 OS,serif;margin-bottom:12px;transition:color .3s}
+#cjm .stg .bar{font:400 16px/1.45 RF;color:var(--ink-2)}
+#cjm .stg .ans{margin-top:10px;font:500 16px/1.45 RF;color:var(--ink);padding-top:10px;border-top:1px solid var(--hair)}
+#cjm .stg.cur h4{color:var(--spruce)} #cjm .stg.w.cur h4{color:var(--larch)}
+#cjm .phase{display:grid;grid-template-columns:1fr 1fr;margin-top:28px}
+#cjm .ctx{margin-top:112px;align-items:start}
+#cjm .ctx>div{grid-column:span 6;display:grid;grid-template-columns:240px 1fr;column-gap:28px}
+#cjm .ctx img{width:240px;height:300px;object-fit:cover}
+#cjm .ctx .s{font-size:30px;margin:6px 0 12px}
+
+/* ============ S07 insights (dark cards) ============ */
+
+/* ============ S08 journeys (animated) ============ */
+@keyframes ping{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.35)}}
+
+/* ============ S09 IA (animated sitemap) ============ */
+
+/* ============ S10 exploration ============ */
+
+body.export .lang{display:none}
+@media (prefers-reduced-motion:reduce){.rv,#cjm .stg.opener>img,.opener .mask>span{transform:none}#cjm .rail i{transform:none}}
+#ch2 .dsh em{font-style:italic;color:#ffffff}
+
+/* ===== S04 Challenge & Goals · C1 (scoped; ALTAI light tokens) ===== */
+#challenge{position:relative;width:1400px;overflow:hidden;background:#f3f1ec;color:#242b2d;padding:0}
+#challenge>*{position:absolute}
+#challenge p,#challenge h2,#challenge h3,#challenge ul,#challenge li{margin:0;font-weight:400;letter-spacing:normal}
+#challenge ul{list-style:none;padding:0}
+#challenge .rule{margin:0;border:0;height:1px;background:#242b2d}
+#challenge .lbl{font:500 15px/16px RF,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#5e6466}
+#challenge .conflict{position:absolute;margin:0;font:400 32px/40px OS,serif;color:#242b2d}
+#challenge .mono-st{font:400 120px/128px OS,serif;letter-spacing:-.02em;color:#242b2d;white-space:nowrap}
+#challenge .mono-st em{font-style:italic;color:#8f4a1c}
+#challenge .sup p{font:400 20px/32px RF,system-ui,sans-serif;color:#4f5557}
+#challenge .sup .sup2{margin-top:16px;color:#5e6466}
+#challenge .tagl{font:italic 400 24px/32px OS,serif;color:#5e6466;margin-bottom:24px}
+#challenge .ob{border-top:1px solid #d2cec5;padding-top:20px}
+#challenge .ob h3{font:400 40px/48px OS,serif;color:#242b2d}
+#challenge .ob .q{margin-top:12px;font:400 22px/32px RF,system-ui,sans-serif;color:#4f5557}
+#challenge .ref{margin-top:16px;font:500 15px/24px RF,system-ui,sans-serif;color:#5e6466}
+#challenge .hyp h3{margin-top:16px;padding-top:20px;border-top:1px solid #d2cec5;font:italic 400 40px/48px OS,serif;color:#242b2d}
+#challenge .hyp ul{margin-top:12px}
+#challenge .hyp li{display:block;font:400 19px/28px RF,system-ui,sans-serif;color:#4f5557;padding:10px 0;border-bottom:1px solid #d2cec5}
+#challenge .hyp li:last-child{border-bottom:0}
+#challenge .hyp .tagl{margin-bottom:0}
+#challenge .hyp ul{border:0;margin-left:0;padding:0}
+#challenge .hyp li{border-top:0;border-left:0;border-right:0;margin:0;gap:0;grid-template-columns:none}
+#challenge .hyp li::before,#challenge .hyp li::after{content:none}
+#challenge .hyp .ref{margin-top:8px}
+#challenge .vrule{display:block;width:0;border-left:1px solid #d2cec5}
+#challenge .goal .gn{font:italic 400 24px/32px OS,serif;color:#5e6466}
+#challenge .goal .gw{margin-top:4px;font:400 144px/144px OS,serif;letter-spacing:-.025em;color:#242b2d}
+#challenge .goal .gs{font:italic 400 32px/40px OS,serif;color:#5e6466;margin-top:4px}
+#challenge .goal .gd{margin-top:28px;font:400 22px/32px RF,system-ui,sans-serif;color:#4f5557;max-width:520px}
+#challenge .goal .ga{margin-top:20px;font:500 15px/24px RF,system-ui,sans-serif;color:#5e6466}
+#challenge .goal .ga.test{margin-top:4px}
+html[lang=ru] #challenge .mono-st{font-size:72px;line-height:96px;margin-top:32px}
+html[lang=ru] #challenge .goal .gw{font-size:112px;line-height:128px}
+</style>
+</head>
+<body>
+<div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="ru" aria-pressed="false">RU</button></div>
+<main class="case">
+
+<!-- S00 · Cover — removed from the case flow (27 Nov): the laptop image is the Behance project cover only -->
+
+<!-- S01 · Opening motion (A1 × P2, rendered 1400×900, 14 s) -->
+<section class="spread" id="opening" aria-label="Opening motion">
+  <video src="a/opening.mp4" poster="a/opening-poster.jpg" muted playsinline loop autoplay preload="auto" style="display:block;width:1400px;height:900px"></video>
+</section>
+
+<!-- S02 · Overview (B1 · Immersive editorial) -->
+<section class="spread" id="overview" aria-label="About the project">
+  <div class="run lab"><span><b>01</b><span data-ru="О проекте">About the project</span></span><span>ALTAI · 2026</span></div>
+  <figure class="rv" style="left:0;top:160px;width:372px;height:592px"><img src="a/hero.jpg" alt="Snowy peaks of Altai" style="object-position:38% 50%"></figure>
+  <h2 class="rv d1" style="left:396px;top:200px;width:632px;font-size:54px;line-height:1.16;text-align:center" data-ru="Зимняя поездка на Алтай,<br><em>от первого сомнения</em><br>до места встречи">A winter journey to Altai,<br><em>from the first doubt</em><br>to the meeting point</h2>
+  <p class="desc rv d2" style="left:501.33px;top:472px;width:397.33px;text-align:center;font-size:21px" data-ru="Перед поездкой людям нужно понять, подходит ли им формат: нагрузка, условия, команда и полный бюджет. После записи задача меняется — быстро найти встречу, контакты и список вещей. ALTAI объединяет эти два сценария.">Before a trip, people need to know whether the format suits them: the load, the conditions, the team and the full budget. After booking, the task changes: find the meeting point, contacts and packing list fast. ALTAI brings both into one product.</p>
+  <p class="rv d2" id="origin-line" style="position:absolute;left:501.33px;top:720px;width:397.33px;margin:0;text-align:center;font:400 15px/24px RF;color:var(--ink-3)" data-ru="Проект появился в 2024 году как коммерческая памятка для участников. В 2026 году я самостоятельно переосмыслила его как сайт поездки со встроенной памяткой.">Originally created in 2024 as a commercial participant guide, ALTAI was independently reimagined in 2026 as a travel website with an integrated participant guide.</p>
+  <figure class="rv d2" style="left:1028px;top:160px;width:372px;height:440px"><img src="a/trip-inside.jpg" alt="Evening by the fire at the base" style="object-position:28% 50%"></figure>
+  <figure class="rv d3 frameline" style="left:922.67px;top:536px;width:292px;height:216px"><img src="a/vf15.jpg" alt="Tea poured at a low table" style="object-position:50% 50%"></figure>
+  <dl class="strip rv" style="top:840px">
+    <div><dt data-ru="Тип">Type</dt><dd data-ru="Самостоятельный UX/UI-концепт">Self-initiated UX/UI concept</dd></div>
+    <div><dt data-ru="Основа">Origin</dt><dd data-ru="Коммерческая памятка, 2024">Commercial guide, 2024</dd></div>
+    <div><dt data-ru="Роль">Role</dt><dd data-ru="Исследование, UX, UI, дизайн-система">Research, UX, UI, design system</dd></div>
+    <div><dt data-ru="Объём">Scope</dt><dd data-ru="Лендинг, заявка, памятка">Landing page, request, guide</dd></div>
+    <div><dt data-ru="Платформы">Platforms</dt><dd data-ru="ПК, планшет, телефон">Desktop, tablet, mobile</dd></div>
+    <div><dt data-ru="Сроки">Timeline</dt><dd data-ru="Окт — ноя 2026">Oct — Nov 2026</dd></div>
+  </dl>
+  
+</section>
+
+<!-- S02b · Design process — compressed route strip (variant A, approved 27 Nov; 1400×520, 12.6 s; starts when the block comes into view, plays once, holds the final frame) -->
+<section class="spread" id="process" aria-label="Design process: four stops from first interviews to a tested responsive concept" style="height:520px;background:#0d1112">
+  <video src="a/process-strip.mp4" poster="a/process-strip-final.jpg" muted playsinline preload="auto" style="display:block;width:1400px;height:520px"></video>
+</section>
+
+<!-- S03 · Chapter 02 opener — approved pool composition; video: footage 6984837, full 14.5 s, stabilised, mirrored (version A), repeats in full -->
+<section class="spread" id="ch2" aria-label="Chapter 02 · Discovery and Strategy" style="position:relative;height:720px;overflow:hidden;background:#f3f1ec">
+  <video src="a/ds-pool2.mp4" poster="a/ds-pool2-poster.jpg" muted playsinline loop autoplay preload="auto" style="position:absolute;left:0;top:0;width:1400px;height:720px;display:block"></video>
+  <p style="position:absolute;left:396px;top:234px;margin:0;font:italic 400 24px/1 OS,serif;color:#ffffff">02</p>
+  <h2 class="dsh" style="position:absolute;left:396px;top:264px;margin:0;font:400 72px/80px OS,serif;letter-spacing:-.015em;white-space:nowrap;color:#ffffff" data-ru="Исследование <em>и стратегия</em>">Discovery <em>&amp; Strategy</em></h2>
+  <p style="position:absolute;left:817.33px;top:472px;width:292px;margin:0;font:400 18px/28px RF,system-ui,sans-serif;color:#ffffff" data-ru="Прежде чем рисовать экраны, я разобралась, что люди проверяют перед групповой поездкой — и что им нужно уже после брони.">Before designing screens, I looked at what people check before a group trip — and what they still need once they have booked.</p>
+</section>
+
+<!-- S04 · Challenge & Goals — C1 Editorial Statement (approved 25 Nov, static) -->
+<section class="spread" id="challenge" aria-label="Challenge and goals" style="height:1688px">
+  <div class="run lab" style="left:0;right:0;top:0"><span><b>02</b><span data-ru="Исследование и стратегия">Discovery &amp; Strategy</span></span><span data-ru="Задача">The challenge</span></div>
+  <h2 class="mono-st" style="left:80px;top:112px;" data-ru="Захотеть — легко.<br><em>Представить — трудно.</em>">Easy to want.<br><em>Hard to picture.</em></h2>
+  <div class="sup" style="left:922.67px;top:128px;width:397.33px;">
+    <p data-ru="В интервью люди хотели оценить поездку до решения — темп, кто ведёт, что оплачивается отдельно, — а после брони быстро находить практичные детали.">In the interviews, people wanted to judge a trip before committing — the pace, who leads, what costs extra — and, once they had booked, to find the practical details quickly.</p>
+    <p class="sup2" data-ru="Зима добавляет вопросы, которых в интервью не было. Они остаются гипотезами до проверки.">Winter adds questions the interviews did not cover. Those stay hypotheses until tested.</p>
+  </div>
+  <p class="conflict" style="left:80px;top:392px;width:1240px" data-ru="Поездка должна одновременно привлекать и быть понятной.">The trip has to feel inviting and read clearly at the same time.</p>
+
+  <hr class="rule ink" style="left:80px;top:496px;width:1240px;">
+  <p class="lbl" style="left:80px;top:528px;" data-ru="Что людям нужно знать до брони и после неё">What people need to know, before and after booking</p>
+  <p class="tagl" style="left:80px;top:568px;" data-ru="Звучало в интервью">Heard in interviews</p>
+  <div class="ob" style="left:80px;top:616px;width:397.33px;"><h3 data-ru="Нагрузка">Load</h3><p class="q" data-ru="Сколько идти пешком — и можно ли пропустить прогулку?">How long are the walks — and can I skip one?</p><p class="ref"><span data-ru="Интервью">Interviews</span> P02, P03, P04, P05 · <span data-ru="цель">goal</span> 1</p></div><div class="ob" style="left:501.33px;top:616px;width:397.33px;"><h3 data-ru="Безопасность">Safety</h3><p class="q" data-ru="Кто ведёт группу и кто ответит, если что-то пойдёт не так?">Who leads the group, and who answers if something goes wrong?</p><p class="ref"><span data-ru="Интервью">Interviews</span> P01–P05 · <span data-ru="цель">goal</span> 1</p></div><div class="ob" style="left:80px;top:832px;width:397.33px;"><h3 data-ru="Быт">Living</h3><p class="q" data-ru="Комнаты, питание, баня — и что не входит в цену.">Rooms, meals, the banya — and what the price leaves out.</p><p class="ref"><span data-ru="Интервью">Interviews</span> P01, P02, P03, P04 · <span data-ru="цель">goal</span> 1</p></div><div class="ob" style="left:501.33px;top:832px;width:397.33px;"><h3 data-ru="После записи">After booking</h3><p class="q" data-ru="Где встречаемся, кому звонить, что взять с собой?">Where do we meet, who do I call, what do I pack?</p><p class="ref"><span data-ru="Интервью">Interviews</span> P01, P02, P03, P05 · <span data-ru="цель">goal</span> 2</p></div>
+  <div class="hyp" style="left:1028px;top:568px;width:292px;">
+    <p class="tagl" data-ru="Проверить зимой">To validate in winter</p>
+    <h3 data-ru="Зима">Winter</h3>
+    <ul><li><span data-ru="Насколько будет холодно и что надеть?">How cold will it be, and what should I wear?</span></li><li><span data-ru="Какая нужна экипировка и что выдадут?">What gear do I need, and what is provided?</span></li><li><span data-ru="Что будет с планом в мороз или снегопад?">What happens to the plan in frost or heavy snow?</span></li></ul>
+    <p class="ref"><span data-ru="Гипотезы · в интервью не звучали, проверить">Hypotheses · not covered by the interviews, to test</span></p>
+  </div>
+
+  <hr class="rule ink" style="left:80px;top:1088px;width:1240px;">
+  <p class="lbl" style="left:80px;top:1120px;" data-ru="Две цели продукта">Two product goals</p>
+  <i class="vrule" style="left:700px;top:1168px;height:440px"></i>
+  <div class="goal" style="left:80px;top:1168px;width:502.67px;"><p class="gn">01</p><h3 class="gw" data-ru="Решиться">Decide</h3><p class="gs" data-ru="до брони">before booking</p><p class="gd" data-ru="Будущий участник может представить дни, людей и полную стоимость — и оставляет заявку.">A prospective traveller can picture the days, the people and the full cost — and leaves a request.</p><p class="ga"><span data-ru="Отвечает на">Addresses</span>: <span data-ru="нагрузка, безопасность, быт">load, safety, living</span></p><p class="ga test"><span data-ru="Ещё проверить">Still to test</span>: <span data-ru="зимние вопросы">winter questions</span></p></div>
+  <div class="goal" style="left:817.33px;top:1168px;width:502.67px;"><p class="gn">02</p><h3 class="gw" data-ru="Собраться">Prepare</h3><p class="gs" data-ru="после брони">after booking</p><p class="gd" data-ru="Записавшийся участник находит расписание, место встречи, контакты и список вещей — до поездки и в дороге.">A confirmed participant finds the schedule, meeting point, contacts and packing list — before the trip and on the way.</p><p class="ga"><span data-ru="Отвечает на">Addresses</span>: <span data-ru="после брони">after booking</span></p><p class="ga test"><span data-ru="Ещё проверить">Still to test</span>: <span data-ru="зимние вопросы">winter questions</span></p></div>
+</section>
+
+<!-- S05 · Research — unified video: 5 / 28 / 5 + document stack (11 s, 1400×1638; plays once when in view, holds the final frame) -->
+<section class="spread" id="research" aria-label="Research" style="background:#0d1112">
+  <video src="a/research.mp4" poster="a/research-final.jpg" muted playsinline preload="auto" style="display:block;width:1400px;height:1638px"></video>
+</section>
+<section class="spread" id="interviews" aria-label="User interviews: five interviews, five different stories" style="background:#f3e6d6">
+  <iframe src="u1r2-anim.html?pub" title="User interviews: five interviews, five different stories" scrolling="no" style="display:block;width:1400px;height:1224px;border:0"></iframe>
+  <iframe src="interviews-ctx.html" title="After the trip, and two traveller contexts" scrolling="no" style="display:block;width:1400px;height:768px;border:0"></iframe>
+</section>
+
+<!-- S05b · Traveller jobs (split from section 07, 27 Nov; static 1400×960) -->
+<section class="spread" id="jobs" aria-label="Traveller jobs" style="background:#f3f1ec">
+  <iframe src="jobs-v2.html" title="Four jobs behind one trip" scrolling="no" style="display:block;width:1400px;height:960px;border:0"></iframe>
+</section>
+
+<!-- S05c · Competitive analysis — own screen, accent on "What the price includes" (27 Nov; static 1400×960) -->
+<section class="spread" id="competitive" aria-label="Competitive analysis: the facts are there, finding them is the design task" style="background:#f3f1ec">
+  <iframe src="comp-v2.html" title="Competitive analysis" scrolling="no" style="display:block;width:1400px;height:1152px;border:0"></iframe>
+</section>
+
+<!-- S05d · Four decisions from the pages — own section on surface/warm, the pause in the middle of the chapter (27 Nov) -->
+<section class="spread" id="decisions" aria-label="Four decisions from the competitor pages" style="background:#f3e6d6">
+  <iframe src="decisions.html" title="Four decisions from the pages" scrolling="no" style="display:block;width:1400px;height:872px;border:0"></iframe>
+</section>
+
+<!-- S06 · Customer journey — approved video (19.9 s, 1400×804; plays once when in view, holds the final frame) -->
+<section class="spread" id="cjm" aria-label="Customer journey and two journeys" style="background:#f3f1ec;padding-bottom:0">
+  <video src="a/cjm.mp4" poster="a/cjm-final.jpg" muted playsinline preload="auto" style="display:block;width:1400px;height:804px"></video>
+  <iframe src="cjm-journeys.html" title="Two journeys: before and after booking" scrolling="no" style="display:block;width:1400px;height:280px;border:0"></iframe>
+</section>
+<!-- S06b · Traveller contexts — moved under User interviews (27 Nov) -->
+
+<!-- S07 · Insights → Design Decisions — APPROVED · LOCKED 25 Nov (I2 final, static, 1400×3504) -->
+<section class="spread" id="insights" aria-label="Insights to design decisions" style="background:#0d1112">
+  <iframe src="ins-I2c.html" title="Insights to design decisions" scrolling="no" style="display:block;width:1400px;height:3504px;border:0"></iframe>
+</section>
+
+<!-- S08 · Two user journeys — folded into a short summary under the CJM (27 Nov) -->
+
+<!-- S09 · IA (animated sitemap) -->
+<!-- S09 · Information architecture — APPROVED · LOCKED 25 Nov (R2 static + motion, 15.9 s, 1400×1644; plays once when in view, holds the final frame) -->
+<section class="spread" id="ia" aria-label="Information architecture" style="background:#fafaf8">
+  <video src="a/ia-r2.mp4" poster="a/ia-r2-final.jpg" muted playsinline preload="auto" style="display:block;width:1400px;height:1644px"></video>
+</section>
+
+<!-- S10 · Wireframes & Exploration — W2c APPROVED · LOCKED 25 Nov 15:43 (static, 1400×1680, 2× 2800×3360) -->
+<!-- S09a · Chapter 03 opener — same composition and pool footage as the chapter 02 opener, new text (27 Nov) -->
+<section class="spread" id="ch3" aria-label="Chapter 03 · Design" style="position:relative;height:720px;overflow:hidden;background:#f3f1ec">
+  <video src="a/ds-pool2.mp4" poster="a/ds-pool2-poster.jpg" muted playsinline loop autoplay preload="auto" style="position:absolute;left:0;top:0;width:1400px;height:720px;display:block"></video>
+  <p style="position:absolute;left:396px;top:234px;margin:0;font:italic 400 24px/1 OS,serif;color:#ffffff">03</p>
+  <h2 class="dsh" style="position:absolute;left:396px;top:264px;margin:0;font:400 72px/80px OS,serif;letter-spacing:-.015em;white-space:nowrap;color:#ffffff" data-ru="Дизайн">Design</h2>
+  <p style="position:absolute;left:817.33px;top:472px;width:292px;margin:0;font:400 18px/28px RF,system-ui,sans-serif;color:#ffffff" data-ru="От структуры к экранам: как складывался блок программы и визуальный язык вокруг него.">From structure to screens: how the programme block took shape, and the visual language around it.</p>
+</section>
+
+<section class="spread" id="explore" aria-label="Wireframes and exploration" style="background:#0d1112">
+  <iframe src="wf-W2c-night.html" title="Wireframes and exploration" scrolling="no" style="display:block;width:1400px;height:1680px;border:0"></iframe>
+</section>
+<section class="spread" id="visual-direction" aria-label="Visual direction: from structure to feeling" style="background:#f3f1ec">
+  <iframe src="vd-d01.html" title="Visual direction: from structure to feeling" scrolling="no" style="display:block;width:1400px;height:560px;border:0"></iframe>
+</section>
+<section class="spread" id="visual-concept" aria-label="Visual concept: cold outside, warm inside" style="background:#f3f1ec">
+  <iframe src="vd-d02.html" title="Visual concept: cold outside, warm inside, and the Outside / Inside switch" scrolling="no" style="display:block;width:1400px;height:3616px;border:0"></iframe>
+</section>
+<section class="spread" id="art-direction" aria-label="Art direction: three principles, one visual language" style="background:#f3e6d6">
+  <iframe src="vd-d03.html" title="Art direction: three principles, one visual language" scrolling="no" style="display:block;width:1400px;height:1840px;border:0"></iframe>
+</section>
+
+</main>
+
+<script>
+{
+const fit=()=>{document.querySelector('.case').style.zoom=Math.min(1,innerWidth/1400)};fit();addEventListener('resize',fit);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(location.hash==='#export')document.body.classList.add('export');
+
+/* ---------- language ---------- */
+const tEls=[...document.querySelectorAll('[data-ru]')];
+tEls.forEach(e=>e.dataset.en=e.innerHTML);
+const iaLabels=[];
+let curLang='en';
+function setLang(l){
+  curLang=l;document.documentElement.lang=l;
+  tEls.forEach(e=>{e.innerHTML=l==='ru'?e.dataset.ru:e.dataset.en});
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===l)));
+  iaLabels.forEach(x=>{x.el.querySelector('span').textContent=l==='ru'?x.ru:x.en});
+  if(window.__iaWire)window.__iaWire();
+  document.querySelectorAll('#jobs iframe,#competitive iframe,#decisions iframe,#cjm iframe,#interviews iframe,#insights iframe,#explore iframe').forEach(f=>{try{f.contentWindow.postMessage(l,'*')}catch(e){}});try{localStorage.setItem('altai-case-lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.l)));
+
+/* ---------- reveal ---------- */
+const revealer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');revealer.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.spread,.rv').forEach(el=>revealer.observe(el));
+const onEnter=(el,fn,th=.3)=>{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fn();o.disconnect()}}),{threshold:th});o.observe(el)};
+{/* keep autoplay videos running: retry play() when ready or when they come back into view */
+const tryPlay=v=>{v.muted=true;const p=v.play();if(p&&p.catch)p.catch(()=>{})};
+document.querySelectorAll('video[autoplay]').forEach(v=>{v.addEventListener('canplay',()=>{if(v.paused)tryPlay(v)});
+new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&v.paused)tryPlay(v)}),{threshold:.2}).observe(v)});}
+{const rv=document.querySelector('#research video');if(rv)onEnter(rv,()=>{rv.currentTime=0;rv.play().catch(()=>{})},.5)}
+{const pv=document.querySelector('#process video');if(pv)onEnter(pv,()=>{pv.currentTime=0;pv.play().catch(()=>{})},.6)}
+const sleep=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+const cl=v=>Math.max(0,Math.min(1,v));
+
+/* ---------- research counters + segmented bars ---------- */
+document.querySelectorAll('#research .bars').forEach(b=>{b.innerHTML='<i></i>'.repeat(+b.dataset.of)});
+function runCounters(){
+  document.querySelectorAll('#research .st').forEach((st,si)=>{
+    const num=st.querySelector('b'),n=+num.dataset.count,bars=[...st.querySelectorAll('.bars i')],dur=reduce?0:1800,t0=performance.now()+si*250;
+    const step=now=>{const p=dur?cl((now-t0)/dur):1,e=1-Math.pow(1-p,4);num.textContent=Math.round(n*e);bars.forEach((i,k)=>i.classList.toggle('on',k<Math.round(bars.length*e)));if(p<1)requestAnimationFrame(step)};
+    requestAnimationFrame(step);
+  });
+}
+window.__counters=runCounters;
+{const st=document.querySelector('#research .stats');if(st)onEnter(st,runCounters,.4)}
+
+/* ---------- CJM: now a video (see #cjm) ---------- */
+{const cv=document.querySelector('#cjm video');if(cv)onEnter(cv,()=>{cv.currentTime=0;cv.play().catch(()=>{})},.5)}
+/* ---------- two journeys: approved video ---------- */
+{const jv=document.querySelector('#journeys video');if(jv)onEnter(jv,()=>{jv.currentTime=0;jv.play().catch(()=>{})},.4)}
+
+/* ---------- IA: approved video ---------- */
+{const iv=document.querySelector('#ia video');if(iv)onEnter(iv,()=>{iv.currentTime=0;iv.play().catch(()=>{})},.4)}
+
+
+let saved='en';try{saved=localStorage.getItem('altai-case-lang')||'en'}catch(e){}
+if(saved==='ru')setLang('ru');
+}
+</script>
+</body>
+</html>

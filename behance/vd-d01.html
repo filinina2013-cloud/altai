@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>ALTAI · Visual direction · D01</title><style>
+@font-face{font-family:"Old Standard TT";font-style:normal;src:url(a/old-standard-tt-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Old Standard TT";font-style:italic;src:url(a/old-standard-tt-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Old Standard TT";font-style:normal;src:url(a/old-standard-tt-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0400-04FF}
+@font-face{font-family:"Old Standard TT";font-style:italic;src:url(a/old-standard-tt-cyrillic-400-italic.woff2) format("woff2");unicode-range:U+0400-04FF}
+@font-face{font-family:"Roboto Flex";font-weight:100 1000;src:url(a/roboto-flex-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Roboto Flex";font-weight:100 1000;src:url(a/roboto-flex-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0400-04FF}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-synthesis:none;-webkit-font-smoothing:antialiased}
+.f{position:relative;width:1400px;overflow:hidden}
+.a{position:absolute}
+.os{font-family:"Old Standard TT";font-weight:400;font-kerning:normal}
+.it{font-style:italic}
+.rf{font-family:"Roboto Flex"}
+/* ALTAI text styles */
+.display{font-size:132px;line-height:100%;letter-spacing:-0.01em}       /* ALTAI/display/desktop (+italic) */
+.s104{font-size:104px;line-height:110%}  .s88{font-size:88px;line-height:110%}   /* ALTAI/Case/Serif/104, /88 */
+.s72{font-size:72px;line-height:100%}                                           /* ALTAI/section-display/desktop */
+.s64{font-size:64px;line-height:110%} .s56{font-size:56px;line-height:110%} .s48{font-size:48px;line-height:110%} .s40{font-size:40px;line-height:110%}
+.s32{font-size:32px;line-height:110%} .s24{font-size:24px;line-height:110%}     /* ALTAI/Case/Serif/* */
+.blg{font-size:20px;line-height:135%;font-weight:400}                           /* ALTAI/body-lg/desktop */
+.b{font-size:17px;line-height:150%;font-weight:400}                             /* ALTAI/body/desktop */
+.sm{font-size:14px;line-height:150%;font-weight:400}                            /* ALTAI/small/all */
+.cap{font-size:13px;line-height:150%;font-weight:400}                           /* ALTAI/caption/all */
+.lab{font-size:13px;line-height:130%;font-weight:500;letter-spacing:.06em;text-transform:uppercase} /* ALTAI/label-sm/all */
+img.a{display:block;object-fit:cover}
+.rule{position:absolute;height:1px}
+.nb{white-space:nowrap}
+.grid .gov{display:block}
+.gov{display:none;position:absolute;inset:0;pointer-events:none;z-index:99;
+ background:
+  repeating-linear-gradient(to bottom, rgba(185,180,170,.22) 0 1px, transparent 1px 8px),
+  linear-gradient(to right, transparent 80px, rgba(217,130,43,.12) 80px 1320px, transparent 1320px)}
+.gov i{position:absolute;top:0;bottom:0;width:24px;background:rgba(243,241,236,.0);border-left:1px solid rgba(217,130,43,.55);border-right:1px solid rgba(217,130,43,.55)}
+ body{background:#f3f1ec}</style></head><body><section class="f" id="v4-d01" data-label="V4 · D01 Visual direction opening" style="height:560px;background:#f3f1ec"><div class="a rf lab nb" style="left:80.00px;top:80px;color:#5e6466;">03 &nbsp;·&nbsp; Visual direction</div><div class="a os display nb" style="left:72.00px;top:168px;color:#242b2d;">From structure</div><div class="a os display it nb" style="left:495.33px;top:304px;color:#8f4a1c;">to feeling.</div><div class="gov"><i style="left:161.33px"></i><i style="left:266.67px"></i><i style="left:372.00px"></i><i style="left:477.33px"></i><i style="left:582.67px"></i><i style="left:688.00px"></i><i style="left:793.33px"></i><i style="left:898.67px"></i><i style="left:1004.00px"></i><i style="left:1109.33px"></i><i style="left:1214.67px"></i></div></section>
+<script>
+/* D01 timeline, 4.0 s. Easing = ALTAI --ease cubic-bezier(.22,.61,.36,1) (arrive). No blur, no glow.
+   0.20–0.70 label fades in · 0.30–1.30 "From structure" rises inside its mask ·
+   0.70–1.80 "to feeling." rises inside its mask (slightly slower) · 1.80–4.00 hold on the approved static frame. */
+function bez(x1,y1,x2,y2){const cx=3*x1,bx=3*(x2-x1)-cx,ax=1-cx-bx,cy=3*y1,by=3*(y2-y1)-cy,ay=1-cy-by;
+ const X=t=>((ax*t+bx)*t+cx)*t,Y=t=>((ay*t+by)*t+cy)*t,dX=t=>(3*ax*t+2*bx)*t+cx;
+ return x=>{if(x<=0)return 0;if(x>=1)return 1;let t=x;for(let i=0;i<8;i++){const d=dX(t);if(Math.abs(d)<1e-6)break;t-=(X(t)-x)/d;}return Y(t);};}
+const ease=bez(.22,.61,.36,1), p=(t,a,d)=>ease(Math.min(1,Math.max(0,(t-a)/d)));
+const LOOP=4.0;
+const f=document.querySelector('section.f'); const els=f.querySelectorAll(':scope > .a');
+const label=els[0], l1=els[1], l2=els[2];
+for(const el of [l1,l2]){ el.style.clipPath='inset(-0.6em -0.4em -0.32em -0.4em)';
+  el.innerHTML='<span style="display:block">'+el.innerHTML+'</span>'; }
+const s1=l1.firstChild, s2=l2.firstChild;
+function render(t){ t=Math.min(t,LOOP);
+  label.style.opacity=p(t,0.20,0.50);
+  s1.style.transform=`translateY(${(1-p(t,0.30,1.00))*1.45}em)`;
+  s2.style.transform=`translateY(${(1-p(t,0.70,1.10))*1.45}em)`; }
+window.__render=render;
+const q=new URLSearchParams(location.search);
+if(q.has('t')) render(parseFloat(q.get('t')));
+else { let s=performance.now(); (function k(n){ let t=(n-s)/1000; if(t>LOOP+0.6){s=n;t=0;} render(t); requestAnimationFrame(k);})(s); }
+</script></body></html>

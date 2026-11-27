@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>ALTAI · Снаружи / Внутри — live component</title>
+<link rel="stylesheet" href="css/component.css">
+<style>
+  html,body{margin:0;background:transparent;overflow:hidden}
+  .photo-toggle{width:755px;height:738px}
+  /* timeline drives these, so CSS transitions are off; values below are the product's own */
+  .photo-toggle__img,.segment__item{transition:none!important}
+</style>
+</head><body>
+<!-- Markup copied unchanged from the live site (index.html, Trip section) -->
+<div class="photo-toggle" data-photo-toggle>
+  <figure class="ph photo-toggle__img is-active" data-value="outside"><img src="assets/img/trip-outside.jpg" alt="Деревянные домики базы в снегопад"></figure>
+  <figure class="ph photo-toggle__img" data-value="inside"><img src="assets/img/trip-inside.jpg" alt="Гости отдыхают у камина в главном доме базы"></figure>
+  <div class="photo-toggle__shade" aria-hidden="true"></div>
+  <span class="badge photo-toggle__badge">5 дней</span>
+  <div class="photo-toggle__bottom on-media">
+    <div class="glass segment" role="group" aria-label="Что показать в кадре">
+      <button class="segment__item" type="button" aria-pressed="true" data-value="outside">Снаружи</button>
+      <button class="segment__item" type="button" aria-pressed="false" data-value="inside">Внутри</button>
+    </div>
+    <p class="t-small photo-toggle__caption" aria-live="polite" data-caption-outside="Прогулки рядом с базой спокойным темпом. В непогоду — встреча с гидом в тепле." data-caption-inside="Одна тёплая база на все пять дней, длинная пауза после обеда и свободные вечера.">Прогулки рядом с базой спокойным темпом. В непогоду — встреча с гидом в тепле.</p>
+  </div>
+</div>
+<script>
+/* Product behaviour (css/sections.css, css/base.css, js/main.js, css/tokens.css):
+   photo crossfade 300 ms, segment background + colour 320 ms, easing cubic-bezier(.22,.61,.36,1),
+   caption text swaps on click, hover brightens the label (on-inverse-muted -> on-inverse).
+   Loop 7.0 s: hold Снаружи · 1.5 hover Внутри · 2.0 tap Внутри · hold · 4.5 hover Снаружи · 5.0 tap Снаружи · hold. */
+const LOOP=7.0, PHOTO=0.300, SEG=0.320;
+const EV={hoverIn:1.5, tapIn:2.0, hoverOut:4.5, tapOut:5.0};
+function bez(x1,y1,x2,y2){const cx=3*x1,bx=3*(x2-x1)-cx,ax=1-cx-bx,cy=3*y1,by=3*(y2-y1)-cy,ay=1-cy-by;
+  const X=t=>((ax*t+bx)*t+cx)*t, Y=t=>((ay*t+by)*t+cy)*t, dX=t=>(3*ax*t+2*bx)*t+cx;
+  return x=>{if(x<=0)return 0;if(x>=1)return 1;let t=x;for(let i=0;i<8;i++){const d=dX(t);if(Math.abs(d)<1e-6)break;t-=(X(t)-x)/d;}return Y(Math.min(1,Math.max(0,t)));};}
+const ease=bez(.22,.61,.36,1);
+const p=(t,t0,d)=>ease(Math.min(1,Math.max(0,(t-t0)/d)));
+const hex=h=>[1,3,5].map(i=>parseInt(h.slice(i,i+2),16));
+const mix=(a,b,k)=>{a=hex(a);b=hex(b);return `rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*k)).join(',')})`;};
+const MUTED='#d4d1ca', ONINV='#f3f1ec', PRIMARY='#242b2d';   // text/on-inverse-muted, text/on-inverse, text/primary
+const box=document.querySelector('[data-photo-toggle]');
+const [imgO,imgI]=box.querySelectorAll('.photo-toggle__img');
+const [bO,bI]=box.querySelectorAll('.segment__item');
+const cap=box.querySelector('.photo-toggle__caption');
+function seg(btn,pressedK,hoverK){ // pressedK 0..1, hoverK 0..1 (only matters when not pressed)
+  const base=mix(MUTED,ONINV,hoverK);
+  btn.style.backgroundColor=`rgba(243,241,236,${pressedK})`;
+  btn.style.borderColor=`rgba(243,241,236,${pressedK})`;
+  btn.style.color=pressedK>0?mixRGB(base,PRIMARY,pressedK):base;
+  btn.setAttribute('aria-pressed', String(pressedK>0.5));
+}
+function mixRGB(rgb,h,k){const a=rgb.match(/\d+/g).map(Number),b=hex(h);return `rgb(${a.map((v,i)=>Math.round(v+(b[i]-v)*k)).join(',')})`;}
+function render(t){
+  t=((t%LOOP)+LOOP)%LOOP;
+  const inK = p(t,EV.tapIn,SEG) - p(t,EV.tapOut,SEG);            // Внутри pressed amount
+  const ph  = p(t,EV.tapIn,PHOTO) - p(t,EV.tapOut,PHOTO);        // inside photo opacity
+  imgO.style.opacity=1-ph; imgI.style.opacity=ph;
+  const hovI = t>=EV.hoverIn && t<EV.tapIn+0.6 ? p(t,EV.hoverIn,SEG) : 0;
+  const hovO = t>=EV.hoverOut && t<EV.tapOut+0.6 ? p(t,EV.hoverOut,SEG) : 0;
+  seg(bO,1-inK,hovO); seg(bI,inK,hovI);
+  const inside = t>=EV.tapIn && t<EV.tapOut;
+  cap.textContent = inside ? cap.dataset.captionInside : cap.dataset.captionOutside;
+}
+const q=new URLSearchParams(location.search);
+window.__render=render;
+if(q.has('t')) render(parseFloat(q.get('t')));
+else if(q.get('s')==='inside') render(3.5);
+else if(q.has('anim')){ const s=performance.now(); (function f(n){render((n-s)/1000); requestAnimationFrame(f);})(s); }
+else render(0);
+</script>
+</body></html>

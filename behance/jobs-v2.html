@@ -1,0 +1,255 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>ALTAI — Traveller jobs, competitive analysis, decisions</title><style>/*
+  Chapter 02 · Discovery & Strategy — sections A, B, C · static directions R1–R3
+  Colours: ALTAI design-system tokens only (css/tokens.css)
+    surface/page #f3f1ec · surface/inverse #242b2d · surface/night #0d1112 · surface/subtle #e6e3dc
+    text/primary #242b2d · text/secondary #4f5557 · text/tertiary #5e6466 · text/warm #8f4a1c
+    text/on-media #ffffff · text/on-media-muted #e2e0da · text/on-inverse #f3f1ec
+    border/default #d2cec5 · border/strong #b9b4aa · border/inverse #5a6164 · accent/warm #d9822b (grid overlay only)
+  Grid: 1400 frame · 80 margins · 12 × 81.33 columns · 24 gutters · 8 px baseline
+*/
+@font-face{font-family:OS;src:url(a/old-standard-tt-latin-400-normal.woff2);unicode-range:U+0000-024F,U+2010-2027,U+2190-21FF}
+@font-face{font-family:OS;src:url(a/old-standard-tt-cyrillic-400-normal.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-latin-400-italic.woff2);unicode-range:U+0000-024F,U+2010-2027}
+@font-face{font-family:OS;font-style:italic;src:url(a/old-standard-tt-cyrillic-400-italic.woff2);unicode-range:U+0400-04FF}
+@font-face{font-family:RF;src:url(a/roboto-flex-latin-wght-normal.woff2);font-weight:100 1000;unicode-range:U+0000-024F,U+2010-2027,U+2190-21FF,U+20BD}
+@font-face{font-family:RF;src:url(a/roboto-flex-cyrillic-wght-normal.woff2);font-weight:100 1000;unicode-range:U+0400-04FF}
+:root{--page:#f3f1ec;--inverse:#242b2d;--night:#0d1112;--subtle:#e6e3dc;
+  --ink:#242b2d;--ink2:#4f5557;--ink3:#5e6466;--warm:#8f4a1c;--onm:#ffffff;--onm2:#e2e0da;--oninv:#f3f1ec;
+  --bd:#d2cec5;--bd2:#b9b4aa;--bdinv:#5a6164;--accent:#d9822b}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--inverse)}
+body{font-family:RF,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+p,h1,h2,h3,h4,ul{margin:0;font-weight:400}
+ul{list-style:none;padding:0}
+img{display:block;max-width:none}
+.wrap{width:1400px;margin:0 auto;padding-bottom:120px}
+
+/* review page chrome (outside the frames) */
+.intro{padding:96px 0 32px;color:var(--oninv);max-width:920px}
+.intro .k{font:500 14px/1.2 RF;letter-spacing:.1em;text-transform:uppercase;color:var(--onm2)}
+.intro h1{font:400 56px/1.1 OS,serif;margin:16px 0 24px}
+.intro p:last-child{font:400 19px/1.55 RF;color:var(--onm2)}
+.tag{padding:72px 0 20px;display:flex;justify-content:space-between;align-items:baseline;gap:40px;color:var(--oninv)}
+.tag b{font:400 34px/1.1 OS,serif;font-weight:400}
+.tag span{font:400 17px/1.4 RF;color:var(--onm2);max-width:640px;text-align:right}
+.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:40px 0 24px;border-bottom:1px solid var(--bdinv);color:var(--oninv)}
+.notes h4{font:500 14px/1.2 RF;letter-spacing:.1em;text-transform:uppercase;color:var(--onm2);margin-bottom:14px}
+.notes p{font:400 17px/1.55 RF}
+.end{margin-top:56px;font:400 15px/1.5 RF;color:var(--onm2)}
+.lang{position:fixed;z-index:50;top:16px;right:16px;display:flex;padding:4px;border-radius:999px;background:var(--night);border:1px solid var(--bdinv)}
+.lang button{all:unset;cursor:pointer;min-width:44px;height:36px;display:grid;place-items:center;padding:0 12px;border-radius:999px;font:500 14px/1 RF;letter-spacing:.08em;color:var(--onm2)}
+.lang button[aria-pressed=true]{background:var(--oninv);color:var(--night)}
+.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cur img{width:1400px}
+
+/* frames */
+.frame{position:relative;width:1400px;overflow:hidden;margin-bottom:24px}
+.frame>*{position:absolute}
+.frame .ph{position:absolute}
+.on-m{color:var(--onm)}
+.folio{font:italic 400 24px/1 OS,serif;color:var(--ink3)}
+.folio.on-m{color:var(--onm)}
+.ttl{font-family:OS,serif;letter-spacing:-.015em;white-space:nowrap}
+.ttl em{font-style:italic}
+.lead{font:400 20px/32px RF}
+.lead.sm{font-size:18px;line-height:28px}
+.stmt{font-family:OS,serif;letter-spacing:-.015em;color:var(--ink);white-space:nowrap}
+.stmt em{font-style:italic;color:var(--warm)}
+.sup{font:400 22px/32px RF;color:var(--ink2)}
+.sup.sm{font-size:18px;line-height:28px}
+.rule{margin:0;border:0;height:1px;background:var(--bd2)}
+.rule.thin{background:var(--bd)}
+.mono{font-family:OS,serif;font-weight:400;letter-spacing:-.04em;color:var(--ink);white-space:nowrap}
+
+/* captions next to numerals */
+.cap h3{font:italic 400 32px/40px OS,serif;color:var(--ink)}
+.cap p{margin-top:16px;font:400 18px/28px RF;color:var(--ink2)}
+
+/* tally marks */
+.tk .bars{display:flex;gap:6px}
+.tk i{display:block;width:3px;height:40px;background:var(--ink)}
+.tk i.off{background:none;box-shadow:inset 0 0 0 1px var(--ink)}
+.tk i.sep{background:var(--bd2)}
+.tk .tl{white-space:nowrap;margin-top:12px;font:400 14px/16px RF;color:var(--ink3)}
+.t28{display:flex;gap:14px;align-items:flex-start}
+.t28 .grp b{display:block;margin-top:12px;font:400 14px/16px RF;color:var(--ink3)}
+
+/* ruled lists (R1 rail) */
+.list{border-top:1px solid var(--ink);padding-top:16px}
+.list h3{font:italic 400 28px/32px OS,serif;margin-bottom:8px}
+.list li{font:400 18px/24px RF;padding:10px 0;border-bottom:1px solid var(--bd)}
+.src{font:500 13px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.list .src{margin-top:12px}
+
+/* R2 */
+.duo p{font:400 18px/28px RF;color:var(--ink2);padding:12px 0;border-top:1px solid var(--bd)}
+.duo b{font:italic 400 22px/28px OS,serif;color:var(--ink);font-weight:400;margin-right:4px}
+.stack>div{margin-bottom:24px}
+.note{border-top:1px solid var(--bd);padding-top:16px}
+.note .q{margin-top:12px;font:400 26px/36px OS,serif;color:var(--ink)}
+.reg{display:grid;grid-template-columns:186.67px 1fr;column-gap:24px;border-top:1px solid var(--bd);padding-top:16px}
+.reg .id b{display:block;margin-top:8px;font:400 48px/48px OS,serif;font-weight:400}
+.reg h4{font:italic 400 24px/32px OS,serif}
+.reg .tx p{margin-top:8px;font:400 17px/26px RF;color:var(--ink2)}
+.foot{font:400 15px/24px RF;color:var(--ink3)}
+
+/* R3 */
+.phbox{overflow:hidden}
+.phbox img{width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.seq{font:400 28px/40px OS,serif;color:var(--ink)}
+.half .src i{font:italic 400 20px/16px OS,serif;letter-spacing:0;text-transform:none;margin-right:12px;color:var(--ink3)}
+.half h3{margin-top:24px;font:400 44px/56px OS,serif;letter-spacing:-.01em}
+.half ul{margin-top:32px}
+.half li{font:400 18px/24px RF;color:var(--ink2);padding:12px 0;border-top:1px solid var(--bd)}
+.half .s2{margin-top:16px}
+.next{font:400 18px/24px RF;color:var(--ink);text-align:right}
+
+/* grid copies */
+.ov{position:absolute;inset:0;pointer-events:none;z-index:5}
+.ov .cols b{position:absolute;top:0;bottom:0;background:rgba(217,130,43,.12);border-left:1px solid rgba(217,130,43,.55);border-right:1px solid rgba(217,130,43,.55)}
+.ov .base{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(217,130,43,.16) 0 1px,transparent 1px 8px)}
+.ov .gh{position:absolute;left:0;right:0;height:0;border-top:1px dashed var(--accent)}
+.ov .gv{position:absolute;top:0;bottom:0;width:0;border-left:1px dashed var(--accent)}
+.ov em{position:absolute;font:500 11px/1 RF;font-style:normal;letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--night);padding:3px 5px;white-space:nowrap}
+.ov .gh em{right:4px;top:-9px}
+.ov .gv em{top:4px;left:2px}
+
+/* Russian lines run longer: same positions, statement one step smaller on the 8 px baseline */
+html[lang=ru] .f-r1b .stmt{font-size:58px!important;line-height:80px!important}
+html[lang=ru] .f-r2b .stmt,html[lang=ru] .f-r3 .stmt{font-size:54px!important;line-height:72px!important}
+.rail>.list{margin-bottom:24px}
+
+/* ===== Design Challenge v2 (adds to research.css) — tokens only ===== */
+:root{--intro:#fafaf8}
+.seq{width:1400px;margin-bottom:24px}
+.seq .frame{margin:0}
+iframe.rs{display:block;width:1400px;height:2823px;border:0;background:var(--night)}
+.notes.n2{grid-template-columns:repeat(2,1fr)}
+
+.why{font:400 20px/32px RF;color:var(--ink2)}
+.ql{font:500 13px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
+.ql.as{color:var(--ink3)}
+.qq{margin-top:8px;font:400 36px/44px OS,serif;color:var(--ink)}
+.qq.sm{font-size:28px;line-height:36px}
+.js{font:italic 400 24px/32px OS,serif;color:var(--ink3)}
+.js.lg{font-size:32px;line-height:40px;margin-top:8px}
+.jd{margin-top:16px;font:400 20px/32px RF;color:var(--ink)}
+.jd.sm{font-size:18px;line-height:28px}
+.wq{font:italic 400 36px/44px OS,serif;color:var(--ink2)}
+.wb{font:400 15px/24px RF;color:var(--ink3)}
+
+/* D1 */
+.jh h3{font:400 72px/80px OS,serif;letter-spacing:-.015em}
+.jh .js{margin-top:4px}
+.jh .jd{max-width:420px}
+.axis{margin:0;border:0;height:1px;background:var(--ink)}
+.pivot{display:block;width:13px;height:13px;border-radius:50%;background:var(--ink)}
+.pl{transform:translateX(-50%);font:500 13px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.vseam{display:block;width:0;border-left:1px solid var(--bd)}
+.qs .qi{padding:20px 0 24px;border-bottom:1px solid var(--bd)}
+.qs .qi:first-child{padding-top:0}
+.wband{border-top:1px dashed var(--bd2);border-bottom:1px dashed var(--bd2)}
+.wband>*{position:absolute}
+
+/* D2 */
+.stmt.split{font-size:104px;line-height:120px;white-space:nowrap}
+.stmt.split span{display:block}
+.stmt.split .l1{padding-left:0}
+.stmt.split .l2{padding-left:210.67px}
+.f-d2 .why{color:var(--ink2)}
+.row2{border-top:1px solid var(--ink)}
+.row2>*{position:absolute}
+.rw{font:400 56px/64px OS,serif;letter-spacing:-.01em}
+.rw.sm{font-size:40px;line-height:48px}
+.tick{display:block;width:0;border-left:1px solid var(--ink)}
+.wrow{border-top:1px dashed var(--bd2);border-bottom:1px dashed var(--bd2)}
+.wrow>*{position:absolute}
+
+/* D3 */
+.narr{font:400 44px/56px OS,serif;color:var(--ink)}
+.narr .op{font-size:56px}
+.narr .op em{font-style:italic;color:var(--warm)}
+.narr i{font-style:italic}
+.narr i.as{color:var(--ink3)}
+.narr sup{font:400 15px/1 RF;color:var(--ink3);vertical-align:1.4em;margin-left:2px}
+.fn{margin:0;padding:0;list-style:none}
+.fn li{display:grid;grid-template-columns:32px 1fr;padding:12px 0;border-top:1px solid var(--bd);font:400 16px/24px RF;color:var(--ink2)}
+.fn li i{font:italic 400 20px/24px OS,serif;color:var(--ink3)}
+.fn li.as{border-top-style:dashed;border-top-color:var(--bd2);color:var(--ink3)}
+.bn2{font:italic 400 32px/40px OS,serif;color:var(--ink3)}
+.bw{margin-top:8px;font:400 144px/144px OS,serif;letter-spacing:-.02em;color:var(--ink)}
+.f-d3 .jd{max-width:500px}
+
+/* Russian runs longer */
+html[lang=ru] .f-d1 .stmt{font-size:64px!important;line-height:80px!important;margin-top:16px}
+html[lang=ru] .stmt.split{font-size:64px;line-height:88px;margin-top:24px}
+html[lang=ru] .bw{font-size:112px;line-height:128px}
+html[lang=ru] .narr{font-size:40px;line-height:52px}
+
+.jc.light{--bg:#f3f1ec;--i1:#242b2d;--i2:#4f5557;--i3:#5e6466;--w:#8f4a1c;--b1:#d2cec5;--be:#242b2d;background:var(--bg)}
+.jc .lbl{font:500 15px/16px RF;letter-spacing:.08em;text-transform:uppercase;color:var(--i3)}
+.jc .hd{font:400 56px/64px OS,serif;letter-spacing:-.015em;color:var(--i1);white-space:nowrap}
+.jc .hd.md{font-size:44px;line-height:52px;white-space:normal}
+.jc .hd em{font-style:italic;color:var(--w)}
+.jc .meth{font:400 17px/26px RF;color:var(--i2)}
+.jc .srule,.jc .mrule{position:absolute;margin:0;border:0;height:1px;background:var(--b1)}
+.jc .srule,.jc .mrule.em{background:var(--be)}
+.job2{display:grid;grid-template-columns:81.33px 1fr;column-gap:24px;border-top:1px solid var(--b1);padding-top:24px}
+.bign{font:italic 400 64px/56px OS,serif;color:var(--w);letter-spacing:-.02em}
+.jt{font:400 34px/40px OS,serif;color:var(--i1)}
+.js{margin-top:12px;font:400 18px/28px RF;color:var(--i2)}
+.dw{margin-top:16px;font:400 18px/26px RF;color:var(--i1)}
+.dw b{display:block;font:italic 400 18px/24px OS,serif;color:var(--w);margin-bottom:2px}
+.jb{margin-top:10px;font:400 14px/20px RF;color:var(--i3)}
+.leg3{margin:0;padding:0;list-style:none;display:flex;gap:40px}
+.leg3 li{display:flex;gap:10px;align-items:center}
+.leg3 b{font:400 18px/22px OS,serif;color:var(--i1)}
+.leg3 small{font:400 15px/20px RF;color:var(--i3);margin-left:6px}
+.leg2{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px}
+.leg2 li{display:grid;grid-template-columns:22px 1fr;column-gap:14px;align-items:start}
+.leg2 b{display:block;font:400 18px/22px OS,serif;color:var(--i1)}
+.leg2 small{display:block;font:400 14px/20px RF;color:var(--i3)}
+.ind{display:block;width:22px;height:22px;box-sizing:border-box;border-radius:50%;flex:none}
+.ind.p{background:var(--i1)}
+.ind.h{border:2px solid var(--w);background:linear-gradient(90deg,var(--w) 0 50%,transparent 50% 100%)}
+.ind.u{border:2px dashed var(--i3);background:none}
+.ch2{text-align:center}
+.ch2 .cn{font:400 24px/28px OS,serif;color:var(--i1);white-space:nowrap}
+.ch2 .ck{margin-top:4px;font:400 14px/20px RF;color:var(--i3)}
+.rl2{font:400 19px/22px OS,serif;color:var(--i1)}
+.dec2{display:grid;grid-template-columns:40px 268px 1fr;column-gap:24px;border-top:1px solid var(--b1);padding:16px 0 16px}
+.dob{font:400 15px/22px RF;color:var(--i2)}
+.dn{font:italic 400 28px/32px OS,serif;color:var(--w)}
+.dec2 h3{font:400 26px/32px OS,serif;color:var(--i1)}
+.dd{margin-top:2px;font:400 17px/26px RF;color:var(--i1)}
+.ds{margin-top:6px;font:400 15px/20px RF;color:var(--i3)}
+.dhyp{margin-top:4px;font:italic 400 17px/22px OS,serif;color:var(--w)}
+.cl2{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.cl2 .an{font:400 15px/20px RF;color:var(--i2)}
+.fh{font:500 13px/16px RF;letter-spacing:.08em;text-transform:uppercase;color:var(--i3)}
+.fo{font:400 19px/26px OS,serif;color:var(--i1);display:grid;grid-template-columns:28px 1fr}
+.fo i{font-style:italic;color:var(--w)}
+.fdec{font:400 17px/26px RF;color:var(--i1)}
+.fsrc{font:400 15px/22px RF;color:var(--i3)}
+.fst{font:500 14px/20px RF;color:var(--i2)}
+.fst.hyp{color:var(--w)}
+.tok{width:100%;border-collapse:collapse;font:400 16px/1.4 RF;color:var(--oninv);margin-bottom:24px}
+.tok th{text-align:left;font:500 13px/1.2 RF;letter-spacing:.1em;text-transform:uppercase;color:var(--onm2);padding:0 0 12px;border-bottom:1px solid var(--bdinv)}
+.tok td{padding:10px 16px 10px 0;border-bottom:1px solid var(--bdinv)}
+.tok td:nth-child(2){font-family:ui-monospace,monospace;font-size:14px}
+.tok i{display:inline-block;width:14px;height:14px;margin-right:8px;vertical-align:-2px;box-shadow:0 0 0 1px var(--bdinv)}
+.pv{width:1400px;background:var(--night);padding:40px 0;margin-bottom:24px}.pv img{display:block;width:700px;margin:0 auto}
+html[lang=ru] .jc .hd{font-size:48px} html[lang=ru] .jc .hd.md{font-size:38px;line-height:48px}
+
+html,body{margin:0;background:#f3f1ec}.frame{margin:0}</style><style>.acc{position:absolute;background:#f3e6d6}.accl{color:#8f4a1c!important}</style><style>.run{left:80px;right:80px;top:48px;display:flex;justify-content:space-between;font:500 14px/16px RF;letter-spacing:.1em;text-transform:uppercase;color:var(--i3)}.run b{font:italic 400 18px/16px OS,serif;letter-spacing:0;text-transform:none;margin-right:10px}html:not([lang=ru]) .jc .hd.sys{font:400 64px/72px OS,serif;letter-spacing:-.015em;white-space:nowrap;width:auto}</style></head><body><section class="frame jc light o1" style="height:960px">
+<div class="run"><span><b>02</b><span data-ru="Исследование и стратегия">Discovery &amp; Strategy</span></span><span data-ru="Задачи путешественника">Traveller jobs</span></div>
+<h2 class="hd sys" style="left:80px;top:112px;" data-ru="Четыре задачи <em>за одной поездкой.</em>">Four jobs behind <em>one trip.</em></h2>
+<p class="meth" style="left:922.67px;top:120px;width:397.33px;" data-ru="Мой синтез пяти интервью, не дословные цитаты. «Готово, когда» описывает, как выглядел бы успех; это не измерялось.">My synthesis of five interviews, not verbatim quotes. “Done when” describes what success would look like; it was not measured.</p>
+<div class="job2" style="left:80px;top:256px;width:608px;"><p class="bign">01</p><div class="jc2"><h3 class="jt" data-ru="Выбрать подходящий ритм">Choose the right rhythm</h3><p class="js" data-ru="Когда я устал от привычного графика и выбираю поездку, я хочу понять нагрузку, время в дороге и свободу участия, чтобы отдохнуть в подходящем мне темпе.">When I am tired of my usual schedule and choose a trip, I want to understand the load, the time on the road and how free participation is, so that I can rest at a pace that suits me.</p><p class="dw"><b><span data-ru="Готово, когда">Done when</span></b><span data-ru="Могу объяснить типичный день и варианты пропуска.">I can explain a typical day and the options to skip.</span></p><p class="jb"><span data-ru="Интервью">Interviews</span> P01–P05 · <span data-ru="инсайты">Insights</span> 01, 02</p></div></div>
+<div class="job2" style="left:712px;top:256px;width:608px;"><p class="bign">02</p><div class="jc2"><h3 class="jt" data-ru="Доверить организацию">Trust the organisers</h3><p class="js" data-ru="Когда я рассматриваю поездку с незнакомыми людьми, я хочу понять, кто меня сопровождает и как устроены бытовые вопросы, чтобы передать организацию и чувствовать себя спокойнее.">When I consider a trip with people I do not know, I want to understand who goes with us and how everyday matters work, so that I can hand over the organisation and feel calmer.</p><p class="dw"><b><span data-ru="Готово, когда">Done when</span></b><span data-ru="Нахожу ведущих, проживание, трансфер и контакт.">I find the leaders, the stay, the transfer and a contact.</span></p><p class="jb"><span data-ru="Интервью">Interviews</span> P01–P05 · <span data-ru="инсайты">Insights</span> 03, 04</p></div></div>
+<div class="job2" style="left:80px;top:568px;width:608px;"><p class="bign">03</p><div class="jc2"><h3 class="jt" data-ru="Принять обоснованное решение">Make an informed decision</h3><p class="js" data-ru="Перед бронированием я хочу оценить весь бюджет, даты и условия отмены, чтобы сопоставить поездку с возможностями и рабочими планами.">Before booking, I want to see the whole budget, the dates and the cancellation terms, so that I can weigh the trip against my means and my work plans.</p><p class="dw"><b><span data-ru="Готово, когда">Done when</span></b><span data-ru="Понимаю, что включено, что отдельно и что будет при изменении планов.">I understand what is included, what is extra and what happens if plans change.</span></p><p class="jb"><span data-ru="Интервью">Interviews</span> P01–P05</p></div></div>
+<div class="job2" style="left:712px;top:568px;width:608px;"><p class="bign">04</p><div class="jc2"><h3 class="jt" data-ru="Быстро сориентироваться после записи">Get oriented after booking</h3><p class="js" data-ru="Когда поездка уже забронирована, я хочу быстро найти и сохранить время встречи, контакты и вещи, чтобы не собирать сведения по перепискам.">Once the trip is booked, I want to find and save the meeting time, contacts and what to pack, so that I do not have to collect details from chats.</p><p class="dw"><b><span data-ru="Готово, когда">Done when</span></b><span data-ru="Открываю единую памятку без прокрутки лендинга.">I open one guide without scrolling the landing page.</span></p><p class="jb"><span data-ru="Интервью">Interviews</span> P02, P05</p></div></div>
+</section>
+<script>const els=[...document.querySelectorAll('[data-ru]')];els.forEach(e=>e.dataset.en=e.innerHTML);
+function setLang(l){document.documentElement.lang=l;els.forEach(e=>e.innerHTML=l==='ru'?e.dataset.ru:e.dataset.en)}
+addEventListener('message',e=>{if(e.data==='ru'||e.data==='en')setLang(e.data)});try{if(localStorage.getItem('altai-case-lang')==='ru')setLang('ru')}catch(e){}</script></body></html>
